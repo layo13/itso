@@ -1,0 +1,14 @@
+Options +FollowSymLinks
+RewriteEngine On
+RewriteBase /itso/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ app.php [QSA,L]
+
+
+# <IfModule mod_rewrite.c>
+# RewriteEngine On
+# RewriteBase /itso/
+# RewriteCond %{REQUEST_FILENAME} !-f
+# RewriteRule ^(.*)$ app.php [QSA,L]
+# #RewriteRule ^(.*)$ maintenance.php [QSA,L]
+# </IfModule>
