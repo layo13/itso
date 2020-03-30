@@ -1,7 +1,4 @@
 <?php
-
-
-
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
@@ -18,12 +15,26 @@
 
 define('ROOT', __DIR__);
 
+require_once ROOT . '/vendor/autoload.php';
+
 $routes = require_once ROOT . '/routing/routes.php';
 
-
 $requestMethod = $_SERVER['REQUEST_METHOD'];
-$requestURI = $_SERVER['REQUEST_URI'];
+$requestURI = str_replace('/itso/', '/', $_SERVER['REQUEST_URI']);
 
-$parameterNameRegex = '`[a-z][a-z0-9_]+`';
+$matches = [];
 
-var_dump($requestMethod, $requestURI, $routes);
+$router = new Epic\Routing\Router();
+$router->init($routes);
+/* @var $route \Epic\Routing\Route */
+$route = $router->getMatchingRoute($requestMethod, $requestURI, $matches);
+
+$action = $route->getAction();
+
+if (is_callable($action)){
+	
+	echo call_user_func_array($action, $matches);
+	exit;
+} else {
+	throw new Exception("No valid action");
+}

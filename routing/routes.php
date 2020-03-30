@@ -3,24 +3,21 @@
 return [
 	"home" => [
 		"uri" => "/",
+		"method" => "GET",
 		"action" => function() {
 			return "In The Showes Of";
 		}
 	],
-	"hello" => [
-		"uri" => "/hello/{name}",
-		"action" => function($name) {
-			return "Hello $name";
-		}
-	],
 	"hello_opt" => [
 		"uri" => "/hello/{name?}",
+		"method" => "GET",
 		"action" => function($name = null) {
 			return "Hello ".($name ? $name : "there");
 		}
 	],
 	"add" => [
 		"uri" => "/add/{a}/{b}",
+		"method" => "GET",
 		"parameters" => [
 			"a" => "[0-9]+",
 			"a" => "[0-9]+"
@@ -31,6 +28,7 @@ return [
 	],
 	"paginate" => [
 		"uri" => "/read/{page?}/{limit?}/{order_by?}",
+		"method" => "GET",
 		"parameters" => [
 			"page" => "[0-9]+",
 			"limit" => "[0-9]+",
