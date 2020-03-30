@@ -1,6 +1,13 @@
 <?php
 
 return [
+	"admin_blog_home" => [
+		"uri" => "/admin/blog",
+		"method" => "GET",
+		"action" => [
+			\ITSO\Admin\BlogController::class, 'home'
+		]
+	],
 	"home" => [
 		"uri" => "/",
 		"method" => "GET",
@@ -12,7 +19,7 @@ return [
 		"uri" => "/hello/{name?}",
 		"method" => "GET",
 		"action" => function($name = null) {
-			return "Hello ".($name ? $name : "there");
+			return "Hello " . ($name ? $name : "there");
 		}
 	],
 	"add" => [
@@ -23,7 +30,7 @@ return [
 			"a" => "[0-9]+"
 		],
 		"action" => function($name = null) {
-			return "Hello ".($name ? $name : "there");
+			return "Hello " . ($name ? $name : "there");
 		}
 	],
 	"paginate" => [
