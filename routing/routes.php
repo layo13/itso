@@ -8,6 +8,13 @@ return [
 			\ITSO\Admin\BlogController::class, 'home'
 		]
 	],
+	"admin_category_home" => [
+		"uri" => "/admin/category",
+		"method" => "GET",
+		"action" => [
+			\ITSO\Admin\CategoryController::class, 'home'
+		]
+	],
 	"home" => [
 		"uri" => "/",
 		"method" => "GET",
