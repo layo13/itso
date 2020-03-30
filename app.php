@@ -20,6 +20,12 @@ require_once ROOT . '/vendor/autoload.php';
 
 $routes = require_once ROOT . '/routing/routes.php';
 
+////////////////////////////////////////////////////////////////////////////////
+
+$pdo = null;
+
+////////////////////////////////////////////////////////////////////////////////
+
 $requestMethod = $_SERVER['REQUEST_METHOD'];
 $requestURI = str_replace('/itso/', '/', $_SERVER['REQUEST_URI']);
 
@@ -39,7 +45,7 @@ if (is_callable($action)) {
 } else if (is_array($action)) {
 	$controllerName = $action[0];
 	$controllerMethod = $action[1] . "Action";
-	$controller = new $controllerName();
+	$controller = new $controllerName($pdo);
 	echo call_user_func_array([$controller, $controllerMethod], $matches);
 	exit;
 } else {
