@@ -17,12 +17,13 @@
 define('ROOT', __DIR__);
 
 require_once ROOT . '/vendor/autoload.php';
+require_once ROOT . '/vendor/pdo.php';
 
 $routes = require_once ROOT . '/routing/routes.php';
 
 ////////////////////////////////////////////////////////////////////////////////
 
-$pdo = null;
+$pdo = PdoItsof::getInstance();
 
 ////////////////////////////////////////////////////////////////////////////////
 

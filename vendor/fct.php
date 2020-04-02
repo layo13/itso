@@ -19,3 +19,10 @@ function view($name, $parameters = []) {
 		throw new Exception("View $view does not exist");
 	}
 }
+
+function est_multiple($nombre, $multiple){
+    if($nombre % $multiple == 0)
+        return true;
+    else
+        return false;
+}

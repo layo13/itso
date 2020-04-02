@@ -1,6 +1,32 @@
 <?php
 
 return [
+    "user_create" => [
+        "uri" => "/user/create",
+        "method" => "GET",
+        "action" => [
+            \ITSO\Admin\UsersController::class, 'create'
+        ]
+    ],
+    "user_add" => [
+        "uri" => "/user/add",
+        "method" => "POST",
+        "action" => [
+            \ITSO\Admin\UsersController::class, 'add'
+        ]
+    ],
+    "user_list" => [
+        "uri" => "/user/list",
+        "method" => "GET",
+        "action" => [
+            \ITSO\Admin\UsersController::class, 'list'
+        ]
+    ],
+
+
+
+
+
 	"admin_blog_home" => [
 		"uri" => "/admin/blog",
 		"method" => "GET",
