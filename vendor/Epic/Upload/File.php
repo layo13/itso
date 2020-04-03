@@ -1,6 +1,6 @@
 <?php
 
-namespace Upload;
+namespace Epic\Upload;
 
 class File {
 
