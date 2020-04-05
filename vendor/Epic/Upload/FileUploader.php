@@ -2,6 +2,8 @@
 
 namespace Epic\Upload;
 
+use Exception;
+
 /**
  * 
  * https://www.php.net/manual/fr/features.file-upload.post-method.php

@@ -8,7 +8,6 @@ foreach ($users as $i => $user) {
     }
     ?>
         <div class="col-xl-3">
-
             <!--Begin::Portlet-->
             <div class="kt-portlet kt-portlet--height-fluid">
                 <div class="kt-portlet__head kt-portlet__head--noborder">
@@ -57,12 +56,17 @@ foreach ($users as $i => $user) {
                     </div>
                 </div>
                 <div class="kt-portlet__body">
-
                     <!--begin::Widget -->
                     <div class="kt-widget kt-widget--user-profile-2">
                         <div class="kt-widget__head">
                             <div class="kt-widget__media">
-                                <img class="kt-widget__img kt-hidden-" src="../public/assets/images/noPhoto.png" alt="image">
+                                <?php
+                                $userPictureUrl = "noPhoto.png";
+                                if(!empty($user['user_picture'])){
+                                    $userPictureUrl = "users/".$user['user_picture'];
+                                }
+                                ?>
+                                <img class="kt-widget__img kt-hidden-" src="../public/assets/images/<?= $userPictureUrl ?>" alt="image">
                                 <div
                                     class="kt-widget__pic kt-widget__pic--success kt-font-success kt-font-boldest kt-hidden">
                                     ChS
@@ -70,10 +74,10 @@ foreach ($users as $i => $user) {
                             </div>
                             <div class="kt-widget__info">
                                 <a href="#" class="kt-widget__username">
-                                    <?= $user['firstname'] ." ".$user['name'] ?>
+                                    <?= $user['firstname'] ." ".$user['name'] ." ". getGender($user['gender'])?>
                                 </a>
                                 <span class="kt-widget__desc">
-                                    <?= $user['state'] ?>
+                                    <?= getUserEtat($user['state']) ?>
 								</span>
                             </div>
                         </div>
@@ -90,23 +94,21 @@ foreach ($users as $i => $user) {
                                 </div>
                                 <div class="kt-widget__contact">
                                     <span class="kt-widget__label">Langue:</span>
-                                    <a href="#" class="kt-widget__data"><?= $user['language'] ?></a>
+                                    <a href="#" class="kt-widget__data"><img src="<?= getCountrieFlag($user['language']) ?>"></a>
                                 </div>
                                 <div class="kt-widget__contact">
                                     <span class="kt-widget__label">Nationalité:</span>
-                                    <span class="kt-widget__data"><?= $user['nationality'] ?></span>
+                                    <span class="kt-widget__data"><img src="<?= getCountrieFlag($user['nationality']) ?>"></span>
                                 </div>
                             </div>
                         </div>
                         <div class="kt-widget__footer">
-                            <button type="button" class="btn btn-label-brand btn-lg btn-upper">Plus de détail</button>
+                            <a href="/itso/user/view,<?= $user['id'] ?>" class="btn btn-label-brand btn-lg btn-upper">Plus de détail</a>
                         </div>
                     </div>
-
                     <!--end::Widget -->
                 </div>
             </div>
-
             <!--End::Portlet-->
         </div>
     <?php

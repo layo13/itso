@@ -16,10 +16,20 @@ return [
         ]
     ],
     "user_list" => [
-        "uri" => "/user/list",
+        "uri" => "/user/liste",
         "method" => "GET",
         "action" => [
             \ITSO\Admin\UsersController::class, 'list'
+        ]
+    ],
+    "user_view" => [
+        "uri" => "/user/view,{id}",
+        "method" => "GET",
+        "parameters" => [
+            "id" => "[0-9]+",
+        ],
+        "action" => [
+            \ITSO\Admin\UsersController::class, 'view'
         ]
     ],
 
@@ -45,7 +55,7 @@ return [
 		"uri" => "/",
 		"method" => "GET",
 		"action" => function() {
-			return "In The Showes Of";
+			return view('connexion');
 		}
 	],
 	"hello_opt" => [

@@ -26,3 +26,25 @@ function est_multiple($nombre, $multiple){
     else
         return false;
 }
+
+function getGender($genderId){
+    if($genderId == 1)
+        return "<i class=\"fa fa-mars\"></i>";
+    else
+        return "<i class=\"fa fa-venus\"></i>";
+
+}
+function getUserEtat($etatId){
+    if($etatId == 1)
+        return "Nouveau";
+    else
+        return "Archivé";
+
+}
+function getCountrieFlag($flagId){
+    if($flagId == 1)
+        return "../public/assets/images/flag/fr.png";
+    else
+        return "../public/assets/images/flag/en.png";
+
+}
