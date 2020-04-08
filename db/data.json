@@ -1,0 +1,54 @@
+{
+    "user_type": [
+        {
+            "name": "administrator",
+            "state": 1,
+            "active": 1
+        },
+        {
+            "name": "celebrity",
+            "state": 1,
+            "active": 0
+        },
+        {
+            "name": "retailer",
+            "state": 1,
+            "active": 0
+        },
+        {
+            "name": "member",
+            "state": 1,
+            "active": 0
+        }
+    ],
+    "user": [
+        {
+            "last_name": "Guissani",
+            "first_name": "Lionel",
+            "day_of_birth": "",
+            "email": "liodu13170@gmail.com",
+            "password": "",
+            "gender": 2,
+            "picture_id": null,
+            "language": 1,
+            "nationality": 1,
+            "state": 1,
+            "active": 1,
+            "user_type_id": 1
+        },
+        {
+            "last_name": "Bruno",
+            "first_name": "Thomas",
+            "day_of_birth": "1991-10-13 00:00:00",
+            "email": "thomas.bruno.13@gmail.com",
+            "password": "",
+            "gender": 2,
+            "picture_id": null,
+            "language": 1,
+            "nationality": 1,
+            "state": 1,
+            "active": 1,
+            "user_type_id": 1
+        }
+    ]
+}

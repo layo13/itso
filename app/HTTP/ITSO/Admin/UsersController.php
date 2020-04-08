@@ -1,6 +1,6 @@
 <?php
 
-namespace ITSO\Admin;
+namespace HTTP\ITSO\Admin;
 
 use Epic\Upload\File;
 use Epic\Upload\FileUploader;

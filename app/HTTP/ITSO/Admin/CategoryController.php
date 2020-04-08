@@ -1,6 +1,6 @@
 <?php
 
-namespace ITSO\Admin;
+namespace HTTP\ITSO\Admin;
 
 class CategoryController extends \Epic\BaseController {
 

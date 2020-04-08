@@ -1,6 +1,6 @@
 <?php
 
-namespace ITSO\Admin;
+namespace HTTP\ITSO\Admin;
 
 class BlogController extends \Epic\BaseController {
 
