@@ -49,12 +49,17 @@ class Router {
 				}
 			}
 			$uris[] = $pattern;
+
 			$this->addRoute(new \Epic\Routing\Route($name, $data['method'], $data['action'], $data['uri'], $uris));
 		}
 	}
 
 	public function addRoute(Route $route) {
 		array_push($this->routes, $route);
+	}
+
+	public function addRoutes($application, array $routes) {
+		var_dump($application, $routes);
 	}
 
 	/**
@@ -74,7 +79,9 @@ class Router {
 			}
 		}
 
-		throw new Exception("Page not found", 404);
+		throw new RouteNotFoundException("Page not found", 404);
 	}
 
 }
+
+class RouteNotFoundException extends \Exception{}

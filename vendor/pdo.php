@@ -17,6 +17,10 @@ class PdoItsof {
 		
 	}
 
+	/**
+	 * 
+	 * @return PDO
+	 */
 	public static function getInstance() {
 		if (!isset(self::$instance)) {
 			try {

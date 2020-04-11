@@ -74,7 +74,7 @@ foreach ($users as $i => $user) {
                             </div>
                             <div class="kt-widget__info">
                                 <a href="#" class="kt-widget__username">
-                                    <?= $user['firstname'] ." ".$user['name'] ." ". getGender($user['gender'])?>
+                                    <?= $user['first_name'] ." ".$user['last_name'] ." ". getGender($user['gender'])?>
                                 </a>
                                 <span class="kt-widget__desc">
                                     <?= getUserEtat($user['state']) ?>

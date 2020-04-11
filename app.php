@@ -1,54 +1,41 @@
 <?php
 
-//------------------------------------------------------------------------------
-//------------------------------------------------------------------------------
-//------------------------------------------------------------------------------
-//------------------------------------------------------------------------------
-//------------------------------------------------------------------------------
-//------------------------------------------------------------------------------
-//------------------------------------------------------------------------------
-//------------------------------------------------------------------------------
-//------------------------------------------------------------------------------
-//------------------------------------------------------------------------------
-//------------------------------------------------------------------------------
-//------------------------------------------------------------------------------
-//------------------------------------------------------------------------------
-
 define('ROOT', __DIR__);
+
+//echo '<pre>'.($hash = password_hash("test", PASSWORD_DEFAULT)).'</pre>';
+//var_dump(password_verify("test", $hash));exit;
 
 require_once ROOT . '/vendor/autoload.php';
 require_once ROOT . '/vendor/pdo.php';
 
-$routes = require_once ROOT . '/routing/routes.php';
+// -----------------------------------------------------------------------------
+// Chargement des applications
+// -----------------------------------------------------------------------------
+$applications = [
+	($admin = new Http\Itso\Admin\AdminApplication('Admin', 'admin', '/admin'))
+	//Member
+];
 
-////////////////////////////////////////////////////////////////////////////////
+$request = new \Epic\Http\Request();
+$requestUri = $request->requestUri();
 
-$pdo = PdoItsof::getInstance();
+/* @var $application Epic\BaseApplication */
+$selectedApplication = null;
 
-////////////////////////////////////////////////////////////////////////////////
+/* @var $application Epic\BaseController */
+foreach ($applications as $application) {
 
-$requestMethod = $_SERVER['REQUEST_METHOD'];
-$requestURI = str_replace('/itso/', '/', $_SERVER['REQUEST_URI']);
-
-$matches = [];
-
-$router = new Epic\Routing\Router();
-$router->init($routes);
-/* @var $route \Epic\Routing\Route */
-$route = $router->getMatchingRoute($requestMethod, $requestURI, $matches);
-
-$action = $route->getAction();
-
-if (is_callable($action)) {
-
-	echo call_user_func_array($action, $matches);
-	exit;
-} else if (is_array($action)) {
-	$controllerName = $action[0];
-	$controllerMethod = $action[1] . "Action";
-	$controller = new $controllerName($pdo);
-	echo call_user_func_array([$controller, $controllerMethod], $matches);
-	exit;
-} else {
-	throw new Exception("No valid action");
+	if (startsWith($requestUri, $application->getPrefix())) {
+		$selectedApplication = $application;
+	}
 }
+
+if (!is_null($selectedApplication)) {
+	$selectedApplication->run($request);
+} else {
+
+	throw new Exception('Aucune application ne peut etre lancee');
+}
+exit;
+
+

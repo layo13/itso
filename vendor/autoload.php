@@ -21,7 +21,7 @@ if (extension_loaded('xdebug')) {
 }
 
 set_error_handler(function($errno, $errstr, $errfile, $errline, $errcontext) {
-
+	ob_end_clean();
 	header('Content-type: text/html; charset=utf-8');
 
 	switch ($errno) {
@@ -65,18 +65,22 @@ set_error_handler(function($errno, $errstr, $errfile, $errline, $errcontext) {
 	$backtrace = debug_backtrace();
 	echo '<h3>Stack</h3>';
 	echo '<table border="2" cellspacing="2" cellpadding="5">';
-	echo '<tr><th>#</th><th>Fichier</th><th>Ligne</th><th>Fonction/Méthode</th></tr>';
+	echo '<tr><th>#</th><th>Fichier</th><th>Ligne</th><th>Fonction/Méthode</th><th>dump</th></tr>';
 	foreach ($backtrace as $key => $value) {
 		echo '<tr>';
 		echo '<td>' . $key . '</td>';
-		echo '<td>' . $value['file'] . '</td>';
-		echo '<td>' . $value['line'] . '</td>';
+		echo '<td>' . (!empty($value['file']) ? $value['file'] : '') . '</td>';
+		echo '<td>' . (!empty($value['line']) ? $value['line'] : '') . '</td>';
 		echo '<td>';
 		if (!empty($value['class'])) {
 			echo $value['class'] . $value['type'] . $value['function'];
 		} else {
 			echo $value['function'];
 		}
+		echo '</td>';
+		
+		echo '<td>';
+		var_dump($value);
 		echo '</td>';
 
 		echo '</tr>';

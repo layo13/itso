@@ -4,10 +4,19 @@ namespace Epic;
 
 abstract class BaseController {
 
-	protected $pdo;
+	/**
+	 *
+	 * @var BaseApplication 
+	 */
+	protected $application;
 
-	public function __construct($pdo) {
-		$this->pdo = $pdo;
+	/**
+	 * 
+	 * @param BaseApplication $application
+	 */
+	public function __construct($application) {
+		$this->application = $application;
 	}
 
+	
 }
