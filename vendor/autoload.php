@@ -20,9 +20,53 @@ if (extension_loaded('xdebug')) {
 	ini_set('xdebug.var_display_max_data', '1024');
 }
 
+set_exception_handler(function(Exception $e) {
+	//ob_end_clean();
+	//header('Content-type: text/html; charset=utf-8');
+
+	$message = $e->getMessage();
+	$code = $e->getCode();
+	$file = $e->getFile();
+	$line = $e->getLine();
+	$trace = $e->getTrace();
+
+	echo '<h1>Uncaught exception ' . get_class($e) . '</h1>';
+	echo '<h2>Message: ' . $e->getMessage() . '</h2>';
+	if (!empty($code)) {
+		echo '<h3>Code: ' . $code . '</h3>';
+	}
+	echo '<p>File : ' . $file . '</p>';
+	echo '<p>Line : ' . $line . '</p>';
+
+	echo '<h3>Stack</h3>';
+	echo '<table border="2" cellspacing="2" cellpadding="5">';
+	echo '<tr><th>#</th><th>Fichier</th><th>Ligne</th><th>Fonction/Méthode</th><th>dump</th></tr>';
+	foreach ($trace as $key => $value) {
+		echo '<tr>';
+		echo '<td>' . $key . '</td>';
+		echo '<td>' . (!empty($value['file']) ? $value['file'] : '') . '</td>';
+		echo '<td>' . (!empty($value['line']) ? $value['line'] : '') . '</td>';
+		echo '<td>';
+		if (!empty($value['class'])) {
+			echo $value['class'] . $value['type'] . $value['function'];
+		} else {
+			echo $value['function'];
+		}
+		echo '</td>';
+
+		echo '<td>';
+		var_dump($value);
+		echo '</td>';
+
+		echo '</tr>';
+	}
+	echo '</table>';
+	exit;
+});
+
 set_error_handler(function($errno, $errstr, $errfile, $errline, $errcontext) {
-	ob_end_clean();
-	header('Content-type: text/html; charset=utf-8');
+	//ob_end_clean();
+	//header('Content-type: text/html; charset=utf-8');
 
 	switch ($errno) {
 		case E_ERROR: $errlabel = "E_ERROR";
@@ -78,7 +122,7 @@ set_error_handler(function($errno, $errstr, $errfile, $errline, $errcontext) {
 			echo $value['function'];
 		}
 		echo '</td>';
-		
+
 		echo '<td>';
 		var_dump($value);
 		echo '</td>';

@@ -1,4 +1,9 @@
-<!DOCTYPE html>
+<?php
+
+/* @var $user \Epic\User */
+$user;
+
+?><!DOCTYPE html>
 
 <!--
 Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 4 & Angular 8
@@ -66,6 +71,16 @@ License: You must have a valid license purchased only from themeforest(the above
 								<div class="kt-login__head">
 									<h3 class="kt-login__title">Sign In To Admin</h3>
 								</div>
+								
+								<?php if ($user->hasFlash()){ ?>
+								
+								<div class="alert alert-danger alert-dismissible" role="alert">
+									<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+									<?= $user->getFlash() ?>
+								  </div>
+								
+								<?php } ?>
+								
 								<form class="kt-form" method="post" action="<?= $url ?>admin/login">
 									<div class="input-group">
 										<input class="form-control" type="text" placeholder="Email" name="email" autocomplete="off">

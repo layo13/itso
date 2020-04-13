@@ -18,11 +18,16 @@ abstract class BaseApplication {
 	 */
 	protected $user;
 	protected $request;
+	/**
+	 *
+	 * @var Router 
+	 */
 	protected $router;
 
 	public function __construct($name, $reference, $prefix = '') {
 		$this->user = new User($this);
 		$this->request = new Request();
+		$this->router = new Router();
 
 		$this->name = $name;
 		$this->reference = $reference;
@@ -30,7 +35,7 @@ abstract class BaseApplication {
 	}
 
 	protected function getControllerAction() {
-		$router = new Router();
+		
 		$routes = require ROOT . '/routes/' . $this->reference . '.php';
 		$applicationRoutes = [];
 
@@ -43,12 +48,12 @@ abstract class BaseApplication {
 			$applicationRoutes[$this->reference . '_' . $name] = $route;
 		}
 
-		$router->init($applicationRoutes);
+		$this->router->init($applicationRoutes);
 
 		$matches = [];
 
 		/* @var $route \Epic\Routing\Route */
-		$route = $router->getMatchingRoute($this->request->requestMethod(), $this->request->requestUri(), $matches);
+		$route = $this->router->getMatchingRoute($this->request->requestMethod(), $this->request->requestUri(), $matches);
 
 		list($controllerName, $action) = $route->getAction();
 
@@ -97,4 +102,11 @@ abstract class BaseApplication {
 		return $this->request;
 	}
 
+	/**
+	 * 
+	 * @return Router
+	 */
+	public function router() {
+		return $this->router;
+	}
 }

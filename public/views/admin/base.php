@@ -103,7 +103,7 @@ License: You must have a valid license purchased only from themeforest(the above
 												<div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
 													<ul class="kt-menu__subnav">
 
-														<li class="kt-menu__item " aria-haspopup="true"><a href="<?= $url ?>/admin/users/list" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">List - Default</span></a></li>
+														<li class="kt-menu__item " aria-haspopup="true"><a href="<?= $app->router()->getRoute('admin_user_list') ?>" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">List - Default</span></a></li>
 														
 														<li class="kt-menu__item " aria-haspopup="true"><a href="custom/apps/user/list-default.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">List - Default</span></a></li>
 														<li class="kt-menu__item " aria-haspopup="true"><a href="custom/apps/user/list-datatable.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">List - Datatable</span></a></li>
@@ -1546,7 +1546,7 @@ License: You must have a valid license purchased only from themeforest(the above
 											</div>
 										</a>
 										<div class="kt-notification__custom kt-space-between">
-											<a href="<?= $url ?>admin/logout" target="_blank" class="btn btn-label btn-label-brand btn-sm btn-bold">Sign Out</a>
+											<a href="<?= $url ?>admin/logout" class="btn btn-label btn-label-brand btn-sm btn-bold">Sign Out</a>
 											<a href="custom/user/login-v2.html" target="_blank" class="btn btn-clean btn-sm btn-bold">Upgrade Plan</a>
 										</div>
 									</div>

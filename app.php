@@ -2,11 +2,10 @@
 
 define('ROOT', __DIR__);
 
-//echo '<pre>'.($hash = password_hash("test", PASSWORD_DEFAULT)).'</pre>';
-//var_dump(password_verify("test", $hash));exit;
-
 require_once ROOT . '/vendor/autoload.php';
 require_once ROOT . '/vendor/pdo.php';
+
+define('URL', 'http://localhost/itso/');
 
 // -----------------------------------------------------------------------------
 // Chargement des applications

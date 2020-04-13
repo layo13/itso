@@ -23,8 +23,16 @@ class Route {
 		$this->patterns = $patterns;
 	}
 
+	public function getName(){
+		return $this->name;
+	}
+
 	public function getAction(){
 		return $this->action;
+	}
+
+	public function getUri(){
+		return $this->uri;
 	}
 	
 	public function match($method, $requestURI, &$matches) {

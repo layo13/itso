@@ -7,8 +7,9 @@ use Epic\BaseController;
 class HomeController extends BaseController {
 
 	public function indexAction() {
-		$url = 'http://localhost/itso/';
-
+		$url = URL;
+		$app = $this->application;
+		
 		require ROOT . '/public/views/admin/home/index.php';
 	}
 
