@@ -16,7 +16,7 @@ class AdminApplication extends BaseApplication {
 			$action = 'login';
 			$matches = [];
 		}
-
+		
 		$controller = new $controllerName($this);
 
 		echo call_user_func_array([$controller, $action . 'Action'], $matches);

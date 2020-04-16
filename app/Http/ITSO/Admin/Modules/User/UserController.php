@@ -4,8 +4,9 @@ namespace Http\Itso\Admin\Modules\User;
 
 use Epic\Upload\File;
 use Epic\Upload\FileUploader;
+use Epic\BaseController;
 
-class UserController extends \Epic\BaseController {
+class UserController extends BaseController {
 
 	public function createAction() {
 		return view('users/create');
@@ -62,11 +63,18 @@ class UserController extends \Epic\BaseController {
 	}
 
 	public function listAction() {
-		$q = $this->pdo->query("SELECT *,(select picture.name from picture where picture.id = user.picture_id) as user_picture FROM user");
+		
+
+		$q = $this->pdo()->query("SELECT *,(select picture.name from picture where picture.id = user.picture_id) as user_picture FROM user");
 		while ($datas = $q->fetch(\PDO::FETCH_ASSOC)) {
 			$users[] = $datas;
 		}
-		return view('users/list', compact('users'));
+		//return view('users/list', compact('users'));
+		
+		$url = URL;
+		$app = $this->application;
+		
+		require ROOT . '/public/views/admin/user/index.php';
 	}
 
 	public function viewAction() {

@@ -109,4 +109,12 @@ abstract class BaseApplication {
 	public function router() {
 		return $this->router;
 	}
+	
+	/**
+	 * 
+	 * @return \PDO
+	 */
+	public function pdo() {
+		return \PdoProvider::getInstance();
+	}
 }

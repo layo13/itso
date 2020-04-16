@@ -19,14 +19,14 @@ return [
 		"uri" => "/user/add",
 		"method" => "POST",
 		"action" => [
-			\HTTP\ITSO\Admin\UsersController::class, 'add'
+			\Http\Itso\Admin\Modules\User\UserController::class, 'add'
 		]
 	],
 	"user_list" => [
-		"uri" => "/user/liste",
+		"uri" => "/user/list",
 		"method" => "GET",
 		"action" => [
-			\HTTP\ITSO\Admin\UsersController::class, 'list'
+			\Http\Itso\Admin\Modules\User\UserController::class, 'list'
 		]
 	],
 	"user_view" => [
