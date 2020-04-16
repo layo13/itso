@@ -14,8 +14,8 @@ $schema->addTable('admin_message', function(Table $table) {
 	$table->varchar('title')->length(255)->nullable(false)->comment('');
 	$table->text('text')->nullable(false)->comment('Texte du message');
 	$table->integer('picture_id')->nullable(false);
-	$table->dateTime('created_at')->nullable(false);
-	$table->dateTime('updated_at')->nullable(false);
+	$table->dateTime('created_at')->nullable(false)->defaultValue('CURRENT_TIMESTAMP');
+	$table->dateTime('updated_at')->nullable(false)->defaultValue('CURRENT_TIMESTAMP');
 	$table->integer('user_id')->nullable(false)->comment('Createur du message');
 	$table->integer('state')->nullable(false);
 	$table->tinyInteger('active')->nullable(false)->defaultValue('0');
@@ -28,7 +28,7 @@ $schema->addTable('blog_article', function(Table $table) {
 	$table->integer('picture_id')->nullable(false);
 	$table->integer('blog_article_category_id')->nullable(false);
 	$table->dateTime('created_at')->nullable(false)->defaultValue('CURRENT_TIMESTAMP');
-	$table->dateTime('updated_at')->nullable(false);
+	$table->dateTime('updated_at')->nullable(false)->defaultValue('CURRENT_TIMESTAMP');
 	$table->integer('state')->nullable(false)->comment('etat');
 	$table->tinyInteger('active')->nullable(false)->defaultValue('0')->comment('Actif oui/non');
 }, "Article du blog");
@@ -117,6 +117,8 @@ $schema->addTable('picture', function(Table $table) {
 $schema->addTable('product_type', function(Table $table) {
 	$table->integer('id')->primary(true);
 	$table->integer('name')->nullable(false);
+	$table->integer('sex')->nullable(true);
+	$table->integer('parent_id')->nullable(true);
 	$table->integer('picture_id')->nullable(false);
 	$table->dateTime('created_at')->nullable(false)->defaultValue('CURRENT_TIMESTAMP');
 	$table->tinyInteger('active')->nullable(false)->defaultValue('0');
@@ -170,7 +172,7 @@ $schema->addTable('user', function(Table $table) {
 	$table->integer('language')->nullable(false);
 	$table->integer('nationality')->nullable(false);
 	$table->dateTime('created_at')->nullable(false)->defaultValue('CURRENT_TIMESTAMP');
-	$table->dateTime('updated_at')->nullable(false);
+	$table->dateTime('updated_at')->nullable(false)->defaultValue('CURRENT_TIMESTAMP');
 	$table->integer('state')->nullable(false);
 	$table->tinyInteger('active')->nullable(false)->defaultValue('0');
 	$table->integer('user_type_id')->nullable(false);
