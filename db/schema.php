@@ -119,7 +119,7 @@ $schema->addTable('product_type', function(Table $table) {
 	$table->integer('name')->nullable(false);
 	$table->integer('sex')->nullable(true);
 	$table->integer('parent_id')->nullable(true);
-	$table->integer('picture_id')->nullable(false);
+	$table->integer('picture_id')->nullable(true);
 	$table->dateTime('created_at')->nullable(false)->defaultValue('CURRENT_TIMESTAMP');
 	$table->tinyInteger('active')->nullable(false)->defaultValue('0');
 });
