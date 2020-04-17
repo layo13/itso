@@ -114,9 +114,9 @@ $schema->addTable('picture', function(Table $table) {
 	$table->varchar('name')->length(255)->nullable(false);
 });
 
-$schema->addTable('product_type', function(Table $table) {
+$schema->addTable('product_category', function(Table $table) {
 	$table->integer('id')->primary(true);
-	$table->integer('name')->nullable(false);
+	$table->varchar('name')->length(255)->nullable(false);
 	$table->integer('sex')->nullable(true);
 	$table->integer('parent_id')->nullable(true);
 	$table->integer('picture_id')->nullable(true);

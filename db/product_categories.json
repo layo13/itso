@@ -1,0 +1,492 @@
+[
+    {
+        "name": "Hommes",
+        "children": [
+            {
+                "name": "Vêtements",
+                "children": [
+                    {
+                        "name": "Haut",
+                        "children": [
+                            {
+                                "name": "Tshirt"
+                            },
+                            {
+                                "name": "Maillot de sport"
+                            },
+                            {
+                                "name": "Débardeur"
+                            },
+                            {
+                                "name": "Polo"
+                            },
+                            {
+                                "name": "Chemise"
+                            },
+                            {
+                                "name": "Pull"
+                            },
+                            {
+                                "name": "Gilet"
+                            },
+                            {
+                                "name": "Sweat"
+                            },
+                            {
+                                "name": "Polaire"
+                            },
+                            {
+                                "name": "Autre"
+                            }
+                        ]
+                    },	
+                    {
+                        "name": "Haut veste",
+                        "children": [
+                            {
+                                "name": "Blazers"
+                            },
+                            {
+                                "name": "Doudoune"
+                            },
+                            {
+                                "name": "Manteaux"
+                            },
+                            {
+                                "name": "Veste"
+                            },
+                            {
+                                "name": "Survêtement"
+                            },
+                            {
+                                "name": "Autre"
+                            }
+                        ]
+                    },	
+                    {
+                        "name": "Bas",
+                        "children": [
+                            {
+                                "name": "Jeans"
+                            },
+                            {
+                                "name": "Pantalon"
+                            },
+                            {
+                                "name": "Short"
+                            },
+                            {
+                                "name": "Survêtement"
+                            },
+                            {
+                                "name": "Autre"
+                            }
+                        ]
+                    },	
+                    {
+                        "name": "Ensemble",
+                        "children": [
+                            {
+                                "name": "Costume"
+                            },
+                            {
+                                "name": "Salopette"
+                            },
+                            {
+                                "name": "Combinaison"
+                            },
+                            {
+                                "name": "Survêtement"
+                            },
+                            {
+                                "name": "Ensemble"
+                            },
+                            {
+                                "name": "Autre"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Maillot de bain",
+                        "children": [
+                            {
+                                "name": "Short"
+                            },
+                            {
+                                "name": "Boxer"
+                            },
+                            {
+                                "name": "Slip"
+                            },
+                            {
+                                "name": "Autre"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Sous vêtement",
+                        "children": [
+                            {
+                                "name": "Short"
+                            },
+                            {
+                                "name": "Boxer"
+                            },
+                            {
+                                "name": "Slip"
+                            },
+                            {
+                                "name": "Chausettes"
+                            },
+                            {
+                                "name": "Autre"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Autre"
+                    }
+                ]
+            },	
+            {
+                "name": "Chaussures",
+                "children": [
+                    {
+                        "name": "Baskets"
+                    },
+                    {
+                        "name": "Boots"
+                    },
+                    {
+                        "name": "Chaussures"
+                    },
+                    {
+                        "name": "Claquettes/sandales"
+                    },
+                    {
+                        "name": "Autre"
+                    }
+                ]
+            },	
+            {
+                "name": "Accessoires",
+                "children": [
+                    {
+                        "name": "Sac"
+                    },
+                    {
+                        "name": "Portefeuilles"
+                    },
+                    {
+                        "name": "Ceintures"
+                    },
+                    {
+                        "name": "Chapeaux / casquettes / bonnets"
+                    },
+                    {
+                        "name": "Echarpes / foulards"
+                    },
+                    {
+                        "name": "Cravatte / nœud"
+                    },
+                    {
+                        "name": "Lunettes",
+                        "children": [
+                            {
+                                "name": "Vue"
+                            },
+                            {
+                                "name": "Soleil"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Coque smartphone",
+                        "children": [
+                            {
+                                "name": "Apple"
+                            },
+                            {
+                                "name": "Samsung"
+                            },
+                            {
+                                "name": "Huawei"
+                            },
+                            {
+                                "name": "Autre"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Bijoux",
+                        "children": [
+                            {
+                                "name": "Corps"
+                            },
+                            {
+                                "name": "Vêtement (pince cravatte, boutons de manchettes, etc...)"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Montres"
+                    },
+                    {
+                        "name": "Autre"
+                    }
+                ]
+            }	
+        ]
+    },
+    {
+        "name": "Femmes",
+        "children": [
+            {
+                "name": "Vêtements",
+                "children": [
+                    {
+                        "name": "Haut",
+                        "children": [
+                            {
+                                "name": "Tshirt / tops"
+                            },
+                            {
+                                "name": "Bodys"
+                            },
+                            {
+                                "name": "Chemises"
+                            },
+                            {
+                                "name": "Bustiers"
+                            },
+                            {
+                                "name": "Polo"
+                            },
+                            {
+                                "name": "Pull"
+                            },
+                            {
+                                "name": "Gilet"
+                            },
+                            {
+                                "name": "Sweat"
+                            },
+                            {
+                                "name": "Polaire"
+                            },
+                            {
+                                "name": "Autre"
+                            }
+                        ]
+                    },	
+                    {
+                        "name": "Haut veste",
+                        "children": [
+                            {
+                                "name": "Blazers"
+                            },
+                            {
+                                "name": "Doudoune"
+                            },
+                            {
+                                "name": "Manteaux"
+                            },
+                            {
+                                "name": "Survêtement"
+                            },
+                            {
+                                "name": "Veste"
+                            },
+                            {
+                                "name": "Autre"
+                            }
+                        ]
+                    },	
+                    {
+                        "name": "Bas",
+                        "children": [
+                            {
+                                "name": "Jeans"
+                            },
+                            {
+                                "name": "Pantalon"
+                            },
+                            {
+                                "name": "Short"
+                            },
+                            {
+                                "name": "Survêtement"
+                            },
+                            {
+                                "name": "Jupes"
+                            },
+                            {
+                                "name": "Autre"
+                            }
+                        ]
+                    },	
+                    {
+                        "name": "Ensemble",
+                        "children": [
+                            {
+                                "name": "Costume"
+                            },
+                            {
+                                "name": "Survêtement"
+                            },
+                            {
+                                "name": "Salopette"
+                            },
+                            {
+                                "name": "Combinaison"
+                            },
+                            {
+                                "name": "Ensemble"
+                            },
+                            {
+                                "name": "Robes"
+                            },
+                            {
+                                "name": "Autre"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Maillot de bain",
+                        "children": [
+                            {
+                                "name": "1 pièce"
+                            },
+                            {
+                                "name": "Bikini"
+                            },
+                            {
+                                "name": "Autre"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Sous vêtement",
+                        "children": [
+                            {
+                                "name": "Bas"
+                            },
+                            {
+                                "name": "Haut"
+                            },
+                            {
+                                "name": "Ensemble"
+                            },
+                            {
+                                "name": "Maternité"
+                            },
+                            {
+                                "name": "Chaussettes / collants"
+                            },
+                            {
+                                "name": "Autre"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Autre"
+                    }
+                ]
+            },	
+            {
+                "name": "Chaussures",
+                "children": [
+                    {
+                        "name": "Baskets"
+                    },
+                    {
+                        "name": "Bottes / bottines"
+                    },
+                    {
+                        "name": "Chaussures"
+                    },
+                    {
+                        "name": "Claquettes/sandales"
+                    },
+                    {
+                        "name": "Talons"
+                    },
+                    {
+                        "name": "Autre"
+                    }
+                ]
+            },	
+            {
+                "name": "Accessoires",
+                "children": [
+                    {
+                        "name": "Sac"
+                    },
+                    {
+                        "name": "Portefeuilles"
+                    },
+                    {
+                        "name": "Ceintures"
+                    },
+                    {
+                        "name": "Chapeaux / casquettes / bonnets"
+                    },
+                    {
+                        "name": "Echarpes / foulards"
+                    },
+                    {
+                        "name": "Cravatte / nœud"
+                    },
+                    {
+                        "name": "Lunettes",
+                        "children": [
+                            {
+                                "name": "Vue"
+                            },
+                            {
+                                "name": "Soleil"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Coque smartphone",
+                        "children": [
+                            {
+                                "name": "Apple"
+                            },
+                            {
+                                "name": "Samsung"
+                            },
+                            {
+                                "name": "Huawei"
+                            },
+                            {
+                                "name": "Autre"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Bijoux",
+                        "children": [
+                            {
+                                "name": "Corps"
+                            },
+                            {
+                                "name": "Vêtement (pince cravatte, boutons de manchettes, etc...)"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Montres"
+                    },
+                    {
+                        "name": "Cheveux (bandeaux, serre-tête, etc...)"
+                    },
+                    {
+                        "name": "Autre"
+                    }
+                ]
+            }	
+        ]
+    }
+]

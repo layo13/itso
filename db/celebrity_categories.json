@@ -1,0 +1,278 @@
+[
+    {
+        "name": "Sport",
+        "children": [
+            {
+                "name": "Football"
+            },
+            {
+                "name": "Rugby"
+            },
+            {
+                "name": "Tennis"
+            },
+            {
+                "name": "Cyclisme"
+            },
+            {
+                "name": "Athletisme"
+            },
+            {
+                "name": "Natation"
+            },
+            {
+                "name": "Handball"
+            },
+            {
+                "name": "Basket ball"
+            },
+            {
+                "name": "Gymnastic"
+            },
+            {
+                "name": "Figure skating"
+            },
+            {
+                "name": "Formule 1"
+            },
+            {
+                "name": "Cricket"
+            },
+            {
+                "name": "Hockey sur gazon"
+            },
+            {
+                "name": "Volleyball"
+            },
+            {
+                "name": "Tennis de table"
+            },
+            {
+                "name": "Baseball"
+            },
+            {
+                "name": "Golf"
+            },
+            {
+                "name": "Musculation / fitness"
+            },
+            {
+                "name": "Sport de combats"
+            },
+            {
+                "name": "Divers"
+            }
+        ]
+    },
+
+    {
+        "name": "Musique",
+        "children": [
+            {
+                "name": "Pop rock"
+            },
+            {
+                "name": "Dance/electro/house"
+            },
+            {
+                "name": "Bandes son"
+            },
+            {
+                "name": "Hip/rap/trap"
+            },
+            {
+                "name": "Chanson variété"
+            },
+            {
+                "name": "Classique / opéra"
+            },
+            {
+                "name": "R&B"
+            },
+            {
+                "name": "Soul / blues"
+            },
+            {
+                "name": "Metal"
+            },
+            {
+                "name": "Country"
+            },
+            {
+                "name": "Disco"
+            },
+            {
+                "name": "Folk"
+            },
+            {
+                "name": "Funk"
+            },
+            {
+                "name": "Jazz"
+            },
+            {
+                "name": "Rai"
+            },
+            {
+                "name": "Reggae"
+            },
+            {
+                "name": "Latino"
+            },
+            {
+                "name": "Autres"
+            }
+        ]
+    },
+    {
+        "name": "Télévision",
+        "children": [
+            {
+                "name": "Télé réalité"
+            },
+            {
+                "name": "Films"
+            },
+            {
+                "name": "Séries"
+            },
+            {
+                "name": "Émissions"
+            },
+            {
+                "name": "Actualités"
+            },
+            {
+                "name": "Humoriste"
+            },
+            {
+                "name": "Autre"
+            }
+        ]
+    },
+    {
+        "name": "Réseaux sociaux",
+        "children": [
+            {
+                "name": "Youtube"
+            },
+            {
+                "name": "Instagram"
+            },
+            {
+                "name": "Facebook"
+            },
+            {
+                "name": "Snapchat"
+            },
+            {
+                "name": "Whatsapp"
+            },
+            {
+                "name": "Tik tok"
+            },
+            {
+                "name": "Twitter"
+            },
+            {
+                "name": "Linkedin / viadeo"
+            },
+            {
+                "name": "Twitch"
+            },
+            {
+                "name": "Periscope"
+            },
+            {
+                "name": "Tumblr"
+            },
+            {
+                "name": "Pinterest"
+            },
+            {
+                "name": "Medium"
+            },
+            {
+                "name": "Google +"
+            },
+            {
+                "name": "Flickr"
+            },
+            {
+                "name": "Reddit"
+            },
+            {
+                "name": "Autre"
+            }
+        ]	
+    },
+    {
+        "name": "Mode",
+        "children": [
+            {
+                "name": "Mannequin"
+            },
+            {
+                "name": "Créateur"
+            },
+            {
+                "name": "Coiffeur"
+            },
+            {
+                "name": "Conseillere en style"
+            },
+            {
+                "name": "Artiste makeup"
+            },
+            {
+                "name": "Autre"
+            }
+        ]
+    },
+    {
+        "name": "Art",
+        "children": [
+            {
+                "name": "Architecture"
+            },
+            {
+                "name": "Peinture"
+            },
+            {
+                "name": "Dessinateur"
+            },
+            {
+                "name": "Littéraire"
+            },
+            {
+                "name": "Théatre"
+            },
+            {
+                "name": "Photographe"
+            },
+            {
+                "name": "Métiers du cirque"
+            },
+            {
+                "name": "Autre"
+            }
+        ]
+    },
+    {
+        "name": "Hommes d'affaires",
+        "children": [
+            {
+                "name": "Politique chef d'entreprise"
+            },
+            {
+                "name": "Personne riche"
+            },
+            {
+                "name": "Indépendant"
+            },
+            {
+                "name": "Autre"
+            }
+        ]
+    }
+]

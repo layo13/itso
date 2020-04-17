@@ -50,5 +50,1435 @@
             "active": 1,
             "user_type_id": 1
         }
+    ],    
+    "charity_association": [
+        {
+            "name": "Fée des rêves"
+        },
+        {
+            "name": "A Chacun Son Everest"
+        },
+        {
+            "name": "Cé kee du Bonheur"
+        },
+        {
+            "name": "Association française contre les myopathies"
+        },
+        {
+            "name": "Restos du cœur"
+        },
+        {
+            "name": "Croix-Rouge"
+        },
+        {
+            "name": "Secours catholique"
+        },
+        {
+            "name": "Médecins sans frontières"
+        },
+        {
+            "name": "Comité français pour l’Unicef"
+        },
+        {
+            "name": "Ligue nationale contre le cancer"
+        },
+        {
+            "name": "Médecins du monde"
+        },
+        {
+            "name": "Apprentis d’Auteuil"
+        },
+        {
+            "name": "Handicap international"
+        },
+        {
+            "name": "Action contre la faim"
+        },
+        {
+            "name": "Fondation Abbé-Pierre"
+        },
+        {
+            "name": "CCFD-Terre solidaire"
+        },
+        {
+            "name": "Institut Pasteur"
+        },
+        {
+            "name": "Secours islamique"
+        },
+        {
+            "name": "Fondation pour la recherche médicale"
+        },
+        {
+            "name": "Fondation Notre-Dame"
+        },
+        {
+            "name": "Fondation Caritas"
+        },
+        {
+            "name": "SOS Villages d’enfants"
+        },
+        {
+            "name": "Secours populaire"
+        },
+        {
+            "name": "Association des paralysés de France"
+        },
+        {
+            "name": "Greenpeace"
+        },
+        {
+            "name": "L’Œuvre d’Orient"
+        },
+        {
+            "name": "Fondation des monastères"
+        },
+        {
+            "name": "Aides"
+        },
+        {
+            "name": "Fondation de France"
+        },
+        {
+            "name": "Fondation du patrimoine"
+        },
+        {
+            "name": "Association petits frères des Pauvres"
+        },
+        {
+            "name": "Amnesty International"
+        },
+        {
+            "name": "Société protectrice des animaux"
+        },
+        {
+            "name": "Fondation 30 millions d’amis"
+        },
+        {
+            "name": "CFRT Le Jour du Seigneur"
+        },
+        {
+            "name": "Fondation Gustave-Roussy"
+        },
+        {
+            "name": "Plan France"
+        },
+        {
+            "name": "Fondation Arc"
+        },
+        {
+            "name": "Fondation WWF"
+        },
+        {
+            "name": "La Chaîne de l’espoir"
+        },
+        {
+            "name": "Sidaction"
+        },
+        {
+            "name": "Institut du cerveau et de la moelle épinière (fondation)"
+        },
+        {
+            "name": "Ordre de Malte"
+        },
+        {
+            "name": "Fondation de l’Armée du salut"
+        },
+        {
+            "name": "Société nationale de sauvetage en mer"
+        },
+        {
+            "name": "Vision du monde"
+        },
+        {
+            "name": "Fondation Jérôme-Lejeune"
+        },
+        {
+            "name": "Enfants du Mékong"
+        },
+        {
+            "name": "Orphéopolis"
+        },
+        {
+            "name": "Care France"
+        },
+        {
+            "name": "Partage"
+        },
+        {
+            "name": "Fondation Hôpitaux de France-Hôpitaux de Paris"
+        },
+        {
+            "name": "Fondation Raoul-Follereau"
+        },
+        {
+            "name": "ACTED"
+        },
+        {
+            "name": "ADRA"
+        },
+        {
+            "name": "Agir ensemble pour les droits de l'homme (AEDH)"
+        },
+        {
+            "name": "Alliance internationale des éditeurs indépendants"
+        },
+        {
+            "name": "L'Alliance solaire internationale (ASI)"
+        },
+        {
+            "name": "Association internationale des étudiants en sciences économiques et commerciales"
+        },
+        {
+            "name": "L'Association mondiale d’espéranto (Universala Esperanto-Asocio ou UEA)"
+        },
+        {
+            "name": "Association pour la taxation internationale des transactionsfinancières et pour l'actioncitoyenne"
+        },
+        {
+            "name": "AMREF Health Africa"
+        },
+        {
+            "name": "African Medical and Research Foundation"
+        },
+        {
+            "name": "Fondation Architectes de l'urgence"
+        },
+        {
+            "name": "Fondation AVSI (Association des Volontaires pour le Service International)"
+        },
+        {
+            "name": "BlueEnergy"
+        },
+        {
+            "name": "Caritas Internationalis"
+        },
+        {
+            "name": "Le Comité international olympique (CIO)"
+        },
+        {
+            "name": "End child prostitution, child pornography and trafficking of children for sexual purposes (ECPAT)"
+        },
+        {
+            "name": "Emmaüs International"
+        },
+        {
+            "name": "La Fédération internationale des Sociétés de la Croix-Rouge et du Croissant-Rouge (FICR)"
+        },
+        {
+            "name": "La Fondation suisse de déminage (FSD)"
+        },
+        {
+            "name": "Global Alliance on Health and Pollution"
+        },
+        {
+            "name": "Green Cross International"
+        },
+        {
+            "name": "Groupe de recherche et d'information sur la paix et la sécurité"
+        },
+        {
+            "name": "Human Rights Watch"
+        },
+        {
+            "name": "Indymedia"
+        },
+        {
+            "name": "Ingénieurs sans frontières (ISF)"
+        },
+        {
+            "name": "İnsan Hak ve Hürriyetleri ve İnsani Yardım Vakfı"
+        },
+        {
+            "name": "L'Islamic Relief Worldwide (IRW)"
+        },
+        {
+            "name": "La Chaîne de l'Espoir"
+        },
+        {
+            "name": "Amis de la terre "
+        },
+        {
+            "name": "(Friends of the Earth)"
+        },
+        {
+            "name": "Lions Clubs International"
+        },
+        {
+            "name": "Max Havelaar"
+        },
+        {
+            "name": "Medair"
+        },
+        {
+            "name": "Mouvement international de la réconciliation"
+        },
+        {
+            "name": "Le Movimento dos Trabalhadores Rurais Sem Terra (MST) ou Mouvement des sans-terre"
+        },
+        {
+            "name": "Organisation mondiale contre la torture"
+        },
+        {
+            "name": "Pro-Natura International"
+        },
+        {
+            "name": "Pure Earth"
+        },
+        {
+            "name": "Reporters sans frontières"
+        },
+        {
+            "name": "Rotary International"
+        },
+        {
+            "name": "Oxfam International"
+        },
+        {
+            "name": "Sea Shepherd Conservation Society"
+        },
+        {
+            "name": "Sentebale"
+        },
+        {
+            "name": "Solidarités International"
+        },
+        {
+            "name": "SOS Villages d'enfants"
+        },
+        {
+            "name": "SOS MEDITERRANEE"
+        },
+        {
+            "name": "Transparency International"
+        },
+        {
+            "name": "Triangle Génération humanitaire"
+        },
+        {
+            "name": "Women's Worldwide Web (W4)"
+        },
+        {
+            "name": "L' Association de Coopération Humanitaire"
+        },
+        {
+            "name": "Atd quart monde"
+        },
+        {
+            "name": "International campaign for tibet"
+        },
+        {
+            "name": "International Lesbian and Gay Association"
+        },
+        {
+            "name": "International Foundation for Elections Systems (IFES)"
+        },
+        {
+            "name": "Intervida"
+        },
+        {
+            "name": "Justice et Paix"
+        },
+        {
+            "name": "Lobby européen des Femmes"
+        },
+        {
+            "name": "Maison de Sagesse"
+        },
+        {
+            "name": "ASAH"
+        },
+        {
+            "name": "1001Fontaines"
+        },
+        {
+            "name": "A Rocha France"
+        },
+        {
+            "name": "A.S.I. YOVOTOGO"
+        },
+        {
+            "name": "ABCIS"
+        },
+        {
+            "name": "Abong - Associaçao Brasileira de ONGs"
+        },
+        {
+            "name": "ACAT-France"
+        },
+        {
+            "name": "ACODEV Fédération des ONG de coopération au développement | Belgique"
+        },
+        {
+            "name": "Acting For Life"
+        },
+        {
+            "name": "Action d'Urgence Internationale (AUI)"
+        },
+        {
+            "name": "Action Mopti (AM)"
+        },
+        {
+            "name": "ACTION Plus"
+        },
+        {
+            "name": "Action Santé Mondiale/ Global Health Advocates France"
+        },
+        {
+            "name": "ActionAid France – Peuples Solidaires"
+        },
+        {
+            "name": "Actions de Solidarité Internationale"
+        },
+        {
+            "name": "Aded-Suisse"
+        },
+        {
+            "name": "ADER – RIED"
+        },
+        {
+            "name": "Ads-Togo"
+        },
+        {
+            "name": "AFDI Agriculteur français et développement internationale"
+        },
+        {
+            "name": "Afrique Positive"
+        },
+        {
+            "name": "AGRISUD International"
+        },
+        {
+            "name": "Agronomes et Vétérinaires Sans Frontières"
+        },
+        {
+            "name": "Agter"
+        },
+        {
+            "name": "AGWAIRA"
+        },
+        {
+            "name": "Aide et Action"
+        },
+        {
+            "name": "Aide et réinsertion pour les handicapés d'Albanie"
+        },
+        {
+            "name": "Aide Médicale et Développement"
+        },
+        {
+            "name": "Aide Odontologique Internationale"
+        },
+        {
+            "name": "Ainaworld (AINA)"
+        },
+        {
+            "name": "ALCID"
+        },
+        {
+            "name": "Alima"
+        },
+        {
+            "name": "Ardèche Drome Ouro Sogui Sénégal (ADOS)"
+        },
+        {
+            "name": "APDRA Pisciculture Paysanne"
+        },
+        {
+            "name": "Amis du Service Civil International-France (SCI-FRANCE)"
+        },
+        {
+            "name": "Amis des Enfants du Monde (AEM)"
+        },
+        {
+            "name": "Alliance Sud"
+        },
+        {
+            "name": "Alliance Nationale des UCJG – YMCA de France"
+        },
+        {
+            "name": "Alliance Française Chisinau - Moldavie"
+        },
+        {
+            "name": "ASAD - Association de Soutien à l’Auto-developpement"
+        },
+        {
+            "name": "Artisanat Sel"
+        },
+        {
+            "name": "Asmae – Association Soeur Emmanuelle"
+        },
+        {
+            "name": "ASSEMBLESSAN-ASSEMBLESSAN"
+        },
+        {
+            "name": "Association Cinémas d'Afrique Angers"
+        },
+        {
+            "name": "Association Cyta Adga"
+        },
+        {
+            "name": "Association des Jeunes Guinéens de France"
+        },
+        {
+            "name": "Association Globalong"
+        },
+        {
+            "name": "Association Medina"
+        },
+        {
+            "name": "Association pour la Diffusion Internationale Francophone de Livres, Ouvrages et Revues (ADIFLOR)"
+        },
+        {
+            "name": "ASSOCIATION POUR LA FONDATION CRÉSUS"
+        },
+        {
+            "name": "Ateliers du Bocage"
+        },
+        {
+            "name": "Autremonde"
+        },
+        {
+            "name": "Aviation sans Frontières"
+        },
+        {
+            "name": "Ayllu Valence (AYLLU)"
+        },
+        {
+            "name": "BackUp Rural"
+        },
+        {
+            "name": "BIOPORT"
+        },
+        {
+            "name": "Burkina Santé"
+        },
+        {
+            "name": "C Koi Ça"
+        },
+        {
+            "name": "C4D-Communication pour le développement"
+        },
+        {
+            "name": "Cap Coopération"
+        },
+        {
+            "name": "Cap Solidarités"
+        },
+        {
+            "name": "CARI"
+        },
+        {
+            "name": "CartONG"
+        },
+        {
+            "name": "CATastrophes NATurelles.net"
+        },
+        {
+            "name": "CCONG - Confederación Colombiana de ONG"
+        },
+        {
+            "name": "Centraider"
+        },
+        {
+            "name": "Centre Action dans le Monde"
+        },
+        {
+            "name": "Centre d'Information Cornouallais pour un Développement Solidaire (CICODES)"
+        },
+        {
+            "name": "Centre d'Information et de Documentation - Maison des Associations Humanitaires de Touraine (CID MAHT)"
+        },
+        {
+            "name": "Centre d'Information Inter Peuples (CIIP)"
+        },
+        {
+            "name": "Centre d'Information pour un Développement Solidaire (CIDES)"
+        },
+        {
+            "name": "Centre de documentation d'Information et d'Animation pour le développement et la Solidarité internationale (CDSI)"
+        },
+        {
+            "name": "Centre de Documentation et d'Animation Tiers Monde (CDATM)"
+        },
+        {
+            "name": "Centre de documentation, d'animation et de formation sur le développement durable et la solidarité internationale (LA CASE)"
+        },
+        {
+            "name": "Centre de Psychologie Humanitaire"
+        },
+        {
+            "name": "Centre de Recherche et d'Information pour un Développement Solidaire (CRIDES LES 3 MONDES)"
+        },
+        {
+            "name": "Centre de Réflexion d'Information et de Solidarité avec les peuples d'Afrique, d'Asie et d'Amérique latine (CRISLA)"
+        },
+        {
+            "name": "Centre d’Entrainement aux Méthodes d’Education Active"
+        },
+        {
+            "name": "Centre International de Développement et de Recherche"
+        },
+        {
+            "name": "Centre Primo Levi"
+        },
+        {
+            "name": "Centre Régional d'Information et de Prévention du Sida (CRIPS Ile-de-France)"
+        },
+        {
+            "name": "Centre Régional de Documentation et d'Information pour le Développement et la Solidarité Internationale (CRDTM)"
+        },
+        {
+            "name": "Centre Rennais d'Information pour le Développement et la Solidarité entre les Peuples (CRIDEV)"
+        },
+        {
+            "name": "Centre Ressources pour la Solidarité Internationale et la Coopération Décentralisée dans la Loire (SOLICOOP42)"
+        },
+        {
+            "name": "CERAPCOOP"
+        },
+        {
+            "name": "CERCOOP F-C"
+        },
+        {
+            "name": "Cevaa - Communauté d'Eglises en mission"
+        },
+        {
+            "name": "CFRONG"
+        },
+        {
+            "name": "CFSI - Comité Français pour la Solidarité Internationale"
+        },
+        {
+            "name": "Chantiers-Passerelles"
+        },
+        {
+            "name": "CHD - Coordination Humanitaire et Développement"
+        },
+        {
+            "name": "Children of Prisoners Europe"
+        },
+        {
+            "name": "Citoyen des Rues (CDR)"
+        },
+        {
+            "name": "Citoyen Des Rues International"
+        },
+        {
+            "name": "CLONG Volontariat"
+        },
+        {
+            "name": "CNAJEP"
+        },
+        {
+            "name": "CoalitionEducation ONG"
+        },
+        {
+            "name": "Coeur de mère"
+        },
+        {
+            "name": "Coeur Maroc"
+        },
+        {
+            "name": "Collectif des Jeunes pour la Paix et la Réconciliation au Mali"
+        },
+        {
+            "name": "Collectif des Organisations de Solidarité Internationale issues des Migrations – Rhône-Alpes (COSIM Rhône-Alpes)"
+        },
+        {
+            "name": "Comité Catholique contre la Faim et pour le Développement"
+        },
+        {
+            "name": "Comité Contre l’Esclavage Moderne"
+        },
+        {
+            "name": "Comité international de la Croix-Rouge (CICR)"
+        },
+        {
+            "name": "Comité Norman Béthune"
+        },
+        {
+            "name": "CONCORD"
+        },
+        {
+            "name": "CONGAC"
+        },
+        {
+            "name": "CONGAD"
+        },
+        {
+            "name": "Conseil des Béninois de France"
+        },
+        {
+            "name": "Consultants sans frontières"
+        },
+        {
+            "name": "Cool'eurs du Monde (CDM)"
+        },
+        {
+            "name": "Coopération Atlantique- Guinée 44 (CAG 44)"
+        },
+        {
+            "name": "Coopération et Formation au Développement"
+        },
+        {
+            "name": "Coopérative Financière pour le Développement de l'Economie Solidaire Nord Sud (COFIDES NORD SUD)"
+        },
+        {
+            "name": "Coordination Information Tiers Monde (CITIM)"
+        },
+        {
+            "name": "Coordination Sud"
+        },
+        {
+            "name": "CRID - Centre de Recherche et d’Information pour le Développement"
+        },
+        {
+            "name": "Dahari"
+        },
+        {
+            "name": "DAKTARI"
+        },
+        {
+            "name": "De la Plume à l'Ecran (DPAE)"
+        },
+        {
+            "name": "Défap – Service protestant de mission"
+        },
+        {
+            "name": "DEFI / FORMATION SUD"
+        },
+        {
+            "name": "Délégation Catholique pour la Coopération"
+        },
+        {
+            "name": "Développement et Paix"
+        },
+        {
+            "name": "Djantoli"
+        },
+        {
+            "name": "Dossiers et Débats pour le Développement Durable"
+        },
+        {
+            "name": "Douleurs Sans Frontières (DSF)"
+        },
+        {
+            "name": "DREAM in Tunisia"
+        },
+        {
+            "name": "E-graine"
+        },
+        {
+            "name": "EAU DE COCO"
+        },
+        {
+            "name": "Eclaireuses et Eclaireurs Unionistes de France"
+        },
+        {
+            "name": "ECPM - Ensemble contre la peine de mort"
+        },
+        {
+            "name": "EENGD - Red Encuentro"
+        },
+        {
+            "name": "ELANS - Ensemble pour L’Action Nord-Sud"
+        },
+        {
+            "name": "Electriciens sans frontières"
+        },
+        {
+            "name": "Elevages sans frontières"
+        },
+        {
+            "name": "Enfants & Développement (E&D)"
+        },
+        {
+            "name": "Enfants de l’Aïr"
+        },
+        {
+            "name": "ENFANTS DE SHANTI"
+        },
+        {
+            "name": "Enfants du Monde"
+        },
+        {
+            "name": "Entraide Médicale Internationale"
+        },
+        {
+            "name": "Entrepreneurs du Monde"
+        },
+        {
+            "name": "Environnement, Développement, Action"
+        },
+        {
+            "name": "Envol Vert"
+        },
+        {
+            "name": "Envoyés Spéciaux Sans Frontières"
+        },
+        {
+            "name": "Equilibres et Populations"
+        },
+        {
+            "name": "Espoir et Vie"
+        },
+        {
+            "name": "ESSOR"
+        },
+        {
+            "name": "Ethnik.org"
+        },
+        {
+            "name": "Etudes et Chantiers Ile-de-France (ECIDF)"
+        },
+        {
+            "name": "Etudiants et Développement"
+        },
+        {
+            "name": "Experts Solidaires"
+        },
+        {
+            "name": "F3E"
+        },
+        {
+            "name": "FASI asbl"
+        },
+        {
+            "name": "FECONG"
+        },
+        {
+            "name": "Fédération Artisans du Monde"
+        },
+        {
+            "name": "Fédération des Associations Franco Africaines de Développement (FAFRAD)"
+        },
+        {
+            "name": "Fédération Française des Maisons de Jeunes et de la Culture"
+        },
+        {
+            "name": "Fédération Léo Lagrange"
+        },
+        {
+            "name": "Femmes de la Terre"
+        },
+        {
+            "name": "Femmes et Contributions au Développement"
+        },
+        {
+            "name": "Fidesco"
+        },
+        {
+            "name": "Fondation Energies pour le monde – Fondem"
+        },
+        {
+            "name": "Fondation GoodPlanet"
+        },
+        {
+            "name": "Fondation Moi pour Toit"
+        },
+        {
+            "name": "FONGTO"
+        },
+        {
+            "name": "FORIM - Forum des Organisations de Solidarité Internationale issues des Migrations"
+        },
+        {
+            "name": "Formation pour l’Epanouissement et le Renouveau de la Terre"
+        },
+        {
+            "name": "France Libertés – Fondation Danielle Mitterrand"
+        },
+        {
+            "name": "France terre d'asile"
+        },
+        {
+            "name": "France Volontaires"
+        },
+        {
+            "name": "France-Philippines United Action Foundation"
+        },
+        {
+            "name": "Frères des Hommes"
+        },
+        {
+            "name": "GESS – Récosol France Europe Afrique"
+        },
+        {
+            "name": "Gevalor"
+        },
+        {
+            "name": "GFAOP - Groupe Franco-Africain d'Oncologie Pédiatrique"
+        },
+        {
+            "name": "GINKGO Volunteers in action"
+        },
+        {
+            "name": "Gis 74"
+        },
+        {
+            "name": "Grdr – Migration-Citoyenneté-Développement"
+        },
+        {
+            "name": "Gret – professionnels du développement solidaire"
+        },
+        {
+            "name": "Groupe d'Information et de Soutien des Immigré.e.s (GISTI)"
+        },
+        {
+            "name": "Groupe Energies Renouvelables, Environnement et Solidarités"
+        },
+        {
+            "name": "Groupe initiatives"
+        },
+        {
+            "name": "Groupe URD : Urgence Développement Réhabilitation"
+        },
+        {
+            "name": "Groupement des Educateurs sans Frontières"
+        },
+        {
+            "name": "GTD - Groupe Travail Désertification"
+        },
+        {
+            "name": "Habitat-Cité"
+        },
+        {
+            "name": "Haïti Futur"
+        },
+        {
+            "name": "HAMAP"
+        },
+        {
+            "name": "Handicap International France"
+        },
+        {
+            "name": "Haut Conseil des Maliens de France"
+        },
+        {
+            "name": "Hélimission"
+        },
+        {
+            "name": "Horizons Solidaires"
+        },
+        {
+            "name": "Hors Pistes"
+        },
+        {
+            "name": "Humanis"
+        },
+        {
+            "name": "HumaniTerra"
+        },
+        {
+            "name": "Humatem"
+        },
+        {
+            "name": "Hydraulique Sans Frontières (HSF)"
+        },
+        {
+            "name": "IBCR - BUREAU INTERNATIONAL DES DROITS DES ENFANTS"
+        },
+        {
+            "name": "ICD Afrique"
+        },
+        {
+            "name": "Icom'Provence"
+        },
+        {
+            "name": "IECD – Institut Européen de Coopération et de Développement"
+        },
+        {
+            "name": "Immigration Développement Démocratie"
+        },
+        {
+            "name": "Initiative Développement"
+        },
+        {
+            "name": "Initiatives et Changement"
+        },
+        {
+            "name": "Institut Belleville"
+        },
+        {
+            "name": "Institut Bioforce"
+        },
+        {
+            "name": "Institut de Coopération Sociale Internationale (ICOSI)"
+        },
+        {
+            "name": "Institut de Formation et d’Appui aux initiatives de Développement"
+        },
+        {
+            "name": "Institut de Recherche et d’Applications des Méthodes de développement"
+        },
+        {
+            "name": "Institut Kurde de Paris (FIKP)"
+        },
+        {
+            "name": "Inter Aide"
+        },
+        {
+            "name": "Inter-réseaux Développement rural (Inter-réseaux)"
+        },
+        {
+            "name": "Intercordia"
+        },
+        {
+            "name": "Inversonslaclasse!"
+        },
+        {
+            "name": "Jardins du Monde (JDM)"
+        },
+        {
+            "name": "Jeunes Volontaires pour la Solidarité Internationale"
+        },
+        {
+            "name": "JEUNESSE ET RECONSTRUCTION"
+        },
+        {
+            "name": "Jeunesse Malgache de Demain"
+        },
+        {
+            "name": "Jonction"
+        },
+        {
+            "name": "Justice et Paix France"
+        },
+        {
+            "name": "Kinésithérapeutes du Monde"
+        },
+        {
+            "name": "Kurioz"
+        },
+        {
+            "name": "l'Un Est l'Autre"
+        },
+        {
+            "name": "La Chaîne de l’Espoir"
+        },
+        {
+            "name": "La Chaîne du bonheur"
+        },
+        {
+            "name": "La CIMADE"
+        },
+        {
+            "name": "La Gerbe"
+        },
+        {
+            "name": "La Guilde"
+        },
+        {
+            "name": "La Maison du Monde d'Evry"
+        },
+        {
+            "name": "La Voute Nubienne"
+        },
+        {
+            "name": "Lafi Bala"
+        },
+        {
+            "name": "LDH - Ligue des Droits de l'Homme"
+        },
+        {
+            "name": "Le Mouvement associatif (anciennement CPCA)"
+        },
+        {
+            "name": "Le Nid de L'espoir"
+        },
+        {
+            "name": "Les Mains Blanches"
+        },
+        {
+            "name": "Les Médecins de Chingetti-Pakbeng"
+        },
+        {
+            "name": "Lianes coopération"
+        },
+        {
+            "name": "Life Project 4 Youth Alliance"
+        },
+        {
+            "name": "Liter of Light France"
+        },
+        {
+            "name": "Luapjote Togo"
+        },
+        {
+            "name": "Ludosens"
+        },
+        {
+            "name": "Lyon à double sens (LADS)"
+        },
+        {
+            "name": "L’Appel"
+        },
+        {
+            "name": "Ma Belle Ecole"
+        },
+        {
+            "name": "Macha'k Wayra - Synergie Bolivie"
+        },
+        {
+            "name": "MAF France"
+        },
+        {
+            "name": "Maison des Citoyens du Monde (MCM)"
+        },
+        {
+            "name": "Maison des Droits de l'Enfant"
+        },
+        {
+            "name": "Maison des Droits de l'Homme (MDH)"
+        },
+        {
+            "name": "Maison des Peuples et de la Paix (MPP)"
+        },
+        {
+            "name": "Maison des solidarités locales et internationales"
+        },
+        {
+            "name": "Maison du Monde et des Citoyens"
+        },
+        {
+            "name": "MAREM"
+        },
+        {
+            "name": "Max Havelaar France"
+        },
+        {
+            "name": "Mayacoeur"
+        },
+        {
+            "name": "Mékong Plus"
+        },
+        {
+            "name": "Migrations et Développement France"
+        },
+        {
+            "name": "Mission d’Aide au Développement des Economies Rurales en Afghanistan"
+        },
+        {
+            "name": "Monde Solidaire La Flèche"
+        },
+        {
+            "name": "Mother's Heart"
+        },
+        {
+            "name": "MultiCooLor"
+        },
+        {
+            "name": "Ngo federatie"
+        },
+        {
+            "name": "NNNGO"
+        },
+        {
+            "name": "NolaNola, des bulles pour la Terre"
+        },
+        {
+            "name": "Nouvelle Planète"
+        },
+        {
+            "name": "Observatoire de Lutte contre la Faim - Archidiocèse de Yaoundé"
+        },
+        {
+            "name": "Observatoire International des prisons"
+        },
+        {
+            "name": "Occitanie Coopération"
+        },
+        {
+            "name": "Old School (RADIO MNE)"
+        },
+        {
+            "name": "ONG AZIMUT"
+        },
+        {
+            "name": "ONG Femmes de Salem, Internationale"
+        },
+        {
+            "name": "Organisation Internationale pour la Coopération et le Développement (OICD)"
+        },
+        {
+            "name": "Organisation PanAfricaine de Lutte pour la Santé"
+        },
+        {
+            "name": "Organisation pour la Prévention de la Cécité"
+        },
+        {
+            "name": "Orphelins Sida International"
+        },
+        {
+            "name": "Ouest Fraternité"
+        },
+        {
+            "name": "Oxfam France"
+        },
+        {
+            "name": "PACHAMAMA"
+        },
+        {
+            "name": "PAH - les Pharmaciens Humanitaires"
+        },
+        {
+            "name": "Partage"
+        },
+        {
+            "name": "PARTAGE PLUS"
+        },
+        {
+            "name": "Partage Sans Frontières"
+        },
+        {
+            "name": "Partenaires"
+        },
+        {
+            "name": "Pays de Savoie solidaires (PSs)"
+        },
+        {
+            "name": "Peace Brigades International Section Française (PBI FRANCE)"
+        },
+        {
+            "name": "PISAD"
+        },
+        {
+            "name": "Planète Enfants & Développement"
+        },
+        {
+            "name": "Planète Urgence"
+        },
+        {
+            "name": "Plate-forme pour le commerce équitable"
+        },
+        {
+            "name": "Plateforme d'Insertion par l'Humanitaire et la Coopération (PIHC)"
+        },
+        {
+            "name": "Plateforme d’Associations Franco-Haïtienne"
+        },
+        {
+            "name": "PLATONG"
+        },
+        {
+            "name": "Plus de Vie"
+        },
+        {
+            "name": "PNUD - Programme des Nations Unies pour le développement"
+        },
+        {
+            "name": "Pôle d'Initiatives Locales et d'Economie Solidaire (PILES)"
+        },
+        {
+            "name": "Pompiers Sans Frontières"
+        },
+        {
+            "name": "Première Urgence Internationale"
+        },
+        {
+            "name": "PRisonniers Sans Frontières"
+        },
+        {
+            "name": "PROJETS PLUS ACTIONS"
+        },
+        {
+            "name": "PUI - Pompiers de l'urgence internationale"
+        },
+        {
+            "name": "RACIVS"
+        },
+        {
+            "name": "ReMed – Réseau Médicaments et Développement"
+        },
+        {
+            "name": "REPAOC"
+        },
+        {
+            "name": "Repongac"
+        },
+        {
+            "name": "RESACOOP"
+        },
+        {
+            "name": "RESCOF International"
+        },
+        {
+            "name": "Réseau Citoyenneté Développement (RECIDEV)"
+        },
+        {
+            "name": "Réseau d'Appui aux Actions et Formations pour le Développement (RAFOD)"
+        },
+        {
+            "name": "Réseau des centres de documentation et d’information pour le développement et la solidarité internationale"
+        },
+        {
+            "name": "Réseau Euromed France"
+        },
+        {
+            "name": "Réseau européen des Organisations Non Gouvernementales sur les questions Agro-alimentaires et le Développement (RONGEAD)"
+        },
+        {
+            "name": "Réseau Solidarités Internationales Armor (RESIA)"
+        },
+        {
+            "name": "RESODI"
+        },
+        {
+            "name": "Résonances Humanitaires"
+        },
+        {
+            "name": "S'AIDDES"
+        },
+        {
+            "name": "Samusocial International"
+        },
+        {
+            "name": "Santé Mali Rhône-Alpes (SMARA)"
+        },
+        {
+            "name": "Santé Sud"
+        },
+        {
+            "name": "Sauveteurs Sans Frontières"
+        },
+        {
+            "name": "Sawa Organization"
+        },
+        {
+            "name": "Scouts et Guides de France"
+        },
+        {
+            "name": "Secours Catholique – Caritas France"
+        },
+        {
+            "name": "SEL"
+        },
+        {
+            "name": "Sènan l’avenir de nos enfants : Actions humanitaires en Afrique"
+        },
+        {
+            "name": "Service de Coopération au Développement"
+        },
+        {
+            "name": "Service technique pour les activités de Jeunesse (STAJ)"
+        },
+        {
+            "name": "Sherpa"
+        },
+        {
+            "name": "SIPAR"
+        },
+        {
+            "name": "SOL"
+        },
+        {
+            "name": "SolHandi"
+        },
+        {
+            "name": "Solidarité Eau Sud"
+        },
+        {
+            "name": "Solidarité Laïque"
+        },
+        {
+            "name": "Solidarité SIDA"
+        },
+        {
+            "name": "Solidarités International"
+        },
+        {
+            "name": "SOLTHIS – SOLidarité THérapeutique et Initiatives pour la Santé"
+        },
+        {
+            "name": "SOLYCUBA"
+        },
+        {
+            "name": "Sortir du Colonialisme"
+        },
+        {
+            "name": "SOS EDUCATION-AFRIQUE"
+        },
+        {
+            "name": "SOS enfants sans frontières"
+        },
+        {
+            "name": "SOS Sahel"
+        },
+        {
+            "name": "SPONG - Secrétariat Permanent des ONG du Burkina Faso"
+        },
+        {
+            "name": "Survival International (France) (SIF)"
+        },
+        {
+            "name": "Suur Nugu Coeurs d'Espérance"
+        },
+        {
+            "name": "Swissaid"
+        },
+        {
+            "name": "Syria Charity"
+        },
+        {
+            "name": "TANGO"
+        },
+        {
+            "name": "Terre des Hommes France"
+        },
+        {
+            "name": "Terre et Humanisme"
+        },
+        {
+            "name": "Territoires Solidaires"
+        },
+        {
+            "name": "Tétraktys"
+        },
+        {
+            "name": "TIPIROOL"
+        },
+        {
+            "name": "Touiza Solidarité"
+        },
+        {
+            "name": "Tourisme et Développement Solidaires VOYAGES (TDS VOYAGE)"
+        },
+        {
+            "name": "Transparency International France"
+        },
+        {
+            "name": "Under Construction"
+        },
+        {
+            "name": "Union des Associations Burkinabé de France"
+        },
+        {
+            "name": "Union Peuple et Culture (PEC)"
+        },
+        {
+            "name": "Union Nationale des Maisons Familiales Rurales d’Education et d’Orientation"
+        },
+        {
+            "name": "UNNGOF"
+        },
+        {
+            "name": "Via Sahel Fédération"
+        },
+        {
+            "name": "Vivere"
+        },
+        {
+            "name": "Voyages Inter-Cultures"
+        },
+        {
+            "name": "Wake Up Café"
+        },
+        {
+            "name": "YMCA France"
+        },
+        {
+            "name": "Zebunet"
+        }
     ]
 }
