@@ -82,7 +82,7 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col">
+				<!--<div class="col">
 					<img src="images/288976a.jpg" alt="Robe" class="img-thumbnail">
 				</div>
 				<div class="col">
@@ -93,7 +93,14 @@
 				</div>
 				<div class="col">
 					<img src="images/346059a-emp.jpg" alt="Jupe" class="img-thumbnail">
-				</div>
+				</div>-->
+				
+				
+				<img src="images/288976a.jpg" alt="Robe" class="img-thumbnail">
+				<img src="images/336733a.jpg" alt="Chaussures" class="img-thumbnail">
+				<img src="images/343201a-emp.jpg" alt="Casquette" class="img-thumbnail">
+				<img src="images/346059a-emp.jpg" alt="Jupe" class="img-thumbnail">
+				
 			</div>
 			
 			<div class="row">
@@ -261,17 +268,17 @@
 		<nav class="navbar fixed-bottom navbar-dark bg-dark">
 			<div class=".navbar-nav">
 				<a class="nav-link" href="#">
-					<i class="fa fa-home"></i>
+					<i class="fa fa-2x fa-home"></i>
 				</a>
 			</div>
 			<div class=".navbar-nav">
 				<a class="nav-link" href="#">
-					<i class="fa fa-search"></i>
+					<i class="fa fa-2x fa-search"></i>
 				</a>
 			</div>
 			<div class=".navbar-nav">
 				<a class="nav-link" href="#">
-					<i class="fa fa-tshirt"></i>
+					<i class="fa fa-2x fa-tshirt"></i>
 				</a>
 			</div>
 		</nav>
