@@ -12,6 +12,8 @@ class Filling extends Command {
 		$this->dynamic();
 		$this->productCategories();
 		$this->celebrityCategories();
+		$this->charityAssociations();
+		$this->brands();
 	}
 
 	private function dynamic() {
@@ -45,6 +47,54 @@ class Filling extends Command {
 				$stmt = $this->pdo->prepare($sql);
 				$stmt->execute($values);
 			}
+		}
+	}
+
+	private function charityAssociations() {
+		$data = json_decode(
+			file_get_contents(ROOT . "/db/associations_with_pictures.json")
+			, TRUE);
+
+		foreach ($data as $charityAssociation) {
+
+			$pictureId = null;
+
+			if (!empty($charityAssociation['picture'])) {
+
+				$sql = "INSERT INTO picture (name) VALUES (?)";
+				$stmt = $this->pdo->prepare($sql);
+				$stmt->execute([$charityAssociation['picture']]);
+
+				$pictureId = $this->pdo->lastInsertId();
+			}
+
+			$sql = "INSERT INTO charity_association (name, picture_id) VALUES (?, ?)";
+			$stmt = $this->pdo->prepare($sql);
+			$stmt->execute([$charityAssociation['name'], $pictureId]);
+		}
+	}
+
+	private function brands() {
+		$data = json_decode(
+			file_get_contents(ROOT . "/db/brands_with_pictures.json")
+			, TRUE);
+
+		foreach ($data as $charityAssociation) {
+
+			$pictureId = null;
+
+			if (!empty($charityAssociation['picture'])) {
+
+				$sql = "INSERT INTO picture (name) VALUES (?)";
+				$stmt = $this->pdo->prepare($sql);
+				$stmt->execute([$charityAssociation['picture']]);
+
+				$pictureId = $this->pdo->lastInsertId();
+			}
+
+			$sql = "INSERT INTO brand (name, picture_id) VALUES (?, ?)";
+			$stmt = $this->pdo->prepare($sql);
+			$stmt->execute([$charityAssociation['name'], $pictureId]);
 		}
 	}
 

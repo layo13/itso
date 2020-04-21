@@ -106,7 +106,7 @@ class Migration extends Command {
 
 			$tableSql .= ";";
 
-			var_dump($tableSql);
+			//var_dump($tableSql);
 
 			$pdo->exec($tableSql);
 		}
