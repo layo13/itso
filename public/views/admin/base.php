@@ -1,4 +1,8 @@
-<!DOCTYPE html>
+<?php
+/* @var $app Epic\BaseApplication */
+$app;
+
+?><!DOCTYPE html>
 <!--
 Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 4 & Angular 8
 Author: KeenThemes
@@ -1450,7 +1454,7 @@ License: You must have a valid license purchased only from themeforest(the above
 								<div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="0px,0px">
 									<div class="kt-header__topbar-user">
 										<span class="kt-header__topbar-welcome kt-hidden-mobile">Hi,</span>
-										<span class="kt-header__topbar-username kt-hidden-mobile">Sean</span>
+										<span class="kt-header__topbar-username kt-hidden-mobile"><?= $app->user()->getAttribute('first_name') ?></span>
 										<img alt="Pic" class="kt-radius-100" src="<?=$url?>public/assets/media/users/300_25.jpg" />
 
 										<!--use below badge element instead the user avatar to display username's first letter(remove kt-hidden class to display it) -->

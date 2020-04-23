@@ -24,6 +24,11 @@ class ConnexionController extends \Epic\BaseController {
 
 				if (password_verify($password, $user['password'])) {
 					$this->application->user()->setAuthenticated();
+
+					$_SESSION['id'] = $user['id'];
+					$_SESSION['first_name'] = $user['first_name'];
+					$_SESSION['last_name'] = $user['last_name'];
+
 					redirect('http://localhost/itso/admin/');
 				} else {
 					$this->application->user()->setFlash("Mot de passe erroné");
@@ -41,6 +46,7 @@ class ConnexionController extends \Epic\BaseController {
 
 	public function logoutAction() {
 		$this->application->user()->setAuthenticated(false);
+		session_destroy();
 		redirect('http://localhost/itso/admin');
 	}
 
