@@ -31,8 +31,8 @@ class UserController extends BaseController {
 
 	public function updateAction() {
 
-        $userSession = $this->application->user();
-        $q = $this->pdo()->query("SELECT *,(select pictures.name from pictures where pictures.id = users.picture_id) as user_picture FROM user where id = " . intval($userSession['id']));
+        $app = $this->application->user();
+        $q = $this->pdo()->query("SELECT *,(select pictures.name from pictures where pictures.id = users.picture_id) as user_picture FROM user where id = " . $app->user()->getAttribute('id'));
         $user = $q->fetch(\PDO::FETCH_ASSOC);
 
         $last_name = $user['last_name'];
@@ -62,13 +62,13 @@ class UserController extends BaseController {
 
     public function editAction() {
 
-        $userSession = $this->application->user();
+        $app = $this->application->user();
         $uploader = new FileUploader();
         $file = new File('formContactFile');
         //-- voir pour formater les noms d'images fonction php faire des id uniqid()
         $filename = $file->getName();
         $uploader->upload($file, ROOT . "/public/assets/images/users/" . $filename . "." . $file->getExtension());
-        $q = $this->pdo()->query("SELECT * FROM user where id = " . intval($userSession['id']));
+        $q = $this->pdo()->query("SELECT * FROM user where id = " . $app->user()->getAttribute('id'));
         $user = $q->fetch(\PDO::FETCH_ASSOC);
         $picture_id = $user['picture_id'];
         if (!empty($filename)) {

@@ -11,11 +11,11 @@ class ProductController extends BaseController {
 	public function createAction() {
         $url = URL;
         $app = $this->application;
-        $userSession = $this->application->user();
-        $q = $this->pdo()->query("SELECT * FROM user where id = " . intval($userSession['id']));
+
+        $q = $this->pdo()->query("SELECT * FROM user where id = " . intval($app->user()->getAttribute('id')));
         $user = $q->fetch(\PDO::FETCH_ASSOC);
 
-        $q = $this->pdo()->query("SELECT * FROM product_category order by parent_id");
+        $q = $this->pdo()->query("SELECT * FROM product_category where parent_id is null");
         //-- faire la gestion de tableau multi-dimensionnelle
         while ($datas = $q->fetch(\PDO::FETCH_ASSOC)) {
             $product_category[] = $datas;
@@ -25,14 +25,14 @@ class ProductController extends BaseController {
         while ($datas = $q->fetch(\PDO::FETCH_ASSOC)) {
             $brands[] = $datas;
         }
-        require ROOT . '/public/views/admin/product/create.php';
+        require ROOT . '/public/views/vip/product/create.php';
 	}
 
 	public function addAction() {
         $url = URL;
         $app = $this->application;
-        $userSession = $this->application->user();
-        $q = $this->pdo()->query("SELECT * FROM user where id = " . intval($userSession['id']));
+
+        $q = $this->pdo()->query("SELECT * FROM user where id = " . intval($app->user()->getAttribute('id')));
         $user = $q->fetch(\PDO::FETCH_ASSOC);
 
         $name = $_REQUEST['formProductName'];
@@ -97,14 +97,14 @@ class ProductController extends BaseController {
         while ($datas = $q->fetch(\PDO::FETCH_ASSOC)) {
             $brands[] = $datas;
         }
-        require ROOT . '/public/views/admin/product/create.php';
+        require ROOT . '/public/views/vip/product/create.php';
 	}
 
 	public function listAction() {
         $url = URL;
         $app = $this->application;
-        $userSession = $this->application->user();
-        $q = $this->pdo()->query("SELECT * FROM user where id = " . intval($userSession['id']));
+
+        $q = $this->pdo()->query("SELECT * FROM user where id = " . intval($app->user()->getAttribute('id')));
         $user = $q->fetch(\PDO::FETCH_ASSOC);
 
 		$q = $this->pdo()->query("SELECT product.*,
@@ -112,6 +112,7 @@ class ProductController extends BaseController {
 (select name from brand where brand.id = product.brand_id) as brandname, 
 (select name from product_category where product_category.id = product.product_type_id) as productCategory 
  FROM product,user_product where user_product.product_id = product.id and user_product.user_id = " .intval($user['id']));
+        $products = [];
 		while ($datas = $q->fetch(\PDO::FETCH_ASSOC)) {
 			$products[] = $datas;
 		}
@@ -119,14 +120,14 @@ class ProductController extends BaseController {
 		$url = URL;
 		$app = $this->application;
 		
-		require ROOT . '/public/views/admin/product/index.php';
+		require ROOT . '/public/views/vip/product/index.php';
 	}
 
 	public function viewAction() {
         $url = URL;
         $app = $this->application;
-        $userSession = $this->application->user();
-        $q = $this->pdo()->query("SELECT * FROM user where id = " . intval($userSession['id']));
+
+        $q = $this->pdo()->query("SELECT * FROM user where id = " . intval($app->user()->getAttribute('id')));
         $user = $q->fetch(\PDO::FETCH_ASSOC);
 
 		$q = $this->pdo()->query("SELECT product.*, 
@@ -140,14 +141,15 @@ FROM product,user_product where id = " . intval($GLOBALS['matches'][0])) ." and 
         while ($datas = $q->fetch(\PDO::FETCH_ASSOC)) {
             $productLink[] = $datas;
         }
-        require ROOT . '/public/views/admin/product/view.php';
+        require ROOT . '/public/views/vip/product/view.php';
 	}
 
 
     public function updateAction() {
+        $url = URL;
+        $app = $this->application;
 
-        $userSession = $this->application->user();
-        $q = $this->pdo()->query("SELECT *,(select pictures.name from pictures where pictures.id = users.picture_id) as user_picture FROM user where id = " . intval($userSession['id']));
+        $q = $this->pdo()->query("SELECT *,(select pictures.name from pictures where pictures.id = users.picture_id) as user_picture FROM user where id = " . intval($app->user()->getAttribute('id')));
         $user = $q->fetch(\PDO::FETCH_ASSOC);
 
         $last_name = $user['last_name'];
@@ -168,8 +170,6 @@ FROM product,user_product where id = " . intval($GLOBALS['matches'][0])) ." and 
         if(!empty($_REQUEST['formContactLanguage'])){      $language = $_REQUEST['formContactLanguage'];}
         if(!empty($_REQUEST['formContactNationality'])){   $nationality = $_REQUEST['formContactNationality'];}
 
-        $url = URL;
-        $app = $this->application;
 
         $q = $this->pdo()->query("SELECT * FROM product_category order by parent_id");
         //-- faire la gestion de tableau multi-dimensionnelle
@@ -184,14 +184,15 @@ FROM product,user_product where id = " . intval($GLOBALS['matches'][0])) ." and 
         require ROOT . '/public/views/vip/product/view.php';
     }
     public function editAction() {
+        $url = URL;
+        $app = $this->application;
 
-        $userSession = $this->application->user();
         $uploader = new FileUploader();
         $file = new File('formContactFile');
         //-- voir pour formater les noms d'images fonction php faire des id uniqid()
         $filename = $file->getName();
         $uploader->upload($file, ROOT . "/public/assets/images/users/" . $filename . "." . $file->getExtension());
-        $q = $this->pdo()->query("SELECT * FROM user where id = " . intval($userSession['id']));
+        $q = $this->pdo()->query("SELECT * FROM user where id = " . intval($app->user()->getAttribute('id')));
         $user = $q->fetch(\PDO::FETCH_ASSOC);
         $picture_id = $user['picture_id'];
         if (!empty($filename)) {
@@ -213,21 +214,17 @@ FROM product,user_product where id = " . intval($GLOBALS['matches'][0])) ." and 
         $language = $_REQUEST['formContactLanguage'];
         $nationality = $_REQUEST['formContactNationality'];
 
-
         $created_at = $user['created_at'];
         $updated_at = $user['updated_at']; //-- à changer
         $state = $user['state'];
         $active = $user['active'];
         $user_type_id = $user['user_type_id'];
         $charity_id  = $user['charity_id'];
-        $id = $userSession['id'];
+        $id = intval($app->user()->getAttribute('id'));
 
 
         $sqlUpdateUser ="UPDATE `user` SET last_name = ?, first_name = ?, day_of_birth = ?, email = ?, password = ?, gender = ?, picture_id = ?, language = ?, nationality = ?, created_at = ?, updated_at = ?, state = ?, active = ?, user_type_id = ?, charity_id = ? WHERE id=?";
         $stmt = $this->pdo()->prepare($sqlUpdateUser)->execute([$last_name,$first_name,$day_of_birth,$email,$password,$gender,$picture_id,$language,$nationality,$created_at,$updated_at,$state,$active,$user_type_id,$charity_id ,$id]);
-
-        $url = URL;
-        $app = $this->application;
 
         $q = $this->pdo()->query("SELECT * FROM product_category order by parent_id");
         //-- faire la gestion de tableau multi-dimensionnelle
@@ -243,6 +240,9 @@ FROM product,user_product where id = " . intval($GLOBALS['matches'][0])) ." and 
     }
 
     public function likeAction(){
+        $url = URL;
+        $app = $this->application;
+
         if (!empty($_REQUEST['formContactUserId']) && !empty($_REQUEST['formContactProductId'])) {
             $stmt = $this->pdo()->prepare("INSERT INTO `liked`(user_id,product_id,) VALUES (?)");
             $stmt->bindParam(1, $user_id);

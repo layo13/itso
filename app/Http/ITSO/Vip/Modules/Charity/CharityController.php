@@ -22,7 +22,7 @@ class CharityController extends BaseController {
 	public function editAction() {
 
         $userSession = $this->application->user();
-        $q = $this->pdo()->query("SELECT * FROM user where id = " . intval($userSession['id']));
+        $q = $this->pdo()->query("SELECT * FROM user where id = " . $app->user()->getAttribute('id'));
         $user = $q->fetch(\PDO::FETCH_ASSOC);
         $updated_at = $user['updated_at'];
         $charity_id = intval($_REQUEST['formContactCharity']);
