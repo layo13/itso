@@ -46,8 +46,8 @@ class ConnexionController extends \Epic\BaseController {
 
 	public function logoutAction() {
 		$this->application->user()->setAuthenticated(false);
-		session_destroy();
 		redirect('http://localhost/itso/admin');
+		session_destroy();
 	}
 
 }

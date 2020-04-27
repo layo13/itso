@@ -64,7 +64,7 @@ $schema->addTable('charity_association', function(Table $table) {
 	$table->varchar('name')->length(255)->nullable(false);
 	$table->integer('picture_id')->nullable(true);
 	$table->tinyInteger('active')->nullable(false)->defaultValue('0');
-}, "Association");
+}, "Charity");
 
 // @TODO
 $schema->addTable('user_favorite', function(Table $table) {
@@ -99,8 +99,8 @@ $schema->addTable('liked', function(Table $table) {
 	$table->integer('user_id')->nullable(false);
 	$table->integer('product_id')->nullable(false);
 	$table->dateTime('created_at')->nullable(false)->defaultValue('CURRENT_TIMESTAMP');
-	$table->dateTime('deleted_at')->nullable(false);
-	$table->integer('state')->nullable(false);
+	$table->dateTime('deleted_at')->nullable(true);
+	$table->integer('state')->nullable(false)->defaultValue('0');
 }, "Quand un visiteur aime un produit");
 
 /*$schema->addTable('note', function(Table $table) {
@@ -130,7 +130,7 @@ $schema->addTable('product', function(Table $table) {
 	$table->integer('brand_id')->nullable(false);
 	$table->varchar('main_color')->length(255)->nullable(false);
 	$table->integer('product_type_id')->nullable(false);
-	$table->integer('state')->nullable(false);
+	$table->integer('state')->nullable(false)->defaultValue('1');
 	$table->tinyInteger('active')->nullable(false)->defaultValue('0');
 });
 
@@ -191,6 +191,21 @@ $schema->addTable('donation', function(Table $table) {
 	$table->integer('user_id')->nullable(false);
 	$table->float('amount')->nullable(false);
 	$table->dateTime('created_at')->nullable(false)->defaultValue('CURRENT_TIMESTAMP');
+});
+
+$schema->addTable('user_product', function(Table $table) {
+	$table->integer('user_id')->nullable(false);
+	$table->integer('product_id')->nullable(false);
+	$table->dateTime('created_at')->nullable(false)->defaultValue('CURRENT_TIMESTAMP');
+});
+$schema->addTable('boutique_affiliation', function(Table $table) {
+	$table->integer('id')->nullable(false);
+    $table->varchar('url_site')->length(255)->nullable(false);
+    $table->varchar('name')->length(255)->nullable(false);
+	$table->integer('id_affiliate')->nullable(false);
+	$table->float('commission_percent')->nullable(true);
+    $table->varchar('periode_payement')->length(255)->nullable(false);
+    $table->varchar('contact_email')->length(255)->nullable(false);
 });
 
 

@@ -11,7 +11,8 @@ define('URL', 'http://localhost/itso/');
 // Chargement des applications
 // -----------------------------------------------------------------------------
 $applications = [
-	($admin = new Http\Itso\Admin\AdminApplication('Admin', 'admin', '/admin'))
+	($admin = new Http\Itso\Admin\AdminApplication('Admin', 'admin', '/admin')),
+	($vip = new Http\Itso\Vip\VipApplication('Vip', 'vip', '/vip'))
 	//Member
 ];
 

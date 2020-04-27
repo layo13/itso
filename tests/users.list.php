@@ -24,7 +24,6 @@ ob_start();
 		<td>thomas.bruno.13@gmail.com</td>
 	</tr>
 </table>
-
 <?php
 
 $blockContent = ob_get_clean();

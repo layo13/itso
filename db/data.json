@@ -21,6 +21,9 @@
             "active": 0
         }
     ],
+    "picture": [
+        {"name": "seb_photo_profil.jpg"}
+    ],
     "user": [
         {
             "last_name": "Guissani",
@@ -44,6 +47,20 @@
             "password": "$2y$10$9HB9o80nSD6OcF56Bk5pbeoKRHUD5CG0uwgfQ9.7oMQw6MosGVXdy",
             "gender": 2,
             "picture_id": null,
+            "language": 1,
+            "nationality": 1,
+            "state": 1,
+            "active": 1,
+            "user_type_id": 1
+        },
+        {
+            "last_name": "Bach-belhaouane",
+            "first_name": "Sébastien",
+            "day_of_birth": "1991-07-31 00:00:00",
+            "email": "intheshoesof@icloud.com",
+            "password": "$2y$10$9HB9o80nSD6OcF56Bk5pbeoKRHUD5CG0uwgfQ9.7oMQw6MosGVXdy",
+            "gender": 2,
+            "picture_id": 1,
             "language": 1,
             "nationality": 1,
             "state": 1,

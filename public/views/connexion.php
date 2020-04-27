@@ -27,7 +27,7 @@
                     </div>
                     <div class="kt-login__signin">
                         <div class="kt-login__head">
-                            <h3 class="kt-login__title">Admin connexion</h3>
+                            <h3 class="kt-login__title">VIP connexion</h3>
                         </div>
                         <form class="kt-form" action="connexion">
                             <div class="input-group">

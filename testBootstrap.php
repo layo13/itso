@@ -105,7 +105,7 @@
 			
 			<div class="row">
 				<div class="col-12">
-					<h6>Personnalités recommandées</hh6>
+					<h6>Personnalités recommandées</h6>
 				</div>
 			</div>
 			<div class="row">
