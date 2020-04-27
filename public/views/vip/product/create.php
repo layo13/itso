@@ -14,7 +14,7 @@ ob_start();
                 </h3>
             </div>
             <div class="kt-subheader__toolbar">
-                <a href="#" class="btn btn-default btn-bold">
+                <a href="<?= $app->router()->getRoute('vip_product_list') ?>" class="btn btn-default btn-bold">
                     Retour au listing
                 </a>
             </div>

@@ -57,7 +57,7 @@ class BrandController extends BaseController {
 		$url = URL;
 		$app = $this->application;
 		
-		require ROOT . '/public/views/admin/brand/index.php';
+		require ROOT . '/public/views/vip/brand/index.php';
 	}
 
 	public function viewAction() {

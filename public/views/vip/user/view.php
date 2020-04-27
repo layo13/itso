@@ -1,5 +1,9 @@
 <?php
-require_once ROOT . '/public/views/admin/up.php';
+//---------------//
+// BLOCK CONTENT //
+//---------------//
+
+ob_start();
 ?>
 <div class="kt-portlet">
     <div class="kt-portlet__body">
@@ -9,41 +13,33 @@ require_once ROOT . '/public/views/admin/up.php';
                     <?php
                     $userPictureUrl = "noPhoto.png";
                     if(!empty($user['user_picture'])){
-                        $userPictureUrl = "users/".$user['user_picture'];
+                        $userPictureUrl = $user['user_picture'];
                     }
                     ?>
-                    <img src="../public/assets/images/<?= $userPictureUrl ?>" alt="image">
-                </div>
-                <div class="kt-widget__pic kt-widget__pic--danger kt-font-danger kt-font-bolder kt-font-light kt-hidden">
-                    JM
+                    <img src="<?= $url ?>public/assets/images/users/<?= $userPictureUrl ?>" alt="image">
                 </div>
                 <div class="kt-widget__content">
                     <div class="kt-widget__head">
                         <div class="kt-widget__user">
                             <a href="#" class="kt-widget__username">
-                                <?= $user['firstname'] ." ".$user['name'] ." ". getGender($user['gender'])?>
+                                <?= utf8_encode($user['first_name'] ." ".$user['last_name']) ." ". getGender($user['gender'])?>
                             </a>
                             <span class="kt-badge kt-badge--bolder kt-badge kt-badge--inline kt-badge--unified-success"><?= getUserEtat($user['state']) ?></span>
-                            <div class="dropdown dropdown-inline kt-margin-l-5" data-toggle="kt-tooltip-" title="Change label" data-placement="right">
-                                <a href="#" class="btn btn-clean btn-sm btn-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fa fa-caret-down"></i>
-                                </a>
-                            </div>
+
                         </div>
                         <div class="kt-widget__action">
-                            <a href="#" class="btn btn-label-brand btn-sm btn-upper">Contact</a>
+                            <a href="<?= $app->router()->getRoute('vip_user_update') ?>" class="btn btn-label-danger btn-sm btn-upper">Modifier mes informations</a>
                         </div>
                     </div>
                     <div class="kt-widget__subhead">
                         <a href="#"><i class="flaticon2-new-email"></i><?= $user['email'] ?></a>
-                        <a href="#"><i class="flaticon2-placeholder"></i><img src="<?= getCountrieFlag($user['nationality']) ?>"></a>
+                        <a href="#"><i class="flaticon2-placeholder"></i><img src="<?= $url . getCountrieFlag($user['nationality']) ?>"></a>
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
 </div>
 <?php
-require_once ROOT . '/public/views/admin/down.php';
-?>
+$blockContent = ob_get_clean();
+require __DIR__ . '/../base.php';

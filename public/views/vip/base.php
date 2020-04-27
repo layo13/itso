@@ -47,7 +47,7 @@ $app;
 		<div id="kt_header_mobile" class="kt-header-mobile  kt-header-mobile--fixed ">
 			<div class="kt-header-mobile__logo">
                 <!-- a href à ajouter -->
-				<a href="">
+				<a href="<?= $app->router()->getRoute('vip_home') ?>">
 					<img alt="Logo" src="<?=$url?>public/assets/images/logo.png" />
 				</a>
 			</div>
@@ -84,10 +84,30 @@ $app;
 						<div id="kt_aside_menu" class="kt-aside-menu " data-ktmenu-vertical="1" data-ktmenu-scroll="1" data-ktmenu-dropdown-timeout="500">
 							<ul class="kt-menu__nav ">
 								<li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true"><a href="/" class="kt-menu__link "><i class="kt-menu__link-icon flaticon2-architecture-and-city"></i><span class="kt-menu__link-text">Accueil</span></a></li>
-                                <li class="kt-menu__item" aria-haspopup="true"><a href="<?= $app->router()->getRoute('vip_product_list') ?>" class="kt-menu__link "><i class="kt-menu__link-icon flaticon2-architecture-and-city"></i><span class="kt-menu__link-text">Produits</span></a></li>
-                                <li class="kt-menu__item" aria-haspopup="true"><a href="<?= $app->router()->getRoute('vip_charity_list') ?>" class="kt-menu__link "><i class="kt-menu__link-icon flaticon2-architecture-and-city"></i><span class="kt-menu__link-text">Associations</span></a></li>
-                                <li class="kt-menu__item" aria-haspopup="true"><a href="<?= $app->router()->getRoute('vip_brand_list') ?>" class="kt-menu__link "><i class="kt-menu__link-icon flaticon2-architecture-and-city"></i><span class="kt-menu__link-text">Marques</span></a></li>
-                                <li class="kt-menu__item" aria-haspopup="true"><a href="<?= $app->router()->getRoute('vip_user_profil') ?>" class="kt-menu__link "><i class="kt-menu__link-icon flaticon2-architecture-and-city"></i><span class="kt-menu__link-text">Profil</span></a></li>
+                                <li class="kt-menu__item" aria-haspopup="true">
+                                    <a href="<?= $app->router()->getRoute('vip_product_list') ?>" class="kt-menu__link ">
+                                        <i class="kt-menu__link-icon flaticon2-box-1"></i>
+                                        <span class="kt-menu__link-text">Produits</span>
+                                    </a>
+                                </li>
+                                <li class="kt-menu__item" aria-haspopup="true">
+                                    <a href="<?= $app->router()->getRoute('vip_charity_list') ?>" class="kt-menu__link ">
+                                        <i class="kt-menu__link-icon flaticon-black"></i>
+                                        <span class="kt-menu__link-text">Associations</span>
+                                    </a>
+                                </li>
+                                <li class="kt-menu__item" aria-haspopup="true">
+                                    <a href="<?= $app->router()->getRoute('vip_brand_list') ?>" class="kt-menu__link ">
+                                        <i class="kt-menu__link-icon flaticon-business"></i>
+                                        <span class="kt-menu__link-text">Marques</span>
+                                    </a>
+                                </li>
+                                <li class="kt-menu__item" aria-haspopup="true">
+                                    <a href="<?= $app->router()->getRoute('vip_user_profil') ?>" class="kt-menu__link ">
+                                        <i class="kt-menu__link-icon flaticon2-user"></i>
+                                        <span class="kt-menu__link-text">Profil</span>
+                                    </a>
+                                </li>
 
                                 <!-- EXEMPLE pour la partie navbar
                                 <li class="kt-menu__item kt-menu__item--submenu kt-menu__item--here kt-menu__item--open" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-icon flaticon2-laptop"></i><span class="kt-menu__link-text">Pages</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
@@ -166,7 +186,7 @@ $app;
 									<!--begin: Navigation -->
 									<div class="kt-notification">
                                         <!-- a href à ajouter -->
-										<a href="" class="kt-notification__item">
+										<a href="<?= $app->router()->getRoute('vip_user_profil') ?>" class="kt-notification__item">
 											<div class="kt-notification__item-icon">
 												<i class="flaticon2-calendar-3 kt-font-success"></i>
 											</div>

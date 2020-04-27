@@ -105,7 +105,7 @@ function getUserEtat($etatId) {
 
 function getCountrieFlag($flagId) {
 	if ($flagId == 1)
-		return "../public/assets/images/flag/fr.png";
+		return "public/assets/images/flag/fr.png";
 	else
-		return "../public/assets/images/flag/en.png";
+		return "public/assets/images/flag/en.png";
 }

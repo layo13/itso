@@ -15,13 +15,16 @@ class CharityController extends BaseController {
         while ($datas = $q->fetch(\PDO::FETCH_ASSOC)) {
             $charities[] = $datas;
         }
+        $q = $this->pdo()->query("SELECT * FROM user where id = " . $app->user()->getAttribute('id'));
+        $user = $q->fetch(\PDO::FETCH_ASSOC);
 
         require ROOT . '/public/views/vip/charity/update.php';
 	}
 
 	public function editAction() {
 
-        $userSession = $this->application->user();
+        $url = URL;
+        $app = $this->application;
         $q = $this->pdo()->query("SELECT * FROM user where id = " . $app->user()->getAttribute('id'));
         $user = $q->fetch(\PDO::FETCH_ASSOC);
         $updated_at = $user['updated_at'];

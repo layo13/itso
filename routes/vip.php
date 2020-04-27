@@ -10,23 +10,6 @@ return [
 		]
 	],
     ////////////////////////////////--- USER ---/////////////////////////////////////////////
-	"user_list" => [
-		"uri" => "/admin/user/list",
-		"method" => "GET",
-		"action" => [
-			\Http\Itso\Vip\Modules\User\UserController::class, 'list'
-		]
-	],
-	"user_view" => [
-		"uri" => "/admin/user/view/{id}",
-		"method" => "GET",
-		"parameters" => [
-			"id" => "[0-9]+",
-		],
-		"action" => [
-            \Http\Itso\Vip\Modules\User\UserController::class, 'view'
-		]
-	],
 	"user_profil" => [
 		"uri" => "/user/profil",
 		"method" => "GET",
@@ -35,14 +18,14 @@ return [
 		]
 	],
     "user_update" => [
-        "uri" => "/admin/user/update",
+        "uri" => "/user/update",
         "method" => "GET",
         "action" => [
             Http\Itso\Vip\Modules\User\UserController::class, 'update'
         ]
     ],
     "user_edit" => [
-        "uri" => "/admin/user/edit",
+        "uri" => "/user/edit",
         "method" => "POST",
         "action" => [
             \Http\Itso\Vip\Modules\User\UserController::class, 'edit'
@@ -87,6 +70,13 @@ return [
         "method" => "GET",
         "action" => [
             \Http\Itso\Vip\Modules\Charity\CharityController::class, 'list'
+        ]
+    ],
+	"charity_list" => [
+        "uri" => "/association/choix",
+        "method" => "GET",
+        "action" => [
+            \Http\Itso\Vip\Modules\Charity\CharityController::class, 'update'
         ]
     ],
     "charity_view" => [
