@@ -72,7 +72,7 @@ $app->router()->getRoute('vip_home');
                     <!-- begin:: Aside -->
                     <div class="kt-aside__brand kt-grid__item " id="kt_aside_brand" kt-hidden-height="65" style="">
                         <div class="kt-aside__brand-logo">
-                            <a href="/">
+                            <a href="<?= $app->router()->getRoute('vip_home') ?>">
                                 <img alt="Logo" src="<?=$url?>public/assets/images/logo.png">
                             </a>
                         </div>
@@ -86,7 +86,7 @@ $app->router()->getRoute('vip_home');
                  	<div class="kt-aside-menu-wrapper kt-grid__item kt-grid__item--fluid" id="kt_aside_menu_wrapper">
 						<div id="kt_aside_menu" class="kt-aside-menu " data-ktmenu-vertical="1" data-ktmenu-scroll="1" data-ktmenu-dropdown-timeout="500">
 							<ul class="kt-menu__nav ">
-								<li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true"><a href="/" class="kt-menu__link "><i class="kt-menu__link-icon flaticon2-architecture-and-city"></i><span class="kt-menu__link-text">Accueil</span></a></li>
+								<li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true"><a href="<?= $app->router()->getRoute('vip_home') ?>" class="kt-menu__link "><i class="kt-menu__link-icon flaticon2-architecture-and-city"></i><span class="kt-menu__link-text">Accueil</span></a></li>
                                 <li class="kt-menu__item" aria-haspopup="true">
                                     <a href="<?= $app->router()->getRoute('vip_product_list') ?>" class="kt-menu__link ">
                                         <i class="kt-menu__link-icon flaticon2-box-1"></i>
@@ -241,7 +241,7 @@ $app->router()->getRoute('vip_home');
 							<div class="kt-footer__menu">
                                 <!-- a href à ajouter -->
 								<a href="" target="_blank" class="kt-footer__menu-link kt-link">FAQ</a>
-								<a href="" target="_blank" class="kt-footer__menu-link kt-link">Contact</a>
+								<a href="<?= $app->router()->getRoute('vip_contact') ?>" target="_blank" class="kt-footer__menu-link kt-link">Contact</a>
 							</div>
 						</div>
 					</div>

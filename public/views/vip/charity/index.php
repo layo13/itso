@@ -14,10 +14,10 @@ ob_start();
                     </h3>
                 </div>
                 <div class="kt-subheader__toolbar">
-                    <a href="" class="btn btn-default btn-bold">
+                    <a href="<?= $app->router()->getRoute('vip_contact') ?>" class="btn btn-default btn-bold">
                         Demande d'ajout d'une association
                     </a>
-                    <a href="<?= $app->router()->getRoute('vip_charity_chose') ?>" class="btn btn-success btn-bold">
+                    <a href="<?= $app->router()->getRoute('vip_charity_choice') ?>" class="btn btn-success btn-bold">
                         Choisir mon association
                     </a>
                 </div>

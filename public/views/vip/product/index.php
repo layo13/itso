@@ -15,9 +15,7 @@ ob_start();
 				<a href="#" class="">
 				</a>
                 <!-- vers formulaire de contact -->
-				<a href="<?= $app->router()->getRoute('vip_product_create') ?>" class="btn btn-label-brand btn-bold">
-					Ajouter un produit
-                </a>
+				<a href="<?= $app->router()->getRoute('vip_product_create') ?>" class="btn btn-label-facebook btn-bold">Ajouter un produit</a>
 			</div>
 		</div>
 	</div>

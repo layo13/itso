@@ -10,17 +10,23 @@ class HomeController extends BaseController {
 		$url = URL;
 		$app = $this->application;
         $q = $this->pdo()->query("
-SELECT user.*, celebrity_category.name as category_name, picture.name picture_name 
-FROM user
-LEFT JOIN user_celebrity_category ON user.id = user_celebrity_category.user_id
-LEFT JOIN celebrity_category ON user_celebrity_category.celebrity_category_id = celebrity_category.id
-LEFT JOIN picture ON user.picture_id = picture.id
-where
-user.id = " . intval($app->user()->getAttribute('id')));
+        SELECT user.*, celebrity_category.name as category_name, picture.name picture_name 
+        FROM user
+        LEFT JOIN user_celebrity_category ON user.id = user_celebrity_category.user_id
+        LEFT JOIN celebrity_category ON user_celebrity_category.celebrity_category_id = celebrity_category.id
+        LEFT JOIN picture ON user.picture_id = picture.id
+        where
+        user.id = " . intval($app->user()->getAttribute('id')));
         $user = $q->fetch(\PDO::FETCH_ASSOC);
 		require ROOT . '/public/views/vip/home/index.php';
 	}
+    public function contactAction()
+    {
+        $url = URL;
+        $app = $this->application;
 
+        require ROOT . '/public/views/vip/home/contact.php';
+    }
 }
 
 /*"

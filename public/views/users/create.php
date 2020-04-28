@@ -123,7 +123,6 @@ require_once ROOT . '/public/views/admin/up.php';
                 </div>
                 <div class="col-10">
                     <button type="submit" class="btn btn-success">Enregister</button>
-                    <button type="reset" class="btn btn-secondary">Annuler</button>
                 </div>
             </div>
         </div>

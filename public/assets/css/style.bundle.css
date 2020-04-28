@@ -24971,14 +24971,16 @@ td > .kt-radio.kt-radio--single {
 .kt-callout .kt-callout__body .kt-callout__content .kt-callout__title {
     font-size: 1.85rem;
     font-weight: 500;
-    color: #48465b;
-    margin-bottom: 1rem; }
+    color: #444;
+    margin-bottom: 1rem;
+}
 .kt-callout .kt-callout__body .kt-callout__content .kt-callout__desc {
     font-size: 1.15rem;
     line-height: 2rem;
-    color: #9392a0;
+    color: #000;
     padding-right: 2rem;
-    font-weight: 400; }
+    font-weight: 400;
+}
 .kt-callout .kt-callout__body .kt-callout__content .kt-callout__desc:last-child {
     margin-bottom: 0; }
 .kt-callout .kt-callout__body .kt-callout__action {
@@ -25021,7 +25023,8 @@ td > .kt-radio.kt-radio--single {
 .kt-callout--brand.kt-callout--diagonal-bg {
     background-color: #fff; }
 .kt-callout--brand.kt-callout--diagonal-bg:before {
-    background-color: rgba(44, 119, 244, 0.15); }
+    background-color: rgba(232, 59, 113, 0.15);
+}
 .kt-callout--light {
     background-color: rgba(255, 255, 255, 0.07); }
 .kt-callout--light.kt-callout--diagonal-bg {

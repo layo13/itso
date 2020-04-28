@@ -6,7 +6,13 @@
 ob_start();
 ?>
 
-
+<style>
+    img#imgAssociationShow {
+        position: relative;
+        display: block;
+        width: 100%;
+    }
+</style>
     <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
     <div class="kt-subheader   kt-grid__item" id="kt_subheader">
         <div class="kt-container  kt-container--fluid ">
@@ -19,7 +25,7 @@ ob_start();
                 <a href="<?= $app->router()->getRoute('vip_user_profil') ?>" class="btn btn-success btn-bold">
                     Retour au profil
                 </a>
-                <a href="<?= $app->router()->getRoute('vip_user_profil') ?>" class="btn btn-dark btn-bold">
+                <a href="<?= $app->router()->getRoute('vip_charity_list') ?>" class="btn btn-dark btn-bold">
                     Retour liste association
                 </a>
             </div>
@@ -27,7 +33,7 @@ ob_start();
     </div>
     <div class="kt-portlet kt-portlet--tabs">
     <div class="kt-portlet__body">
-<form class="kt-form kt-form--label-right" action="edit" method="post" enctype="multipart/form-data">
+<form class="kt-form kt-form--label-right" action="<?= $app->router()->getRoute('vip_charity_edit') ?>" method="post" enctype="multipart/form-data">
 
 
         <div class="kt-portlet__body">
@@ -43,17 +49,17 @@ ob_start();
             <?php  } ?>
         <div class="form-group row">
             <label for="formContactCharity" class="col-2 col-form-label">Associations</label>
-            <div class="col-10">
+            <div class="col-7">
                 <select class="form-control" id="formContactCharity" name="formContactCharity">
-                    <?php foreach($charities as $charity ){ /*?>
-                        <option <?php if($charity['id'] == $user['charity_id']){echo'selected';}?> value="<?=$charity['id']?>" data-img="<?=$url?>public/assets/images/charity_association/<?=$charity['charity_picture']?>">
+                    <?php foreach($charities as $charity ){ ?>
+                        <option <?php if($charity['id'] == $user['charity_id']){echo'selected';}?> value="<?=$charity['id']?>" data-img="<?=$charity['charity_picture']?>">
                             <?= $charity['name'] ?>
                         </option>
-                    <?php*/ } ?>
+                    <?php } ?>
                 </select>
             </div>
-            <div class="col-2">
-                <img id="imgAssociationShow" src="" class="img-responsive">
+            <div class="col-3">
+                <img id="imgAssociationShow" src="<?= $imgCharity ?>" class="img-responsive">
             </div>
         </div>
     </div>
@@ -64,7 +70,6 @@ ob_start();
                 </div>
                 <div class="col-10">
                     <button type="submit" class="btn btn-success">Enregister</button>
-                    <button type="reset" class="btn btn-secondary">Annuler</button>
                 </div>
             </div>
         </div>
@@ -74,6 +79,7 @@ ob_start();
     </div>
     </div>
 <?php
-//-- faire un on change de #formContactCharity , et data-img dans le src de #imgAssociationShow
 $blockContent = ob_get_clean();
 require __DIR__ . '/../base.php';
+?>
+<script type="text/javascript" src="<?= $url ?>public/assets/js/charity_choice.js"></script>

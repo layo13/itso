@@ -9,6 +9,13 @@ return [
 			Http\Itso\Vip\Modules\Home\HomeController::class, 'index'
 		]
 	],
+	"contact" => [
+		"uri" => "/contact",
+		"method" => "GET",
+		"action" => [
+			Http\Itso\Vip\Modules\Home\HomeController::class, 'contact'
+		]
+	],
     ////////////////////////////////--- USER ---/////////////////////////////////////////////
 	"user_profil" => [
 		"uri" => "/user/profil",
@@ -72,11 +79,18 @@ return [
             \Http\Itso\Vip\Modules\Charity\CharityController::class, 'list'
         ]
     ],
-	"charity_list" => [
+	"charity_choice" => [
         "uri" => "/association/choix",
         "method" => "GET",
         "action" => [
             \Http\Itso\Vip\Modules\Charity\CharityController::class, 'update'
+        ]
+    ],
+	"charity_edit" => [
+        "uri" => "/association/edit",
+        "method" => "POST",
+        "action" => [
+            \Http\Itso\Vip\Modules\Charity\CharityController::class, 'edit'
         ]
     ],
     "charity_view" => [

@@ -7,7 +7,6 @@ $app;
 
 	<!-- begin::Head -->
 	<head>
-		<base href="">
 		<meta charset="utf-8" />
         <title>In the shoes of - Admin</title>
 		<meta name="description" content="Latest updates and statistic charts">
@@ -45,7 +44,7 @@ $app;
 		<!-- begin:: Header Mobile -->
 		<div id="kt_header_mobile" class="kt-header-mobile  kt-header-mobile--fixed ">
 			<div class="kt-header-mobile__logo">
-				<a href="">
+				<a href="<?= $app->router()->getRoute('admin_home') ?>">
 					<img alt="Logo" src="<?=$url?>public/assets/images/logo.png" />
 				</a>
 			</div>
@@ -67,7 +66,7 @@ $app;
                     <!-- begin:: Aside -->
                     <div class="kt-aside__brand kt-grid__item " id="kt_aside_brand" kt-hidden-height="65" style="">
                         <div class="kt-aside__brand-logo">
-                            <a href="/">
+                            <a href="<?= $app->router()->getRoute('admin_home') ?>">
                                 <img alt="Logo" src="<?=$url?>public/assets/images/logo.png">
                             </a>
                         </div>
@@ -83,7 +82,7 @@ $app;
 					<div class="kt-aside-menu-wrapper kt-grid__item kt-grid__item--fluid" id="kt_aside_menu_wrapper">
 						<div id="kt_aside_menu" class="kt-aside-menu " data-ktmenu-vertical="1" data-ktmenu-scroll="1" data-ktmenu-dropdown-timeout="500">
 							<ul class="kt-menu__nav ">
-								<li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true"><a href="/" class="kt-menu__link "><i class="kt-menu__link-icon flaticon2-architecture-and-city"></i><span class="kt-menu__link-text">Accueil</span></a></li>
+								<li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true"><a href="<?= $app->router()->getRoute('admin_home') ?>" class="kt-menu__link "><i class="kt-menu__link-icon flaticon2-architecture-and-city"></i><span class="kt-menu__link-text">Accueil</span></a></li>
 								<li class="kt-menu__item  kt-menu__item-" aria-haspopup="true"><a href="<?= $app->router()->getRoute('admin_user_list') ?>" class="kt-menu__link "><i class="kt-menu__link-icon flaticon2-architecture-and-city"></i><span class="kt-menu__link-text">Utilisateurs</span></a></li>
 								<li class="kt-menu__item  kt-menu__item-" aria-haspopup="true"><a href="<?= $app->router()->getRoute('admin_customer_list') ?>" class="kt-menu__link "><i class="kt-menu__link-icon flaticon2-architecture-and-city"></i><span class="kt-menu__link-text">Clients</span></a></li>
 								<li class="kt-menu__item  kt-menu__item-" aria-haspopup="true"><a href="<?= $app->router()->getRoute('admin_brand_list') ?>" class="kt-menu__link "><i class="kt-menu__link-icon flaticon2-architecture-and-city"></i><span class="kt-menu__link-text">Marques</span></a></li>

@@ -176,6 +176,7 @@ $schema->addTable('user', function(Table $table) {
 	$table->integer('state')->nullable(false);
 	$table->tinyInteger('active')->nullable(false)->defaultValue('0');
 	$table->integer('user_type_id')->nullable(false);
+	$table->integer('charity_id')->nullable(true);
 });
 
 $schema->addTable('user_type', function(Table $table) {

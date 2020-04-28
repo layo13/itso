@@ -1,5 +1,4 @@
 <head>
-    <base href="">
     <meta charset="utf-8" />
     <title>Itso</title>
     <meta name="description" content="Latest updates and statistic charts">
