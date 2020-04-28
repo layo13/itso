@@ -81,7 +81,15 @@ ob_start();
                         <?php
                         foreach($product_category as $category ){
                             ?>
-                            <option value="<?= $category['id']?>"><?= $category['name']?></option>
+                        <optgroup label="<?= utf8_encode($category['value']['name'])?>">
+                            <?php
+                            foreach($category['children'] as $child ){
+                            ?>
+                                <option value="<?= $child['value']['id']?>"><?= utf8_encode($child['value']['name'])?></option>
+                            <?php
+                            }
+                            ?>
+                        </optgroup>
                             <?php
                         }
                         ?>

@@ -15,13 +15,16 @@ class ProductController extends BaseController {
         $q = $this->pdo()->query("SELECT * FROM user where id = " . intval($app->user()->getAttribute('id')));
         $user = $q->fetch(\PDO::FETCH_ASSOC);
 
-        $q = $this->pdo()->query("SELECT * FROM product_category where parent_id is null");
+        $qParent = $this->pdo()->query("SELECT id,name,parent_id FROM product_category where parent_id is null");
         //-- faire la gestion de tableau multi-dimensionnelle
-        while ($datas = $q->fetch(\PDO::FETCH_ASSOC)) {
-            $product_category[] = $datas;
+        while ($datas = $qParent->fetch(\PDO::FETCH_ASSOC)) {
+            $product_category[$datas['id']]['value'] = $datas;
         }
-
-        $q = $this->pdo()->query("SELECT *,(select picture.name from picture where picture.id = brand.picture_id) as brand_picture FROM brand");
+        $qChildrens = $this->pdo()->query("select id,name,parent_id from product_category where parent_id in (SELECT id FROM product_category where parent_id is null)");
+        while ($datas = $qChildrens->fetch(\PDO::FETCH_ASSOC)) {
+            $product_category[$datas['parent_id']]['children'][$datas['id']]['value'] = $datas;
+        }
+        $q = $this->pdo()->query("SELECT *, picture.name FROM brand LEFT JOIN picture ON (picture.id = brand.picture_id)");
         while ($datas = $q->fetch(\PDO::FETCH_ASSOC)) {
             $brands[] = $datas;
         }
@@ -93,7 +96,7 @@ class ProductController extends BaseController {
             $product_category[] = $datas;
         }
 
-        $q = $this->pdo()->query("SELECT *,(select picture.name from picture where picture.id = brand.picture_id) as brand_picture FROM brand");
+        $q = $this->pdo()->query("SELECT *, picture.name as brand_picture FROM brand LEFT JOIN picture ON (picture.id = brand.picture_id)");
         while ($datas = $q->fetch(\PDO::FETCH_ASSOC)) {
             $brands[] = $datas;
         }
@@ -149,7 +152,7 @@ FROM product,user_product where id = " . intval($GLOBALS['matches'][0])) ." and 
         $url = URL;
         $app = $this->application;
 
-        $q = $this->pdo()->query("SELECT *,(select pictures.name from pictures where pictures.id = users.picture_id) as user_picture FROM user where id = " . intval($app->user()->getAttribute('id')));
+        $q = $this->pdo()->query("SELECT *, pictures.name as user_picture FROM user LEFT JOIN picture ON (picture.id = user.picture_id) where id = " . intval($app->user()->getAttribute('id')));
         $user = $q->fetch(\PDO::FETCH_ASSOC);
 
         $last_name = $user['last_name'];
@@ -177,7 +180,7 @@ FROM product,user_product where id = " . intval($GLOBALS['matches'][0])) ." and 
             $product_category[] = $datas;
         }
 
-        $q = $this->pdo()->query("SELECT *,(select picture.name from picture where picture.id = brand.picture_id) as brand_picture FROM brand");
+        $q = $this->pdo()->query("SELECT *, picture.name as brand_picture FROM brand LEFT JOIN picture ON (picture.id = brand.picture_id)");
         while ($datas = $q->fetch(\PDO::FETCH_ASSOC)) {
             $brands[] = $datas;
         }
@@ -232,7 +235,7 @@ FROM product,user_product where id = " . intval($GLOBALS['matches'][0])) ." and 
             $product_category[] = $datas;
         }
 
-        $q = $this->pdo()->query("SELECT *,(select picture.name from picture where picture.id = brand.picture_id) as brand_picture FROM brand");
+        $q = $this->pdo()->query("SELECT *, picture.name as brand_picture FROM brand LEFT JOIN picture ON (picture.id = brand.picture_id)");
         while ($datas = $q->fetch(\PDO::FETCH_ASSOC)) {
             $brands[] = $datas;
         }

@@ -48,7 +48,7 @@ class BrandController extends BaseController {
 
 	public function listAction() {
 
-		$q = $this->pdo()->query("SELECT *,(select picture.name from picture where picture.id = brand.picture_id) as brand_picture FROM brand");
+		$q = $this->pdo()->query("SELECT *, picture.name FROM brand LEFT JOIN picture ON (picture.id = brand.picture_id)");
 		while ($datas = $q->fetch(\PDO::FETCH_ASSOC)) {
 			$brands[] = $datas;
 		}
@@ -61,7 +61,7 @@ class BrandController extends BaseController {
 	}
 
 	public function viewAction() {
-		$q = $this->pdo()->query("SELECT *,(select pictures.name from pictures where pictures.id = brand.picture_id) as brand_picture FROM brand where id = " . intval($GLOBALS['matches'][0]));
+		$q = $this->pdo()->query("SELECT *, picture.name FROM brand LEFT JOIN picture ON (picture.id = brand.picture_id) where id = " . intval($GLOBALS['matches'][0]));
 		$brand = $q->fetch(\PDO::FETCH_ASSOC);
 		return view('brand/view', compact('brand'));
 	}

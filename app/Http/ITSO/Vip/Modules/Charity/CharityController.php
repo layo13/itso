@@ -13,7 +13,7 @@ class CharityController extends BaseController {
         $q = $this->pdo()->query("SELECT * FROM user where id = " . $app->user()->getAttribute('id'));
         $user = $q->fetch(\PDO::FETCH_ASSOC);
 
-        $q = $this->pdo()->query("SELECT *,(select picture.name from picture where picture.id = charity_association.picture_id) as charity_picture FROM charity_association order by charity_association.name");
+        $q = $this->pdo()->query("SELECT *, picture.name  as charity_picture FROM charity_association LEFT JOIN picture ON (picture.id = charity_association.picture_id) order by charity_association.name");
         $imgCharity = '';
         $nb = 0;
         while ($datas = $q->fetch(\PDO::FETCH_ASSOC)) {
@@ -53,7 +53,7 @@ class CharityController extends BaseController {
 	}
 
 	public function listAction() {
-		$q = $this->pdo()->query("SELECT *,(select picture.name from picture where picture.id = charity_association.picture_id) as charity_picture FROM charity_association");
+		$q = $this->pdo()->query("SELECT *, picture.name as charity_picture FROM charity_association LEFT JOIN picture ON (picture.id = charity_association.picture_id)");
 		while ($datas = $q->fetch(\PDO::FETCH_ASSOC)) {
 			$charities[] = $datas;
 		}
@@ -65,7 +65,7 @@ class CharityController extends BaseController {
 	}
 
 	public function viewAction() {
-		$q = $this->pdo()->query("SELECT *,(select pictures.name from pictures where pictures.id = charity_association.picture_id) as charity_picture FROM charity_association where id = " . intval($GLOBALS['matches'][0]));
+		$q = $this->pdo()->query("SELECT *,picture.name as charity_picture FROM charity_association LEFT JOIN picture ON (picture.id = charity_association.picture_id where id = " . intval($GLOBALS['matches'][0]));
 		$charity = $q->fetch(\PDO::FETCH_ASSOC);
 		return view('charity/view', compact('charity'));
 	}
