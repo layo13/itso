@@ -17,7 +17,7 @@ class ConnexionController extends \Epic\BaseController {
 			$email = $this->application->request()->post('email');
 			$password = $this->application->request()->post('password');
 
-			$stmt = $pdo->prepare("SELECT user.*, picture.name picture_name FROM user, picture WHERE user_type_id = 2 and picture.id = picture_id AND email LIKE ?");
+			$stmt = $pdo->prepare("SELECT user.*, picture.name picture_name FROM user LEFT JOIN picture ON (picture.id = user.picture_id) WHERE user_type_id = 2 AND email LIKE ?");
 			$stmt->execute([$email]);
 
 			if (false !== ($user = $stmt->fetch())) {

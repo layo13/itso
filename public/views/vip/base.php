@@ -4,6 +4,9 @@ $app;
 /**
  * rechercher les <a href=""
  */
+
+$app->router()->getRoute('vip_home');
+
 ?><!DOCTYPE html>
 <html lang="en">
 

@@ -104,7 +104,12 @@ class Router {
 				while (preg_match('`' . $endingOptionalParameterRegex . '`', $uri, $matches)) {
 					$uri = preg_replace('`' . $endingOptionalParameterRegex . '`', '', $uri);
 				}
-				return str_replace('//', '/', URL . $uri);
+
+				if (substr(URL, -1) == '/' && substr($uri, 0, 1) == '/') {
+					return URL . substr($uri, 1);
+				} else {
+					return URL . $uri;
+				}
 			}
 		}
 		throw new RouteNotFoundByNameException('Unable to find "' . $name . '" route');
