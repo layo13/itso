@@ -61,6 +61,14 @@ ob_start();
                                     <span class="kt-widget__label">Email:</span>
                                     <a href="#" class="kt-widget__data"><?= $user['email']?></a>
                                 </div>
+                                <div class="kt-widget__info">
+                                    <span class="kt-widget__label">Abonnés:</span>
+                                    <a href="#" class="kt-widget__data"><?= $nbSubscriber['nb_subscriber']?></a>
+                                </div>
+                                <div class="kt-widget__info">
+                                    <span class="kt-widget__label">Total de like sur vos produit:</span>
+                                    <a href="#" class="kt-widget__data"><?= $nbTotalLike['nb_product_like']?></a>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -7,9 +7,6 @@ use Epic\Http\Request;
 class ConnexionController extends \Epic\BaseController {
 
 	public function loginAction() {
-
-
-
 		if ($this->application->request()->requestMethod() == Request::POST) {
 
 			$pdo = \PdoProvider::getInstance();
@@ -50,5 +47,56 @@ class ConnexionController extends \Epic\BaseController {
 		redirect('http://localhost/itso/vip');
 		session_destroy();
 	}
+
+    public function passwordMailSendAction(){
+/*
+        if(!empty($_POST['formMdpOublieEmail'])){
+            $secret = $GLOBALS['conf']['recaptcha_secret'];
+            $response = null;
+            $reCaptcha = new ReCaptcha($secret);
+
+            if ($_POST["g-recaptcha-response"]) {
+                $response = $reCaptcha->verifyResponse(
+                    $_SERVER["REMOTE_ADDR"],
+                    $_POST["g-recaptcha-response"]
+                );
+            }
+
+
+            if ($response != null && $response->success) {
+*/
+                // Sujet
+                $sujet = "Nouvelle inscription depuis le site ITSO";
+
+                // Message
+                $message = "test ";
+
+                //-- Envoi du mail
+                $from = "Itso <tbruno@intheshoesof.fr>";
+                $headers  = 'MIME-Version: 1.0'."\r\n";
+                $headers .= 'Content-type: text/html; charset=utf-8'."\r\n";
+                $headers .= 'Reply-To: '.$_POST['email']."\r\n";
+                $headers .= 'X-Mailer: PHP/'.phpversion()."\r\n";
+
+                $header = 'From: '.$from."\r\n".$headers;
+                $to = $GLOBALS['conf']['to'];
+
+                //verif si champ anti-robots est renseigné
+                if($_POST['plus_client']==""){
+                    if(@mail($to, $sujet, $message, $header)){
+                        $result = 1;
+                    }else{
+                        $result = 0;
+                    }
+                }
+                /*
+            }else{
+                $result = 0;
+            }
+        }
+                */
+
+        return $result;
+    }
 
 }

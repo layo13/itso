@@ -14,11 +14,18 @@ $(document).ready(function() {
             success: function(info){
                 //console.log(info);
                 //$('#loader').hide();
-                $('#formChoixParentCategory').html();
-
+                $('#formChoixParentChildren').html(info);
             }
         });
 
+        return false;
+    });
+    $("#formProductBrandId").change(function(){
+        $("#brandPictureShow").attr('src',$(this).find(':selected').attr('data-img'));
+        return false;
+    });
+    $("#formProductMainColorId").change(function(){
+        $("#formProductColorDemo").attr('style', "color:"+$(this).find(':selected').attr('data-color'));
         return false;
     });
 });

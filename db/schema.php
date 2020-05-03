@@ -128,7 +128,7 @@ $schema->addTable('product', function(Table $table) {
 	$table->integer('id')->primary(true);
 	$table->varchar('name')->length(255)->nullable(false);
 	$table->integer('brand_id')->nullable(false);
-	$table->varchar('main_color')->length(255)->nullable(false);
+	$table->integer('main_color_id')->nullable(false);
 	$table->integer('product_type_id')->nullable(false);
 	$table->integer('state')->nullable(false)->defaultValue('1');
 	$table->tinyInteger('active')->nullable(false)->defaultValue('0');
@@ -209,6 +209,11 @@ $schema->addTable('boutique_affiliation', function(Table $table) {
     $table->varchar('contact_email')->length(255)->nullable(false);
 });
 
+$schema->addTable('color', function(Table $table) {
+    $table->integer('id')->primary(true);
+    $table->varchar('name')->length(255)->nullable(false);
+    $table->varchar('hex')->length(255)->nullable(false);
+});
 
 
 return $schema;

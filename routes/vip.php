@@ -150,7 +150,7 @@ return [
         ]
     ],
     "category_select" => [
-        "uri" => "../../../../itso/vip/category/select",
+        "uri" => "/vip/category/select",
         "method" => "POST",
         "action" => [
             \Http\Itso\Vip\Modules\Category\CategoryController::class, 'select'

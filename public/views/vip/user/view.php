@@ -22,7 +22,7 @@ ob_start();
                     <div class="kt-widget__head">
                         <div class="kt-widget__user">
                             <a href="#" class="kt-widget__username">
-                                <?= utf8_encode($user['first_name'] ." ".$user['last_name']) ." ". getGender($user['gender'])?>
+                                <?= $user['first_name'] ." ".$user['last_name'] ." ". getGender($user['gender'])?>
                             </a>
                             <span class="kt-badge kt-badge--bolder kt-badge kt-badge--inline kt-badge--unified-success"><?= getUserEtat($user['state']) ?></span>
 

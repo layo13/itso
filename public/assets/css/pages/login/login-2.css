@@ -11,7 +11,8 @@
   margin: 0 auto; }
 .kt-login.kt-login--v2 .kt-login__wrapper .kt-login__container .kt-login__logo {
   text-align: center;
-  margin: 0 auto 4rem auto; }
+  margin: 0 auto 2rem auto;
+}
 .kt-login.kt-login--v2 .kt-login__wrapper .kt-login__container .kt-login__logo img {
   width: 200px;
 }

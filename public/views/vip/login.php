@@ -49,6 +49,41 @@ License: You must have a valid license purchased only from themeforest(the above
 
 		<!--end::Layout Skins -->
 		<link rel="shortcut icon" href="<?= $url ?>/public/assets/media/logos/favicon.ico" />
+        <style>
+            span.genderLeft {
+                position: relative;
+                display: inline-block;
+                float: left;
+                margin-top: 10px;
+            }
+
+            span.genderRight {
+                position: relative;
+                display: inline-block;
+                float: right;
+                margin-top: 0;
+                margin-left: 7px;
+            }
+
+            span.genderLeft i {
+                font-size: 22px;
+                margin-top: 4px;
+                margin-right: 10px;
+            }
+
+            span.genderRight {
+                font-size: 22px;
+            }
+            span.genderRight i {
+                font-size: 26px!important;
+                color: rgba(232, 59, 113, 1);
+            }
+
+            span.genderLeft i {
+                font-size: 28px!important;
+                color: #fff;
+            }
+        </style>
 	</head>
 
 	<!-- end::Head -->
@@ -70,7 +105,7 @@ License: You must have a valid license purchased only from themeforest(the above
 							</div>
 							<div class="kt-login__signin">
 								<div class="kt-login__head">
-									<h3 class="kt-login__title">Connexion à l'espace admin</h3>
+									<h3 class="kt-login__title">Connexion à l'espace VIP</h3>
 								</div>
 								
 								<?php if ($user->hasFlash()){ ?>
@@ -112,16 +147,29 @@ License: You must have a valid license purchased only from themeforest(the above
 								</div>
 								<form class="kt-login__form kt-form">
 									<div class="input-group">
-										<input class="form-control" type="text" placeholder="Fullname" name="fullname">
+                                        <span class="kt-switch kt-switch--dark">
+            				            	<label>
+                                                <span class="genderLeft"><i class="fa fa-mars"></i></span>
+                                                <span class="genderRight"><i class="fa fa-venus"></i></span>
+            				            	    <input type="checkbox" name="formContactGender">
+                                                <span></span>
+            				            	</label>
+                                        </span>
 									</div>
 									<div class="input-group">
-										<input class="form-control" type="text" placeholder="Email" name="email" autocomplete="off">
+										<input class="form-control" type="text" placeholder="Nom" name="formContactLastName">
 									</div>
 									<div class="input-group">
-										<input class="form-control" type="password" placeholder="Password" name="password">
+										<input class="form-control" type="text" placeholder="Prénom" name="formContactFirstName">
 									</div>
 									<div class="input-group">
-										<input class="form-control" type="password" placeholder="Confirm Password" name="rpassword">
+										<input class="form-control" type="text" placeholder="Email" name="formContactEmail" autocomplete="off">
+									</div>
+									<div class="input-group">
+										<input class="form-control" type="password" placeholder="Password" name="formContactPassword">
+									</div>
+									<div class="input-group">
+										<input class="form-control" type="password" placeholder="Confirmez Password" name="formContactRPassword">
 									</div>
 									<div class="row kt-login__extra">
 										<div class="col kt-align-left">
@@ -165,8 +213,6 @@ License: You must have a valid license purchased only from themeforest(the above
 			</div>
 		</div>
 
-		<!-- end:: Page -->
-
 		<!-- begin::Global Config(global config for global JS sciprts) -->
 		<script>
 			var KTAppOptions = {
@@ -198,8 +244,36 @@ License: You must have a valid license purchased only from themeforest(the above
 		<!--end::Global Theme Bundle -->
 
 		<!--begin::Page Scripts(used by this page) -->
-		
-		
+
+
+        <!-- end:: Page -->
+        <script>
+            $(document).ready(function() {
+                $("#kt_login_signup").click(function(){
+                    if($('.kt-login.kt-login--v2.kt-login--signin .kt-login__forgot').css('display') == 'block'){
+                        $(".kt-login.kt-login--v2.kt-login--signin .kt-login__forgot").slideToggle();
+                        $(".kt-login__account").slideToggle();
+                        $(".kt-login.kt-login--v2.kt-login--signin .kt-login__signup").slideToggle();
+                    }else{
+                        $(".kt-login.kt-login--v2.kt-login--signin .kt-login__signup").slideToggle();
+
+                    }
+                    return false;
+                });
+                $("#kt_login_forgot").click(function(){
+                    if($('.kt-login.kt-login--v2.kt-login--signin .kt-login__signin').css('display') == 'block'){
+                        $(".kt-login.kt-login--v2.kt-login--signin .kt-login__signin").slideToggle();
+                    }
+
+                    if($('.kt-login.kt-login--v2.kt-login--signin .kt-login__signup').css('display') == 'block'){
+                        $(".kt-login.kt-login--v2.kt-login--signin .kt-login__signup").slideToggle();
+                    }
+
+                    $(".kt-login.kt-login--v2.kt-login--signin .kt-login__forgot").slideToggle();
+                    return false;
+                });
+            });
+        </script>
 		<!-- Je commente ce truc parce que ca bloque le formulaire en faisait une requete AJAX
 		<script src="<?= $url ?>/public/assets/js/pages/custom/login/login-general.js" type="text/javascript"></script>
 		-->

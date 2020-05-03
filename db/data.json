@@ -67,5 +67,22 @@
             "active": 1,
             "user_type_id": 1
         }
+    ],
+
+    "color": [
+        {"name": "blanc", "hex": "#ffffff"},
+        {"name": "noir", "hex": "#000000"},
+        {"name": "gris", "hex": "#808080"},
+        {"name": "argent", "hex": "#C0C0C0"},
+        {"name": "bleu", "hex": "#0000FF"},
+        {"name": "rouge", "hex": "#FF0000"},
+        {"name": "bordeaux", "hex": "#800000"},
+        {"name": "jaune", "hex": "#FFFF00"},
+        {"name": "olive", "hex": "#808000"},
+        {"name": "vert", "hex": "#008000"},
+        {"name": "sarcelle", "hex": "#008080"},
+        {"name": "bleu marine", "hex": "#000080"},
+        {"name": "fuchsia", "hex": "#FF00FF"},
+        {"name": "violet", "hex": "#80008"}
     ]
 }

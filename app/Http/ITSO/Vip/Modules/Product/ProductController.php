@@ -24,9 +24,13 @@ class ProductController extends BaseController {
         while ($datas = $qChildrens->fetch(\PDO::FETCH_ASSOC)) {
             $product_category[$datas['parent_id']]['children'][$datas['id']]['value'] = $datas;
         }
-        $q = $this->pdo()->query("SELECT *, picture.name FROM brand LEFT JOIN picture ON (picture.id = brand.picture_id)");
+        $q = $this->pdo()->query("SELECT brand.*, picture.name as brand_picture FROM brand LEFT JOIN picture ON (picture.id = brand.picture_id)");
         while ($datas = $q->fetch(\PDO::FETCH_ASSOC)) {
             $brands[] = $datas;
+        }
+        $q = $this->pdo()->query("SELECT * FROM color");
+        while ($datas = $q->fetch(\PDO::FETCH_ASSOC)) {
+            $colors[] = $datas;
         }
         require ROOT . '/public/views/vip/product/create.php';
 	}
@@ -40,15 +44,16 @@ class ProductController extends BaseController {
 
         $name = $_REQUEST['formProductName'];
         $brand_id = $_REQUEST['formProductBrandId'];
-        $main_color = $_REQUEST['formProductMainColor'];
-        $product_type_id = $_REQUEST['formProductProductTypeId'];
+        $main_color_id = $_REQUEST['formProductMainColorId'];
+        $product_type_id = $_REQUEST['formCategoryProduct'];
+
         $state = 1;
         //-- creation du produit
-        $sqlCreateProduct = "INSERT INTO `product`(name, brand_id, main_color, product_type_id, state) VALUES (?,?,?,?,?)";
+        $sqlCreateProduct = "INSERT INTO `product`(name, brand_id, main_color_id, product_type_id, state) VALUES (?,?,?,?,?)";
         $stmt = $this->pdo()->prepare($sqlCreateProduct);
         $stmt->bindParam(1, $name);
         $stmt->bindParam(2, $brand_id);
-        $stmt->bindParam(3, $main_color);
+        $stmt->bindParam(3, $main_color_id);
         $stmt->bindParam(4, $product_type_id);
         $stmt->bindParam(5, $state);
         $stmt->execute();
@@ -70,12 +75,12 @@ class ProductController extends BaseController {
         $uploader = new FileUploader();
         $file = new File('formProductFile');
         //-- voir pour formater les noms d'images fonction php faire des id uniqid()
-        $filename = $file->getName();
-        $uploader->upload($file, ROOT . "/public/assets/images/product/" . $filename . "." . $file->getExtension());
+        $filename = rand(0,100)."_".$file->getName();
+        $uploader->upload($file, ROOT . "/public/assets/images/product/" . $filename);
 
         if (!empty($filename)) {
-            $name = $_REQUEST['formProductName'];
-            $stmt = $this->pdo()->prepare("INSERT INTO `pictures`(`name`) VALUES (?)");
+            $name = $filename;
+            $stmt = $this->pdo()->prepare("INSERT INTO `picture`(`name`) VALUES (?)");
             $stmt->bindParam(1, $name);
             $stmt->execute();
 
@@ -90,39 +95,62 @@ class ProductController extends BaseController {
             $stmt->execute();
         }
 
-        $q = $this->pdo()->query("SELECT * FROM product_category order by parent_id");
-        //-- faire la gestion de tableau multi-dimensionnelle
-        while ($datas = $q->fetch(\PDO::FETCH_ASSOC)) {
-            $product_category[] = $datas;
-        }
-
-        $q = $this->pdo()->query("SELECT *, picture.name as brand_picture FROM brand LEFT JOIN picture ON (picture.id = brand.picture_id)");
-        while ($datas = $q->fetch(\PDO::FETCH_ASSOC)) {
-            $brands[] = $datas;
-        }
-        require ROOT . '/public/views/vip/product/create.php';
+        $sqlCreateAssociationUserProduct = "INSERT INTO `user_product`(`product_id`, `user_id`) VALUES (?,?)";
+        $user_id = intval($app->user()->getAttribute('id'));
+        $stmt = $this->pdo()->prepare($sqlCreateAssociationUserProduct);
+        $stmt->bindParam(1, $product_id);
+        $stmt->bindParam(2, $user_id);
+        $stmt->execute();
+        redirect($app->router()->getRoute('vip_product_list'));
 	}
 
 	public function listAction() {
         $url = URL;
         $app = $this->application;
 
-        $q = $this->pdo()->query("SELECT * FROM user where id = " . intval($app->user()->getAttribute('id')));
-        $user = $q->fetch(\PDO::FETCH_ASSOC);
 
-		$q = $this->pdo()->query("SELECT product.*,
-(select name from picture where picture.id = (select picture_id from brand where brand.id = product.brand_id)) as brand_picture, 
-(select name from brand where brand.id = product.brand_id) as brandname, 
-(select name from product_category where product_category.id = product.product_type_id) as productCategory 
- FROM product,user_product where user_product.product_id = product.id and user_product.user_id = " .intval($user['id']));
+                $q = $this->pdo()->query("SELECT product.*,
+         picture.name as brand_picture,
+         brand.name as brand_name,
+         product_category.name as product_category,
+         color.name as main_color
+         FROM product
+         LEFT JOIN color ON (product.main_color_id = color.id)
+         LEFT JOIN user_product ON (product.id = user_product.product_id)
+         LEFT JOIN product_category ON (product.product_type_id = product_category.id)
+         LEFT JOIN brand ON (brand.id = product.brand_id)
+         LEFT JOIN picture ON (picture.id = brand.picture_id)
+         where user_product.user_id = " .intval($app->user()->getAttribute('id')));
         $products = [];
+        $productsId = [];
 		while ($datas = $q->fetch(\PDO::FETCH_ASSOC)) {
 			$products[] = $datas;
+            $productsId[] = $datas['id'];
 		}
-		
-		$url = URL;
-		$app = $this->application;
-		
+
+        $q = $this->pdo()->query("SELECT picture.*,product_picture.product_id FROM picture  
+LEFT JOIN product_picture ON (product_picture.picture_id = picture.id) where product_picture.product_id in(".implode(',',$productsId).") ");
+        $productsPicture = [];
+        while ($datas = $q->fetch(\PDO::FETCH_ASSOC)) {
+            $productsPicture[$datas['product_id']][] = $datas;
+        }
+        $q = $this->pdo()->query("SELECT * FROM product_link where product_id in(".implode(',',$productsId).") ");
+        $productsLink = [];
+        $productsLinkId = [];
+        while ($datas = $q->fetch(\PDO::FETCH_ASSOC)) {
+            $productsLink[$datas['product_id']][] = $datas;
+            $productsLinkId[] = $datas['id'];
+        }
+        $nbProductLinkClick = [];
+        $q = $this->pdo()->query("SELECT count(*) as nb_product_link_click,product_link.product_id FROM product_link_click LEFT JOIN product_link ON (product_link_click.product_link_id = product_link.id) where product_link_id in (" .implode(',',$productsLinkId).") group by product_link_id");
+        while ($datas = $q->fetch(\PDO::FETCH_ASSOC)) {
+            $nbProductLinkClick[$datas['product_id']] = $datas;
+        }
+        $nbProductLike = [];
+        $q = $this->pdo()->query("SELECT count(*) as nb_product_like,product_id FROM liked where product_id in (" .implode(',',$productsId).") and user_id <> ".intval($app->user()->getAttribute('id'))." group by product_id");
+        while ($datas = $q->fetch(\PDO::FETCH_ASSOC)) {
+            $nbProductLike[$datas['product_id']] = $datas;
+        }
 		require ROOT . '/public/views/vip/product/index.php';
 	}
 
@@ -133,17 +161,23 @@ class ProductController extends BaseController {
         $q = $this->pdo()->query("SELECT * FROM user where id = " . intval($app->user()->getAttribute('id')));
         $user = $q->fetch(\PDO::FETCH_ASSOC);
 
-		$q = $this->pdo()->query("SELECT product.*, 
-(select name from picture where picture.id = (select picture_id from brand where brand.id = product.brand_id)) as brand_picture, 
-(select name from brand where brand.id = product.brand_id) as brandname, 
-(select name from product_category where product_category.id = product.product_type_id) as productCategory 
-FROM product,user_product where id = " . intval($GLOBALS['matches'][0])) ." and user_product.product_id = product.id and user_product.user_id = " .intval($user['id']);
+		$q = $this->pdo()->query("SELECT product.*,
+         picture.name as brand_picture,
+         brand.name as brandname,
+         product_category.name as productCategory
+         FROM product
+         LEFT JOIN user_product ON (product.id = user_product.product_id)
+         LEFT JOIN product_category ON (product.product_type_id = product_category.id)
+         LEFT JOIN brand ON (brand.id = product.brand_id)
+         LEFT JOIN picture ON (picture.id = brand.picture_id)
+         where user_product.user_id =   " . intval($GLOBALS['matches'][0])) ." and user_product.user_id = " .intval($user['id']);
 		$product = $q->fetch(\PDO::FETCH_ASSOC);
 
         $q = $this->pdo()->query("SELECT *, (select count(*) as nbLink from product_link_click where product_link_id = product_link.id) as nbProductLink FROM product_link where product_id = ".$product['id']);
         while ($datas = $q->fetch(\PDO::FETCH_ASSOC)) {
             $productLink[] = $datas;
         }
+
         require ROOT . '/public/views/vip/product/view.php';
 	}
 
@@ -152,7 +186,7 @@ FROM product,user_product where id = " . intval($GLOBALS['matches'][0])) ." and 
         $url = URL;
         $app = $this->application;
 
-        $q = $this->pdo()->query("SELECT *, pictures.name as user_picture FROM user LEFT JOIN picture ON (picture.id = user.picture_id) where id = " . intval($app->user()->getAttribute('id')));
+        $q = $this->pdo()->query("SELECT *, picture.name as user_picture FROM user LEFT JOIN picture ON (picture.id = user.picture_id) where id = " . intval($app->user()->getAttribute('id')));
         $user = $q->fetch(\PDO::FETCH_ASSOC);
 
         $last_name = $user['last_name'];
@@ -200,7 +234,7 @@ FROM product,user_product where id = " . intval($GLOBALS['matches'][0])) ." and 
         $picture_id = $user['picture_id'];
         if (!empty($filename)) {
             $name = $_REQUEST['formContactLastName'];
-            $stmt = $this->pdo()->prepare("INSERT INTO `pictures`(`name`) VALUES (?)");
+            $stmt = $this->pdo()->prepare("INSERT INTO `picture`(`name`) VALUES (?)");
             $stmt->bindParam(1, $filename);
             $stmt->execute();
 
