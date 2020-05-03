@@ -37,7 +37,6 @@ class CharityController extends BaseController {
 	}
 
 	public function editAction() {
-
         $url = URL;
         $app = $this->application;
         $q = $this->pdo()->query("SELECT * FROM user where id = " . $app->user()->getAttribute('id'));
@@ -53,21 +52,21 @@ class CharityController extends BaseController {
 	}
 
 	public function listAction() {
+        $url = URL;
+        $app = $this->application;
 		$q = $this->pdo()->query("SELECT *, picture.name as charity_picture FROM charity_association LEFT JOIN picture ON (picture.id = charity_association.picture_id)");
 		while ($datas = $q->fetch(\PDO::FETCH_ASSOC)) {
 			$charities[] = $datas;
 		}
-		
-		$url = URL;
-		$app = $this->application;
-
 		require ROOT . '/public/views/vip/charity/index.php';
 	}
 
 	public function viewAction() {
-		$q = $this->pdo()->query("SELECT *,picture.name as charity_picture FROM charity_association LEFT JOIN picture ON (picture.id = charity_association.picture_id where id = " . intval($GLOBALS['matches'][0]));
+        $url = URL;
+        $app = $this->application;
+		$q = $this->pdo()->query("SELECT *,picture.name as charity_picture FROM charity_association LEFT JOIN picture ON (picture.id = charity_association.picture_id) where id = " . intval($GLOBALS['matches'][0]));
 		$charity = $q->fetch(\PDO::FETCH_ASSOC);
-		return view('charity/view', compact('charity'));
+        require ROOT . '/public/views/vip/charity/view.php';
 	}
 
 }

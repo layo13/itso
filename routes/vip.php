@@ -73,28 +73,28 @@ return [
     ],
     ////////////////////////////////--- ASSOCIATION ---/////////////////////////////////////////////
 	"charity_list" => [
-        "uri" => "/association/list",
+        "uri" => "/charity/list",
         "method" => "GET",
         "action" => [
             \Http\Itso\Vip\Modules\Charity\CharityController::class, 'list'
         ]
     ],
 	"charity_choice" => [
-        "uri" => "/association/choix",
+        "uri" => "/charity/choix",
         "method" => "GET",
         "action" => [
             \Http\Itso\Vip\Modules\Charity\CharityController::class, 'update'
         ]
     ],
 	"charity_edit" => [
-        "uri" => "/association/edit",
+        "uri" => "/charity/edit",
         "method" => "POST",
         "action" => [
             \Http\Itso\Vip\Modules\Charity\CharityController::class, 'edit'
         ]
     ],
     "charity_view" => [
-        "uri" => "/association/view/{id}",
+        "uri" => "/charity/view/{id}",
         "method" => "GET",
         "parameters" => [
             "id" => "[0-9]+",

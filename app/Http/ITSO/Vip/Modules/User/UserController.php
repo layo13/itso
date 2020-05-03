@@ -35,7 +35,6 @@ class UserController extends BaseController {
         require ROOT . '/public/views/vip/user/view.php';
 	}
 
-
 	public function updateAction() {
         $url = URL;
         $app = $this->application;

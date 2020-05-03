@@ -8,8 +8,6 @@ class ConnexionController extends \Epic\BaseController {
 
 	public function loginAction() {
 
-
-
 		if ($this->application->request()->requestMethod() == Request::POST) {
 
 			$pdo = \PdoProvider::getInstance();

@@ -8,62 +8,67 @@ use Epic\BaseController;
 
 class BrandController extends BaseController {
 
-	public function createAction() {
-		return view('users/create');
-	}
+    public function createAction() {
+        $url = URL;
+        $app = $this->application;
+        require ROOT . '/public/views/vip/brand/create.php';
+    }
 
-	public function addAction() {
+    public function addAction() {
+        $url = URL;
+        $app = $this->application;
 
-		$uploader = new FileUploader();
-		$file = new File('formContactFile');
-		//-- voir pour formater les noms d'images fonction php faire des id uniqid()
-		$filename = $file->getName();
+        $uploader = new FileUploader();
+        $file = new File('formBrandFile');
+        //-- voir pour formater les noms d'images fonction php faire des id uniqid()
+        $filename = $file->getName();
         $uploader->upload($file, ROOT . "/public/assets/images/brand/" . $filename . "." . $file->getExtension());
 
-        $sqlCreateAssociation = "INSERT INTO `brand`(`name`) VALUES (?)";
+        $sqlCreateBrand = "INSERT INTO `brand`(`name`,`active`) VALUES (?,?)";
         if (!empty($filename)) {
-            $name = $_REQUEST['formCharityName'];
-            $stmt = $this->pdo->prepare("INSERT INTO `pictures`(`name`) VALUES (?)");
+            $name = $_REQUEST['formBrandName'];
+            $stmt = $this->pdo()->prepare("INSERT INTO `pictures`(`name`) VALUES (?)");
             $stmt->bindParam(1, $name);
             $stmt->execute();
 
-            $result = $this->pdo->lastInsertId();
+            $result = $this->pdo()->lastInsertId();
             $picture_id = intval($result);
-            $sqlCreateAssociation = "INSERT INTO `brand`(`name`, `picture_id`) VALUES (?,?)";
+            $sqlCreateBrand = "INSERT INTO `brand`(`name`,`active`,`picture_id`) VALUES (?,?,?)";
         }
         //-- voir pour créer une classe Associations
-        $name = $_REQUEST['formCharityName'];
+        $name = $_REQUEST['formBrandName'];
+        $active = $_REQUEST['formBrandActive'];
 
 //-- penser à vérifier si l'email existe déjà
-        $stmt = $this->pdo->prepare($sqlCreateAssociation);
+        $stmt = $this->pdo()->prepare($sqlCreateBrand);
         $stmt->bindParam(1, $name);
+        $stmt->bindParam(2, $active);
         if (!empty($picture_id)) {
-            $stmt->bindParam(10, $picture_id);
+            $stmt->bindParam(3, $picture_id);
         }
         $stmt->execute();
 
+        redirect($app->router()->getRoute('admin_brand_list'));
+    }
 
-        return view('brand/create');
-	}
+    public function listAction() {
+        $url = URL;
+        $app = $this->application;
 
-	public function listAction() {
+        $q = $this->pdo()->query("SELECT *, picture.name as brand_picture FROM brand LEFT JOIN picture ON (picture.id = brand.picture_id)");
+        while ($datas = $q->fetch(\PDO::FETCH_ASSOC)) {
+            $brands[] = $datas;
+        }
 
-		$q = $this->pdo()->query("SELECT *,(select picture.name from picture where picture.id = brand.picture_id) as brand_picture FROM brand");
-		while ($datas = $q->fetch(\PDO::FETCH_ASSOC)) {
-			$brands[] = $datas;
-		}
-		//return view('users/list', compact('users'));
-		
-		$url = URL;
-		$app = $this->application;
-		
-		require ROOT . '/public/views/admin/brand/index.php';
-	}
+        require ROOT . '/public/views/vip/brand/index.php';
+    }
 
-	public function viewAction() {
-		$q = $this->pdo->query("SELECT *,(select pictures.name from pictures where pictures.id = brand.picture_id) as brand_picture FROM brand where id = " . intval($GLOBALS['matches'][0]));
-		$brand = $q->fetch(\PDO::FETCH_ASSOC);
-		return view('brand/view', compact('brand'));
-	}
+    public function viewAction() {
+        $url = URL;
+        $app = $this->application;
+        $q = $this->pdo()->query("SELECT *, picture.name as brand_picture FROM brand LEFT JOIN picture ON (picture.id = brand.picture_id) where id = " . intval($GLOBALS['matches'][0]));
+        $brand = $q->fetch(\PDO::FETCH_ASSOC);
+        require ROOT . '/public/views/vip/brand/view.php';
+    }
 
 }

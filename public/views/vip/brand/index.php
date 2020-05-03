@@ -60,7 +60,7 @@ ob_start();
         </div>
 
 	<!-- end:: Content -->
-</div>
+    </div>
 </div>
 
 

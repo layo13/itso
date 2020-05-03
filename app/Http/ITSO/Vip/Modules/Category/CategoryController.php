@@ -6,13 +6,6 @@ use Epic\BaseController;
 
 class CategoryController extends BaseController {
 
-	public function homeAction() {
-
-		$message = "Salut";
-		
-		return view('category/home', compact('message'));
-	}
-
 	public function selectAction() {
 
         $q = $this->pdo()->query("SELECT * FROM product_category where parent_id = ". $_REQUEST['parent_id']);

@@ -85,7 +85,7 @@ ob_start();
 			<div class="kt-subheader__toolbar">
 				<a href="#" class="">
 				</a>
-				<a href="<?= $app->router()->getRoute('admin_association_add') ?>" class="btn btn-label-brand btn-bold">
+				<a href="<?= $app->router()->getRoute('admin_charity_add') ?>" class="btn btn-label-brand btn-bold">
 					Ajouter une association
                 </a>
 			</div>
