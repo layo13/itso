@@ -15,6 +15,12 @@ class ColorController extends BaseController {
 	public function updateAction() {
         $url = URL;
         $app = $this->application;
+        if(empty($GLOBALS['matches'])){
+            $GLOBALS['matches'][0]=2;
+        }
+
+        $q = $this->pdo()->query("SELECT * FROM color where id = " . intval($GLOBALS['matches'][0]));
+        $color = $q->fetch(\PDO::FETCH_ASSOC);
         require ROOT . '/public/views/admin/color/update.php';
 	}
 
@@ -40,7 +46,7 @@ class ColorController extends BaseController {
         $name = $_REQUEST['formColorName'];
         $hex = $_REQUEST['formColorHex'];
 
-		$stmt = $this->pdo->prepare($sqlCreateAssociation);
+		$stmt = $this->pdo()->prepare($sqlCreateAssociation);
 		$stmt->bindParam(1, $name);
         $stmt->bindParam(2, $hex);
 		$stmt->execute();
@@ -53,7 +59,7 @@ class ColorController extends BaseController {
         $app = $this->application;
 		$q = $this->pdo()->query("SELECT * FROM color");
 		while ($datas = $q->fetch(\PDO::FETCH_ASSOC)) {
-			$charities[] = $datas;
+			$colors[] = $datas;
 		}
 
 		require ROOT . '/public/views/admin/color/index.php';

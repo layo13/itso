@@ -27,7 +27,7 @@ ob_start();
                 </h3>
             </div>
             <div class="kt-subheader__toolbar">
-                <a href="<?= $app->router()->getRoute('vip_product_list') ?>" class="btn btn-default btn-bold">
+                <a href="<?= $app->router()->getRoute('admin_product_list') ?>" class="btn btn-default btn-bold">
                     Retour au listing
                 </a>
             </div>
@@ -35,7 +35,7 @@ ob_start();
     </div>
     <div class="kt-portlet kt-portlet--tabs">
         <div class="kt-portlet__body">
-            <form class="kt-form kt-form--label-right" action="<?= $app->router()->getRoute('vip_product_add') ?>" method="post" enctype="multipart/form-data">
+            <form class="kt-form kt-form--label-right" action="<?= $app->router()->getRoute('admin_product_add') ?>" method="post" enctype="multipart/form-data">
                 <div class="kt-portlet__body">
                     <div class="form-group row">
                         <label for="formProductName" class="col-2 col-form-label">Titre / où le produit a été porté</label>
@@ -164,7 +164,7 @@ ob_start();
     </div>
 </div>
 <script>
-    var urlChangeCategoryProduct = '<?= $app->router()->getRoute('vip_category_select') ?>';
+    var urlChangeCategoryProduct = '<?= $app->router()->getRoute('admin_category_select') ?>';
 </script>
 <?php
 $blockContent = ob_get_clean();

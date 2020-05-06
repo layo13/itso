@@ -19,7 +19,7 @@ ob_start();
 			<div class="kt-subheader__toolbar">
 				<a href="#" class="">
 				</a>
-				<a href="<?= $app->router()->getRoute('admin_color_add') ?>" class="btn btn-label-brand btn-bold">
+				<a href="<?= $app->router()->getRoute('admin_color_create') ?>" class="btn btn-label-brand btn-bold">
 					Ajouter une couleur
                 </a>
 			</div>
@@ -45,10 +45,9 @@ ob_start();
 							<div class="kt-widget__head">
 								<a href="#" class="kt-widget__username">
 									<?= $color['name'] ?>
-									<i class="flaticon2-correct kt-font-success"></i>
 								</a>
 								<div class="kt-widget__action">
-									<a href="<?= $app->router()->getRoute('admin_color_update',$color['id']) ?>" class="btn btn-brand btn-sm">détail</a>
+									<a href="<?= $app->router()->getRoute('admin_color_update',['id' => $color['id']]) ?>" class="btn btn-brand btn-sm">Modifier</a>
 								</div>
 							</div>
 						</div>

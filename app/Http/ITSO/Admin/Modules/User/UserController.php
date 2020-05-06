@@ -26,11 +26,11 @@ class UserController extends BaseController {
 		if (!empty($filename)) {
             $uploader->upload($file, ROOT . "/public/assets/images/users/" . $filename . "." . $file->getExtension());
 			$name = $_REQUEST['formContactLastName'];
-			$stmt = $this->pdo->prepare("INSERT INTO `pictures`(`name`) VALUES (?)");
+			$stmt = $this->pdo()->prepare("INSERT INTO `pictures`(`name`) VALUES (?)");
 			$stmt->bindParam(1, $filename);
 			$stmt->execute();
 
-			$result = $this->pdo->lastInsertId();
+			$result = $this->pdo()->lastInsertId();
 			$picture_id = intval($result);
 			$sqlCreateUser = "INSERT INTO `user`(`last_name`, `firstname`, `day_of_birth`, `email`, `password`, `gender`, `language`, `nationality`, `state`, `picture_id`) VALUES (?,?,?,?,?,?,?,?,?,?)";
 		}
@@ -47,7 +47,7 @@ class UserController extends BaseController {
 		$state = $_REQUEST['formContactStatus'];
 
 //-- penser à vérifier si l'email existe déjà
-		$stmt = $this->pdo->prepare($sqlCreateUser);
+		$stmt = $this->pdo()->prepare($sqlCreateUser);
 		$stmt->bindParam(1, $name);
 		$stmt->bindParam(2, $firstname);
 		$stmt->bindParam(3, $day_of_birth);
@@ -62,7 +62,9 @@ class UserController extends BaseController {
 		}
 		$stmt->execute();
 
-        redirect($app->router()->getRoute('admin_user_view'));
+        $result = $this->pdo()->lastInsertId();
+        $user_id = intval($result);
+        redirect($app->router()->getRoute('admin_user_view',['id' => $user_id]));
 	}
     public function updateAction() {
         $url = URL;
@@ -132,22 +134,40 @@ class UserController extends BaseController {
         $sqlUpdateUser ="UPDATE `user` SET last_name = ?, first_name = ?, day_of_birth = ?, email = ?, password = ?, gender = ?, picture_id = ?, language = ?, nationality = ?, created_at = ?, updated_at = ?, state = ?, active = ?, user_type_id = ?, charity_id = ? WHERE id=?";
         $stmt = $this->pdo()->prepare($sqlUpdateUser)->execute([$last_name,$first_name,$day_of_birth,$email,$password,$gender,$picture_id,$language,$nationality,$created_at,$updated_at,$state,$active,$user_type_id,$charity_id ,$id]);
 
-        redirect($app->router()->getRoute('admin_user_view',intval($GLOBALS['matches'][0])));
+        redirect($app->router()->getRoute('admin_user_view',['id' => intval($GLOBALS['matches'][0])]));
     }
 	public function listAction() {
         $url = URL;
         $app = $this->application;
-		$q = $this->pdo()->query("SELECT *,(select picture.name from picture where picture.id = user.picture_id) as user_picture FROM user");
+		$q = $this->pdo()->query("SELECT user.*,
+        picture.name as user_picture,
+        charity_association.name as charity_name,
+        celebrity_category.name as celebrity_category_name,
+        user_type.name as user_type_name 
+        FROM user 
+        LEFT JOIN picture ON user.picture_id = picture.id
+        LEFT JOIN user_type ON user.user_type_id = user_type.id
+        LEFT JOIN user_celebrity_category ON user.id = user_celebrity_category.user_id
+        LEFT JOIN celebrity_category ON user_celebrity_category.celebrity_category_id = celebrity_category.id
+        LEFT JOIN charity_association ON user.charity_id = charity_association.id ");
 		while ($datas = $q->fetch(\PDO::FETCH_ASSOC)) {
 			$users[] = $datas;
+            $userId[] = $datas['id'];
 		}
+
 		require ROOT . '/public/views/admin/user/index.php';
 	}
 
 	public function viewAction() {
         $url = URL;
         $app = $this->application;
-		$q = $this->pdo->query("SELECT *,(select pictures.name from pictures where pictures.id = users.picture_id) as user_picture FROM user where id = " . intval($GLOBALS['matches'][0]));
+		$q = $this->pdo()->query("SELECT user.*,
+        picture.name as user_picture,
+        charity.name as charity_name 
+        FROM user 
+        LEFT JOIN picture ON user.picture_id = picture.id
+        LEFT JOIN charity ON user.charity_id = charity.id 
+        where id = " . intval($GLOBALS['matches'][0]));
 		$user = $q->fetch(\PDO::FETCH_ASSOC);
         require ROOT . '/public/views/admin/user/view.php';
 	}

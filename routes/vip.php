@@ -62,7 +62,7 @@ return [
         ]
     ],
     "brand_view" => [
-        "uri" => "/brand/view/{id}",
+        "uri" => "/brand/view,{id}",
         "method" => "GET",
         "parameters" => [
             "id" => "[0-9]+",
@@ -94,7 +94,7 @@ return [
         ]
     ],
     "charity_view" => [
-        "uri" => "/charity/view/{id}",
+        "uri" => "/charity/view,{id}",
         "method" => "GET",
         "parameters" => [
             "id" => "[0-9]+",
@@ -112,7 +112,7 @@ return [
         ]
     ],
     "product_view" => [
-        "uri" => "/product/view/{id}",
+        "uri" => "/product/view,{id}",
         "method" => "GET",
         "parameters" => [
             "id" => "[0-9]+",
@@ -122,15 +122,21 @@ return [
         ]
     ],
     "product_update" => [
-        "uri" => "/product/update",
+        "uri" => "/product/update,{id}",
         "method" => "GET",
+        "parameters" => [
+            "id" => "[0-9]+",
+        ],
         "action" => [
             Http\Itso\Vip\Modules\Product\ProductController::class, 'update'
         ]
     ],
     "product_edit" => [
-        "uri" => "/product/edit",
-        "method" => "POST",
+        "uri" => "/product/edit,{id}",
+        "method" => "GET",
+        "parameters" => [
+            "id" => "[0-9]+",
+        ],
         "action" => [
             \Http\Itso\Vip\Modules\Product\ProductController::class, 'edit'
         ]
@@ -147,6 +153,13 @@ return [
         "method" => "POST",
         "action" => [
             \Http\Itso\Vip\Modules\Product\ProductController::class, 'add'
+        ]
+    ],
+    "product_publish" => [
+        "uri" => "/product/publish",
+        "method" => "POST",
+        "action" => [
+            \Http\Itso\Vip\Modules\Product\ProductController::class, 'publish'
         ]
     ],
     "category_select" => [

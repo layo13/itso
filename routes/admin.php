@@ -11,28 +11,28 @@ return [
 	],
     ////////////////////////////////--- COLOR ---/////////////////////////////////////////////
 	"color_create" => [
-		"uri" => "/admin/color/create",
+		"uri" => "/color/create",
 		"method" => "GET",
 		"action" => [
 			Http\Itso\Admin\Modules\Color\ColorController::class, 'create'
 		]
 	],
 	"color_add" => [
-		"uri" => "/admin/color/add",
+		"uri" => "/color/add",
 		"method" => "POST",
 		"action" => [
 			\Http\Itso\Admin\Modules\Color\ColorController::class, 'add'
 		]
 	],
 	"color_list" => [
-		"uri" => "/admin/color/list",
+		"uri" => "/color/list",
 		"method" => "GET",
 		"action" => [
 			\Http\Itso\Admin\Modules\Color\ColorController::class, 'list'
 		]
 	],
 	"color_view" => [
-		"uri" => "/admin/color/view/{id}",
+		"uri" => "/color/view,{id}",
 		"method" => "GET",
 		"parameters" => [
 			"id" => "[0-9]+",
@@ -41,30 +41,50 @@ return [
             \Http\Itso\Admin\Modules\Color\ColorController::class, 'view'
 		]
 	],
+    "color_edit" => [
+        "uri" => "/color/edit,{id}",
+        "method" => "POST",
+        "parameters" => [
+            "id" => "[0-9]+",
+        ],
+        "action" => [
+            \Http\Itso\Admin\Modules\Color\ColorController::class, 'edit'
+        ]
+    ],
+    "color_update" => [
+        "uri" => "/color/update,{id}",
+        "method" => "GET",
+        "parameters" => [
+            "id" => "[0-9]+",
+        ],
+        "action" => [
+            \Http\Itso\Admin\Modules\Color\ColorController::class, 'update'
+        ]
+    ],
     ////////////////////////////////--- USER ---/////////////////////////////////////////////
 	"user_create" => [
-		"uri" => "/admin/user/create",
+		"uri" => "/user/create",
 		"method" => "GET",
 		"action" => [
 			Http\Itso\Admin\Modules\User\UserController::class, 'create'
 		]
 	],
 	"user_add" => [
-		"uri" => "/admin/user/add",
+		"uri" => "/user/add",
 		"method" => "POST",
 		"action" => [
 			\Http\Itso\Admin\Modules\User\UserController::class, 'add'
 		]
 	],
 	"user_list" => [
-		"uri" => "/admin/user/list",
+		"uri" => "/user/list",
 		"method" => "GET",
 		"action" => [
 			\Http\Itso\Admin\Modules\User\UserController::class, 'list'
 		]
 	],
 	"user_view" => [
-		"uri" => "/admin/user/view/{id}",
+		"uri" => "/user/view,{id}",
 		"method" => "GET",
 		"parameters" => [
 			"id" => "[0-9]+",
@@ -73,6 +93,26 @@ return [
             \Http\Itso\Admin\Modules\User\UserController::class, 'view'
 		]
 	],
+    "user_update" => [
+        "uri" => "/user/update,{id}",
+        "method" => "GET",
+        "parameters" => [
+            "id" => "[0-9]+",
+        ],
+        "action" => [
+            Http\Itso\Admin\Modules\User\UserController::class, 'update'
+        ]
+    ],
+    "user_edit" => [
+        "uri" => "/user/edit,{id}",
+        "method" => "POST",
+        "parameters" => [
+            "id" => "[0-9]+",
+        ],
+        "action" => [
+            \Http\Itso\Admin\Modules\User\UserController::class, 'edit'
+        ]
+    ],
     "customer_list" => [
         "uri" => "/customer/list",
         "method" => "GET",
@@ -104,27 +144,47 @@ return [
         ]
     ],
     "brand_create" => [
-        "uri" => "/admin/brand/create",
+        "uri" => "/brand/create",
         "method" => "GET",
         "action" => [
             Http\Itso\Admin\Modules\Brand\BrandController::class, 'create'
         ]
     ],
     "brand_add" => [
-        "uri" => "/admin/brand/add",
+        "uri" => "/brand/add",
         "method" => "POST",
         "action" => [
             \Http\Itso\Admin\Modules\Brand\BrandController::class, 'add'
         ]
     ],
     "brand_view" => [
-        "uri" => "/brand/view/{id}",
+        "uri" => "/brand/view,{id}",
         "method" => "GET",
         "parameters" => [
             "id" => "[0-9]+",
         ],
         "action" => [
             \Http\Itso\Admin\Modules\Brand\BrandController::class, 'view'
+        ]
+    ],
+    "brand_edit" => [
+        "uri" => "/brand/edit,{id}",
+        "method" => "POST",
+        "parameters" => [
+            "id" => "[0-9]+",
+        ],
+        "action" => [
+            \Http\Itso\Admin\Modules\Brand\BrandController::class, 'edit'
+        ]
+    ],
+    "brand_update" => [
+        "uri" => "/brand/update,{id}",
+        "method" => "GET",
+        "parameters" => [
+            "id" => "[0-9]+",
+        ],
+        "action" => [
+            \Http\Itso\Admin\Modules\Brand\BrandController::class, 'update'
         ]
     ],
     ////////////////////////////////--- ASSOCIATION ---/////////////////////////////////////////////
@@ -136,21 +196,27 @@ return [
         ]
     ],
     "charity_edit" => [
-        "uri" => "/charity/edit",
+        "uri" => "/charity/edit,{id}",
         "method" => "POST",
+        "parameters" => [
+            "id" => "[0-9]+",
+        ],
         "action" => [
             \Http\Itso\Admin\Modules\Charity\CharityController::class, 'edit'
         ]
     ],
     "charity_update" => [
-        "uri" => "/charity/update",
-        "method" => "POST",
+        "uri" => "/charity/update,{id}",
+        "method" => "GET",
+        "parameters" => [
+            "id" => "[0-9]+",
+        ],
         "action" => [
             \Http\Itso\Admin\Modules\Charity\CharityController::class, 'update'
         ]
     ],
     "charity_view" => [
-        "uri" => "/charity/view/{id}",
+        "uri" => "/charity/view,{id}",
         "method" => "GET",
         "parameters" => [
             "id" => "[0-9]+",
@@ -171,45 +237,65 @@ return [
         "uri" => "/product/list",
         "method" => "GET",
         "action" => [
-            \Http\Itso\Vip\Modules\Product\ProductController::class, 'list'
+            \Http\Itso\Admin\Modules\Product\ProductController::class, 'list'
         ]
     ],
     "product_view" => [
-        "uri" => "/product/view/{id}",
+        "uri" => "/product/view,{id}",
         "method" => "GET",
         "parameters" => [
             "id" => "[0-9]+",
         ],
         "action" => [
-            \Http\Itso\Vip\Modules\Product\ProductController::class, 'view'
+            \Http\Itso\Admin\Modules\Product\ProductController::class, 'view'
         ]
     ],
     "product_update" => [
-        "uri" => "/product/update",
+        "uri" => "/product/update,{id}",
         "method" => "GET",
+        "parameters" => [
+            "id" => "[0-9]+",
+        ],
         "action" => [
-            Http\Itso\Vip\Modules\Product\ProductController::class, 'update'
+            Http\Itso\Admin\Modules\Product\ProductController::class, 'update'
         ]
     ],
     "product_edit" => [
-        "uri" => "/product/edit",
+        "uri" => "/product/edit,{id}",
         "method" => "POST",
+        "parameters" => [
+            "id" => "[0-9]+",
+        ],
         "action" => [
-            \Http\Itso\Vip\Modules\Product\ProductController::class, 'edit'
+            \Http\Itso\Admin\Modules\Product\ProductController::class, 'edit'
         ]
     ],
     "product_create" => [
         "uri" => "/product/create",
         "method" => "GET",
         "action" => [
-            Http\Itso\Vip\Modules\Product\ProductController::class, 'create'
+            Http\Itso\Admin\Modules\Product\ProductController::class, 'create'
         ]
     ],
      "product_add" => [
         "uri" => "/product/add",
         "method" => "POST",
         "action" => [
-            \Http\Itso\Vip\Modules\Product\ProductController::class, 'add'
+            \Http\Itso\Admin\Modules\Product\ProductController::class, 'add'
         ]
     ],
+    "product_publish" => [
+        "uri" => "/product/publish",
+        "method" => "POST",
+        "action" => [
+            \Http\Itso\Admin\Modules\Product\ProductController::class, 'publish'
+        ]
+    ],
+    "category_select" => [
+        "uri" => "/category/select",
+        "method" => "POST",
+        "action" => [
+            \Http\Itso\Admin\Modules\Product\ProductController::class, 'select'
+        ]
+    ]
 ];

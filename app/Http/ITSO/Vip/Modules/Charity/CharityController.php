@@ -13,7 +13,7 @@ class CharityController extends BaseController {
         $q = $this->pdo()->query("SELECT * FROM user where id = " . $app->user()->getAttribute('id'));
         $user = $q->fetch(\PDO::FETCH_ASSOC);
 
-        $q = $this->pdo()->query("SELECT *, picture.name  as charity_picture FROM charity_association LEFT JOIN picture ON (picture.id = charity_association.picture_id) order by charity_association.name");
+        $q = $this->pdo()->query("SELECT charity_association.*, picture.name  as charity_picture FROM charity_association LEFT JOIN picture ON (picture.id = charity_association.picture_id) order by charity_association.name");
         $imgCharity = '';
         $nb = 0;
         while ($datas = $q->fetch(\PDO::FETCH_ASSOC)) {
@@ -54,7 +54,7 @@ class CharityController extends BaseController {
 	public function listAction() {
         $url = URL;
         $app = $this->application;
-		$q = $this->pdo()->query("SELECT *, picture.name as charity_picture FROM charity_association LEFT JOIN picture ON (picture.id = charity_association.picture_id)");
+		$q = $this->pdo()->query("SELECT charity_association.*, picture.name as charity_picture FROM charity_association LEFT JOIN picture ON (picture.id = charity_association.picture_id)");
 		while ($datas = $q->fetch(\PDO::FETCH_ASSOC)) {
 			$charities[] = $datas;
 		}
@@ -64,7 +64,7 @@ class CharityController extends BaseController {
 	public function viewAction() {
         $url = URL;
         $app = $this->application;
-		$q = $this->pdo()->query("SELECT *,picture.name as charity_picture FROM charity_association LEFT JOIN picture ON (picture.id = charity_association.picture_id) where id = " . intval($GLOBALS['matches'][0]));
+		$q = $this->pdo()->query("SELECT charity_association.*,picture.name as charity_picture FROM charity_association LEFT JOIN picture ON (picture.id = charity_association.picture_id) where id = " . intval($GLOBALS['matches'][0]));
 		$charity = $q->fetch(\PDO::FETCH_ASSOC);
         require ROOT . '/public/views/vip/charity/view.php';
 	}

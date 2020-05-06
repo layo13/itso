@@ -85,7 +85,7 @@ ob_start();
 			<div class="kt-subheader__toolbar">
 				<a href="#" class="">
 				</a>
-				<a href="<?= $app->router()->getRoute('admin_charity_add') ?>" class="btn btn-label-brand btn-bold">
+				<a href="<?= $app->router()->getRoute('admin_charity_add') ?>" class="btn btn-success btn-bold">
 					Ajouter une association
                 </a>
 			</div>
@@ -108,16 +108,22 @@ ob_start();
 							<img src="<?=$url?>public/assets/images/charity_association/<?=$charity['charity_picture']?>" alt="image">
 						</div>
 						<div class="kt-widget__pic kt-widget__pic--danger kt-font-danger kt-font-boldest kt-font-light kt-hidden">
-							JM
+
 						</div>
 						<div class="kt-widget__content">
 							<div class="kt-widget__head">
 								<a href="#" class="kt-widget__username">
 									<?= $charity['name'] ?>
-									<i class="flaticon2-correct kt-font-success"></i>
+                                    <?php
+                                    $class_active = 'fa fa-times-circle kt-font-brand';
+                                    if($charity['active'] == 1){
+                                        $class_active = 'flaticon2-correct kt-font-success';
+                                    }
+                                    ?>
+                                    <i class="<?= $class_active; ?>"></i>
 								</a>
 								<div class="kt-widget__action">
-									<button type="button" class="btn btn-brand btn-sm btn-upper">détail</button>
+									<button type="button" class="btn btn-facebook btn-sm btn-upperr">détail</button>
 								</div>
 							</div>
 						</div>
@@ -129,78 +135,6 @@ ob_start();
 		<?php } ?>
 		
 		<!--end:: Portlet-->
-
-		<!--Begin::Pagination-->
-		<div class="row">
-			<div class="col-xl-12">
-
-				<!--begin:: Components/Pagination/Default-->
-				<div class="kt-portlet">
-					<div class="kt-portlet__body">
-
-						<!--begin: Pagination-->
-						<div class="kt-pagination kt-pagination--brand">
-							<ul class="kt-pagination__links">
-								<li class="kt-pagination__link--first">
-									<a href="#"><i class="fa fa-angle-double-left kt-font-brand"></i></a>
-								</li>
-								<li class="kt-pagination__link--next">
-									<a href="#"><i class="fa fa-angle-left kt-font-brand"></i></a>
-								</li>
-								<li>
-									<a href="#">...</a>
-								</li>
-								<li>
-									<a href="#">29</a>
-								</li>
-								<li>
-									<a href="#">30</a>
-								</li>
-								<li class="kt-pagination__link--active">
-									<a href="#">31</a>
-								</li>
-								<li>
-									<a href="#">32</a>
-								</li>
-								<li>
-									<a href="#">33</a>
-								</li>
-								<li>
-									<a href="#">34</a>
-								</li>
-								<li>
-									<a href="#">...</a>
-								</li>
-								<li class="kt-pagination__link--prev">
-									<a href="#"><i class="fa fa-angle-right kt-font-brand"></i></a>
-								</li>
-								<li class="kt-pagination__link--last">
-									<a href="#"><i class="fa fa-angle-double-right kt-font-brand"></i></a>
-								</li>
-							</ul>
-							<div class="kt-pagination__toolbar">
-								<select class="form-control kt-font-brand" style="width: 60px">
-									<option value="10">10</option>
-									<option value="20">20</option>
-									<option value="30">30</option>
-									<option value="50">50</option>
-									<option value="100">100</option>
-								</select>
-								<span class="pagination__desc">
-									Displaying 10 of 230 records
-								</span>
-							</div>
-						</div>
-
-						<!--end: Pagination-->
-					</div>
-				</div>
-
-				<!--end:: Components/Pagination/Default-->
-			</div>
-		</div>
-
-		<!--End::Pagination-->
 	</div>
 
 	<!-- end:: Content -->

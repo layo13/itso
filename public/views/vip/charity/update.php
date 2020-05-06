@@ -34,8 +34,6 @@ ob_start();
     <div class="kt-portlet kt-portlet--tabs">
     <div class="kt-portlet__body">
 <form class="kt-form kt-form--label-right" action="<?= $app->router()->getRoute('vip_charity_edit') ?>" method="post" enctype="multipart/form-data">
-
-
         <div class="kt-portlet__body">
             <?php if(!empty($message)){ ?>
                 <div class="form-group form-group-last">

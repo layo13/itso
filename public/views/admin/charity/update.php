@@ -30,7 +30,7 @@ ob_start();
         </div>
             <div class="kt-portlet kt-portlet--tabs">
                 <div class="kt-portlet__body">
-                    <form class="kt-form kt-form--label-right" action="<?= $app->router()->getRoute('admin_charity_edit') ?>" method="post" enctype="multipart/form-data">
+                    <form class="kt-form kt-form--label-right" action="<?= $app->router()->getRoute('admin_charity_edit',['id' => $charity['id']]) ?>" method="post" enctype="multipart/form-data">
                             <div class="kt-portlet__body">
                                 <?php if(!empty($message)){ ?>
                                     <div class="form-group form-group-last">

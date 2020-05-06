@@ -109,25 +109,23 @@ class ProductController extends BaseController {
         $app = $this->application;
 
 
-                $q = $this->pdo()->query("SELECT product.*,
+         $q = $this->pdo()->query("SELECT product.*,
          picture.name as brand_picture,
          brand.name as brand_name,
          product_category.name as product_category,
          color.name as main_color
          FROM product
          LEFT JOIN color ON (product.main_color_id = color.id)
-         LEFT JOIN user_product ON (product.id = user_product.product_id)
          LEFT JOIN product_category ON (product.product_type_id = product_category.id)
          LEFT JOIN brand ON (brand.id = product.brand_id)
          LEFT JOIN picture ON (picture.id = brand.picture_id)
-         where user_product.user_id = " .intval($app->user()->getAttribute('id')));
+         ");
         $products = [];
         $productsId = [];
 		while ($datas = $q->fetch(\PDO::FETCH_ASSOC)) {
 			$products[] = $datas;
             $productsId[] = $datas['id'];
 		}
-
         $q = $this->pdo()->query("SELECT picture.*,product_picture.product_id FROM picture  
 LEFT JOIN product_picture ON (product_picture.picture_id = picture.id) where product_picture.product_id in(".implode(',',$productsId).") ");
         $productsPicture = [];
@@ -157,26 +155,29 @@ LEFT JOIN product_picture ON (product_picture.picture_id = picture.id) where pro
 	public function viewAction() {
         $url = URL;
         $app = $this->application;
-
-        $q = $this->pdo()->query("SELECT * FROM user where id = " . intval($app->user()->getAttribute('id')));
-        $user = $q->fetch(\PDO::FETCH_ASSOC);
-
+        if(empty($GLOBALS['matches'])){
+            $GLOBALS['matches'][0]=3;
+        }
 		$q = $this->pdo()->query("SELECT product.*,
+         user_product.user_id as user_id,
          picture.name as brand_picture,
-         brand.name as brandname,
-         product_category.name as productCategory
+         brand.name as brand_name,
+         product_category.name as product_category,
+         color.name as main_color
          FROM product
          LEFT JOIN user_product ON (product.id = user_product.product_id)
+         LEFT JOIN color ON (product.main_color_id = color.id)
          LEFT JOIN product_category ON (product.product_type_id = product_category.id)
          LEFT JOIN brand ON (brand.id = product.brand_id)
-         LEFT JOIN picture ON (picture.id = brand.picture_id)
-         where user_product.user_id =   " . intval($GLOBALS['matches'][0])) ." and user_product.user_id = " .intval($user['id']);
+         LEFT JOIN picture ON (picture.id = brand.picture_id)where product.id =   " . intval($GLOBALS['matches'][0]));
 		$product = $q->fetch(\PDO::FETCH_ASSOC);
-
-        $q = $this->pdo()->query("SELECT *, (select count(*) as nbLink from product_link_click where product_link_id = product_link.id) as nbProductLink FROM product_link where product_id = ".$product['id']);
+        $q = $this->pdo()->query("SELECT *, (select count(*) as nbLink from product_link_click where product_link_id = product_link.id) as nbProductLink FROM product_link where product_id = ".intval($GLOBALS['matches'][0]));
         while ($datas = $q->fetch(\PDO::FETCH_ASSOC)) {
             $productLink[] = $datas;
         }
+
+        $q = $this->pdo()->query("SELECT * FROM user where id = " . intval($product['user_id']));
+        $user = $q->fetch(\PDO::FETCH_ASSOC);
 
         require ROOT . '/public/views/admin/product/view.php';
 	}
@@ -286,5 +287,22 @@ LEFT JOIN product_picture ON (product_picture.picture_id = picture.id) where pro
             $stmt->bindParam(2, $product_id);
             $stmt->execute();
         }
+    }
+    public function publishAction(){
+        $url = URL;
+        $app = $this->application;
+        if (!empty($_REQUEST['productId']) && (!empty($_REQUEST['active']) || $_REQUEST['active'] == '0')) {
+            $product_id = intval($_REQUEST['productId']);
+            $active = intval($_REQUEST['active']);
+            if($active == 1){
+                $active = 0;
+            }else{
+                $active = 1;
+            }
+            $sqlUpdateProduct = "UPDATE `product` SET active = ? where id = ?";
+            $stmt = $this->pdo()->prepare($sqlUpdateProduct)->execute([$active,$product_id]);
+            return 1;
+        }
+        return 0;
     }
 }

@@ -108,8 +108,7 @@ class ProductController extends BaseController {
         $url = URL;
         $app = $this->application;
 
-
-                $q = $this->pdo()->query("SELECT product.*,
+         $q = $this->pdo()->query("SELECT product.*,
          picture.name as brand_picture,
          brand.name as brand_name,
          product_category.name as product_category,
@@ -281,10 +280,29 @@ LEFT JOIN product_picture ON (product_picture.picture_id = picture.id) where pro
         $app = $this->application;
 
         if (!empty($_REQUEST['formContactUserId']) && !empty($_REQUEST['formContactProductId'])) {
+            $user_id = intval($_REQUEST['formContactUserId']);
+            $product_id = intval($_REQUEST['formContactProductId']);
             $stmt = $this->pdo()->prepare("INSERT INTO `liked`(user_id,product_id,) VALUES (?)");
             $stmt->bindParam(1, $user_id);
             $stmt->bindParam(2, $product_id);
             $stmt->execute();
         }
+    }
+    public function publishAction(){
+        $url = URL;
+        $app = $this->application;
+        if (!empty($_REQUEST['productId']) && (!empty($_REQUEST['active']) || $_REQUEST['active'] == '0')) {
+            $product_id = intval($_REQUEST['productId']);
+            $active = intval($_REQUEST['active']);
+            if($active == 1){
+                $active = 0;
+            }else{
+                $active = 1;
+            }
+            $sqlUpdateProduct = "UPDATE `product` SET active = ? where id = ?";
+            $stmt = $this->pdo()->prepare($sqlUpdateProduct)->execute([$active,$product_id]);
+            return 1;
+        }
+        return 0;
     }
 }

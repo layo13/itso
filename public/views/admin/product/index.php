@@ -8,27 +8,27 @@ ob_start();
 
 <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
 
-	<!-- begin:: Content Head -->
-	<div class="kt-subheader   kt-grid__item" id="kt_subheader">
-		<div class="kt-container  kt-container--fluid ">
-			<div class="kt-subheader__toolbar">
-				<a href="#" class="">
-				</a>
+    <!-- begin:: Content Head -->
+    <div class="kt-subheader   kt-grid__item" id="kt_subheader">
+        <div class="kt-container  kt-container--fluid ">
+            <div class="kt-subheader__toolbar">
+                <a href="#" class="">
+                </a>
                 <!-- vers formulaire de contact -->
-				<a href="<?= $app->router()->getRoute('vip_product_create') ?>" class="btn btn-label-facebook btn-bold">Ajouter un produit</a>
-			</div>
-		</div>
-	</div>
+                <a href="<?= $app->router()->getRoute('admin_product_create') ?>" class="btn btn-label-facebook btn-bold">Ajouter un produit</a>
+            </div>
+        </div>
+    </div>
 
-	<!-- end:: Content Head -->
+    <!-- end:: Content Head -->
 
-	<!-- begin:: Content -->
-	<div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+    <!-- begin:: Content -->
+    <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
 
         <div class="row">
-		<?php
-        $i = 0;
-        foreach($products as $product ){
+            <?php
+            $i = 0;
+            foreach($products as $product ){
                 ?>
                 <div class="col-xl-6">
                     <div class="kt-portlet kt-portlet--height-fluid">
@@ -39,9 +39,15 @@ ob_start();
                                 <div class="kt-widget__head">
                                     <div class="kt-widget__label">
                                         <div class="kt-widget__media">
-															<span class="kt-media kt-media--lg kt-media--circle">
-																<img src="<?=$url?>public/assets/images/product/<?= $productsPicture[$product['id']][0]['name'] ?>" alt="image">
-															</span>
+											<span class="kt-media kt-media--lg kt-media--circle">
+                                                <?php
+                                                $pictureName = $url."public/assets/images/product/noProduct.jpg";
+                                                if(!empty($productsPicture[$product['id']])) {
+                                                    $pictureName = $url."public/assets/images/product/".$productsPicture[$product['id']][0]['name'];
+                                                }
+                                                ?>
+                                                <img src="<?=$pictureName?>" alt="image">
+											</span>
                                         </div>
                                         <div class="kt-widget__info kt-margin-t-5">
                                             <a href="/itso/product/view,<?= $product['id'] ?>" class="kt-widget__title">
@@ -59,20 +65,22 @@ ob_start();
                                         <div class="dropdown-menu dropdown-menu-fit dropdown-menu-right">
                                             <ul class="kt-nav">
                                                 <li class="kt-nav__item">
-                                                    <a href="#" class="kt-nav__link">
-                                                        <i class="kt-nav__link-icon flaticon2-line-chart"></i>
-                                                        <span class="kt-nav__link-text">Détails</span>
-                                                    </a>
-                                                </li>
-                                                <li class="kt-nav__item">
                                                     <!-- modification champs state ou actif à voir -->
-                                                    <a href="#" class="kt-nav__link">
+                                                    <a href="#" data-productId="<?= intval($product['id']) ?>" data-active="<?= intval($product['active']) ?>" class="kt-nav__link changePublishProduct">
                                                         <i class="kt-nav__link-icon flaticon2-send"></i>
-                                                        <span class="kt-nav__link-text">Publier</span>
+                                                        <span class="kt-nav__link-text">
+                                                            <?php
+                                                            if($product['active']==0) {
+                                                                echo "Publier";
+                                                            }else{
+                                                                echo "Dépublier";
+                                                            }
+                                                            ?>
+                                                        </span>
                                                     </a>
                                                 </li>
                                                 <li class="kt-nav__item">
-                                                    <a href="#" class="kt-nav__link">
+                                                    <a href="<?= $app->router()->getRoute('admin_product_update',['id'=>intval($product['id'])]) ?>" class="kt-nav__link">
                                                         <i class="kt-nav__link-icon flaticon2-settings"></i>
                                                         <span class="kt-nav__link-text">Modifier</span>
                                                     </a>
@@ -84,30 +92,50 @@ ob_start();
                                 <div class="kt-widget__body">
                                     <div class="kt-widget__stats">
                                         <div class="kt-widget__item">
-											<span class="kt-widget__date">
-												Publié
-											</span>
                                             <div class="kt-widget__label">
-                                                <span class="btn btn-label-dark btn-sm btn-bold btn-upper">
-                                                    <?= $product['active']?>
-                                                </span>
+											    <span class="kt-widget__date">
+											    	Publication
+											    </span>
+                                                <?php
+                                                if($product['active']==1) {
+                                                    ?>
+                                                    <span class="btn btn-success btn-sm btn-bold btn-upper">Publié</span>
+                                                    <?php
+                                                }else{
+                                                    ?>
+                                                    <span class="btn btn-brand btn-sm btn-bold btn-upper">Non publié</span>
+                                                    <?php
+                                                }
+                                                ?>
                                             </div>
                                         </div>
                                         <div class="kt-widget__item">
-															<span class="kt-widget__date">
-																Etat
-															</span>
+											<span class="kt-widget__date">
+												Etat
+											</span>
                                             <div class="kt-widget__label">
-                                                <span class="btn btn-label-info-o2 btn-sm btn-bold btn-upper"><?= $product['state']?></span>
+                                                <?php
+                                                if($product['state']==1) {
+                                                    ?>
+                                                    <span class="btn btn-success btn-sm btn-bold btn-upper">Actif</span>
+                                                    <?php
+                                                }else{
+                                                    ?>
+                                                    <span class="btn btn-brand btn-sm btn-bold btn-upper">Archivé</span>
+                                                    <?php
+                                                }
+                                                ?>
                                             </div>
                                         </div>
                                     </div>
                                     <span class="kt-widget__text">
                                         <?php
-                                        foreach ($productsLink[$product['id']] as $link) {
-                                            ?>
-                                                <a href="<?= $link['url'] ?>"><?= $link['url'] ?></a>
-                                            <?php
+                                        if(!empty($productsLink[$product['id']])){
+                                            foreach ($productsLink[$product['id']] as $link) {
+                                                ?>
+                                                <a target="_blank" href="<?= $link['url'] ?>" title="<?= $link['url'] ?>" class="btn btn-facebook">Lien</a>
+                                                <?php
+                                            }
                                         }
                                         ?>
 									</span>
@@ -120,23 +148,31 @@ ob_start();
                                             <span class="kt-widget__subtitle">Marque</span>
                                             <span class="kt-widget__value"><?= $product['brand_name']?></span>
                                         </div>
-                                        <div class="kt-widget__details">
-                                            <span class="kt-widget__subtitle">Photos</span>
-                                            <div class="kt-media-group">
-                                                <?php
-                                                foreach ($productsPicture[$product['id']] as $picture) {
-                                                    ?>
-                                                    <a href="#" class="kt-media kt-media--sm kt-media--circle"
-                                                       data-toggle="kt-tooltip" data-skin="brand"
-                                                       data-placement="top" title="" data-original-title="<?= $picture['name'] ?>">
-                                                        <img src="<?= $url ?>public/assets/images/product/<?= $picture['name'] ?>"
-                                                             alt="image">
-                                                    </a>
+
+                                        <?php
+                                        if(!empty($productsPicture[$product['id']])) {
+                                            ?>
+                                            <div class="kt-widget__details">
+                                                <span class="kt-widget__subtitle">Photos</span>
+                                                <div class="kt-media-group">
                                                     <?php
-                                                }
+                                                    foreach ($productsPicture[$product['id']] as $picture) {
+                                                        $pictureName = $url."public/assets/images/product/noProduct.jpg";
+                                                        if(!empty($picture['name'])) {
+                                                            $pictureName = $url."public/assets/images/product/".$picture['name'];
+                                                        }
+                                                        ?>
+                                                        <a href="#" class="kt-media kt-media--sm kt-media--circle"
+                                                           data-toggle="kt-tooltip" data-skin="brand"
+                                                           data-placement="top" title="" data-original-title="<?= $pictureName ?>">
+                                                            <img src="<?= $pictureName ?>" alt="image">
+                                                        </a>
+                                                        <?php
+                                                    }
                                                     ?>
+                                                </div>
                                             </div>
-                                        </div>
+                                        <?php } ?>
                                     </div>
                                 </div>
                                 <div class="kt-widget__footer">
@@ -152,7 +188,8 @@ ob_start();
                                                         echo '0';
                                                     }
                                                     ?>
-                                                    Clicks</a>
+                                                    Clicks
+                                                </a>
                                             </div>
                                             <div class="kt-widget__blog">
                                                 <i class="fab fa-gratipay kt-font-dark"></i>
@@ -164,11 +201,12 @@ ob_start();
                                                         echo '0';
                                                     }
                                                     ?>
-                                                    Like</a>
+                                                    Like
+                                                </a>
                                             </div>
                                         </div>
                                         <div class="kt-widget__section">
-                                            <button type="button" class="btn btn-brand btn-sm btn-upper btn-bold">details</button>
+                                            <a href="<?= $app->router()->getRoute('admin_product_view',['id'=>intval($product['id'])]) ?>" class="btn btn-brand btn-sm btn-upper btn-bold">details</a>
                                         </div>
                                     </div>
                                 </div>
@@ -180,21 +218,21 @@ ob_start();
 
                 </div>
                 <?php
-            $i++;
-		} ?>
+                $i++;
+            } ?>
         </div>
-		
-		<!--end:: Portlet-->
-
-		<!--Begin::Pagination-->
-
-		<!--End::Pagination-->
-
-	<!-- end:: Content -->
-</div>
+        <!-- end:: Content -->
+    </div>
 </div>
 
+<script>
+    var urlChangePublishProduct = '<?= $app->router()->getRoute('admin_product_publish') ?>';
+    var urlReloadList = '<?= $app->router()->getRoute('admin_product_list') ?>';
+</script>
 
 <?php
 $blockContent = ob_get_clean();
 require __DIR__ . '/../base.php';
+?>
+
+<script type="text/javascript" src="<?= $url ?>public/assets/js/product_list.js"></script>

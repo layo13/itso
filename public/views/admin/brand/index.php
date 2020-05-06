@@ -15,8 +15,8 @@ ob_start();
                     </h3>
                 </div>
                 <div class="kt-subheader__toolbar">
-                    <a href="<?= $app->router()->getRoute('admin_brand_create') ?>" class="btn btn-default btn-bold">
-                        Demande d'ajout d'une marque
+                    <a href="<?= $app->router()->getRoute('admin_brand_create') ?>" class="btn btn-success btn-bold">
+                        Ajouter une marque
                     </a>
                 </div>
             </div>
@@ -46,10 +46,20 @@ ob_start();
                                                     <?= $brand['name']?>
                                                 </a>
                                                 <div class="kt-widget__button">
-                                                    <span class="btn btn-label-warning btn-sm">Active</span>
+                                                    <?php
+                                                    if($brand['active'] == 1){
+                                                        ?>
+                                                        <span class="btn btn-label-success btn-md">Actif</span>
+                                                        <?php
+                                                    }else{
+                                                        ?>
+                                                        <span class="btn btn-danger btn-md">Inactif</span>
+                                                        <?php
+                                                    }
+                                                    ?>
                                                 </div>
                                                 <div class="kt-widget__action">
-                                                    <a href="/itso/brand/view,<?= $brand['id'] ?>" class="btn btn-label-brand btn-lg btn-upper">Plus de détail</a>
+                                                    <a href="<?= $app->router()->getRoute('admin_brand_update', ['id'=>$brand['id']]) ?>" class="btn btn-dark btn-sm btn-upper">Modifier</a>
                                                 </div>
                                             </div>
                                         </div>
