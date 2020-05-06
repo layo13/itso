@@ -156,6 +156,29 @@ class UserController extends BaseController {
             $userId[] = $datas['id'];
 		}
 
+        $nbProduct = [];
+        $nbSubscriber = [];
+        $nbTotalLike = [];
+        $q = $this->pdo()->query("SELECT count(product_id) as nb_product, user_id FROM `user_product` where user_id in (".implode(',',$userId).") group by user_id");
+        while ($datas = $q->fetch(\PDO::FETCH_ASSOC)) {
+            $nbProduct[$datas['user_id']] = $datas;
+        }
+        $q = $this->pdo()->query("SELECT count(member_id) as nb_subscriber, celebrity_id FROM `subscription` where celebrity_id in (".implode(',',$userId).") group by celebrity_id");
+        while ($datas = $q->fetch(\PDO::FETCH_ASSOC)) {
+            $nbSubscriber[$datas['user_id']] = $datas;
+        }
+        $q = $this->pdo()->query("SELECT count(liked.user_id) as nb_product_like,
+        liked.product_id,
+        user_product.user_id as celebrity_id 
+        FROM `liked`
+        LEFT JOIN user_product ON liked.product_id = user_product.product_id
+        where user_product.user_id in (".implode(',',$userId).")
+        group by user_product.user_id");
+
+        while ($datas = $q->fetch(\PDO::FETCH_ASSOC)) {
+            $nbTotalLike[$datas['celebrity_id']] = $datas;
+        }
+
 		require ROOT . '/public/views/admin/user/index.php';
 	}
 

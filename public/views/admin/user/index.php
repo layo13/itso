@@ -158,36 +158,36 @@ ob_start();
 						</div>
 					</div>
 					<div class="kt-widget__bottom">
-                        <?php if(!empty($nbProduct['nb_product'])) { ?>
+                        <?php if(!empty($nbProduct[$user['id']])) { ?>
                             <div class="kt-widget__item">
                                 <div class="kt-widget__icon">
                                     <i class="flaticon2-box-1"></i>
                                 </div>
                                 <div class="kt-widget__details">
                                     <span class="kt-widget__title">Produits</span>
-                                    <span class="kt-widget__value"><?= $nbProduct['nb_product'] ?></span>
+                                    <span class="kt-widget__value"><?= $nbProduct[$user['id']]['nb_product'] ?></span>
                                 </div>
                             </div>
                         <?php } ?>
-                        <?php if(!empty($nbSubscriber['nb_subscriber'])) { ?>
+                        <?php if(!empty($nbSubscriber[$user['id']])) { ?>
                             <div class="kt-widget__item">
                                 <div class="kt-widget__icon">
                                     <i class="flaticon2-avatar"></i>
                                 </div>
                                 <div class="kt-widget__details">
                                     <span class="kt-widget__title">Abonnés</span>
-                                    <span class="kt-widget__value"><?= $nbSubscriber['nb_subscriber'] ?></span>
+                                    <span class="kt-widget__value"><?= $nbSubscriber[$user['id']]['nb_subscriber'] ?></span>
                                 </div>
                             </div>
                         <?php } ?>
-                        <?php if(!empty($nbTotalLike['nb_product_like'])) { ?>
+                        <?php if(!empty($nbTotalLike[$user['id']])) { ?>
                             <div class="kt-widget__item">
                                 <div class="kt-widget__icon">
                                     <i class="flaticon2-chart"></i>
                                 </div>
                                 <div class="kt-widget__details">
                                     <span class="kt-widget__title">Likes</span>
-                                    <span class="kt-widget__value"><?= $nbTotalLike['nb_product_like']?></span>
+                                    <span class="kt-widget__value"><?= $nbTotalLike[$user['id']]['nb_product_like']?></span>
                                 </div>
                             </div>
                         <?php } ?>
