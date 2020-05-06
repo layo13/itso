@@ -22,6 +22,14 @@
 				/*text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
 				box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5);*/
 			}
+			.testimonial-group > .row {
+				overflow-x: auto;
+				white-space: nowrap;
+			}
+			.testimonial-group > .row > .col-xs-4 {
+				display: inline-block;
+				float: none;
+			}
 		</style>
 		<title>Hello, world!</title>
 	</head>
@@ -49,8 +57,6 @@
 				</a>
 			</div>
 		</nav>
-
-
 		<div class="container">
 			<div class="row">
 				<div class="col-12">
@@ -81,28 +87,35 @@
 					<h6>Articles les plus humanitaires</h6>
 				</div>
 			</div>
-			<div class="row">
-				<!--<div class="col">
-					<img src="images/288976a.jpg" alt="Robe" class="img-thumbnail">
+			<div class="testimonial-group">
+				<div class="row">
+					<div class="col-xs-4">
+						<img src="images/288976a.jpg" alt="Robe" class="img-thumbnail">
+					</div>
+					<div class="col-xs-4">
+						<img src="images/336733a.jpg" alt="Chaussures" class="img-thumbnail">
+					</div>
+					<div class="col-xs-4">
+						<img src="images/343201a-emp.jpg" alt="Casquette" class="img-thumbnail">
+					</div>
+					<div class="col-xs-4">
+						<img src="images/346059a-emp.jpg" alt="Jupe" class="img-thumbnail">
+					</div>
+					<div class="col-xs-4">
+						<img src="images/288976a.jpg" alt="Robe" class="img-thumbnail">
+					</div>
+					<div class="col-xs-4">
+						<img src="images/336733a.jpg" alt="Chaussures" class="img-thumbnail">
+					</div>
+					<div class="col-xs-4">
+						<img src="images/343201a-emp.jpg" alt="Casquette" class="img-thumbnail">
+					</div>
+					<div class="col-xs-4">
+						<img src="images/346059a-emp.jpg" alt="Jupe" class="img-thumbnail">
+					</div>
 				</div>
-				<div class="col">
-					<img src="images/336733a.jpg" alt="Chaussures" class="img-thumbnail">
-				</div>
-				<div class="col">
-					<img src="images/343201a-emp.jpg" alt="Casquette" class="img-thumbnail">
-				</div>
-				<div class="col">
-					<img src="images/346059a-emp.jpg" alt="Jupe" class="img-thumbnail">
-				</div>-->
-				
-				
-				<img src="images/288976a.jpg" alt="Robe" class="img-thumbnail">
-				<img src="images/336733a.jpg" alt="Chaussures" class="img-thumbnail">
-				<img src="images/343201a-emp.jpg" alt="Casquette" class="img-thumbnail">
-				<img src="images/346059a-emp.jpg" alt="Jupe" class="img-thumbnail">
-				
 			</div>
-			
+
 			<div class="row">
 				<div class="col-12">
 					<h6>Personnalités recommandées</h6>
@@ -122,7 +135,7 @@
 					<img src="images/chris-evans.jpg" alt="Jupe" class="img-thumbnail">
 				</div>
 			</div>
-			
+
 			<div class="row">
 				<div class="col-12">
 					<h6>Les plus consultés</h6>
@@ -161,7 +174,7 @@
 					<img src="images/346059a-emp.jpg" alt="Jupe" class="img-thumbnail">
 				</div>
 			</div>
-			
+
 			<div class="row">
 				<div class="col-12">
 					<h6>Personnalités recommandées</h6>
@@ -181,7 +194,7 @@
 					<img src="images/chris-evans.jpg" alt="Jupe" class="img-thumbnail">
 				</div>
 			</div>
-			
+
 			<div class="row">
 				<div class="col-12">
 					<h6>Les plus consultés</h6>
@@ -220,7 +233,7 @@
 					<img src="images/346059a-emp.jpg" alt="Jupe" class="img-thumbnail">
 				</div>
 			</div>
-			
+
 			<div class="row">
 				<div class="col-12">
 					<h6>Personnalités recommandées</h6>
@@ -240,7 +253,7 @@
 					<img src="images/chris-evans.jpg" alt="Jupe" class="img-thumbnail">
 				</div>
 			</div>
-			
+
 			<div class="row">
 				<div class="col-12">
 					<h6>Les plus consultés</h6>

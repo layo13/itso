@@ -3,6 +3,9 @@
 // BLOCK CONTENT //
 //---------------//
 
+/* @var $app \Epic\BaseApplication */
+$app;
+
 ob_start();
 ?>
 <style>
@@ -40,7 +43,7 @@ ob_start();
                 </h3>
             </div>
             <div class="kt-subheader__toolbar">
-                <a href="<?= $app->router()->getRoute('vip_user_profil') ?>" class="btn btn-default btn-bold">
+                <a href="<?= $app->router()->getRoute('admin_user_update', ['id' => $id]) ?>" class="btn btn-default btn-bold">
                     Retour au profil
                 </a>
             </div>
@@ -50,26 +53,30 @@ ob_start();
         <div class="kt-portlet__body">
             <form class="kt-form kt-form--label-right" action="edit" method="post" enctype="multipart/form-data">
                 <div class="kt-portlet__body">
-                    <?php if(!empty($message)){ ?>
-                    <div class="form-group form-group-last">
-                        <div class="alert alert-secondary" role="alert">
-                            <div class="alert-icon"><i class="flaticon-warning kt-font-brand"></i></div>
-                            <div class="alert-text">
-                                <?= $message;?>
-                            </div>
-                        </div>
-                    </div>
-                    <?php  } ?>
+					<?php if (!empty($message)) { ?>
+						<div class="form-group form-group-last">
+							<div class="alert alert-secondary" role="alert">
+								<div class="alert-icon"><i class="flaticon-warning kt-font-brand"></i></div>
+								<div class="alert-text">
+									<?= $message; ?>
+								</div>
+							</div>
+						</div>
+					<?php } ?>
                     <div class="form-group row">
                         <label for="gender-input" class="col-2 col-form-label">Sexe</label>
                         <div class="col-10">
                             <span class="kt-switch kt-switch--dark">
-            						<label>
-                                        <span class="genderLeft"><i class="fa fa-mars"></i></span>
-                                        <span class="genderRight"><i class="fa fa-venus"></i></span>
-            						    <input type="checkbox" <?php if($gender == 1){ echo "checked=\"checked\"";} ?> name="gender">
-                                        <span></span>
-            						</label>
+								<label>
+									<span class="genderLeft"><i class="fa fa-mars"></i></span>
+									<span class="genderRight"><i class="fa fa-venus"></i></span>
+									<input type="checkbox" <?php
+									if ($gender == 1) {
+										echo "checked=\"checked\"";
+									}
+									?> name="gender">
+									<span></span>
+								</label>
                             </span>
                         </div>
                     </div>
@@ -107,8 +114,16 @@ ob_start();
                         <label for="formContactLanguage" class="col-2 col-form-label">Langue</label>
                         <div class="col-10">
                             <select class="form-control" id="formContactLanguage" name="formContactLanguage">
-                                <option <?php if($language == 1){echo'selected';}?> value="1">Français</option>
-                                <option <?php if($language == 2){echo'selected';}?> value="2">Anglais</option>
+                                <option <?php
+									if ($language == 1) {
+										echo'selected';
+									}
+									?> value="1">Français</option>
+                                <option <?php
+									if ($language == 2) {
+										echo'selected';
+									}
+									?> value="2">Anglais</option>
                             </select>
                         </div>
                     </div>
@@ -116,8 +131,16 @@ ob_start();
                         <label for="formContactNationality" class="col-2 col-form-label">Nationnalité</label>
                         <div class="col-10">
                             <select class="form-control" id="formContactNationality" name="formContactNationality">
-                                <option <?php if($nationality == 1){echo'selected';}?> value="1">Français(e)</option>
-                                <option <?php if($nationality == 2){echo'selected';}?> value="2">Anglais(e)</option>
+                                <option <?php
+									if ($nationality == 1) {
+										echo'selected';
+									}
+									?> value="1">Français(e)</option>
+                                <option <?php
+									if ($nationality == 2) {
+										echo'selected';
+									}
+									?> value="2">Anglais(e)</option>
                             </select>
                         </div>
                     </div>
@@ -139,7 +162,7 @@ ob_start();
                                                 <input class="uppy-DragDrop-input" type="file" tabindex="-1" focusable="false" name="formContactFile" accept="image/*">
                                                 <div class="uppy-DragDrop-inner">
                                                     <svg aria-hidden="true" focusable="false" class="UppyIcon uppy-DragDrop-arrow" width="16" height="16" viewBox="0 0 16 16">
-                                                        <path d="M11 10V0H5v10H2l6 6 6-6h-3zm0 0" fill-rule="evenodd"></path>
+													<path d="M11 10V0H5v10H2l6 6 6-6h-3zm0 0" fill-rule="evenodd"></path>
                                                     </svg>
                                                     <div class="uppy-DragDrop-label">Glisser / déposer votre photo
                                                         <span class="uppy-DragDrop-browse">Bureau</span>

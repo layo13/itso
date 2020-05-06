@@ -66,12 +66,13 @@ class UserController extends BaseController {
         $user_id = intval($result);
         redirect($app->router()->getRoute('admin_user_view',['id' => $user_id]));
 	}
-    public function updateAction() {
+    public function updateAction($id) {
         $url = URL;
         $app = $this->application;
-        $q = $this->pdo()->query("SELECT *, picture.name as user_picture FROM user LEFT JOIN picture ON user.picture_id = picture.id where user.id = " . intval($GLOBALS['matches'][0]));
+        $q = $this->pdo()->query("SELECT user.*, picture.name as user_picture FROM user LEFT JOIN picture ON user.picture_id = picture.id where user.id = " . $id);
         $user = $q->fetch(\PDO::FETCH_ASSOC);
-
+		
+        $id = $user['id'];
         $last_name = $user['last_name'];
         $first_name = $user['first_name'];
         $email = $user['email'];
@@ -85,11 +86,11 @@ class UserController extends BaseController {
         require ROOT . '/public/views/admin/user/update.php';
     }
 
-    public function editAction() {
+    public function editAction($id) {
         $url = URL;
         $app = $this->application;
 
-        $q = $this->pdo()->query("SELECT * FROM user where id = " . intval($GLOBALS['matches'][0]));
+        $q = $this->pdo()->query("SELECT * FROM user where id = " . $id);
         $user = $q->fetch(\PDO::FETCH_ASSOC);
         $picture_id = $user['picture_id'];
 
@@ -158,16 +159,16 @@ class UserController extends BaseController {
 		require ROOT . '/public/views/admin/user/index.php';
 	}
 
-	public function viewAction() {
+	public function viewAction($id) {
         $url = URL;
         $app = $this->application;
 		$q = $this->pdo()->query("SELECT user.*,
         picture.name as user_picture,
-        charity.name as charity_name 
+        charity_association.name as charity_name 
         FROM user 
         LEFT JOIN picture ON user.picture_id = picture.id
-        LEFT JOIN charity ON user.charity_id = charity.id 
-        where id = " . intval($GLOBALS['matches'][0]));
+        LEFT JOIN charity_association ON user.charity_id = charity_association.id 
+        where user.id = " . $id);
 		$user = $q->fetch(\PDO::FETCH_ASSOC);
         require ROOT . '/public/views/admin/user/view.php';
 	}

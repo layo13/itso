@@ -28,7 +28,7 @@ ob_start();
 
                         </div>
                         <div class="kt-widget__action">
-                            <a href="<?= $app->router()->getRoute('vip_user_update',['id' => $user['id']]) ?>" class="btn btn-label-danger btn-sm btn-upper">Modifier mes informations</a>
+                            <a href="<?= $app->router()->getRoute('admin_user_update',['id' => $user['id']]) ?>" class="btn btn-label-danger btn-sm btn-upper">Modifier mes informations</a>
                         </div>
                     </div>
                     <div class="kt-widget__subhead">

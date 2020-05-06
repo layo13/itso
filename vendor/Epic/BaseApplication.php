@@ -10,6 +10,7 @@ abstract class BaseApplication {
 	protected $name;
 	protected $reference;
 	protected $prefix;
+	protected $routeName;
 	// ---
 	
 	/**
@@ -32,6 +33,7 @@ abstract class BaseApplication {
 		$this->name = $name;
 		$this->reference = $reference;
 		$this->prefix = $prefix;
+		$this->routeName = NULL;
 	}
 
 	protected function getControllerAction() {
@@ -55,23 +57,11 @@ abstract class BaseApplication {
 		/* @var $route \Epic\Routing\Route */
 		$route = $this->router->getMatchingRoute($this->request->requestMethod(), $this->request->requestUri(), $matches);
 
+		$this->routeName = $route->getName();
+		
 		list($controllerName, $action) = $route->getAction();
 
 		return [$controllerName, $action, $matches];
-
-		/* if (is_callable($action)) {
-
-		  echo call_user_func_array($action, $matches);
-		  exit;
-		  } else if (is_array($action)) {
-		  $controllerName = $action[0];
-		  $controllerMethod = $action[1] . "Action";
-		  $controller = new $controllerName($pdo);
-		  echo call_user_func_array([$controller, $controllerMethod], $matches);
-		  exit;
-		  } else {
-		  throw new Exception("No valid action");
-		  } */
 	}
 
 	public function getName() {
@@ -108,6 +98,15 @@ abstract class BaseApplication {
 	 */
 	public function router() {
 		return $this->router;
+	}
+	
+
+	/**
+	 * 
+	 * @return string
+	 */
+	public function routeName() {
+		return $this->routeName;
 	}
 	
 	/**

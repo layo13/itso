@@ -41,6 +41,14 @@ abstract class BaseController {
 	public function router() {
 		return $this->application->router();
 	}
+
+	/**
+	 * 
+	 * @return string
+	 */
+	public function routeName() {
+		return $this->application->routeName();
+	}
 	
 	/**
 	 * 
