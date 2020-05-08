@@ -62,7 +62,7 @@ return [
         ]
     ],
     "brand_view" => [
-        "uri" => "/brand/view,{id}",
+        "uri" => "/brand/view/{id}",
         "method" => "GET",
         "parameters" => [
             "id" => "[0-9]+",
@@ -94,7 +94,7 @@ return [
         ]
     ],
     "charity_view" => [
-        "uri" => "/charity/view,{id}",
+        "uri" => "/charity/view/{id}",
         "method" => "GET",
         "parameters" => [
             "id" => "[0-9]+",
@@ -112,7 +112,7 @@ return [
         ]
     ],
     "product_view" => [
-        "uri" => "/product/view,{id}",
+        "uri" => "/product/view/{id}",
         "method" => "GET",
         "parameters" => [
             "id" => "[0-9]+",
@@ -122,7 +122,7 @@ return [
         ]
     ],
     "product_update" => [
-        "uri" => "/product/update,{id}",
+        "uri" => "/product/update/{id}",
         "method" => "GET",
         "parameters" => [
             "id" => "[0-9]+",
@@ -132,8 +132,8 @@ return [
         ]
     ],
     "product_edit" => [
-        "uri" => "/product/edit,{id}",
-        "method" => "GET",
+        "uri" => "/product/edit/{id}",
+        "method" => "POST",
         "parameters" => [
             "id" => "[0-9]+",
         ],

@@ -1,4 +1,5 @@
 <?php
+setlocale(LC_TIME, "fr_FR");
 
 define('ROOT', __DIR__);
 

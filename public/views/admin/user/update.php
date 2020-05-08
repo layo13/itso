@@ -43,7 +43,7 @@ ob_start();
                 </h3>
             </div>
             <div class="kt-subheader__toolbar">
-                <a href="<?= $app->router()->getRoute('admin_user_update', ['id' => $id]) ?>" class="btn btn-default btn-bold">
+                <a href="<?= $app->router()->getRoute('admin_user_view', ['id' => $id]) ?>" class="btn btn-info btn-bold">
                     Retour au profil
                 </a>
             </div>
@@ -51,7 +51,7 @@ ob_start();
     </div>
     <div class="kt-portlet kt-portlet--tabs">
         <div class="kt-portlet__body">
-            <form class="kt-form kt-form--label-right" action="edit" method="post" enctype="multipart/form-data">
+            <form class="kt-form kt-form--label-right" action="<?= $app->router()->getRoute('admin_user_edit', ['id' => $id]) ?>" method="post" enctype="multipart/form-data">
                 <div class="kt-portlet__body">
 					<?php if (!empty($message)) { ?>
 						<div class="form-group form-group-last">

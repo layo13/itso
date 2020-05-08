@@ -27,7 +27,7 @@ ob_start();
                 </h3>
             </div>
             <div class="kt-subheader__toolbar">
-                <a href="<?= $app->router()->getRoute('admin_product_list') ?>" class="btn btn-default btn-bold">
+                <a href="<?= $app->router()->getRoute('admin_product_list') ?>" class="btn btn-info btn-bold">
                     Retour au listing
                 </a>
             </div>
@@ -37,6 +37,20 @@ ob_start();
         <div class="kt-portlet__body">
             <form class="kt-form kt-form--label-right" action="<?= $app->router()->getRoute('admin_product_add') ?>" method="post" enctype="multipart/form-data">
                 <div class="kt-portlet__body">
+                    <div class="form-group row">
+                        <label for="formProductUserId" class="col-2 col-form-label">Choisir à qui appartiendra le produit</label>
+                        <div class="col-2">
+                            <select class="form-control" name="formProductUserId">
+                                <?php
+                                foreach($users as $user){
+                                    ?>
+                                    <option value="<?= $user['id']?>"><?= $user['first_name'] ." ". $user['last_name'] ?></option>
+                                    <?php
+                                }
+                                ?>
+                            </select>
+                        </div>
+                    </div>
                     <div class="form-group row">
                         <label for="formProductName" class="col-2 col-form-label">Titre / où le produit a été porté</label>
                         <div class="col-4">
@@ -143,8 +157,15 @@ ob_start();
                     <div class="form-group row">
                         <label for="formProductLink" class="col-2 col-form-label">Url de la boutique</label>
                         <div class="col-4">
-                            <input class="form-control" type="text" value="" id="formProductLink" name="formProductLink">
-                            <!-- Ajouter un bouton pour ajouter des inputs pour les links-->
+                            <div class="row linkRowBloc">
+                                <div class="col-9">
+                                    <input class="form-control" type="text" name="formProductLink[]">
+                                </div>
+                                <div class="col-3">
+                                    <a href="#" class="btn btn-brand btn-sm btn-upper delete-linkRowBloc" title="Supprimer ce lien"><i class="fa fa-trash"></i></a>
+                                    <a href="#" class="btn btn-success btn-sm btn-upper new-linkRowBloc" title="Ajouter un lien"><i class="fa fa-plus"></i></a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -169,5 +190,10 @@ ob_start();
 <?php
 $blockContent = ob_get_clean();
 require __DIR__ . '/../base.php';
+/*
+ * https://www.amazon.fr/CAPSLAB-Casquette-Trucker-Dragon-Vegeta/dp/B07KM72FCD
+ * https://www.laboutiqueofficielle.com/achat-trucker/capslab-casquette-trucker-majin-vegeta-noir-185274.html
+ */
 ?>
 <script type="text/javascript" src="<?= $url ?>public/assets/js/product_create.js"></script>
+

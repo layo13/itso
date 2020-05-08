@@ -22,21 +22,21 @@ class UserController extends BaseController {
 		$file = new File('formContactFile');
 		//-- voir pour formater les noms d'images fonction php faire des id uniqid()
 		$filename = $file->getName();
-		$sqlCreateUser = "INSERT INTO `user`(`last_name`, `firstname`, `day_of_birth`, `email`, `password`, `gender`, `language`, `nationality`, `state`) VALUES (?,?,?,?,?,?,?,?,?)";
+		$sqlCreateUser = "INSERT INTO `user`(`last_name`, `first_name`, `day_of_birth`, `email`, `password`, `gender`, `language`, `nationality`, `state`, `user_type_id`) VALUES (?,?,?,?,?,?,?,?,?,?)";
 		if (!empty($filename)) {
             $uploader->upload($file, ROOT . "/public/assets/images/users/" . $filename . "." . $file->getExtension());
 			$name = $_REQUEST['formContactLastName'];
-			$stmt = $this->pdo()->prepare("INSERT INTO `pictures`(`name`) VALUES (?)");
+			$stmt = $this->pdo()->prepare("INSERT INTO `picture`(`name`) VALUES (?)");
 			$stmt->bindParam(1, $filename);
 			$stmt->execute();
 
 			$result = $this->pdo()->lastInsertId();
 			$picture_id = intval($result);
-			$sqlCreateUser = "INSERT INTO `user`(`last_name`, `firstname`, `day_of_birth`, `email`, `password`, `gender`, `language`, `nationality`, `state`, `picture_id`) VALUES (?,?,?,?,?,?,?,?,?,?)";
+			$sqlCreateUser = "INSERT INTO `user`(`last_name`, `first_name`, `day_of_birth`, `email`, `password`, `gender`, `language`, `nationality`, `state`, `user_type_id`, `picture_id`) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
 		}
 		//-- voir pour créer une classe Users
 		$name = $_REQUEST['formContactLastName'];
-		$firstname = $_REQUEST['formContactFirstName'];
+		$first_name = $_REQUEST['formContactFirstName'];
 		$day_of_birth = $_REQUEST['formContactDateOfBirth'];
 		$email = $_REQUEST['formContactEmail'];
 		$password = $_REQUEST['formContactPassword'];
@@ -44,12 +44,21 @@ class UserController extends BaseController {
 		$gender = 1;
 		$language = $_REQUEST['formContactLanguage'];
 		$nationality = $_REQUEST['formContactNationality'];
-		$state = $_REQUEST['formContactStatus'];
-
+        $state = 1;
+		if(!empty($_REQUEST['formContactStatus'])) {
+            $state = $_REQUEST['formContactStatus'];
+        }
+        $route = $app->routeName();
+		$routeTab = explode('_',$route);
+		if($routeTab[1]=='vip' || $routeTab[1]=='user') {
+            $user_type_id = 2;
+        }elseif($routeTab[1]=='customer') {
+            $user_type_id = 4;
+        }
 //-- penser à vérifier si l'email existe déjà
 		$stmt = $this->pdo()->prepare($sqlCreateUser);
 		$stmt->bindParam(1, $name);
-		$stmt->bindParam(2, $firstname);
+		$stmt->bindParam(2, $first_name);
 		$stmt->bindParam(3, $day_of_birth);
 		$stmt->bindParam(4, $email);
 		$stmt->bindParam(5, $password);
@@ -57,8 +66,9 @@ class UserController extends BaseController {
 		$stmt->bindParam(7, $language);
 		$stmt->bindParam(8, $nationality);
 		$stmt->bindParam(9, $state);
+		$stmt->bindParam(10, $user_type_id);
 		if (!empty($picture_id)) {
-			$stmt->bindParam(10, $picture_id);
+			$stmt->bindParam(11, $picture_id);
 		}
 		$stmt->execute();
 
@@ -129,17 +139,26 @@ class UserController extends BaseController {
         $active = $user['active'];
         $user_type_id = $user['user_type_id'];
         $charity_id  = $user['charity_id'];
-        $id = intval($GLOBALS['matches'][0]);
 
 
         $sqlUpdateUser ="UPDATE `user` SET last_name = ?, first_name = ?, day_of_birth = ?, email = ?, password = ?, gender = ?, picture_id = ?, language = ?, nationality = ?, created_at = ?, updated_at = ?, state = ?, active = ?, user_type_id = ?, charity_id = ? WHERE id=?";
         $stmt = $this->pdo()->prepare($sqlUpdateUser)->execute([$last_name,$first_name,$day_of_birth,$email,$password,$gender,$picture_id,$language,$nationality,$created_at,$updated_at,$state,$active,$user_type_id,$charity_id ,$id]);
 
-        redirect($app->router()->getRoute('admin_user_view',['id' => intval($GLOBALS['matches'][0])]));
+        redirect($app->router()->getRoute('admin_user_view',['id' => intval($id)]));
     }
 	public function listAction() {
         $url = URL;
         $app = $this->application;
+        $requeteSuite ='';
+
+        $route = $app->routeName();
+        $routeTab = explode('_',$route);
+        if($routeTab[1]=='vip' || $routeTab[1]=='user') {
+            $requeteSuite = ' where user.user_type_id = 2';
+        }elseif($routeTab[1]=='customer') {
+            $requeteSuite = ' where user.user_type_id = 4';
+        }
+
 		$q = $this->pdo()->query("SELECT user.*,
         picture.name as user_picture,
         charity_association.name as charity_name,
@@ -150,7 +169,7 @@ class UserController extends BaseController {
         LEFT JOIN user_type ON user.user_type_id = user_type.id
         LEFT JOIN user_celebrity_category ON user.id = user_celebrity_category.user_id
         LEFT JOIN celebrity_category ON user_celebrity_category.celebrity_category_id = celebrity_category.id
-        LEFT JOIN charity_association ON user.charity_id = charity_association.id ");
+        LEFT JOIN charity_association ON user.charity_id = charity_association.id ".$requeteSuite);
 		while ($datas = $q->fetch(\PDO::FETCH_ASSOC)) {
 			$users[] = $datas;
             $userId[] = $datas['id'];
@@ -159,26 +178,27 @@ class UserController extends BaseController {
         $nbProduct = [];
         $nbSubscriber = [];
         $nbTotalLike = [];
-        $q = $this->pdo()->query("SELECT count(product_id) as nb_product, user_id FROM `user_product` where user_id in (".implode(',',$userId).") group by user_id");
-        while ($datas = $q->fetch(\PDO::FETCH_ASSOC)) {
-            $nbProduct[$datas['user_id']] = $datas;
-        }
-        $q = $this->pdo()->query("SELECT count(member_id) as nb_subscriber, celebrity_id FROM `subscription` where celebrity_id in (".implode(',',$userId).") group by celebrity_id");
-        while ($datas = $q->fetch(\PDO::FETCH_ASSOC)) {
-            $nbSubscriber[$datas['user_id']] = $datas;
-        }
-        $q = $this->pdo()->query("SELECT count(liked.user_id) as nb_product_like,
+        if(!empty($userId)) {
+            $q = $this->pdo()->query("SELECT count(product_id) as nb_product, user_id FROM `user_product` where user_id in (" . implode(',', $userId) . ") group by user_id");
+            while ($datas = $q->fetch(\PDO::FETCH_ASSOC)) {
+                $nbProduct[$datas['user_id']] = $datas;
+            }
+            $q = $this->pdo()->query("SELECT count(member_id) as nb_subscriber, celebrity_id FROM `subscription` where celebrity_id in (" . implode(',', $userId) . ") group by celebrity_id");
+            while ($datas = $q->fetch(\PDO::FETCH_ASSOC)) {
+                $nbSubscriber[$datas['user_id']] = $datas;
+            }
+            $q = $this->pdo()->query("SELECT count(liked.user_id) as nb_product_like,
         liked.product_id,
         user_product.user_id as celebrity_id 
         FROM `liked`
         LEFT JOIN user_product ON liked.product_id = user_product.product_id
-        where user_product.user_id in (".implode(',',$userId).")
+        where user_product.user_id in (" . implode(',', $userId) . ")
         group by user_product.user_id");
 
-        while ($datas = $q->fetch(\PDO::FETCH_ASSOC)) {
-            $nbTotalLike[$datas['celebrity_id']] = $datas;
+            while ($datas = $q->fetch(\PDO::FETCH_ASSOC)) {
+                $nbTotalLike[$datas['celebrity_id']] = $datas;
+            }
         }
-
 		require ROOT . '/public/views/admin/user/index.php';
 	}
 

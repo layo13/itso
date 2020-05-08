@@ -86,26 +86,26 @@ $app->router()->getRoute('vip_home');
                  	<div class="kt-aside-menu-wrapper kt-grid__item kt-grid__item--fluid" id="kt_aside_menu_wrapper">
 						<div id="kt_aside_menu" class="kt-aside-menu " data-ktmenu-vertical="1" data-ktmenu-scroll="1" data-ktmenu-dropdown-timeout="500">
 							<ul class="kt-menu__nav ">
-								<li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true"><a href="<?= $app->router()->getRoute('vip_home') ?>" class="kt-menu__link "><i class="kt-menu__link-icon flaticon2-architecture-and-city"></i><span class="kt-menu__link-text">Accueil</span></a></li>
-                                <li class="kt-menu__item" aria-haspopup="true">
+								<li class="kt-menu__item <?= selectNavRubrique(['home'], $app->routeName(), 1)?>" aria-haspopup="true"><a href="<?= $app->router()->getRoute('vip_home') ?>" class="kt-menu__link "><i class="kt-menu__link-icon flaticon2-architecture-and-city"></i><span class="kt-menu__link-text">Accueil</span></a></li>
+                                <li class="kt-menu__item<?= selectNavRubrique(['product'], $app->routeName(), 1)?>" aria-haspopup="true">
                                     <a href="<?= $app->router()->getRoute('vip_product_list') ?>" class="kt-menu__link ">
                                         <i class="kt-menu__link-icon flaticon2-box-1"></i>
                                         <span class="kt-menu__link-text">Produits</span>
                                     </a>
                                 </li>
-                                <li class="kt-menu__item" aria-haspopup="true">
+                                <li class="kt-menu__item<?= selectNavRubrique(['charity'], $app->routeName(), 1)?>" aria-haspopup="true">
                                     <a href="<?= $app->router()->getRoute('vip_charity_list') ?>" class="kt-menu__link ">
                                         <i class="kt-menu__link-icon flaticon-black"></i>
                                         <span class="kt-menu__link-text">Associations</span>
                                     </a>
                                 </li>
-                                <li class="kt-menu__item" aria-haspopup="true">
+                                <li class="kt-menu__item<?= selectNavRubrique(['brand'], $app->routeName(), 1)?>" aria-haspopup="true">
                                     <a href="<?= $app->router()->getRoute('vip_brand_list') ?>" class="kt-menu__link ">
                                         <i class="kt-menu__link-icon flaticon-business"></i>
                                         <span class="kt-menu__link-text">Marques</span>
                                     </a>
                                 </li>
-                                <li class="kt-menu__item" aria-haspopup="true">
+                                <li class="kt-menu__item<?= selectNavRubrique(['user'], $app->routeName(), 1)?>" aria-haspopup="true">
                                     <a href="<?= $app->router()->getRoute('vip_user_profil') ?>" class="kt-menu__link ">
                                         <i class="kt-menu__link-icon flaticon2-user"></i>
                                         <span class="kt-menu__link-text">Profil</span>
@@ -217,7 +217,7 @@ $app->router()->getRoute('vip_home');
 											</div>
 										</a>
 										<div class="kt-notification__custom kt-space-between">
-											<a href="<?= $url ?>vip/logout" class="btn btn-label btn-label-brand btn-sm btn-bold">Déconnexion</a>
+                                            <a href="<?= $app->router()->getRoute('vip_logout') ?>" class="btn btn-brand btn-sm btn-uppe">Déconnexion</a>
 										</div>
 									</div>
 

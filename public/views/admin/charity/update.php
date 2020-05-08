@@ -7,7 +7,7 @@ ob_start();
 ?>
 
 <style>
-    img#imgAssociationShow {
+    img.img-responsive {
         position: relative;
         display: block;
         width: 100%;
@@ -92,9 +92,9 @@ ob_start();
                                     </div>
                                     <div class="col-3">
                                         <?php
-                                         if(!empty($charity['charity_association'])) {
+                                         if(!empty($charity['charity_picture'])) {
                                              ?>
-                                             <img src="<?= $charity['charity_association'] ?>" class="img-responsive">
+                                             <img src="<?= $url ?>public/assets/images/charity_association/<?= $charity['charity_picture'] ?>" class="img-responsive">
                                              <?php
                                          }
                                         ?>

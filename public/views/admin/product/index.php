@@ -50,11 +50,19 @@ ob_start();
 											</span>
                                         </div>
                                         <div class="kt-widget__info kt-margin-t-5">
-                                            <a href="/itso/product/view,<?= $product['id'] ?>" class="kt-widget__title">
+                                            <a href="<?= $app->router()->getRoute('admin_product_view',['id'=>intval($product['id'])]) ?>" class="kt-widget__title">
                                                 <?= $product['name'] ?>
                                             </a>
                                             <span class="kt-widget__desc">
                                                 <?= utf8_encode($product['product_category']) ?>
+                                                <?php
+                                                if(!empty($users[$product['id']])){
+                                                ?>
+                                                <br>
+                                                <?= utf8_encode($users[$product['id']]['first_name'])." ".utf8_encode($users[$product['id']]['last_name']) ?>
+                                                <?php
+                                                    }
+                                                    ?>
 											</span>
                                         </div>
                                     </div>

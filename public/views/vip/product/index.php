@@ -15,7 +15,7 @@ ob_start();
 				<a href="#" class="">
 				</a>
                 <!-- vers formulaire de contact -->
-				<a href="<?= $app->router()->getRoute('vip_product_create') ?>" class="btn btn-label-facebook btn-bold">Ajouter un produit</a>
+				<a href="<?= $app->router()->getRoute('vip_product_create') ?>" class="btn btn-success btn-bold">Ajouter un produit</a>
 			</div>
 		</div>
 	</div>
@@ -130,10 +130,12 @@ ob_start();
                                     </div>
                                     <span class="kt-widget__text">
                                         <?php
-                                        foreach ($productsLink[$product['id']] as $link) {
-                                            ?>
-                                                <a target="_blank" href="<?= $link['url'] ?>" title="<?= $link['url'] ?>" class="btn btn-facebook">Lien</a>
-                                            <?php
+                                        if(!empty($productsLink[$product['id']])){
+                                            foreach ($productsLink[$product['id']] as $link) {
+                                                ?>
+                                                    <a target="_blank" href="<?= $link['url'] ?>" title="<?= $link['url'] ?>" class="btn btn-facebook">Lien</a>
+                                                <?php
+                                            }
                                         }
                                         ?>
 									</span>
@@ -204,7 +206,7 @@ ob_start();
                                             </div>
                                         </div>
                                         <div class="kt-widget__section">
-                                            <a href="<?= $app->router()->getRoute('vip_product_view',['id'=>intval($product['id'])]) ?>" class="btn btn-brand btn-sm btn-upper btn-bold">details</a>
+                                            <a href="<?= $app->router()->getRoute('vip_product_view',['id'=>intval($product['id'])]) ?>" class="btn btn-facebook btn-sm btn-upper btn-bold">details</a>
                                         </div>
                                     </div>
                                 </div>
