@@ -87,6 +87,18 @@ ob_start();
                                                         </span>
                                                     </a>
                                                 </li>
+                                                <?php
+                                                if(!empty($users[$product['id']])){
+                                                ?>
+                                                <li class="kt-nav__item">
+                                                    <a href="#" class="kt-nav__link openModalFavorite" data-productId="<?= intval($product['id']) ?>" data-userId="<?= intval($users[$product['id']]['id']) ?>">
+                                                        <i class="kt-nav__link-icon fa fa-gem"></i>
+                                                        <span class="kt-nav__link-text">Ajouter à une catégorie</span>
+                                                    </a>
+                                                </li>
+                                                    <?php
+                                                }
+                                                ?>
                                                 <li class="kt-nav__item">
                                                     <a href="<?= $app->router()->getRoute('admin_product_update',['id'=>intval($product['id'])]) ?>" class="kt-nav__link">
                                                         <i class="kt-nav__link-icon flaticon2-settings"></i>
@@ -232,14 +244,19 @@ ob_start();
         <!-- end:: Content -->
     </div>
 </div>
-
 <script>
     var urlChangePublishProduct = '<?= $app->router()->getRoute('admin_product_publish') ?>';
     var urlReloadList = '<?= $app->router()->getRoute('admin_product_list') ?>';
+
+
+    var urlFavoriteListByUser = '<?= $app->router()->getRoute('admin_favorite_list_by_user') ?>';
+    var urlValidFavoriteCategorieProduct = '<?= $app->router()->getRoute('admin_favorite_add_favorite') ?>';
+    var urlValidFavoriteProduct = '<?= $app->router()->getRoute('admin_favorite_add_category_favorite') ?>';
 </script>
 
 <?php
 $blockContent = ob_get_clean();
+require __DIR__ . '/modals.php';
 require __DIR__ . '/../base.php';
 ?>
 

@@ -84,6 +84,9 @@ class UserController extends BaseController {
         $day_of_birth = $_REQUEST['formContactDateOfBirth'];
         $email = $_REQUEST['formContactEmail'];
         $password = $_REQUEST['formContactPassword'];
+        if($password != $user['password']){
+            $password = password_hash ($_REQUEST['formContactPassword'], PASSWORD_DEFAULT);
+        }
         $gender = 2;
         if(!empty($_REQUEST['gender'])){
             $gender = 1;

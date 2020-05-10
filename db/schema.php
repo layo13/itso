@@ -11,7 +11,7 @@ $schema = new Schema('itso');
 
 $schema->addTable('admin_message', function(Table $table) {
 	$table->integer('id')->primary(true);
-	$table->varchar('title')->length(255)->nullable(false)->comment('');
+	$table->varchar('title')->length(255)->nullable(false)->user_favoritecomment('');
 	$table->text('text')->nullable(false)->comment('Texte du message');
 	$table->integer('picture_id')->nullable(false);
 	$table->dateTime('created_at')->nullable(false)->defaultValue('CURRENT_TIMESTAMP');
@@ -69,7 +69,7 @@ $schema->addTable('charity_association', function(Table $table) {
 // @TODO
 $schema->addTable('user_favorite', function(Table $table) {
 	$table->integer('id')->primary(true);
-	$table->varchar('name')->length(255)->nullable(false);
+	$table->varchar('name')->length(255)->nullable(true);
 	$table->integer('product_id')->nullable(false);
 	$table->integer('favorite_categorie_id')->nullable(false);
 	$table->integer('state')->nullable(false);
