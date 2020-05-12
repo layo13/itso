@@ -403,14 +403,14 @@ return [
         ]
     ],
     "favorite_add_favorite" => [
-        "uri" => "/favorite/select",
+        "uri" => "/favorite/add_favorite",
         "method" => "POST",
         "action" => [
             \Http\Itso\Admin\Modules\Favorite\FavoriteController::class, 'addFavorite'
         ]
     ],
     "favorite_add_category_favorite" => [
-        "uri" => "/favorite/select",
+        "uri" => "/favorite/category_favorite",
         "method" => "POST",
         "action" => [
             \Http\Itso\Admin\Modules\Favorite\FavoriteController::class, 'addCategoryAndFavorite'

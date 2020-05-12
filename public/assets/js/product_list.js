@@ -29,7 +29,8 @@ $(document).ready(function() {
     /**
      * ouverture modal avec info
      */
-    $( "body" ).delegate( ".openModalFavorite", "click", function() {
+    $( "body" ).delegate( ".openModalFavorite", "click", function(e){
+        e.preventDefault();
         var productId = $(this).attr('data-productId');
         var userId = $(this).attr('data-userId');
         $.ajax({
@@ -41,6 +42,7 @@ $(document).ready(function() {
             success: function(result){
                 $('#LinkFavoriteProduct .modal-body').html(result);
                 $('#LinkFavoriteProduct').modal();
+                return false;
             }
         });
         return false;
@@ -48,7 +50,8 @@ $(document).ready(function() {
     /**
      * validation formulaire d'ajout d'un produit en favorie
      */
-    $( "body" ).delegate( ".validFavoriteCategorieProduct", "click", function() {
+    $( "body" ).delegate( ".frmFavoriteProduct", "submit", function(e){
+        e.preventDefault();
         var frmFavoriteName = $(".frmFavoriteProduct .frmFavoriteName").val();
         var frmFavoriteProductId = $(".frmFavoriteProduct .frmFavoriteProductId").val();
         var frmFavoriteCategorieId = $(".frmFavoriteProduct .frmFavoriteCategorieId").val();
@@ -67,7 +70,8 @@ $(document).ready(function() {
     /**
      * validation formulaire création nouvelle catégorie et ajout d'un produit à celle ci
      */
-    $( "body" ).delegate( ".validFavoriteCategorieProduct", "click", function() {
+    $( "body" ).delegate( ".frmNewFavoriteProduct", "submit", function(e){
+        e.preventDefault();
         var frmFavoriteCategoryName = $(".frmNewFavoriteProduct .frmFavoriteCategoryName").val();
         var frmFavoriteProductId = $(".frmNewFavoriteProduct .frmFavoriteProductId").val();
         var frmFavoriteUserId = $(".frmNewFavoriteProduct .frmFavoriteUserId").val();

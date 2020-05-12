@@ -256,8 +256,10 @@ ob_start();
 
 <?php
 $blockContent = ob_get_clean();
-require __DIR__ . '/modals.php';
 require __DIR__ . '/../base.php';
 ?>
 
 <script type="text/javascript" src="<?= $url ?>public/assets/js/product_list.js"></script>
+<?php
+
+require __DIR__ . '/modals.php';

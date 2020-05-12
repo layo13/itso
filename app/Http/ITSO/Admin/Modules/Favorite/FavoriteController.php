@@ -151,33 +151,63 @@ LEFT JOIN product_picture ON (product_picture.picture_id = picture.id) where pro
     public function listByUserAction() {
         $url = URL;
         $app = $this->application;
-        $q = $this->pdo()->query("SELECT user_favorite_category.* FROM user_favorite_category where user_id = ".$_REQUEST['user_id']." AND user_favorite_category.id not in (SELECT favorite_categorie_id FROM user_favorite where product_id = " . intval($_REQUEST['product_id']) . ") order by user_id");
-        $nb = $q->rowCount();
-        $form = "";
-        $form .= "<p>Ajouter une nouvelle catégorie de favorie</p>";
-        $form .= "<form method='post' class='frmNewFavoriteProduct'>";
-        $form .= "<input type='text' class='frmFavoriteCategoryName' name='frmFavoriteCategoryName'>";
-        $form .= "<input type='hidden' name='frmFavoriteProductId' class='frmFavoriteProductId' value='" . $_REQUEST['product_id'] . "'>";
-        $form .= "<input type='hidden' name='frmFavoriteUserId' class='frmFavoriteUserId' value='" . $_REQUEST['user_id'] . "'>";
-        $form .= "<input type='submit' class='validFavoriteCategorieProduct' value='Valider'>";
-        $form .= "</form>";
-
-        if($nb>0) {
-            $form .= "<p>Ajouter à la rubrique favorie</p>";
-            $form .= "<form method='post' class='frmFavoriteProduct'>";
-            $form .= "<select class=\"form-control frmFavoriteCategorieId\" name=\"frmFavoriteCategorieId\">";
-            while ($datas = $q->fetch(\PDO::FETCH_ASSOC)) {
-                $form .= "<option value=\"" . $datas['id'] . "\">" . utf8_encode($datas['name']) . "</option>";
-            }
-            $form .= "</select>";
-            $form .= "<input type='text' class='frmFavoriteName' name='frmFavoriteName'>";
-            $form .= "<input type='hidden' class='frmFavoriteProductId' name='frmFavoriteProductId' value='" . $_REQUEST['product_id'] . "'>";
-            $form .= "<input type='submit' class='validFavoriteProduct' value='Valider'>";
+        if(!empty($_REQUEST['user_id'])) {
+            $q = $this->pdo()->query("SELECT user_favorite_category.* FROM user_favorite_category where user_id = " . $_REQUEST['user_id'] . " AND user_favorite_category.id not in (SELECT favorite_categorie_id FROM user_favorite where product_id = " . intval($_REQUEST['product_id']) . ") order by user_id");
+            $nb = $q->rowCount();
+            $form = "";
+            $form .= "<h4>Ajouter une nouvelle catégorie de favorie</h4>";
+            $form .= "<form method='post' class='frmNewFavoriteProduct'>";
+            $form .= "<div class=\"form-group row\">";
+            $form .= "<label class=\"col-2 col-form-label\">Nom</label>";
+            $form .= "<div class=\"col-8\">";
+            $form .= "<input type='text' class='frmFavoriteCategoryName form-control' name='frmFavoriteCategoryName'>";
+            $form .= "<input type='hidden' name='frmFavoriteProductId' class='frmFavoriteProductId form-control' value='" . $_REQUEST['product_id'] . "'>";
+            $form .= "<input type='hidden' name='frmFavoriteUserId' class='frmFavoriteUserId form-control' value='" . $_REQUEST['user_id'] . "'>";
+            $form .= "</div>";
+            $form .= "</div>";
+            $form .= "<div class=\"form-group row\">";
+            $form .= "<div class=\"col-2\"></div>";
+            $form .= "<div class=\"col-8\">";
+            $form .= "<input type='submit' class='btn btn-success validFavoriteCategorieProduct' value='Valider'>";
+            $form .= "</div>";
+            $form .= "</div>";
             $form .= "</form>";
+
+            if ($nb > 0) {
+                $form .= "<hr>
+<p><strong>Ou</strong></p>
+</hr>";
+                $form .= "<h4>Ajouter à la rubrique favorie</h4>";
+                $form .= "<form method='post' class='frmFavoriteProduct'>";
+                $form .= "<div class=\"form-group row\">";
+                $form .= "<label class=\"col-2 col-form-label\">Catégorie</label>";
+                $form .= "<div class=\"col-8\">";
+                $form .= "<select class=\"form-control frmFavoriteCategorieId\" name=\"frmFavoriteCategorieId\">";
+                while ($datas = $q->fetch(\PDO::FETCH_ASSOC)) {
+                    $form .= "<option value=\"" . $datas['id'] . "\">" . utf8_encode($datas['name']) . "</option>";
+                }
+                $form .= "</select>";
+                $form .= "</div>";
+                $form .= "</div>";
+                $form .= "<div class=\"form-group row\">";
+                $form .= "<label class=\"col-2 col-form-label\">Renommer votre favorie</label>";
+                $form .= "<div class=\"col-8\">";
+                $form .= "<input type='text' class='form-control frmFavoriteName' name='frmFavoriteName'>";
+                $form .= "<input type='hidden' class='frmFavoriteProductId' name='frmFavoriteProductId' value='" . $_REQUEST['product_id'] . "'>";
+                $form .= "</div>";
+                $form .= "</div>";
+                $form .= "<div class=\"form-group row\">";
+                $form .= "<div class=\"col-2\"></div>";
+                $form .= "<div class=\"col-4\"><input type='submit' class='btn btn-success validFavoriteProduct' value='Valider'></div>";
+                $form .= "</div>";
+                $form .= "</form>";
+            } else {
+                $form .= "<p>Votre produit se trouve déjà dans toutes les catégories de favorie</p>";
+            }
+            return $form;
         }else{
-            $form .= "<p>Votre produit se trouve déjà dans toutes les catégories de favorie</p>";
+            return 'erreur';
         }
-        return $form;
     }
 
     public function addFavoriteAction() {
