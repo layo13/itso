@@ -3,7 +3,7 @@
 $app;
 
 ?><!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 	<!-- begin::Head -->
 	<head>

@@ -8,7 +8,7 @@ $app;
 $app->router()->getRoute('vip_home');
 
 ?><!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 	<!-- begin::Head -->
 	<head>
@@ -110,6 +110,34 @@ $app->router()->getRoute('vip_home');
                                         <i class="kt-menu__link-icon flaticon2-user"></i>
                                         <span class="kt-menu__link-text">Profil</span>
                                     </a>
+                                </li>
+                                <li class="kt-menu__item kt-menu__item--submenu<?= selectNavRubrique(['favorite'], $app->routeName(), 1)?>" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
+                                    <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
+                                        <i class="kt-menu__link-icon fa fa-user-tie"></i>
+                                        <span class="kt-menu__link-text">Favorie</span>
+                                        <i class="kt-menu__ver-arrow la la-angle-right"></i>
+                                    </a>
+                                    <div class="kt-menu__submenu ">
+                                        <span class="kt-menu__arrow"></span>
+                                        <ul class="kt-menu__subnav">
+                                            <li class="kt-menu__item <?= selectNavRubrique(['list'], $app->routeName(), 2, ['favorite'])?>" aria-haspopup="true">
+                                                <a href="<?= $app->router()->getRoute('vip_favorite_list') ?>" class="kt-menu__link ">
+                                                    <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span class="kt-menu__link-text">Liste</span>
+                                                </a>
+                                            </li>
+                                            <li class="kt-menu__item <?= selectNavRubrique(['create'], $app->routeName(), 2, ['favorite'])?>" aria-haspopup="true">
+                                                <a href="<?= $app->router()->getRoute('vip_favorite_create') ?>" class="kt-menu__link ">
+                                                    <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span class="kt-menu__link-text">Ajouter</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </li>
 
                                 <!-- EXEMPLE pour la partie navbar

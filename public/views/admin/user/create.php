@@ -60,7 +60,7 @@ ob_start();
                     <?php  } ?>
                     <div class="form-group row">
                         <label for="gender-input" class="col-2 col-form-label">Sexe</label>
-                        <div class="col-10">
+                        <div class="col-4">
                             <span class="kt-switch kt-switch--dark">
             					<label>
                                     <span class="genderLeft"><i class="fa fa-mars"></i></span>
@@ -73,37 +73,37 @@ ob_start();
                     </div>
                     <div class="form-group row">
                         <label for="formContactLastName" class="col-2 col-form-label">Nom</label>
-                        <div class="col-10">
+                        <div class="col-4">
                             <input required class="form-control" type="text" id="formContactLastName" name="formContactLastName">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="formContactFirstName" class="col-2 col-form-label">Prénom</label>
-                        <div class="col-10">
+                        <div class="col-4">
                             <input required class="form-control" type="text" id="formContactFirstName" name="formContactFirstName">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="formContactEmail" class="col-2 col-form-label">Email</label>
-                        <div class="col-10">
+                        <div class="col-4">
                             <input required class="form-control" type="email" id="formContactEmail" name="formContactEmail">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="formContactPassword" class="col-2 col-form-label">Mot de passe</label>
-                        <div class="col-10">
+                        <div class="col-4">
                             <input required class="form-control" type="password" id="formContactPassword" name="formContactPassword">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="formContactDateOfBirth" class="col-2 col-form-label">Date de naissance</label>
-                        <div class="col-10">
+                        <div class="col-4">
                             <input required class="form-control" type="date" id="formContactDateOfBirth" name="formContactDateOfBirth">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="formContactLanguage" class="col-2 col-form-label">Langue</label>
-                        <div class="col-10">
+                        <div class="col-4">
                             <select class="form-control" id="formContactLanguage" name="formContactLanguage">
                                 <option value="1">Français</option>
                                 <option value="2">Anglais</option>
@@ -112,7 +112,7 @@ ob_start();
                     </div>
                     <div class="form-group row">
                         <label for="formContactNationality" class="col-2 col-form-label">Nationnalité</label>
-                        <div class="col-10">
+                        <div class="col-4">
                             <select class="form-control" id="formContactNationality" name="formContactNationality">
                                 <option value="1">Français(e)</option>
                                 <option value="2">Anglais(e)</option>
@@ -121,7 +121,7 @@ ob_start();
                     </div>
                     <div class="form-group row">
                         <label class="col-2 col-form-label">Photo de profil</label>
-                        <div class="col-10">
+                        <div class="col-4">
                             <div class="kt-portlet kt-portlet--height-fluid">
                                 <div class="kt-portlet__head">
                                     <div class="kt-portlet__head-label">
@@ -159,7 +159,7 @@ ob_start();
                         <div class="row">
                             <div class="col-2">
                             </div>
-                            <div class="col-10">
+                            <div class="col-4">
                                 <button type="submit" class="btn btn-success">Enregister</button>
                             </div>
                         </div>

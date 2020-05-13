@@ -44,13 +44,13 @@ ob_start();
                                 <?php  } ?>
                                 <div class="form-group row">
                                     <label for="formColorName" class="col-2 col-form-label">Nom</label>
-                                    <div class="col-10">
+                                    <div class="col-4">
                                         <input required class="form-control" type="text" id="formColorName" name="formColorName">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="formColorHex" class="col-2 col-form-label">Hex</label>
-                                    <div class="col-10">
+                                    <div class="col-4">
                                         <input required class="form-control" type="text" id="formColorHex" name="formColorHex">
                                     </div>
                                 </div>
@@ -60,7 +60,7 @@ ob_start();
                                 <div class="row">
                                     <div class="col-2">
                                     </div>
-                                    <div class="col-10">
+                                    <div class="col-4">
                                         <button type="submit" class="btn btn-success">Enregister</button>
                                     </div>
                                 </div>

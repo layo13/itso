@@ -22,7 +22,7 @@ ob_start();
                     </h3>
                 </div>
                 <div class="kt-subheader__toolbar">
-                    <a href="<?= $app->router()->getRoute('admin_favorite_list') ?>" class="btn btn-dark btn-bold">
+                    <a href="<?= $app->router()->getRoute('vip_favorite_list') ?>" class="btn btn-dark btn-bold">
                         Retour liste associations
                     </a>
                 </div>
@@ -30,7 +30,7 @@ ob_start();
         </div>
             <div class="kt-portlet kt-portlet--tabs">
                 <div class="kt-portlet__body">
-                    <form class="kt-form kt-form--label-right" action="<?= $app->router()->getRoute('admin_favorite_edit',['id' => $user_favorite_category['id']]) ?>" method="post" enctype="multipart/form-data">
+                    <form class="kt-form kt-form--label-right" action="<?= $app->router()->getRoute('vip_favorite_edit',['id' => $user_favorite_category['id']]) ?>" method="post" enctype="multipart/form-data">
                         <div class="kt-portlet__body">
                             <?php if(!empty($message)){ ?>
                                 <div class="form-group form-group-last">
@@ -42,20 +42,6 @@ ob_start();
                                     </div>
                                 </div>
                             <?php  } ?>
-                            <div class="form-group row">
-                                <label for="formProductUserId" class="col-2 col-form-label">La catégorie appartient à</label>
-                                <div class="col-2">
-                                    <select class="form-control" name="formProductUserId">
-                                        <?php
-                                        foreach($users as $user){
-                                            ?>
-                                                <option <?php if($user_favorite_category['user_id'] == $user['id']){echo'selected';} ?> value="<?= $user['id']?>"><?= $user['first_name'] ." ". $user['last_name'] ?></option>
-                                            <?php
-                                        }
-                                        ?>
-                                    </select>
-                                </div>
-                            </div>
                             <div class="form-group row">
                                 <label for="formCharityActive" class="col-2 col-form-label">Activer</label>
                                 <div class="col-4">

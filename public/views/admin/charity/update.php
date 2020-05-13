@@ -44,7 +44,7 @@ ob_start();
                                 <?php  } ?>
                                 <div class="form-group row">
                                     <label for="formCharityActive" class="col-2 col-form-label">Activer</label>
-                                    <div class="col-10">
+                                    <div class="col-4">
                                         <select class="form-control" id="formCharityActive" name="formCharityActive">
                                             <option <?php if($charity['active'] == 0){echo'selected';}?> value="0">Non</option>
                                             <option <?php if($charity['active'] == 1){echo'selected';}?> value="1">Oui</option>
@@ -53,7 +53,7 @@ ob_start();
                                 </div>
                                 <div class="form-group row">
                                     <label for="formCharityName" class="col-2 col-form-label">Nom</label>
-                                    <div class="col-10">
+                                    <div class="col-4">
                                         <input required class="form-control" type="text" value="<?= $charity['name'] ?>" id="formCharityName" name="formCharityName">
                                     </div>
                                 </div>
@@ -106,7 +106,7 @@ ob_start();
                                 <div class="row">
                                     <div class="col-2">
                                     </div>
-                                    <div class="col-10">
+                                    <div class="col-4">
                                         <button type="submit" class="btn btn-success">Enregister</button>
                                     </div>
                                 </div>

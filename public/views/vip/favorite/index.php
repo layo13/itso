@@ -86,7 +86,7 @@ ob_start();
                 <div class="kt-subheader__toolbar">
                     <a href="#" class="">
                     </a>
-                    <a href="<?= $app->router()->getRoute('admin_favorite_create') ?>" class="btn btn-success btn-bold">
+                    <a href="<?= $app->router()->getRoute('vip_favorite_create') ?>" class="btn btn-success btn-bold">
                         Ajouter une categorie favorie
                     </a>
                 </div>
@@ -103,67 +103,47 @@ ob_start();
                 if (!empty($user_favorite_category)) {
                     ?>
                     <?php
-                    foreach ($user_favorite_category as $favoriteByUser) {
+                    foreach ($user_favorite_category as $favorite) {
                         ?>
-                        <div class="col-sm-3">
-                            <!--begin::List Widget 14-->
-                            <div class="card card-custom card-stretch gutter-b">
-                                <!--begin::Header-->
-                                <div class="card-header border-0">
-                                    <h3 class="card-title font-weight-bolder text-dark"><?= $favoriteByUser[0]['first_name'] ?> <?= $favoriteByUser[0]['last_name'] ?></h3>
-                                </div>
-                                <!--end::Header-->
-                                <!--begin::Body-->
-                                <div class="card-body pt-2">
-                                <?php
-                                foreach ($favoriteByUser as $favorite) {
-                                    ?>
-                                    <div class="d-flex flex-wrap align-items-center mb-10">
-                                                <!--begin::Symbol-->
-                                                <div class="symbol symbol-60 symbol-2by3 flex-shrink-0 mr-4">
-                                                    <div class="symbol-label"></div>
-                                                </div>
-                                                <!--end::Symbol-->
-
-                                                <!--begin::Title-->
-                                                <div class="d-flex flex-column flex-grow-1 my-lg-0 my-2 pr-3">
-                                                    <a href="<?= $app->router()->getRoute('admin_favorite_view', ['id' => $favorite['id']]) ?>" class="text-dark-75 font-weight-bolder text-hover-primary font-size-lg">
-                                                        <?= ucfirst($favorite['name']) ?>
-                                                    </a>
-                                                    <span class="text-muted font-weight-bold font-size-sm my-1">
-                                                         <?php
-                                                         if ($favorite['active'] == 1) {
-                                                             ?>
-                                                             Actif
-                                                             <?php
-                                                         } else {
-                                                             ?>
-                                                             Inactif
-                                                             <?php
-                                                         }
-                                                         ?>
-                                                    </span>
-                                                </div>
-                                                <!--end::Title-->
-
-                                                <!--begin::Info
-                                                <div class="d-flex align-items-center py-lg-0 py-2">
-                                                    <div class="d-flex flex-column text-right">
-                                                        <span class="text-dark-75 font-weight-bolder font-size-h4">
-                                                            24,900
-                                                        </span>
-                                                        <span class="text-muted font-size-sm font-weight-bolder">
-                                                            votes
-                                                        </span>
+                        <div class="col-xl-3">
+                            <!--Begin::Portlet-->
+                            <div class="kt-portlet kt-portlet--height-fluid">
+                                <div class="kt-portlet__body">
+                                    <!--begin::Widget -->
+                                    <div class="kt-widget kt-widget--user-profile-4">
+                                        <div class="kt-widget__head">
+                                            <div class="kt-widget__media">
+                                            </div>
+                                            <div class="kt-widget__content">
+                                                <div class="kt-widget__section">
+                                                    <div class="kt-widget__button">
+                                                        <span class="btn btn-label-facebook btn-lg"><?= ucfirst($favorite['name']) ?></span>
+                                                    </div>
+                                                    <div class="kt-widget__button">
+                                                        <?php
+                                                        if ($favorite['active'] == 1) {
+                                                            ?>
+                                                            <span class="btn btn-label-success btn-md">Actif</span>
+                                                            <?php
+                                                        } else {
+                                                            ?>
+                                                            <span class="btn btn-danger btn-md">Inactif</span>
+                                                            <?php
+                                                        }
+                                                        ?>
+                                                    </div>
+                                                    <div class="kt-widget__action">
+                                                        <a href="<?= $app->router()->getRoute('vip_favorite_view', ['id' => $favorite['id']]) ?>"
+                                                           class="btn btn-dark btn-sm btn-upper">Détail</a>
                                                     </div>
                                                 </div>
-                                                -->
                                             </div>
-                                <?php } ?>
+                                        </div>
+                                    </div>
+                                    <!--end::Widget -->
                                 </div>
-                                <!--end::Body-->
+                                <!--End::Portlet-->
                             </div>
-                            <!--end::List Widget 14-->
                         </div>
                     <?php } ?>
                 <?php } ?>

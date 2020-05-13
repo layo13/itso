@@ -11,7 +11,7 @@ $schema = new Schema('itso');
 
 $schema->addTable('admin_message', function(Table $table) {
 	$table->integer('id')->primary(true);
-	$table->varchar('title')->length(255)->nullable(false)->user_favoritecomment('');
+	$table->varchar('title')->length(255)->nullable(false)->comment('');
 	$table->text('text')->nullable(false)->comment('Texte du message');
 	$table->integer('picture_id')->nullable(false);
 	$table->dateTime('created_at')->nullable(false)->defaultValue('CURRENT_TIMESTAMP');

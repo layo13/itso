@@ -24,7 +24,7 @@ class UserController extends BaseController {
 		$filename = $file->getName();
 		$sqlCreateUser = "INSERT INTO `user`(`last_name`, `first_name`, `day_of_birth`, `email`, `password`, `gender`, `language`, `nationality`, `state`, `user_type_id`) VALUES (?,?,?,?,?,?,?,?,?,?)";
 		if (!empty($filename)) {
-            $uploader->upload($file, ROOT . "/public/assets/images/users/" . $filename . "." . $file->getExtension());
+            $uploader->upload($file, ROOT . "/public/assets/images/users/" . $filename);
 			$name = $_REQUEST['formContactLastName'];
 			$stmt = $this->pdo()->prepare("INSERT INTO `picture`(`name`) VALUES (?)");
 			$stmt->bindParam(1, $filename);
@@ -40,8 +40,10 @@ class UserController extends BaseController {
 		$day_of_birth = $_REQUEST['formContactDateOfBirth'];
 		$email = $_REQUEST['formContactEmail'];
 		$password = password_hash ($_REQUEST['formContactPassword'], PASSWORD_DEFAULT);
-		$gender = $_REQUEST['gender'];
-		$gender = 1;
+        $gender = 2;
+        if(!empty($_REQUEST['gender'])){
+            $gender = 1;
+        }
 		$language = $_REQUEST['formContactLanguage'];
 		$nationality = $_REQUEST['formContactNationality'];
         $state = 1;
@@ -110,7 +112,7 @@ class UserController extends BaseController {
             //-- voir pour formater les noms d'images fonction php faire des id uniqid()
             $filename = $file->getName();
             if (!empty($filename)) {
-                $uploader->upload($file, ROOT . "/public/assets/images/users/" . $filename . "." . $file->getExtension());
+                $uploader->upload($file, ROOT . "/public/assets/images/users/" . $filename);
                 $name = $_REQUEST['formContactLastName'];
                 $stmt = $this->pdo()->prepare("INSERT INTO `picture`(`name`) VALUES (?)");
                 $stmt->bindParam(1, $filename);

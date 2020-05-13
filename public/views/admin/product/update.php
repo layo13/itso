@@ -212,7 +212,7 @@ ob_start();
                         <div class="row">
                             <div class="col-2">
                             </div>
-                            <div class="col-10">
+                            <div class="col-4">
                                 <button type="submit" class="btn btn-success">Enregister</button>
                             </div>
                         </div>

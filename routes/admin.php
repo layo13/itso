@@ -281,7 +281,8 @@ return [
         "action" => [
             \Http\Itso\Admin\Modules\Charity\CharityController::class, 'list'
         ]
-    ],////////////////////////////////--- FAVORIE ---/////////////////////////////////////////////
+    ],
+    ////////////////////////////////--- FAVORIE ---/////////////////////////////////////////////
     "favorite_create" => [
         "uri" => "/favorite/create",
         "method" => "GET",

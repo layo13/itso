@@ -80,6 +80,12 @@ ob_start();
                                                     </a>
                                                 </li>
                                                 <li class="kt-nav__item">
+                                                    <a href="#" class="kt-nav__link openModalFavorite" data-productId="<?= intval($product['id']) ?>">
+                                                        <i class="kt-nav__link-icon fa fa-gem"></i>
+                                                        <span class="kt-nav__link-text">Ajouter à une catégorie</span>
+                                                    </a>
+                                                </li>
+                                                <li class="kt-nav__item">
                                                     <a href="<?= $app->router()->getRoute('vip_product_update',['id'=>intval($product['id'])]) ?>" class="kt-nav__link">
                                                         <i class="kt-nav__link-icon flaticon2-settings"></i>
                                                         <span class="kt-nav__link-text">Modifier</span>
@@ -228,6 +234,10 @@ ob_start();
 <script>
     var urlChangePublishProduct = '<?= $app->router()->getRoute('vip_product_publish') ?>';
     var urlReloadList = '<?= $app->router()->getRoute('vip_product_list') ?>';
+
+    var urlFavoriteListByUser = '<?= $app->router()->getRoute('vip_favorite_list_by_user') ?>';
+    var urlValidFavoriteCategorieProduct = '<?= $app->router()->getRoute('vip_favorite_add_favorite') ?>';
+    var urlValidFavoriteProduct = '<?= $app->router()->getRoute('vip_favorite_add_category_favorite') ?>';
 </script>
 
 <?php
@@ -235,4 +245,7 @@ $blockContent = ob_get_clean();
 require __DIR__ . '/../base.php';
 ?>
 
-<script type="text/javascript" src="<?= $url ?>public/assets/js/product_list.js"></script>
+<script type="text/javascript" src="<?= $url ?>public/assets/js/product_list_vip.js"></script>
+<?php
+
+require __DIR__ . '/modals.php';

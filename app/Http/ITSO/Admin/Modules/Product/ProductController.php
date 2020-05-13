@@ -130,43 +130,45 @@ class ProductController extends BaseController {
          ");
         $products = [];
         $productsId = [];
+        $productsPicture = [];
+        $productsLink = [];
+        $productsLinkId = [];
+        $nbProductLinkClick = [];
+        $nbProductLike = [];
+        $users = [];
 		while ($datas = $q->fetch(\PDO::FETCH_ASSOC)) {
 			$products[] = $datas;
             $productsId[] = $datas['id'];
 		}
-        $q = $this->pdo()->query("SELECT picture.*,product_picture.product_id FROM picture  
-LEFT JOIN product_picture ON (product_picture.picture_id = picture.id) where product_picture.product_id in(".implode(',',$productsId).") ");
-        $productsPicture = [];
-        while ($datas = $q->fetch(\PDO::FETCH_ASSOC)) {
-            $productsPicture[$datas['product_id']][] = $datas;
-        }
-        $q = $this->pdo()->query("SELECT * FROM product_link where product_id in(".implode(',',$productsId).") and state <> 5");
-        $productsLink = [];
-        $productsLinkId = [];
-        while ($datas = $q->fetch(\PDO::FETCH_ASSOC)) {
-            $productsLink[$datas['product_id']][] = $datas;
-            $productsLinkId[] = $datas['id'];
-        }
-        $nbProductLinkClick = [];
-        $q = $this->pdo()->query("SELECT count(*) as nb_product_link_click,product_link.product_id FROM product_link_click LEFT JOIN product_link ON (product_link_click.product_link_id = product_link.id) where product_link_id in (" .implode(',',$productsLinkId).") group by product_link_id");
-        while ($datas = $q->fetch(\PDO::FETCH_ASSOC)) {
-            $nbProductLinkClick[$datas['product_id']] = $datas;
-        }
-        $nbProductLike = [];
-        $q = $this->pdo()->query("SELECT count(*) as nb_product_like,product_id FROM liked where product_id in (" .implode(',',$productsId).") and user_id <> ".intval($app->user()->getAttribute('id'))." group by product_id");
-        while ($datas = $q->fetch(\PDO::FETCH_ASSOC)) {
-            $nbProductLike[$datas['product_id']] = $datas;
-        }
-        /**
-         * user
-         */
-        $users = [];
-        $q = $this->pdo()->query("SELECT user.*,product_id
+		if(!empty($productsId)) {
+            $q = $this->pdo()->query("SELECT picture.*,product_picture.product_id FROM picture  
+LEFT JOIN product_picture ON (product_picture.picture_id = picture.id) where product_picture.product_id in(" . implode(',', $productsId) . ") ");
+            while ($datas = $q->fetch(\PDO::FETCH_ASSOC)) {
+                $productsPicture[$datas['product_id']][] = $datas;
+            }
+            $q = $this->pdo()->query("SELECT * FROM product_link where product_id in(" . implode(',', $productsId) . ") and state <> 5");
+            while ($datas = $q->fetch(\PDO::FETCH_ASSOC)) {
+                $productsLink[$datas['product_id']][] = $datas;
+                $productsLinkId[] = $datas['id'];
+            }
+            $q = $this->pdo()->query("SELECT count(*) as nb_product_link_click,product_link.product_id FROM product_link_click LEFT JOIN product_link ON (product_link_click.product_link_id = product_link.id) where product_link_id in (" . implode(',', $productsLinkId) . ") group by product_link_id");
+            while ($datas = $q->fetch(\PDO::FETCH_ASSOC)) {
+                $nbProductLinkClick[$datas['product_id']] = $datas;
+            }
+            $q = $this->pdo()->query("SELECT count(*) as nb_product_like,product_id FROM liked where product_id in (" . implode(',', $productsId) . ") and user_id <> " . intval($app->user()->getAttribute('id')) . " group by product_id");
+            while ($datas = $q->fetch(\PDO::FETCH_ASSOC)) {
+                $nbProductLike[$datas['product_id']] = $datas;
+            }
+            /**
+             * user
+             */
+            $q = $this->pdo()->query("SELECT user.*,product_id
  FROM user_product
          LEFT JOIN user ON (user_product.user_id = user.id)
-  where product_id in (" .implode(',',$productsId).")");
-        while ($datas = $q->fetch(\PDO::FETCH_ASSOC)) {
-            $users[$datas['product_id']] = $datas;
+  where product_id in (" . implode(',', $productsId) . ")");
+            while ($datas = $q->fetch(\PDO::FETCH_ASSOC)) {
+                $users[$datas['product_id']] = $datas;
+            }
         }
 		require ROOT . '/public/views/admin/product/index.php';
 	}
