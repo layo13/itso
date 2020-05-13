@@ -106,59 +106,51 @@ ob_start();
                     foreach ($user_favorite_category as $favoriteByUser) {
                         ?>
                         <div class="col-sm-3">
-                            <!--begin::List Widget 14-->
-                            <div class="card card-custom card-stretch gutter-b">
-                                <!--begin::Header-->
-                                <div class="card-header border-0">
-                                    <h3 class="card-title font-weight-bolder text-dark"><?= $favoriteByUser[0]['first_name'] ?> <?= $favoriteByUser[0]['last_name'] ?></h3>
+                            <div class="kt-portlet kt-portlet--height-fluid">
+                                <div class="kt-portlet__head">
+                                    <div class="kt-portlet__head-label">
+                                        <h3 class="kt-portlet__head-title">
+                                            <?= $favoriteByUser[0]['first_name'] ?> <?= $favoriteByUser[0]['last_name'] ?>
+                                        </h3>
+                                    </div>
                                 </div>
-                                <!--end::Header-->
-                                <!--begin::Body-->
-                                <div class="card-body pt-2">
+                                <div class="kt-portlet__body">
                                 <?php
                                 foreach ($favoriteByUser as $favorite) {
                                     ?>
-                                    <div class="d-flex flex-wrap align-items-center mb-10">
-                                                <!--begin::Symbol-->
-                                                <div class="symbol symbol-60 symbol-2by3 flex-shrink-0 mr-4">
-                                                    <div class="symbol-label"></div>
-                                                </div>
-                                                <!--end::Symbol-->
+                                        <!--begin::widget 12-->
+                                        <div class="kt-widget4">
+                                            <div class="kt-widget4__item">
+                                                <span class="kt-widget4__icon">
 
-                                                <!--begin::Title-->
-                                                <div class="d-flex flex-column flex-grow-1 my-lg-0 my-2 pr-3">
-                                                    <a href="<?= $app->router()->getRoute('admin_favorite_view', ['id' => $favorite['id']]) ?>" class="text-dark-75 font-weight-bolder text-hover-primary font-size-lg">
-                                                        <?= ucfirst($favorite['name']) ?>
-                                                    </a>
-                                                    <span class="text-muted font-weight-bold font-size-sm my-1">
-                                                         <?php
-                                                         if ($favorite['active'] == 1) {
-                                                             ?>
-                                                             Actif
-                                                             <?php
-                                                         } else {
-                                                             ?>
-                                                             Inactif
-                                                             <?php
-                                                         }
-                                                         ?>
-                                                    </span>
-                                                </div>
-                                                <!--end::Title-->
-
-                                                <!--begin::Info
-                                                <div class="d-flex align-items-center py-lg-0 py-2">
-                                                    <div class="d-flex flex-column text-right">
-                                                        <span class="text-dark-75 font-weight-bolder font-size-h4">
-                                                            24,900
-                                                        </span>
-                                                        <span class="text-muted font-size-sm font-weight-bolder">
-                                                            votes
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                                -->
+                                                <?php
+                                                if ($favorite['active'] == 1) {
+                                                    ?>
+                                                    <i class="flaticon2-check-mark kt-font-success"></i>
+                                                    <?php
+                                                } else {
+                                                    ?>
+                                                    <i class="flaticon2-cancel-music kt-font-danger"></i>
+                                                    <?php
+                                                }
+                                                ?>
+                                                </span>
+                                                <a href="<?= $app->router()->getRoute('admin_favorite_view', ['id' => $favorite['id']]) ?>" class="kt-widget4__title kt-widget4__title--light">
+                                                    <?= ucfirst($favorite['name']) ?>
+                                                </a>
+                                                <?php
+                                                if ($favorite['active'] == 1) {
+                                                    ?>
+                                                    <span class="kt-widget4__number kt-font-success">Actif</span>
+                                                    <?php
+                                                } else {
+                                                    ?>
+                                                    <span class="kt-widget4__number kt-font-danger">Inactif</span>
+                                                    <?php
+                                                }
+                                                ?>
                                             </div>
+                                        </div>
                                 <?php } ?>
                                 </div>
                                 <!--end::Body-->
