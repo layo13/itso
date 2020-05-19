@@ -1,8 +1,11 @@
 <?php
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
+return [
+	'httpHost' => 'localhost',
+	'url' => 'http://localhost/itso/',
+	'db.name' => 'itso',
+	'db.host' => '127.0.0.1',
+	'db.user' => 'root',
+	'db.password' => '',
+	'db.port' => 3306
+];

@@ -5,7 +5,36 @@ define('ROOT', __DIR__);
 require_once ROOT . '/vendor/autoload.php';
 require_once ROOT . '/vendor/pdo.php';
 
-define('URL', 'http://localhost/itso/');
+// CHOIX DE LA CONFIG
+
+use Epic\Config;
+
+$scandirConfig = scandir($configDirname = ROOT . '/config');
+foreach ($scandirConfig as $configFile) {
+
+	if (!is_file($configFilename = $configDirname . "/" . $configFile)) {
+		continue;
+	}
+
+	$configTest = new Config(pathinfo($configFilename, PATHINFO_FILENAME));
+	$configTest->setValues(require $configFilename);
+
+	if ($_SERVER['HTTP_HOST'] == $configTest->getValue(Config::HTTP_HOST)) {
+		$config = $configTest;
+		break;
+	}
+}
+
+if (empty($config)) {
+	$config = new Config('default');
+}
+
+define('URL', $config->getValue(Config::URL));
+PdoProvider::$dbname = $config->getValue(Config::DB_NAME);
+PdoProvider::$host = $config->getValue(Config::DB_HOST);
+PdoProvider::$user = $config->getValue(Config::DB_USER);
+PdoProvider::$password = $config->getValue(Config::DB_PASSWORD);
+PdoProvider::$port = $config->getValue(Config::DB_PORT);
 
 // -----------------------------------------------------------------------------
 // Chargement des applications

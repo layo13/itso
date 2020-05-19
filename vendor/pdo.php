@@ -2,10 +2,11 @@
 
 class PdoProvider {
 
-	private static $dbname = 'itso';
-	private static $host = '127.0.0.1';
-	private static $user = 'root';
-	private static $password = '';
+	public static $dbname = 'itso';
+	public static $host = '127.0.0.1';
+	public static $user = 'root';
+	public static $password = '';
+	public static $port = 3306;
 	
 	protected static $instance;
 
@@ -24,7 +25,7 @@ class PdoProvider {
 	public static function getInstance() {
 		if (!isset(self::$instance)) {
 			try {
-				self::$instance = new PDO('mysql:dbname=' . self::$dbname . ';host=' . self::$host, self::$user, self::$password, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING));
+				self::$instance = new PDO('mysql:dbname=' . self::$dbname . ';host=' . self::$host . ';port=' . self::$port, self::$user, self::$password, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING));
 			} catch (PDOException $e) {
 				echo 'Connexion échouée : ' . $e->getMessage();
 			}
@@ -34,5 +35,3 @@ class PdoProvider {
 	}
 
 }
-
-?>
