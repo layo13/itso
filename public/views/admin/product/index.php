@@ -50,11 +50,19 @@ ob_start();
 											</span>
                                         </div>
                                         <div class="kt-widget__info kt-margin-t-5">
-                                            <a href="/itso/product/view,<?= $product['id'] ?>" class="kt-widget__title">
+                                            <a href="<?= $app->router()->getRoute('admin_product_view',['id'=>intval($product['id'])]) ?>" class="kt-widget__title">
                                                 <?= $product['name'] ?>
                                             </a>
                                             <span class="kt-widget__desc">
                                                 <?= utf8_encode($product['product_category']) ?>
+                                                <?php
+                                                if(!empty($users[$product['id']])){
+                                                ?>
+                                                <br>
+                                                <?= utf8_encode($users[$product['id']]['first_name'])." ".utf8_encode($users[$product['id']]['last_name']) ?>
+                                                <?php
+                                                    }
+                                                    ?>
 											</span>
                                         </div>
                                     </div>
@@ -79,6 +87,18 @@ ob_start();
                                                         </span>
                                                     </a>
                                                 </li>
+                                                <?php
+                                                if(!empty($users[$product['id']])){
+                                                ?>
+                                                <li class="kt-nav__item">
+                                                    <a href="#" class="kt-nav__link openModalFavorite" data-productId="<?= intval($product['id']) ?>" data-userId="<?= intval($users[$product['id']]['id']) ?>">
+                                                        <i class="kt-nav__link-icon fa fa-gem"></i>
+                                                        <span class="kt-nav__link-text">Ajouter à une catégorie</span>
+                                                    </a>
+                                                </li>
+                                                    <?php
+                                                }
+                                                ?>
                                                 <li class="kt-nav__item">
                                                     <a href="<?= $app->router()->getRoute('admin_product_update',['id'=>intval($product['id'])]) ?>" class="kt-nav__link">
                                                         <i class="kt-nav__link-icon flaticon2-settings"></i>
@@ -224,10 +244,14 @@ ob_start();
         <!-- end:: Content -->
     </div>
 </div>
-
 <script>
     var urlChangePublishProduct = '<?= $app->router()->getRoute('admin_product_publish') ?>';
     var urlReloadList = '<?= $app->router()->getRoute('admin_product_list') ?>';
+
+
+    var urlFavoriteListByUser = '<?= $app->router()->getRoute('admin_favorite_list_by_user') ?>';
+    var urlValidFavoriteCategorieProduct = '<?= $app->router()->getRoute('admin_favorite_add_favorite') ?>';
+    var urlValidFavoriteProduct = '<?= $app->router()->getRoute('admin_favorite_add_category_favorite') ?>';
 </script>
 
 <?php
@@ -236,3 +260,6 @@ require __DIR__ . '/../base.php';
 ?>
 
 <script type="text/javascript" src="<?= $url ?>public/assets/js/product_list.js"></script>
+<?php
+
+require __DIR__ . '/modals.php';

@@ -22,6 +22,8 @@
         }
     ],
     "picture": [
+        {"name": "lionel_photo_profil.jpg"},
+        {"name": "thomas_photo_profil.jpg"},
         {"name": "seb_photo_profil.jpg"}
     ],
     "user": [
@@ -32,7 +34,7 @@
             "email": "liodu13170@gmail.com",
             "password": "$2y$10$cmA172pOd7n195YoVjae3eCcCuBXnc7lTi92wWPAjHdkMNtAvO9oW",
             "gender": 2,
-            "picture_id": null,
+            "picture_id": 1,
             "language": 1,
             "nationality": 1,
             "state": 1,
@@ -46,7 +48,7 @@
             "email": "thomas.bruno.13@gmail.com",
             "password": "$2y$10$9HB9o80nSD6OcF56Bk5pbeoKRHUD5CG0uwgfQ9.7oMQw6MosGVXdy",
             "gender": 2,
-            "picture_id": null,
+            "picture_id": 2,
             "language": 1,
             "nationality": 1,
             "state": 1,
@@ -58,9 +60,9 @@
             "first_name": "Sébastien",
             "day_of_birth": "1991-07-31 00:00:00",
             "email": "intheshoesof@icloud.com",
-            "password": "$2y$10$9HB9o80nSD6OcF56Bk5pbeoKRHUD5CG0uwgfQ9.7oMQw6MosGVXdy",
+            "password": "$2y$10$iVYXomNhYtkKdN8EYFJE1uGz9ZN2PCvxcL1J1TV37LEDeMzvZWs/C",
             "gender": 2,
-            "picture_id": 1,
+            "picture_id": 3,
             "language": 1,
             "nationality": 1,
             "state": 1,

@@ -87,6 +87,18 @@ function est_multiple($nombre, $multiple) {
 		return false;
 }
 
+function selectNavRubrique($last_position, $route, $position, $mid_position ='') {
+    $tabRoute = explode('_',$route);
+	if ($position == 0 && in_array($tabRoute[0],$last_position))
+		return " kt-menu__item--here kt-menu__item--open";
+	elseif (!empty($tabRoute[1]))
+	    if ($position == 1 && in_array($tabRoute[1],$last_position))
+        return " kt-menu__item--here kt-menu__item--open";
+	elseif (!empty($tabRoute[2]))
+	    if ($position == 2 && in_array($tabRoute[2],$last_position) && in_array($tabRoute[1],$mid_position))
+		return " kt-menu__item--active";
+}
+
 function getGender($genderId) {
 	if ($genderId == 2)
 		return "<i class=\"fa fa-mars\"></i>";

@@ -105,60 +105,6 @@ License: You must have a valid license purchased only from themeforest(the above
 									</div>
 								</form>
 							</div>
-							<div class="kt-login__signup">
-								<div class="kt-login__head">
-									<h3 class="kt-login__title">Inscription</h3>
-									<div class="kt-login__desc">Renseignez vos informations:</div>
-								</div>
-								<form class="kt-login__form kt-form">
-									<div class="input-group">
-										<input class="form-control" type="text" placeholder="Fullname" name="fullname">
-									</div>
-									<div class="input-group">
-										<input class="form-control" type="text" placeholder="Email" name="email" autocomplete="off">
-									</div>
-									<div class="input-group">
-										<input class="form-control" type="password" placeholder="Password" name="password">
-									</div>
-									<div class="input-group">
-										<input class="form-control" type="password" placeholder="Confirm Password" name="rpassword">
-									</div>
-									<div class="row kt-login__extra">
-										<div class="col kt-align-left">
-											<label class="kt-checkbox">
-												<input type="checkbox" name="agree">Je suis d'accord avec <a href="#" class="kt-link kt-login__link kt-font-bold">notre politique de gestion des données</a>.
-												<span></span>
-											</label>
-											<span class="form-text text-muted"></span>
-										</div>
-									</div>
-									<div class="kt-login__actions">
-										<button id="kt_login_signup_submit" class="btn btn-pill kt-login__btn-primary">Valider</button>&nbsp;&nbsp;
-										<button id="kt_login_signup_cancel" class="btn btn-pill kt-login__btn-secondary">Annuler</button>
-									</div>
-								</form>
-							</div>
-							<div class="kt-login__forgot">
-								<div class="kt-login__head">
-									<h3 class="kt-login__title">Mot de passe oublié ?</h3>
-									<div class="kt-login__desc">Renseignez votre email pour recevoir votre mot de passe:</div>
-								</div>
-								<form class="kt-form" action="">
-									<div class="input-group">
-										<input class="form-control" type="text" placeholder="Email" name="email" id="kt_email" autocomplete="off">
-									</div>
-									<div class="kt-login__actions">
-										<button id="kt_login_forgot_submit" class="btn btn-pill kt-login__btn-primary">Envoyer</button>&nbsp;&nbsp;
-										<button id="kt_login_forgot_cancel" class="btn btn-pill kt-login__btn-secondary">Annuler</button>
-									</div>
-								</form>
-							</div>
-							<div class="kt-login__account">
-								<span class="kt-login__account-msg">
-									Vous n'avez pas encore de compte ?
-								</span>&nbsp;&nbsp;
-								<a href="javascript:;" id="kt_login_signup" class="kt-link kt-link--light kt-login__account-link">S'inscrire</a>
-							</div>
 						</div>
 					</div>
 				</div>

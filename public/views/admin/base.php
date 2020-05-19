@@ -3,7 +3,7 @@
 $app;
 
 ?><!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 	<!-- begin::Head -->
 	<head>
@@ -79,51 +79,219 @@ $app;
 					<!-- begin:: Aside Menu -->
                     <!--
 
-														<li class="kt-menu__item " aria-haspopup="true"><a href="<?= $app->router()->getRoute('admin_user_list') ?>" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">List - Default</span></a></li> -->
+														 -->
 					<div class="kt-aside-menu-wrapper kt-grid__item kt-grid__item--fluid" id="kt_aside_menu_wrapper">
 						<div id="kt_aside_menu" class="kt-aside-menu " data-ktmenu-vertical="1" data-ktmenu-scroll="1" data-ktmenu-dropdown-timeout="500">
 							<ul class="kt-menu__nav ">
-								<li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true">
+								<li class="kt-menu__item<?= selectNavRubrique(['home'], $app->routeName(), 1)?>" aria-haspopup="true">
                                     <a href="<?= $app->router()->getRoute('admin_home') ?>" class="kt-menu__link ">
                                         <i class="kt-menu__link-icon flaticon2-architecture-and-city"></i>
                                         <span class="kt-menu__link-text">Accueil</span>
                                     </a>
                                 </li>
-								<li class="kt-menu__item  kt-menu__item-" aria-haspopup="true">
-                                    <a href="<?= $app->router()->getRoute('admin_user_list') ?>" class="kt-menu__link ">
+                                <li class="kt-menu__item kt-menu__item--submenu<?= selectNavRubrique(['user','vip','customer'], $app->routeName(), 1)?>" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
+                                    <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
                                         <i class="kt-menu__link-icon flaticon2-user"></i>
                                         <span class="kt-menu__link-text">Utilisateurs</span>
+                                        <i class="kt-menu__ver-arrow la la-angle-right"></i>
                                     </a>
+                                    <div class="kt-menu__submenu " style=""><span class="kt-menu__arrow"></span>
+                                        <ul class="kt-menu__subnav">
+                                            <li class="kt-menu__item kt-menu__item--submenu<?= selectNavRubrique(['vip','user'], $app->routeName(), 1)?>" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
+                                                <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
+                                                    <i class="kt-menu__link-icon fa fa-star"></i>
+                                                    <span class="kt-menu__link-text">VIP</span>
+                                                    <i class="kt-menu__ver-arrow la la-angle-right"></i>
+                                                </a>
+                                                <div class="kt-menu__submenu<?= selectNavRubrique(['vip','user'], $app->routeName(), 1)?>">
+                                                    <span class="kt-menu__arrow"></span>
+                                                    <ul class="kt-menu__subnav<?= selectNavRubrique(['vip','user'], $app->routeName(), 1)?>">
+                                                        <li class="kt-menu__item<?= selectNavRubrique(['list'], $app->routeName(), 2, ['vip','user'])?>" aria-haspopup="true">
+                                                            <a href="<?= $app->router()->getRoute('admin_vip_list') ?>" class="kt-menu__link ">
+                                                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
+                                                                    <span></span>
+                                                                </i>
+                                                                <span class="kt-menu__link-text">Liste</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="kt-menu__item <?= selectNavRubrique(['create'], $app->routeName(), 2, ['vip','user'])?>" aria-haspopup="true">
+                                                            <a href="<?= $app->router()->getRoute('admin_vip_create') ?>" class="kt-menu__link ">
+                                                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
+                                                                    <span></span>
+                                                                </i>
+                                                                <span class="kt-menu__link-text">Ajouter</span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                            <li class="kt-menu__item kt-menu__item--submenu<?= selectNavRubrique(['customer'], $app->routeName(), 1)?>" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
+                                                <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
+                                                    <i class="kt-menu__link-icon fa fa-user-tie"></i>
+                                                    <span class="kt-menu__link-text">Client</span>
+                                                    <i class="kt-menu__ver-arrow la la-angle-right"></i>
+                                                </a>
+                                                <div class="kt-menu__submenu ">
+                                                    <span class="kt-menu__arrow"></span>
+                                                    <ul class="kt-menu__subnav">
+                                                        <li class="kt-menu__item <?= selectNavRubrique(['list'], $app->routeName(), 2, ['customer'])?>" aria-haspopup="true">
+                                                            <a href="<?= $app->router()->getRoute('admin_customer_list') ?>" class="kt-menu__link ">
+                                                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
+                                                                    <span></span>
+                                                                </i>
+                                                                <span class="kt-menu__link-text">Liste</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="kt-menu__item <?= selectNavRubrique(['create'], $app->routeName(), 2, ['customer'])?>" aria-haspopup="true">
+                                                            <a href="<?= $app->router()->getRoute('admin_customer_create') ?>" class="kt-menu__link ">
+                                                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
+                                                                    <span></span>
+                                                                </i>
+                                                                <span class="kt-menu__link-text">Ajouter</span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+
+                                        </ul>
+                                    </div>
                                 </li>
-								<li class="kt-menu__item  kt-menu__item-" aria-haspopup="true">
-                                    <a href="<?= $app->router()->getRoute('admin_customer_list') ?>" class="kt-menu__link ">
-                                        <i class="kt-menu__link-icon fa fa-user-tie"></i>
-                                        <span class="kt-menu__link-text">Clients</span>
-                                    </a>
-                                </li>
-								<li class="kt-menu__item  kt-menu__item-" aria-haspopup="true">
-                                    <a href="<?= $app->router()->getRoute('admin_brand_list') ?>" class="kt-menu__link ">
+                                <li class="kt-menu__item kt-menu__item--submenu<?= selectNavRubrique(['brand'], $app->routeName(), 1)?>" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
+                                    <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
                                         <i class="kt-menu__link-icon flaticon-business"></i>
                                         <span class="kt-menu__link-text">Marques</span>
+                                        <i class="kt-menu__ver-arrow la la-angle-right"></i>
                                     </a>
+                                    <div class="kt-menu__submenu " style=""><span class="kt-menu__arrow"></span>
+                                        <ul class="kt-menu__subnav">
+                                            <li class="kt-menu__item<?= selectNavRubrique(['list'], $app->routeName(), 2, ['brand'])?>" aria-haspopup="true">
+                                                <a href="<?= $app->router()->getRoute('admin_brand_list') ?>" class="kt-menu__link ">
+                                                    <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span class="kt-menu__link-text">Liste</span>
+                                                </a>
+                                            </li>
+                                            <li class="kt-menu__item<?= selectNavRubrique(['create'], $app->routeName(), 2, ['brand'])?>" aria-haspopup="true">
+                                                <a href="<?= $app->router()->getRoute('admin_brand_create') ?>" class="kt-menu__link ">
+                                                    <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span class="kt-menu__link-text">Ajouter</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </li>
-								<li class="kt-menu__item  kt-menu__item-" aria-haspopup="true">
-                                    <a href="<?= $app->router()->getRoute('admin_charity_list') ?>" class="kt-menu__link ">
+                                <li class="kt-menu__item kt-menu__item--submenu<?= selectNavRubrique(['charity'], $app->routeName(), 1)?>" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
+                                    <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
                                         <i class="kt-menu__link-icon flaticon-black"></i>
                                         <span class="kt-menu__link-text">Associations</span>
+                                        <i class="kt-menu__ver-arrow la la-angle-right"></i>
                                     </a>
+                                    <div class="kt-menu__submenu " style=""><span class="kt-menu__arrow"></span>
+                                        <ul class="kt-menu__subnav">
+                                            <li class="kt-menu__item <?= selectNavRubrique(['list'], $app->routeName(), 2, ['charity'])?>" aria-haspopup="true">
+                                                <a href="<?= $app->router()->getRoute('admin_charity_list') ?>" class="kt-menu__link ">
+                                                    <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span class="kt-menu__link-text">Liste</span>
+                                                </a>
+                                            </li>
+                                            <li class="kt-menu__item <?= selectNavRubrique(['create'], $app->routeName(), 2, ['charity'])?>" aria-haspopup="true">
+                                                <a href="<?= $app->router()->getRoute('admin_charity_create') ?>" class="kt-menu__link ">
+                                                    <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span class="kt-menu__link-text">Ajouter</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </li>
-								<li class="kt-menu__item  kt-menu__item-" aria-haspopup="true">
-                                    <a href="<?= $app->router()->getRoute('admin_product_list') ?>" class="kt-menu__link ">
+                                <li class="kt-menu__item kt-menu__item--submenu<?= selectNavRubrique(['product'], $app->routeName(), 1)?>" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
+                                    <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
                                         <i class="kt-menu__link-icon flaticon2-box-1"></i>
                                         <span class="kt-menu__link-text">Produit</span>
+                                        <i class="kt-menu__ver-arrow la la-angle-right"></i>
                                     </a>
+                                    <div class="kt-menu__submenu " style=""><span class="kt-menu__arrow"></span>
+                                        <ul class="kt-menu__subnav">
+                                            <li class="kt-menu__item <?= selectNavRubrique(['list'], $app->routeName(), 2, ['product'])?>" aria-haspopup="true">
+                                                <a href="<?= $app->router()->getRoute('admin_product_list') ?>" class="kt-menu__link ">
+                                                    <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span class="kt-menu__link-text">Liste</span>
+                                                </a>
+                                            </li>
+                                            <li class="kt-menu__item <?= selectNavRubrique(['create'], $app->routeName(), 2, ['product'])?>" aria-haspopup="true">
+                                                <a href="<?= $app->router()->getRoute('admin_product_create') ?>" class="kt-menu__link ">
+                                                    <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span class="kt-menu__link-text">Ajouter</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </li>
-								<li class="kt-menu__item  kt-menu__item-" aria-haspopup="true">
-                                    <a href="<?= $app->router()->getRoute('admin_color_list') ?>" class="kt-menu__link ">
+                                <li class="kt-menu__item kt-menu__item--submenu<?= selectNavRubrique(['color'], $app->routeName(), 1)?>" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
+                                    <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
                                         <i class="kt-menu__link-icon fa fa-fill-drip"></i>
                                         <span class="kt-menu__link-text">Couleurs</span>
+                                        <i class="kt-menu__ver-arrow la la-angle-right"></i>
                                     </a>
+                                    <div class="kt-menu__submenu " style=""><span class="kt-menu__arrow"></span>
+                                        <ul class="kt-menu__subnav">
+                                            <li class="kt-menu__item <?= selectNavRubrique(['list'], $app->routeName(), 2, ['color'])?>" aria-haspopup="true">
+                                                <a href="<?= $app->router()->getRoute('admin_color_list') ?>" class="kt-menu__link ">
+                                                    <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span class="kt-menu__link-text">Liste</span>
+                                                </a>
+                                            </li>
+                                            <li class="kt-menu__item <?= selectNavRubrique(['create'], $app->routeName(), 2, ['color'])?>" aria-haspopup="true">
+                                                <a href="<?= $app->router()->getRoute('admin_color_create') ?>" class="kt-menu__link ">
+                                                    <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span class="kt-menu__link-text">Ajouter</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="kt-menu__item kt-menu__item--submenu<?= selectNavRubrique(['favorite'], $app->routeName(), 1)?>" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
+                                    <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
+                                        <i class="kt-menu__link-icon fa fa-user-tie"></i>
+                                        <span class="kt-menu__link-text">Favorie</span>
+                                        <i class="kt-menu__ver-arrow la la-angle-right"></i>
+                                    </a>
+                                    <div class="kt-menu__submenu ">
+                                        <span class="kt-menu__arrow"></span>
+                                        <ul class="kt-menu__subnav">
+                                            <li class="kt-menu__item <?= selectNavRubrique(['list'], $app->routeName(), 2, ['favorite'])?>" aria-haspopup="true">
+                                                <a href="<?= $app->router()->getRoute('admin_favorite_list') ?>" class="kt-menu__link ">
+                                                    <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span class="kt-menu__link-text">Liste</span>
+                                                </a>
+                                            </li>
+                                            <li class="kt-menu__item <?= selectNavRubrique(['create'], $app->routeName(), 2, ['favorite'])?>" aria-haspopup="true">
+                                                <a href="<?= $app->router()->getRoute('admin_favorite_create') ?>" class="kt-menu__link ">
+                                                    <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span class="kt-menu__link-text">Ajouter</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </li>
 							</ul>
 						</div>

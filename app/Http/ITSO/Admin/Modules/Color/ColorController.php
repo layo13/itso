@@ -12,27 +12,23 @@ class ColorController extends BaseController {
         require ROOT . '/public/views/admin/color/create.php';
 	}
 
-	public function updateAction() {
+	public function updateAction($id) {
         $url = URL;
         $app = $this->application;
-        if(empty($GLOBALS['matches'])){
-            $GLOBALS['matches'][0]=2;
-        }
 
-        $q = $this->pdo()->query("SELECT * FROM color where id = " . intval($GLOBALS['matches'][0]));
+        $q = $this->pdo()->query("SELECT * FROM color where id = " . intval($id));
         $color = $q->fetch(\PDO::FETCH_ASSOC);
         require ROOT . '/public/views/admin/color/update.php';
 	}
 
-	public function editAction() {
+	public function editAction($id) {
         $url = URL;
         $app = $this->application;
 
 		$name = $_REQUEST['formColorName'];
 		$hex = $_REQUEST['formColorHex'];
-        $id = intval($GLOBALS['matches'][0]);
 
-        $sqlUpdateUser ="UPDATE `color` SET name = ?, hex = ? WHERE id=?";
+        $sqlUpdateUser ="UPDATE `color` SET name = ?, hex = ? WHERE id = ?";
         $stmt = $this->pdo()->prepare($sqlUpdateUser)->execute([$name,$hex,$id]);
 
         redirect($app->router()->getRoute('admin_color_list'));

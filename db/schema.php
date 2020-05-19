@@ -69,7 +69,7 @@ $schema->addTable('charity_association', function(Table $table) {
 // @TODO
 $schema->addTable('user_favorite', function(Table $table) {
 	$table->integer('id')->primary(true);
-	$table->varchar('name')->length(255)->nullable(false);
+	$table->varchar('name')->length(255)->nullable(true);
 	$table->integer('product_id')->nullable(false);
 	$table->integer('favorite_categorie_id')->nullable(false);
 	$table->integer('state')->nullable(false);

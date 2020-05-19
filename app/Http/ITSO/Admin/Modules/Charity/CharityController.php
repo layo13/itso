@@ -14,17 +14,20 @@ class CharityController extends BaseController {
         require ROOT . '/public/views/admin/charity/create.php';
 	}
 
-	public function updateAction() {
+	public function updateAction($id) {
         $url = URL;
         $app = $this->application;
+        $q = $this->pdo()->query("SELECT charity_association.*,picture.name as charity_picture FROM charity_association LEFT JOIN picture ON (picture.id = charity_association.picture_id) where charity_association.id = " . intval($id));
+        $charity = $q->fetch(\PDO::FETCH_ASSOC);
+
         require ROOT . '/public/views/admin/charity/update.php';
 	}
 
-	public function editAction() {
+	public function editAction($id) {
         $url = URL;
         $app = $this->application;
 
-        $q = $this->pdo()->query("SELECT * FROM charity_association where id = " . intval($GLOBALS['matches'][0]));
+        $q = $this->pdo()->query("SELECT * FROM charity_association where charity_association.id = " . intval($id));
         $charity = $q->fetch(\PDO::FETCH_ASSOC);
         $picture_id = $charity['picture_id'];
 
@@ -34,9 +37,11 @@ class CharityController extends BaseController {
 		$filename = $file->getName();
 
 		if (!empty($filename)) {
+            $rqtDelete = 'DELETE FROM `picture` WHERE id = ?';
+            $stmt = $this->pdo()->prepare($rqtDelete)->execute([$picture_id]);
             $uploader->upload($file, ROOT . "/public/assets/images/charity_association/" . $filename . "." . $file->getExtension());
-			$name = $_REQUEST['formCharityName'];
-			$stmt = $this->pdo()->prepare("INSERT INTO `pictures`(`name`) VALUES (?)");
+			$name = $filename;
+			$stmt = $this->pdo()->prepare("INSERT INTO `picture`(`name`) VALUES (?)");
 			$stmt->bindParam(1, $name);
 			$stmt->execute();
 
@@ -46,7 +51,6 @@ class CharityController extends BaseController {
 		//-- voir pour créer une classe Associations
 		$name = $_REQUEST['formCharityName'];
 		$active = $_REQUEST['formCharityActive'];
-        $id = intval($GLOBALS['matches'][0]);
 
         $sqlUpdateUser ="UPDATE `charity_association` SET name = ?, picture_id = ?, active = ? WHERE id=?";
         $stmt = $this->pdo()->prepare($sqlUpdateUser)->execute([$name,$picture_id,$active,$id]);
@@ -65,8 +69,8 @@ class CharityController extends BaseController {
 		$sqlCreateAssociation = "INSERT INTO `charity_association`(`name`,`active`) VALUES (?,?)";
 		if (!empty($filename)) {
             $uploader->upload($file, ROOT . "/public/assets/images/charity_association/" . $filename . "." . $file->getExtension());
-			$name = $_REQUEST['formCharityName'];
-			$stmt = $this->pdo()->prepare("INSERT INTO `pictures`(`name`) VALUES (?)");
+			$name = $filename;
+			$stmt = $this->pdo()->prepare("INSERT INTO `picture`(`name`) VALUES (?)");
 			$stmt->bindParam(1, $name);
 			$stmt->execute();
 
@@ -101,10 +105,10 @@ class CharityController extends BaseController {
 		require ROOT . '/public/views/admin/charity/index.php';
 	}
 
-	public function viewAction() {
+	public function viewAction($id) {
         $url = URL;
         $app = $this->application;
-		$q = $this->pdo()->query("SELECT charity_association.*,picture.name as charity_picture FROM charity_association LEFT JOIN picture ON (picture.id = charity_association.picture_id) where id = " . intval($GLOBALS['matches'][0]));
+		$q = $this->pdo()->query("SELECT charity_association.*,picture.name as charity_picture FROM charity_association LEFT JOIN picture ON (picture.id = charity_association.picture_id) where charity_association.id = " . intval($id));
 		$charity = $q->fetch(\PDO::FETCH_ASSOC);
 
         require ROOT . '/public/views/admin/charity/view.php';

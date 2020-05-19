@@ -7,7 +7,7 @@ ob_start();
 ?>
 
 <style>
-    img#imgAssociationShow {
+    img.img-responsive {
         position: relative;
         display: block;
         width: 100%;
@@ -30,7 +30,7 @@ ob_start();
         </div>
             <div class="kt-portlet kt-portlet--tabs">
                 <div class="kt-portlet__body">
-                    <form class="kt-form kt-form--label-right" action="<?= $app->router()->getRoute('admin_brand_add') ?>" method="post" enctype="multipart/form-data">
+                    <form class="kt-form kt-form--label-right" action="<?= $app->router()->getRoute('admin_brand_edit',['id'=>$brand['id']]) ?>" method="post" enctype="multipart/form-data">
                             <div class="kt-portlet__body">
                                 <?php if(!empty($message)){ ?>
                                     <div class="form-group form-group-last">
@@ -46,15 +46,15 @@ ob_start();
                                     <label for="formBrandActive" class="col-2 col-form-label">Activer</label>
                                     <div class="col-4">
                                         <select class="form-control" id="formBrandActive" name="formBrandActive">
-                                            <option value="0">Non</option>
-                                            <option value="1">Oui</option>
+                                            <option <?php if ($brand['active'] == 0) { echo'selected'; } ?> value="0">Non</option>
+                                            <option <?php if ($brand['active'] == 1) { echo'selected'; } ?> value="1">Oui</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="formBrandName" class="col-2 col-form-label">Nom</label>
                                     <div class="col-4">
-                                        <input required class="form-control" type="text" id="formBrandName" name="formBrandName">
+                                        <input required class="form-control" type="text" value="<?php echo $brand['name'] ?>" id="formBrandName" name="formBrandName">
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -89,6 +89,15 @@ ob_start();
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <?php
+                                        if(!empty($brand['brand_picture'])){
+                                            ?>
+                                            <img class="img-responsive" src="<?=$url?>public/assets/images/brand/<?= $brand['brand_picture'] ?>" alt="image">
+                                            <?php
+                                        }
+                                        ?>
                                     </div>
                                 </div>
                         </div>

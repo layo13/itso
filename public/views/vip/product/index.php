@@ -15,7 +15,7 @@ ob_start();
 				<a href="#" class="">
 				</a>
                 <!-- vers formulaire de contact -->
-				<a href="<?= $app->router()->getRoute('vip_product_create') ?>" class="btn btn-label-facebook btn-bold">Ajouter un produit</a>
+				<a href="<?= $app->router()->getRoute('vip_product_create') ?>" class="btn btn-success btn-bold">Ajouter un produit</a>
 			</div>
 		</div>
 	</div>
@@ -80,6 +80,12 @@ ob_start();
                                                     </a>
                                                 </li>
                                                 <li class="kt-nav__item">
+                                                    <a href="#" class="kt-nav__link openModalFavorite" data-productId="<?= intval($product['id']) ?>">
+                                                        <i class="kt-nav__link-icon fa fa-gem"></i>
+                                                        <span class="kt-nav__link-text">Ajouter à une catégorie</span>
+                                                    </a>
+                                                </li>
+                                                <li class="kt-nav__item">
                                                     <a href="<?= $app->router()->getRoute('vip_product_update',['id'=>intval($product['id'])]) ?>" class="kt-nav__link">
                                                         <i class="kt-nav__link-icon flaticon2-settings"></i>
                                                         <span class="kt-nav__link-text">Modifier</span>
@@ -130,10 +136,12 @@ ob_start();
                                     </div>
                                     <span class="kt-widget__text">
                                         <?php
-                                        foreach ($productsLink[$product['id']] as $link) {
-                                            ?>
-                                                <a target="_blank" href="<?= $link['url'] ?>" title="<?= $link['url'] ?>" class="btn btn-facebook">Lien</a>
-                                            <?php
+                                        if(!empty($productsLink[$product['id']])){
+                                            foreach ($productsLink[$product['id']] as $link) {
+                                                ?>
+                                                    <a target="_blank" href="<?= $link['url'] ?>" title="<?= $link['url'] ?>" class="btn btn-facebook">Lien</a>
+                                                <?php
+                                            }
                                         }
                                         ?>
 									</span>
@@ -204,7 +212,7 @@ ob_start();
                                             </div>
                                         </div>
                                         <div class="kt-widget__section">
-                                            <a href="<?= $app->router()->getRoute('vip_product_view',['id'=>intval($product['id'])]) ?>" class="btn btn-brand btn-sm btn-upper btn-bold">details</a>
+                                            <a href="<?= $app->router()->getRoute('vip_product_view',['id'=>intval($product['id'])]) ?>" class="btn btn-facebook btn-sm btn-upper btn-bold">details</a>
                                         </div>
                                     </div>
                                 </div>
@@ -226,6 +234,10 @@ ob_start();
 <script>
     var urlChangePublishProduct = '<?= $app->router()->getRoute('vip_product_publish') ?>';
     var urlReloadList = '<?= $app->router()->getRoute('vip_product_list') ?>';
+
+    var urlFavoriteListByUser = '<?= $app->router()->getRoute('vip_favorite_list_by_user') ?>';
+    var urlValidFavoriteCategorieProduct = '<?= $app->router()->getRoute('vip_favorite_add_favorite') ?>';
+    var urlValidFavoriteProduct = '<?= $app->router()->getRoute('vip_favorite_add_category_favorite') ?>';
 </script>
 
 <?php
@@ -233,4 +245,7 @@ $blockContent = ob_get_clean();
 require __DIR__ . '/../base.php';
 ?>
 
-<script type="text/javascript" src="<?= $url ?>public/assets/js/product_list.js"></script>
+<script type="text/javascript" src="<?= $url ?>public/assets/js/product_list_vip.js"></script>
+<?php
+
+require __DIR__ . '/modals.php';

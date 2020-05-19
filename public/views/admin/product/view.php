@@ -15,7 +15,7 @@ ob_start();
 				<a href="#" class="">
 				</a>
                 <!-- vers formulaire de contact -->
-				<a href="<?= $app->router()->getRoute('admin_product_create') ?>" class="btn btn-label-facebook btn-bold">Ajouter un produit</a>
+				<a href="<?= $app->router()->getRoute('admin_product_create') ?>" class="btn btn-success btn-bold">Ajouter un produit</a>
 			</div>
 		</div>
 	</div>
@@ -61,20 +61,22 @@ ob_start();
                                         <div class="dropdown-menu dropdown-menu-fit dropdown-menu-right">
                                             <ul class="kt-nav">
                                                 <li class="kt-nav__item">
-                                                    <a href="#" class="kt-nav__link">
-                                                        <i class="kt-nav__link-icon flaticon2-line-chart"></i>
-                                                        <span class="kt-nav__link-text">Détails</span>
-                                                    </a>
-                                                </li>
-                                                <li class="kt-nav__item">
                                                     <!-- modification champs state ou actif à voir -->
-                                                    <a href="#" class="kt-nav__link">
+                                                    <a href="#" data-productId="<?= intval($product['id']) ?>" data-active="<?= intval($product['active']) ?>" class="kt-nav__link changePublishProduct">
                                                         <i class="kt-nav__link-icon flaticon2-send"></i>
-                                                        <span class="kt-nav__link-text">Publier</span>
+                                                        <span class="kt-nav__link-text">
+                                                            <?php
+                                                            if($product['active']==0) {
+                                                                echo "Publier";
+                                                            }else{
+                                                                echo "Dépublier";
+                                                            }
+                                                            ?>
+                                                        </span>
                                                     </a>
                                                 </li>
                                                 <li class="kt-nav__item">
-                                                    <a href="#" class="kt-nav__link">
+                                                    <a href="<?= $app->router()->getRoute('admin_product_update',['id'=>intval($product['id'])]) ?>" class="kt-nav__link">
                                                         <i class="kt-nav__link-icon flaticon2-settings"></i>
                                                         <span class="kt-nav__link-text">Modifier</span>
                                                     </a>
@@ -86,21 +88,38 @@ ob_start();
                                 <div class="kt-widget__body">
                                     <div class="kt-widget__stats">
                                         <div class="kt-widget__item">
-											<span class="kt-widget__date">
-												Publié
-											</span>
-                                            <div class="kt-widget__label">
-                                                <span class="btn btn-label-dark btn-sm btn-bold btn-upper">
-                                                    <?= $product['active']?>
-                                                </span>
+										<span class="kt-widget__date">
+											Publié
+										</span>
+                                            <div class="kt-widget__label"> <?php
+                                                if($product['active']==1) {
+                                                    ?>
+                                                    <span class="btn btn-success btn-sm btn-bold btn-upper">Publié</span>
+                                                    <?php
+                                                }else{
+                                                    ?>
+                                                    <span class="btn btn-brand btn-sm btn-bold btn-upper">Non publié</span>
+                                                    <?php
+                                                }
+                                                ?>
                                             </div>
                                         </div>
                                         <div class="kt-widget__item">
-															<span class="kt-widget__date">
-																Etat
-															</span>
+										<span class="kt-widget__date">
+											Etat
+										</span>
                                             <div class="kt-widget__label">
-                                                <span class="btn btn-label-info-o2 btn-sm btn-bold btn-upper"><?= $product['state'] ?></span>
+                                                <?php
+                                                if($product['state']==1) {
+                                                    ?>
+                                                    <span class="btn btn-success btn-sm btn-bold btn-upper">Actif</span>
+                                                    <?php
+                                                }else{
+                                                    ?>
+                                                    <span class="btn btn-brand btn-sm btn-bold btn-upper">Archivé</span>
+                                                    <?php
+                                                }
+                                                ?>
                                             </div>
                                         </div>
                                     </div>
@@ -197,7 +216,14 @@ ob_start();
 </div>
 </div>
 
+    <script>
+        var urlChangePublishProduct = '<?= $app->router()->getRoute('admin_product_publish') ?>';
+        var urlReloadList = '<?= $app->router()->getRoute('admin_product_view',['id'=>$product['id']]) ?>';
+    </script>
+
 
 <?php
 $blockContent = ob_get_clean();
 require __DIR__ . '/../base.php';
+?>
+<script type="text/javascript" src="<?= $url ?>public/assets/js/product_list.js"></script>

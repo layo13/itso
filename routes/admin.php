@@ -32,7 +32,7 @@ return [
 		]
 	],
 	"color_view" => [
-		"uri" => "/color/view,{id}",
+		"uri" => "/color/view/{id}",
 		"method" => "GET",
 		"parameters" => [
 			"id" => "[0-9]+",
@@ -42,7 +42,7 @@ return [
 		]
 	],
     "color_edit" => [
-        "uri" => "/color/edit,{id}",
+        "uri" => "/color/edit/{id}",
         "method" => "POST",
         "parameters" => [
             "id" => "[0-9]+",
@@ -52,7 +52,7 @@ return [
         ]
     ],
     "color_update" => [
-        "uri" => "/color/update,{id}",
+        "uri" => "/color/update/{id}",
         "method" => "GET",
         "parameters" => [
             "id" => "[0-9]+",
@@ -61,6 +61,56 @@ return [
             \Http\Itso\Admin\Modules\Color\ColorController::class, 'update'
         ]
     ],
+    ////////////////////////////////--- USER ---/////////////////////////////////////////////
+	"vip_create" => [
+		"uri" => "/vip/create",
+		"method" => "GET",
+		"action" => [
+		//	Http\Itso\Admin\Modules\User\UserController::class, 'createVip'
+			Http\Itso\Admin\Modules\User\UserController::class, 'create'
+		]
+	],
+	"vip_add" => [
+		"uri" => "/vip/add",
+		"method" => "POST",
+		"action" => [
+			//\Http\Itso\Admin\Modules\User\UserController::class, 'addVip'
+			\Http\Itso\Admin\Modules\User\UserController::class, 'add'
+		]
+	],
+	"vip_list" => [
+		"uri" => "/vip/list",
+		"method" => "GET",
+		"action" => [
+			//\Http\Itso\Admin\Modules\User\UserController::class, 'listVip'
+			\Http\Itso\Admin\Modules\User\UserController::class, 'list'
+		]
+	],
+    ////////////////////////////////--- USER ---/////////////////////////////////////////////
+	"customer_create" => [
+		"uri" => "/customer/create",
+		"method" => "GET",
+		"action" => [
+		//	Http\Itso\Admin\Modules\User\UserController::class, 'createCustomer'
+			Http\Itso\Admin\Modules\User\UserController::class, 'create'
+		]
+	],
+	"customer_add" => [
+		"uri" => "/customer/add",
+		"method" => "POST",
+		"action" => [
+			//\Http\Itso\Admin\Modules\User\UserController::class, 'addCustomer'
+			\Http\Itso\Admin\Modules\User\UserController::class, 'add'
+		]
+	],
+	"customer_list" => [
+		"uri" => "/customer/list",
+		"method" => "GET",
+		"action" => [
+			//\Http\Itso\Admin\Modules\User\UserController::class, 'listCustomer'
+			\Http\Itso\Admin\Modules\User\UserController::class, 'list'
+		]
+	],
     ////////////////////////////////--- USER ---/////////////////////////////////////////////
 	"user_create" => [
 		"uri" => "/user/create",
@@ -84,7 +134,7 @@ return [
 		]
 	],
 	"user_view" => [
-		"uri" => "/user/view,{id}",
+		"uri" => "/user/view/{id}",
 		"method" => "GET",
 		"parameters" => [
 			"id" => "[0-9]+",
@@ -94,7 +144,7 @@ return [
 		]
 	],
     "user_update" => [
-        "uri" => "/user/update,{id}",
+        "uri" => "/user/update/{id}",
         "method" => "GET",
         "parameters" => [
             "id" => "[0-9]+",
@@ -104,20 +154,13 @@ return [
         ]
     ],
     "user_edit" => [
-        "uri" => "/user/edit,{id}",
+        "uri" => "/user/edit/{id}",
         "method" => "POST",
         "parameters" => [
             "id" => "[0-9]+",
         ],
         "action" => [
             \Http\Itso\Admin\Modules\User\UserController::class, 'edit'
-        ]
-    ],
-    "customer_list" => [
-        "uri" => "/customer/list",
-        "method" => "GET",
-        "action" => [
-            \Http\Itso\Admin\Modules\User\UserController::class, 'list'
         ]
     ],
     ////////////////////////////////--- CONNEXION ---/////////////////////////////////////////////
@@ -158,7 +201,7 @@ return [
         ]
     ],
     "brand_view" => [
-        "uri" => "/brand/view,{id}",
+        "uri" => "/brand/view/{id}",
         "method" => "GET",
         "parameters" => [
             "id" => "[0-9]+",
@@ -168,7 +211,7 @@ return [
         ]
     ],
     "brand_edit" => [
-        "uri" => "/brand/edit,{id}",
+        "uri" => "/brand/edit/{id}",
         "method" => "POST",
         "parameters" => [
             "id" => "[0-9]+",
@@ -178,7 +221,7 @@ return [
         ]
     ],
     "brand_update" => [
-        "uri" => "/brand/update,{id}",
+        "uri" => "/brand/update/{id}",
         "method" => "GET",
         "parameters" => [
             "id" => "[0-9]+",
@@ -188,6 +231,13 @@ return [
         ]
     ],
     ////////////////////////////////--- ASSOCIATION ---/////////////////////////////////////////////
+    "charity_create" => [
+        "uri" => "/charity/create",
+        "method" => "GET",
+        "action" => [
+            \Http\Itso\Admin\Modules\Charity\CharityController::class, 'create'
+        ]
+    ],
     "charity_add" => [
         "uri" => "/charity/add",
         "method" => "POST",
@@ -196,7 +246,7 @@ return [
         ]
     ],
     "charity_edit" => [
-        "uri" => "/charity/edit,{id}",
+        "uri" => "/charity/edit/{id}",
         "method" => "POST",
         "parameters" => [
             "id" => "[0-9]+",
@@ -206,7 +256,7 @@ return [
         ]
     ],
     "charity_update" => [
-        "uri" => "/charity/update,{id}",
+        "uri" => "/charity/update/{id}",
         "method" => "GET",
         "parameters" => [
             "id" => "[0-9]+",
@@ -216,7 +266,7 @@ return [
         ]
     ],
     "charity_view" => [
-        "uri" => "/charity/view,{id}",
+        "uri" => "/charity/view/{id}",
         "method" => "GET",
         "parameters" => [
             "id" => "[0-9]+",
@@ -232,6 +282,58 @@ return [
             \Http\Itso\Admin\Modules\Charity\CharityController::class, 'list'
         ]
     ],
+    ////////////////////////////////--- FAVORIE ---/////////////////////////////////////////////
+    "favorite_create" => [
+        "uri" => "/favorite/create",
+        "method" => "GET",
+        "action" => [
+            \Http\Itso\Admin\Modules\Favorite\FavoriteController::class, 'create'
+        ]
+    ],
+    "favorite_add" => [
+        "uri" => "/favorite/add",
+        "method" => "POST",
+        "action" => [
+            \Http\Itso\Admin\Modules\Favorite\FavoriteController::class, 'add'
+        ]
+    ],
+    "favorite_edit" => [
+        "uri" => "/favorite/edit/{id}",
+        "method" => "POST",
+        "parameters" => [
+            "id" => "[0-9]+",
+        ],
+        "action" => [
+            \Http\Itso\Admin\Modules\Favorite\FavoriteController::class, 'edit'
+        ]
+    ],
+    "favorite_update" => [
+        "uri" => "/favorite/update/{id}",
+        "method" => "GET",
+        "parameters" => [
+            "id" => "[0-9]+",
+        ],
+        "action" => [
+            \Http\Itso\Admin\Modules\Favorite\FavoriteController::class, 'update'
+        ]
+    ],
+    "favorite_view" => [
+        "uri" => "/favorite/view/{id}",
+        "method" => "GET",
+        "parameters" => [
+            "id" => "[0-9]+",
+        ],
+        "action" => [
+            \Http\Itso\Admin\Modules\Favorite\FavoriteController::class, 'view'
+        ]
+    ],
+	"favorite_list" => [
+        "uri" => "/favorite/list",
+        "method" => "GET",
+        "action" => [
+            \Http\Itso\Admin\Modules\Favorite\FavoriteController::class, 'list'
+        ]
+    ],
     ////////////////////////////////--- PRODUIT ---/////////////////////////////////////////////
     "product_list" => [
         "uri" => "/product/list",
@@ -241,7 +343,7 @@ return [
         ]
     ],
     "product_view" => [
-        "uri" => "/product/view,{id}",
+        "uri" => "/product/view/{id}",
         "method" => "GET",
         "parameters" => [
             "id" => "[0-9]+",
@@ -251,7 +353,7 @@ return [
         ]
     ],
     "product_update" => [
-        "uri" => "/product/update,{id}",
+        "uri" => "/product/update/{id}",
         "method" => "GET",
         "parameters" => [
             "id" => "[0-9]+",
@@ -261,7 +363,7 @@ return [
         ]
     ],
     "product_edit" => [
-        "uri" => "/product/edit,{id}",
+        "uri" => "/product/edit/{id}",
         "method" => "POST",
         "parameters" => [
             "id" => "[0-9]+",
@@ -291,11 +393,35 @@ return [
             \Http\Itso\Admin\Modules\Product\ProductController::class, 'publish'
         ]
     ],
+    /**
+     * AJAX
+     */
+    "favorite_list_by_user" => [
+        "uri" => "/favorite/select",
+        "method" => "POST",
+        "action" => [
+            \Http\Itso\Admin\Modules\Favorite\FavoriteController::class, 'listByUser'
+        ]
+    ],
+    "favorite_add_favorite" => [
+        "uri" => "/favorite/add_favorite",
+        "method" => "POST",
+        "action" => [
+            \Http\Itso\Admin\Modules\Favorite\FavoriteController::class, 'addFavorite'
+        ]
+    ],
+    "favorite_add_category_favorite" => [
+        "uri" => "/favorite/category_favorite",
+        "method" => "POST",
+        "action" => [
+            \Http\Itso\Admin\Modules\Favorite\FavoriteController::class, 'addCategoryAndFavorite'
+        ]
+    ],
     "category_select" => [
         "uri" => "/category/select",
         "method" => "POST",
         "action" => [
-            \Http\Itso\Admin\Modules\Product\ProductController::class, 'select'
+            \Http\Itso\Admin\Modules\Category\CategoryController::class, 'select'
         ]
     ]
 ];
