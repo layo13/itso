@@ -27,7 +27,7 @@ class ConnexionController extends \Epic\BaseController {
 					$_SESSION['first_name'] = $user['first_name'];
 					$_SESSION['last_name'] = $user['last_name'];
 
-					redirect('http://localhost/itso/admin/');
+					redirect($this->router()->getRoute('admin_home'));
 				} else {
 					$this->application->user()->setFlash("Mot de passe erroné");
 				}
@@ -36,15 +36,14 @@ class ConnexionController extends \Epic\BaseController {
 			}
 		}
 
-		$url = 'http://localhost/itso/';
 		$user = $this->application->user();
-
+		$url = URL;
 		require ROOT . '/public/views/admin/login.php';
 	}
 
 	public function logoutAction() {
 		$this->application->user()->setAuthenticated(false);
-		redirect('http://localhost/itso/admin');
+		redirect($this->router()->getRoute('admin_home'));
 		session_destroy();
 	}
 

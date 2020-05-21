@@ -34,9 +34,7 @@ abstract class BaseApplication {
 		$this->reference = $reference;
 		$this->prefix = $prefix;
 		$this->routeName = NULL;
-	}
-
-	protected function getControllerAction() {
+		
 		
 		$routes = require ROOT . '/routes/' . $this->reference . '.php';
 		$applicationRoutes = [];
@@ -46,11 +44,12 @@ abstract class BaseApplication {
 			if (!empty($this->prefix)) {
 				$route['uri'] = $this->prefix . $route['uri'];
 			}
-
 			$applicationRoutes[$this->reference . '_' . $name] = $route;
 		}
-
 		$this->router->init($applicationRoutes);
+	}
+
+	protected function getControllerAction() {
 
 		$matches = [];
 

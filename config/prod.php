@@ -2,7 +2,7 @@
 
 return [
 	'httpHost' => 'intheshoesof.fr',
-	'url' => 'http://intheshoesof.fr',
+	'url' => 'http://intheshoesof.fr/',
 	'db.name' => 'dbs450518',
 	'db.host' => 'db5000470153.hosting-data.io',
 	'db.user' => 'dbu45623',

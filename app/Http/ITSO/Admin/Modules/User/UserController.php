@@ -155,6 +155,7 @@ class UserController extends BaseController {
         $url = URL;
         $app = $this->application;
         $requeteSuite ='';
+		$users=[];
 
         $route = $app->routeName();
         $routeTab = explode('_',$route);
