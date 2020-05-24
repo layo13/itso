@@ -81,9 +81,10 @@ class ProductController extends BaseController {
         $uploader = new FileUploader();
         $file = new File('formProductFile');
         //-- voir pour formater les noms d'images fonction php faire des id uniqid()
-        $filename = rand(0,100)."_".$file->getName();
+        $filename = $file->getName();
 
         if (!empty($filename)) {
+            $filename = rand(0,100)."_".$file->getName();
             $uploader->upload($file, ROOT . "/public/assets/images/product/" . $filename);
             $name = $filename;
             $stmt = $this->pdo()->prepare("INSERT INTO `picture`(`name`) VALUES (?)");
