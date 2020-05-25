@@ -90,7 +90,6 @@ ob_start();
         if(!empty($users)) {
             foreach ($users as $user) {
                 ?>
-
                 <!--begin:: Portlet-->
                 <div class="kt-portlet">
                     <div class="kt-portlet__body">
