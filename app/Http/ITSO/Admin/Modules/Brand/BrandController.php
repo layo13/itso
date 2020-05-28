@@ -97,7 +97,7 @@ class BrandController extends BaseController {
         $url = URL;
         $app = $this->application;
 
-        $q = $this->pdo()->query("SELECT brand.*, picture.name as brand_picture FROM brand LEFT JOIN picture ON (picture.id = brand.picture_id)");
+        $q = $this->pdo()->query("SELECT brand.*, picture.name as brand_picture FROM brand LEFT JOIN picture ON (picture.id = brand.picture_id) order by name asc");
         while ($datas = $q->fetch(\PDO::FETCH_ASSOC)) {
             $brands[] = $datas;
         }
