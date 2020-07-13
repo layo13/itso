@@ -37,7 +37,7 @@ class UserController extends BaseController {
 		//-- voir pour créer une classe Users
 		$name = $_REQUEST['formContactLastName'];
 		$first_name = $_REQUEST['formContactFirstName'];
-		$day_of_birth = $_REQUEST['formContactDateOfBirth'];
+		$day_of_birth = (!empty($_REQUEST['formContactDateOfBirth'])) ? $_REQUEST['formContactDateOfBirth'] : null;
 		$email = $_REQUEST['formContactEmail'];
 		$password = password_hash ($_REQUEST['formContactPassword'], PASSWORD_DEFAULT);
         $gender = 2;
@@ -89,8 +89,13 @@ class UserController extends BaseController {
         $first_name = $user['first_name'];
         $email = $user['email'];
         $password = $user['password'];
-        $day_of_birthFull = explode(" ",$user['day_of_birth']);
-        $day_of_birth = $day_of_birthFull[0];
+        if(!empty($_REQUEST['formContactDateOfBirth'])) {
+            $day_of_birthFull = explode(" ", $user['day_of_birth']);
+            $day_of_birth = $day_of_birthFull[0];
+        }else{
+            $day_of_birth = null;
+        }
+
         $gender = $user['gender'];
         $language = $user['language'];
         $nationality = $user['nationality'];
@@ -125,7 +130,8 @@ class UserController extends BaseController {
 
         $last_name = $_REQUEST['formContactLastName'];
         $first_name = $_REQUEST['formContactFirstName'];
-        $day_of_birth = $_REQUEST['formContactDateOfBirth'];
+        $day_of_birth = (!empty($_REQUEST['formContactDateOfBirth'])) ? $_REQUEST['formContactDateOfBirth'] : null;
+
         $email = $_REQUEST['formContactEmail'];
         $password = $_REQUEST['formContactPassword'];
         if($password != $user['password']){

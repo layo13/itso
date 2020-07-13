@@ -98,7 +98,7 @@ ob_start();
                     <div class="form-group row">
                         <label for="formContactDateOfBirth" class="col-2 col-form-label">Date de naissance</label>
                         <div class="col-4">
-                            <input required class="form-control" type="date" id="formContactDateOfBirth" name="formContactDateOfBirth">
+                            <input class="form-control" type="date" id="formContactDateOfBirth" name="formContactDateOfBirth">
                         </div>
                     </div>
                     <div class="form-group row">

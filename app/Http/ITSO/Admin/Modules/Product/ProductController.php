@@ -103,7 +103,7 @@ class ProductController extends BaseController {
         }
 
         $sqlCreateAssociationUserProduct = "INSERT INTO `user_product`(`product_id`, `user_id`) VALUES (?,?)";
-        $user_id = $app->user()->getAttribute('id');
+        $user_id = $_REQUEST['formProductUserId'];
         $stmt = $this->pdo()->prepare($sqlCreateAssociationUserProduct);
         $stmt->bindParam(1, $product_id);
         $stmt->bindParam(2, $user_id);

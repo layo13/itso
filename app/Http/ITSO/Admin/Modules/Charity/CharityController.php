@@ -97,7 +97,7 @@ class CharityController extends BaseController {
 	public function listAction() {
         $url = URL;
         $app = $this->application;
-		$q = $this->pdo()->query("SELECT charity_association.*,picture.name as charity_picture FROM charity_association LEFT JOIN picture ON (picture.id = charity_association.picture_id)");
+		$q = $this->pdo()->query("SELECT charity_association.*,picture.name as charity_picture FROM charity_association LEFT JOIN picture ON (picture.id = charity_association.picture_id) order by name asc");
 		while ($datas = $q->fetch(\PDO::FETCH_ASSOC)) {
 			$charities[] = $datas;
 		}
