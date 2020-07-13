@@ -42,8 +42,8 @@ PdoProvider::$port = $config->getValue(Config::DB_PORT);
 // -----------------------------------------------------------------------------
 $applications = [
 	($admin = new Http\Itso\Admin\AdminApplication('Admin', 'admin', '/admin')),
-	($vip = new Http\Itso\Vip\VipApplication('Vip', 'vip', '/vip'))
-	//Member
+	($vip = new Http\Itso\Vip\VipApplication('Vip', 'vip', '/vip')),
+	($front = new \Http\Itso\Front\FrontApplication('Front', 'front'))
 ];
 
 $request = new \Epic\Http\Request();
