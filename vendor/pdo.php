@@ -5,7 +5,7 @@ class PdoProvider {
 	public static $dbname = 'itso';
 	public static $host = '127.0.0.1';
 	public static $user = 'root';
-	public static $password = '';
+	public static $password = 'root';
 	public static $port = 3306;
 	
 	protected static $instance;
@@ -27,7 +27,7 @@ class PdoProvider {
 			try {
 				self::$instance = new PDO('mysql:dbname=' . self::$dbname . ';host=' . self::$host . ';port=' . self::$port, self::$user, self::$password, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING));
 			} catch (PDOException $e) {
-				echo 'Connexion échouée : ' . $e->getMessage();
+				die('Connexion échouée : ' . $e->getMessage());
 			}
 		}
 

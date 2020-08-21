@@ -6,6 +6,6 @@ return [
 	'db.name' => 'itso',
 	'db.host' => '127.0.0.1',
 	'db.user' => 'root',
-	'db.password' => '',
+	'db.password' => 'root',
 	'db.port' => 3306
 ];

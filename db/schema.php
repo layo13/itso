@@ -71,7 +71,7 @@ $schema->addTable('user_favorite', function(Table $table) {
 	$table->integer('id')->primary(true);
 	$table->varchar('name')->length(255)->nullable(true);
 	$table->integer('product_id')->nullable(false);
-	$table->integer('favorite_categorie_id')->nullable(false);
+	$table->integer('favorite_category_id')->nullable(false);
 	$table->integer('state')->nullable(false);
 	$table->tinyInteger('active')->nullable(false)->defaultValue('0');
 });

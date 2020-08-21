@@ -8,13 +8,6 @@ return [
 			Http\Itso\Front\Modules\Home\HomeController::class, 'index'
 		]
 	],
-	"personality" => [
-		"uri" => "/personality/{id}",
-		"method" => "GET",
-		"action" => [
-			Http\Itso\Front\Modules\Search\PersonalityController::class, 'index'
-		]
-	],
 	"brand" => [
 		"uri" => "/brand/{id}",
 		"method" => "GET",
@@ -35,6 +28,28 @@ return [
 		"method" => "POST",
 		"action" => [
 			Http\Itso\Front\Modules\Search\SearchController::class, 'exec'
+		]
+	],
+	////////////////////////////////--- USER ---////////////////////////////////
+	"personality_read" => [
+		"uri" => "/personality/{id}",
+		"method" => "GET",
+		"parameters" => [
+			"id" => "[0-9]+",
+		],
+		"action" => [
+			\Http\Itso\Front\Modules\Personality\PersonalityController::class, 'read'
+		]
+	],
+	"personality_favority_read" => [
+		"uri" => "/personality/{id}/favorite/{favorite}",
+		"method" => "GET",
+		"parameters" => [
+			"id" => "[0-9]+",
+			"favorite" => "[0-9]+",
+		],
+		"action" => [
+			\Http\Itso\Front\Modules\Personality\PersonalityController::class, 'readFavorite'
 		]
 	],
 	///////////////////////////////--- LOGIN ---////////////////////////////////

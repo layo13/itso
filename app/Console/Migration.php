@@ -9,7 +9,7 @@ class Migration extends Command {
 
 	private function getInformationSchema() {
 		try {
-			return new \PDO('mysql:dbname=information_schema;host=localhost', 'root', '', array(\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION));
+			return new \PDO('mysql:dbname=information_schema;host=localhost', 'root', 'root', array(\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION));
 		} catch (PDOException $e) {
 			return FALSE;
 		}

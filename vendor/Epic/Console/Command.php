@@ -10,7 +10,7 @@ class Command {
 	 */
 	protected $pdo;
 
-	function __construct(\PDO $pdo) {
+	function __construct(\PDO $pdo= null) {
 		$this->pdo = $pdo;
 	}
 
