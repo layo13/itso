@@ -8,6 +8,7 @@ require_once ROOT . '/vendor/pdo.php';
 if (php_sapi_name() == "cli") {
     $commandArg = empty($argv[1]) ? null : $argv[1];
 } else {
+    header("Content-type: text/html; Charset=UTF-8");
     $commandArg = empty($_GET['command']) ? null : $_GET['command'];
 }
 

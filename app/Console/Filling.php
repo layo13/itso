@@ -32,7 +32,7 @@ class Filling extends Command {
 				foreach ($entity as $column => $value) {
 
 					if (is_string($value)) {
-						$value = utf8_decode($value);
+                        // $value = utf8_decode($value);
 					}
 
 					$tokens[] = '?';
@@ -110,7 +110,8 @@ class Filling extends Command {
 
 	private function saveCelebrityCategory($celebrityCategory, $parentId = null) {
 
-		$name = utf8_decode($celebrityCategory['name']);
+		//$name = utf8_decode($celebrityCategory['name']);
+		$name = $celebrityCategory['name'];
 
 		$sql = "INSERT INTO celebrity_category (name, parent_id) VALUES (?, ?)";
 		$stmt = $this->pdo->prepare($sql);
@@ -137,7 +138,8 @@ class Filling extends Command {
 
 	private function saveProductCategory($productCategory, $parentId = null) {
 
-		$name = utf8_decode($productCategory['name']);
+		//$name = utf8_decode($productCategory['name']);
+		$name = $productCategory['name'];
 		$sql = "INSERT INTO product_category (name, parent_id) VALUES (?, ?)";
 		$stmt = $this->pdo->prepare($sql);
 		$stmt->execute([$name, $parentId]);

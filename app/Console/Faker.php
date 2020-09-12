@@ -3,14 +3,15 @@
 namespace Console;
 
 use Epic\Console\Command;
+use RandomUser\Client;
 
 class Faker extends Command {
 
     public function exec() {
-        //$this->fakeUsers();
+        $this->fakeUsers();
         //$this->fakeProducts();
-        //$this->fakeLinks();
-        //$this->fakeSubscriptions();
+        $this->fakeLinks();
+        $this->fakeSubscriptions();
         $this->fakeLiked();
     }
 
@@ -19,7 +20,7 @@ class Faker extends Command {
 
         $pdo->exec("DELETE FROM picture WHERE name LIKE 'RAND-%'");
 
-        $dirname = __DIR__ . '/public/assets/images/user';
+        $dirname = ROOT . '/public/assets/images/user';
 
         $scandir = scandir($dirname);
 
@@ -29,7 +30,7 @@ class Faker extends Command {
             }
         }
 
-        $client = new RandomUser\Client();
+        $client = new Client();
 
         $json = ($client->call([
                 Client::PARAM_FORMAT => Client::FORMAT_PRETTY,
@@ -102,7 +103,7 @@ class Faker extends Command {
 
         $pdo = $this->pdo;
 
-        $dirname = __DIR__ . '/../../public/assets/images/product';
+        $dirname = ROOT . '/public/assets/images/product';
 
         $scandir = scandir($dirname);
 
