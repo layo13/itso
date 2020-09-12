@@ -5,7 +5,7 @@ namespace Console;
 use Epic\Console\Command;
 
 class CheckDatabase extends Command {
-
+    
 	public function exec() {
 
 		$tables = ['user_type', 'user', 'picture', 'charity_association', 'brand', 'celebrity_category', 'product_category'];

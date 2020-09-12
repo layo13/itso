@@ -52,6 +52,17 @@ return [
 			\Http\Itso\Front\Modules\Personality\PersonalityController::class, 'readFavorite'
 		]
 	],
+	"personality_product_read" => [
+		"uri" => "/personality/{id}/product/{product}",
+		"method" => "GET",
+		"parameters" => [
+			"id" => "[0-9]+",
+			"product" => "[0-9]+",
+		],
+		"action" => [
+			\Http\Itso\Front\Modules\Personality\PersonalityController::class, 'readProduct'
+		]
+	],
 	///////////////////////////////--- LOGIN ---////////////////////////////////
 	"login" => [
 		"uri" => "/login",

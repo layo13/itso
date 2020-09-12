@@ -199,6 +199,7 @@ $schema->addTable('user_product', function(Table $table) {
 	$table->integer('product_id')->nullable(false);
 	$table->dateTime('created_at')->nullable(false)->defaultValue('CURRENT_TIMESTAMP');
 });
+
 $schema->addTable('boutique_affiliation', function(Table $table) {
 	$table->integer('id')->nullable(false);
     $table->varchar('url_site')->length(255)->nullable(false);
@@ -215,6 +216,32 @@ $schema->addTable('color', function(Table $table) {
     $table->varchar('hex')->length(255)->nullable(false);
 });
 
+$schema->addTable('publication', function(Table $table) {
+    $table->integer('id')->primary(true);
+    $table->varchar('title')->length(255)->nullable(false);
+	$table->text('description')->nullable(false);
+    $table->dateTime('created_at')->nullable(false)->defaultValue('CURRENT_TIMESTAMP');
+	$table->integer('state')->nullable(false);
+	$table->tinyInteger('active')->nullable(false)->defaultValue('0');
+});
+
+$schema->addTable('selection', function(Table $table) {
+    $table->integer('id')->primary(true);
+    $table->varchar('label')->length(255)->nullable(false);
+    $table->varchar('target')->length(8)->nullable(false);
+    $table->varchar('type')->length(32)->nullable(false);
+	$table->integer('state')->nullable(false);
+	$table->tinyInteger('active')->nullable(false)->defaultValue('0');
+}, "Selection de produit/celebrite");
+
+$schema->addTable('selection_product', function(Table $table) {
+	$table->integer('selection_id')->nullable(false);
+	$table->integer('product_id')->nullable(false);
+});
+
+$schema->addTable('selection_user', function(Table $table) {
+	$table->integer('selection_id')->nullable(false);
+	$table->integer('user_id')->nullable(false);
+});
 
 return $schema;
-

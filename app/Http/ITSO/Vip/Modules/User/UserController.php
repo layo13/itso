@@ -68,7 +68,7 @@ class UserController extends BaseController {
         //-- voir pour formater les noms d'images fonction php faire des id uniqid()
             $filename = $file->getName();
             if (!empty($filename)) {
-                $uploader->upload($file, ROOT . "/public/assets/images/users/" . $filename . "." . $file->getExtension());
+                $uploader->upload($file, ROOT . "/public/assets/images/user/" . $filename . "." . $file->getExtension());
                 $name = $_REQUEST['formContactLastName'];
                 $stmt = $this->pdo()->prepare("INSERT INTO `picture`(`name`) VALUES (?)");
                 $stmt->bindParam(1, $filename);

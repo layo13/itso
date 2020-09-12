@@ -54,18 +54,16 @@ $selectedApplication = null;
 
 /* @var $application Epic\BaseController */
 foreach ($applications as $application) {
-
 	if (startsWith($requestUri, $application->getPrefix())) {
 		$selectedApplication = $application;
+        break;
 	}
 }
 
 if (!is_null($selectedApplication)) {
 	$selectedApplication->run($request);
 } else {
-
 	throw new Exception('Aucune application ne peut etre lancee');
 }
+
 exit;
-
-

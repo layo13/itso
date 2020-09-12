@@ -99,7 +99,7 @@ class FavoriteController extends BaseController {
          LEFT JOIN product_category ON (product.product_type_id = product_category.id)
          LEFT JOIN brand ON (brand.id = product.brand_id)
          LEFT JOIN picture ON (picture.id = brand.picture_id)
-         where product.id in(SELECT user_favorite.product_id FROM `user_favorite` where favorite_categorie_id =".intval($id).")");
+         where product.id in(SELECT user_favorite.product_id FROM `user_favorite` where favorite_category_id =".(int)$id.")");
         $products = [];
         $productsId = [];
         $nbProductLinkClick = [];
@@ -150,7 +150,7 @@ LEFT JOIN product_picture ON (product_picture.picture_id = picture.id) where pro
         $url = URL;
         $app = $this->application;
         if(!empty($_REQUEST['user_id'])) {
-            $q = $this->pdo()->query("SELECT user_favorite_category.* FROM user_favorite_category where user_id = " . $_REQUEST['user_id'] . " AND user_favorite_category.id not in (SELECT favorite_categorie_id FROM user_favorite where product_id = " . intval($_REQUEST['product_id']) . ") order by user_id");
+            $q = $this->pdo()->query("SELECT user_favorite_category.* FROM user_favorite_category where user_id = " . $_REQUEST['user_id'] . " AND user_favorite_category.id not in (SELECT favorite_category_id FROM user_favorite where product_id = " . intval($_REQUEST['product_id']) . ") order by user_id");
             $nb = $q->rowCount();
             $form = "";
             $form .= "<h4>Ajouter une nouvelle catégorie de favorie</h4>";
@@ -214,19 +214,19 @@ LEFT JOIN product_picture ON (product_picture.picture_id = picture.id) where pro
 
         $name = $_REQUEST['frmFavoriteName'];
         $product_id = $_REQUEST['frmFavoriteProductId'];
-        $favorite_categorie_id = $_REQUEST['frmFavoriteCategorieId'];
+        $favorite_category_id = $_REQUEST['frmFavoriteCategorieId'];
         $state = 1;
         $active = 1;
 
-        $q = $this->pdo()->query("SELECT * FROM user_favorite where product_id = " . intval($product_id) . " and favorite_categorie_id = " . intval($favorite_categorie_id));
+        $q = $this->pdo()->query("SELECT * FROM user_favorite where product_id = " . intval($product_id) . " and favorite_category_id = " . intval($favorite_category_id));
         $user_favorite = $q->fetch(\PDO::FETCH_ASSOC);
         if(empty($user_favorite)) {
-            $sqlCreate = "INSERT INTO `user_favorite`(`name`, `product_id`, `favorite_categorie_id`, `state`, `active`) VALUES (?,?,?,?,?)";
+            $sqlCreate = "INSERT INTO `user_favorite`(`name`, `product_id`, `favorite_category_id`, `state`, `active`) VALUES (?,?,?,?,?)";
             //-- penser à vérifier si l'email existe déjà
             $stmt = $this->pdo()->prepare($sqlCreate);
             $stmt->bindParam(1, $name);
             $stmt->bindParam(2, $product_id);
-            $stmt->bindParam(3, $favorite_categorie_id);
+            $stmt->bindParam(3, $favorite_category_id);
             $stmt->bindParam(4, $state);
             $stmt->bindParam(5, $active);
             $stmt->execute();
@@ -262,18 +262,18 @@ LEFT JOIN product_picture ON (product_picture.picture_id = picture.id) where pro
         $stmt->execute();
 
         $resultCategorie = $this->pdo()->lastInsertId();
-        $favorite_categorie_id = intval($resultCategorie);
+        $favorite_category_id = intval($resultCategorie);
         $product_id = $_REQUEST['frmFavoriteProductId'];
-        $q = $this->pdo()->query("SELECT * FROM user_favorite where product_id = " . intval($product_id) . " and favorite_categorie_id = " . intval($favorite_categorie_id));
+        $q = $this->pdo()->query("SELECT * FROM user_favorite where product_id = " . intval($product_id) . " and favorite_category_id = " . intval($favorite_category_id));
         $user_favorite = $q->fetch(\PDO::FETCH_ASSOC);
         if(empty($user_favorite)) {
             $name = '';
-            $sqlCreate = "INSERT INTO `user_favorite`(`name`, `product_id`, `favorite_categorie_id`, `state`, `active`) VALUES (?,?,?,?,?)";
+            $sqlCreate = "INSERT INTO `user_favorite`(`name`, `product_id`, `favorite_category_id`, `state`, `active`) VALUES (?,?,?,?,?)";
             //-- penser à vérifier si l'email existe déjà
             $stmt = $this->pdo()->prepare($sqlCreate);
             $stmt->bindParam(1, $name);
             $stmt->bindParam(2, $product_id);
-            $stmt->bindParam(3, $favorite_categorie_id);
+            $stmt->bindParam(3, $favorite_category_id);
             $stmt->bindParam(4, $state);
             $stmt->bindParam(5, $active);
             $stmt->execute();

@@ -1,6 +1,37 @@
 <?php
 
-//header("Content-type: text/html; Charset=UTF-8");
+header("Content-type: text/html; Charset=UTF-8");
+$scan = scandir($dirname = __DIR__ . '/public/assets/images/user');
+$finfo = new finfo(FILEINFO_MIME);
+foreach ($scan as $element) {
+    if (is_file($filename = $dirname . '/' . $element)) {
+        $mime = $finfo->file($filename);
+        switch ($mime) {
+            case 'image/jpeg; charset=binary':$type = 'jpg';
+                break;
+            case 'image/png; charset=binary':$type = 'png';
+                break;
+            default:$type = null;
+                var_dump($filename, $mime);
+                break;
+        }
+
+        if (!empty($type)) {
+            $data = file_get_contents($filename);
+            $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
+            ?>
+                <h2><?= $element ?></h2>
+                <img width="20%" src="http://localhost/itso/public/assets/images/user/<?= $element ?>" />
+                <img width="20%" src="<?= $base64 ?>" />
+                <pre><?= $base64 ?></pre>
+                <?php
+        }
+    }
+}
+
+exit;
+
+/*
 header("Content-type: application/json; Charset=UTF-8");
 
 $associationsFinales = [];
@@ -71,15 +102,7 @@ foreach ($associations as $ia => $association) {
 	}
 
 	$associationsFinales[] = ['name' => $associationName, 'picture' => $pictureName];
-
-	/* if ($ia == 57) {
-	  echo '<table>';
-	  for ($i = 0; $i < strlen($name); $i++) {
-	  $char = $name[$i];
-	  echo '<tr><td>' . ord($char) . '</td><td>' . $char . '</td></tr>';
-	  }
-	  echo '</table>';
-	  } */
 }
 
 echo json_encode($associationsFinales, JSON_PRETTY_PRINT);
+*/

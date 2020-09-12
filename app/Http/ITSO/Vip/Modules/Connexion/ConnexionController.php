@@ -18,7 +18,7 @@ class ConnexionController extends \Epic\BaseController {
 			$stmt->execute([$email]);
 
 			if (false !== ($user = $stmt->fetch())) {
-
+   
 				if (password_verify($password, $user['password'])) {
 					$this->application->user()->setAuthenticated();
 

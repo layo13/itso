@@ -14,7 +14,7 @@ class SearchController extends BaseController {
     }
 
     public function execAction() {
-        // header('Content-Type: application/json; charset=utf-8');
+        header('Content-Type: application/json; charset=utf-8');
         $query = $this->request()->post('query');
         if (strlen($query) < 3) {
             return json_encode([]);
@@ -29,6 +29,7 @@ WHERE (`user`.`first_name` LIKE CONCAT('%', ?, '%')
 	OR CONCAT(`user`.`first_name`, ' ', `user`.`last_name`) LIKE CONCAT('%', ?, '%')
 	OR CONCAT(`user`.`last_name`, ' ', `user`.`first_name`) LIKE CONCAT('%', ?, '%')
 )
+AND `user`.`user_type_id` = 2
 SQL;
             $stmt = $this->pdo()->prepare($sql);
             $stmt->execute([$query, $query, $query, $query]);

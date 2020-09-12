@@ -18,7 +18,7 @@ ob_start();
                         <i class="fa fa-search"></i>
                     </div>
                 </div>
-                <input type="text" class="form-control" id="search" name="search" placeholder="Selena Gomez, Ariana Grande ...">
+                <input type="text" class="form-control" id="search" name="search" placeholder="Selena Gomez, Ariana Grande ..." autofocus>
             </div>
         </form>
     </div>
@@ -85,10 +85,8 @@ ob_start();
 
                             if (result.picture != undefined && result.picture != null) {
                                 if (result.type == 'user') {
-                                    result.picture = URL + 'public/assets/images/users/' + result.picture;
+                                    result.picture = URL + 'public/assets/images/user/' + result.picture;
                                 }
-                            } else {
-                                // view = 
                             }
 
                             var template = $('#search_result_template').html(),

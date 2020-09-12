@@ -32,18 +32,61 @@ RIGHT JOIN user_favorite ON (user_favorite_category.id = user_favorite.favorite_
 WHERE user_id = $personalityId
 GROUP BY user_favorite_category.id
 SQL
-    )->fetchAll();
+            )->fetchAll();
         $subscriptions = $this->pdo()->query("SELECT COUNT(*) FROM subscription WHERE celebrity_id = " . (int) $personality['id'])->fetchColumn();
 
         $charity = null;
         if (!empty($personality['charity_id'])) {
             $charity = $this->pdo()->query("SELECT * FROM charity_association WHERE id = " . (int) $personality['charity_id'])->fetch();
         }
+
         require ROOT . '/public/views/front/personality/read.php';
     }
-    
+
     public function readFavoriteAction($id, $favorite) {
-        var_dump($id, $favorite);exit;
+
+        $url = URL;
+        $app = $this->application;
+        $user = $app->user();
+
+        $personality = $this->pdo()->query("SELECT * FROM user WHERE user_type_id = 2 AND id = " . (int) $id)->fetch();
+        $personalityId = (int) $personality['id'];
+
+        $favoriteCategory = $this->pdo()->query("SELECT * FROM user_favorite_category WHERE id = " . (int) $favorite)->fetch();
+        $favoriteCategoryId = (int) $favoriteCategory['id'];
+
+        $favorites = $this->pdo()->query(<<<SQL
+SELECT product.* FROM user_favorite
+LEFT JOIN product ON (user_favorite.product_id = product.id)
+WHERE favorite_category_id = $favoriteCategoryId
+SQL
+            )->fetchAll();
+
+        foreach ($favorites as &$favorite) {
+            $favorite['pictures'] = $this->pdo()->query("SELECT picture.* FROM product_picture LEFT JOIN picture ON (product_picture.picture_id = picture.id) WHERE product_picture.product_id = " . (int) $favorite['id'])->fetchAll();
+        }
+
+        require ROOT . '/public/views/front/personality/favorites.php';
+    }
+
+    public function readProductAction($id, $productId) {
+
+        $url = URL;
+        $app = $this->application;
+        $user = $app->user();
+
+        $personality = $this->pdo()->query("SELECT * FROM user WHERE user_type_id = 2 AND id = " . (int) $id)->fetch();
+        $personalityId = (int) $personality['id'];
+
+        $product = $this->pdo()->query(<<<SQL
+SELECT product.*
+FROM user_product
+LEFT JOIN product ON (user_product.product_id = product.id)
+WHERE user_product.user_id = $personalityId
+SQL
+            )->fetch();
+
+        var_dump($personality, $product);
     }
 
 }

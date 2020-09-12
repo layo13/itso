@@ -9,7 +9,7 @@ class ConnexionController extends \Epic\BaseController {
 	public function loginAction() {
 
 		if ($this->application->user()->isAuthenticated()) {
-			redirect($app->router()->getRoute('front_profile'));
+			redirect($this->application->router()->getRoute('front_profile'));
 		}
 
 		if ($this->application->request()->requestMethod() == Request::POST) {

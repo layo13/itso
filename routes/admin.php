@@ -179,6 +179,14 @@ return [
 		]
 	],
     ////////////////////////////////--- MARQUES ---/////////////////////////////////////////////
+    "selection_list" => [
+        "uri" => "/selection/list",
+        "method" => "GET",
+        "action" => [
+            \Http\Itso\Admin\Modules\Selection\SelectionController::class, 'list'
+        ]
+    ],
+    ////////////////////////////////--- MARQUES ---/////////////////////////////////////////////
     "brand_list" => [
         "uri" => "/brand/list",
         "method" => "GET",

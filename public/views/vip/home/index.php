@@ -41,7 +41,7 @@ ob_start();
                     <div class="kt-widget kt-widget--user-profile-1">
                         <div class="kt-widget__head">
                             <div class="kt-widget__media">
-                                <img src="<?=$url?>public/assets/images/users/<?= $user['picture_name']?>" alt="image">
+                                <img src="<?=$url?>public/assets/images/user/<?= $user['picture_name']?>" alt="image">
                             </div>
                             <div class="kt-widget__content">
                                 <div class="kt-widget__section">

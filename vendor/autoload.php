@@ -5,6 +5,15 @@ require_once __DIR__ . '/fct.php';
 require_once __DIR__ . '/Epic/EpicLoader.php';
 EpicLoader::register();
 
+require_once __DIR__ . '/Cdiscount/CdiscountLoader.php';
+CdiscountLoader::register();
+
+require_once __DIR__ . '/Ebay/EbayLoader.php';
+EbayLoader::register();
+
+require_once __DIR__ . '/RandomUser/RandomUserLoader.php';
+RandomUserLoader::register();
+
 spl_autoload_register(function($class) {
 	$file = str_replace("\\", "/", ROOT . "/app/" . $class . ".php");
 	if (is_file($file)) {
@@ -14,10 +23,18 @@ spl_autoload_register(function($class) {
 	}
 });
 
+set_time_limit(0);
+
+date_default_timezone_set('Europe/Paris');
+
 if (extension_loaded('xdebug')) {
-	ini_set('xdebug.var_display_max_depth', '10');
+	/*ini_set('xdebug.var_display_max_depth', '10');
 	ini_set('xdebug.var_display_max_children', '256');
-	ini_set('xdebug.var_display_max_data', '1024');
+	ini_set('xdebug.var_display_max_data', '1024');*/
+    
+    ini_set('xdebug.var_display_max_depth', -1);
+	ini_set('xdebug.var_display_max_children', -1);
+	ini_set('xdebug.var_display_max_data', -1);
 }
 
 set_exception_handler(function(Exception $e) {

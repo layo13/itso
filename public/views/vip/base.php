@@ -187,7 +187,7 @@ $app->router()->getRoute('vip_home');
 									<div class="kt-header__topbar-user">
 										<span class="kt-header__topbar-welcome kt-hidden-mobile">Bonjour,</span>
 										<span class="kt-header__topbar-username kt-hidden-mobile"><?= utf8_encode($app->user()->getAttribute('first_name')) ?></span>
-										<img alt="Pic" src="<?=$url?>public/assets/images/users/<?= $app->user()->getAttribute('picture_name') ?>" />
+										<img alt="Pic" src="<?=$url?>public/assets/images/user/<?= $app->user()->getAttribute('picture_name') ?>" />
 
 										<!--use below badge element instead the user avatar to display username's first letter(remove kt-hidden class to display it) -->
 

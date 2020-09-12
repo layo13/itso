@@ -38,7 +38,7 @@ $blockJs = isset($blockJs) ?$blockJs: '';
 			</form>
 			<ul class="nav navbar-nav navbar-logo mx-auto">
 				<li class="nav-item">
-					<a class="navbar-brand" href="#">ITSO</a>
+					<a class="navbar-brand" href="<?= $app->router()->getRoute('front_home'); ?>">ITSO</a>
 				</li>
 			</ul>
 			<div class=".navbar-nav">
@@ -52,7 +52,12 @@ $blockJs = isset($blockJs) ?$blockJs: '';
 			</div>
 		</nav>
 		<div class="container">
+            <br />
 			<?= $blockContent ?>
+            <br />
+            <br />
+            <br />
+            <br />
 		</div>
 
 		<nav class="navbar fixed-bottom navbar-dark bg-dark">

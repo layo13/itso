@@ -1,0 +1,21 @@
+= Admin =
+
+== Présentation ==
+
+Revoir la page sélections
+
+= Client =
+
+== Présentation ==
+
+* Dimensions de la photo de l'influenceur non contraintes lorsque l'on est sur la page de l'influenceur (si on a une photo de 1600 * 1600 la photo bouffe toute la page)
+
+= Base de données =
+
+* Prévoir un ordre sur les sélections
+
+
+
+= Framework =
+
+Retester un reset complet

@@ -24,7 +24,7 @@ class UserController extends BaseController {
 		$filename = $file->getName();
 		$sqlCreateUser = "INSERT INTO `user`(`last_name`, `first_name`, `day_of_birth`, `email`, `password`, `gender`, `language`, `nationality`, `state`, `user_type_id`) VALUES (?,?,?,?,?,?,?,?,?,?)";
 		if (!empty($filename)) {
-            $uploader->upload($file, ROOT . "/public/assets/images/users/" . $filename);
+            $uploader->upload($file, ROOT . "/public/assets/images/user/" . $filename);
 			$name = $_REQUEST['formContactLastName'];
 			$stmt = $this->pdo()->prepare("INSERT INTO `picture`(`name`) VALUES (?)");
 			$stmt->bindParam(1, $filename);
@@ -117,7 +117,7 @@ class UserController extends BaseController {
             //-- voir pour formater les noms d'images fonction php faire des id uniqid()
             $filename = $file->getName();
             if (!empty($filename)) {
-                $uploader->upload($file, ROOT . "/public/assets/images/users/" . $filename);
+                $uploader->upload($file, ROOT . "/public/assets/images/user/" . $filename);
                 $name = $_REQUEST['formContactLastName'];
                 $stmt = $this->pdo()->prepare("INSERT INTO `picture`(`name`) VALUES (?)");
                 $stmt->bindParam(1, $filename);
@@ -197,7 +197,7 @@ class UserController extends BaseController {
             }
             $q = $this->pdo()->query("SELECT count(member_id) as nb_subscriber, celebrity_id FROM `subscription` where celebrity_id in (" . implode(',', $userId) . ") group by celebrity_id");
             while ($datas = $q->fetch(\PDO::FETCH_ASSOC)) {
-                $nbSubscriber[$datas['user_id']] = $datas;
+                $nbSubscriber[$datas['celebrity_id']] = $datas;
             }
             $q = $this->pdo()->query("SELECT count(liked.user_id) as nb_product_like,
         liked.product_id,

@@ -30,184 +30,36 @@ ob_start();
 		<p class="text-center"><i class="fa fa-heart"></i> Totalité des dons récoltés en 2020</p>
 	</div>
 </div>
-<div class="row">
-	<div class="col-12">
-		<h6>Articles les plus humanitaires</h6>
-	</div>
-</div>
 
-<div class="row">
-	<div class="col">
-		<img src="images/288976a.jpg" alt="Robe" class="img-thumbnail">
-	</div>
-	<div class="col">
-		<img src="images/336733a.jpg" alt="Chaussures" class="img-thumbnail">
-	</div>
-	<div class="col">
-		<img src="images/343201a-emp.jpg" alt="Casquette" class="img-thumbnail">
-	</div>
-	<div class="col">
-		<img src="images/346059a-emp.jpg" alt="Jupe" class="img-thumbnail">
-	</div>
-</div>
+<?php foreach ($selections as $selection) { ?>
 
-<div class="row">
-	<div class="col-12">
-		<h6>Personnalités recommandées</h6>
-	</div>
-</div>
-<div class="row">
-	<div class="col">
-		<img src="images/scarlett.jpg" alt="Robe" class="img-thumbnail">
-	</div>
-	<div class="col">
-		<img src="images/robertdowneyjr.png" alt="Chaussures" class="img-thumbnail">
-	</div>
-	<div class="col">
-		<img src="images/thor.jpg" alt="Casquette" class="img-thumbnail">
-	</div>
-	<div class="col">
-		<img src="images/chris-evans.jpg" alt="Jupe" class="img-thumbnail">
-	</div>
-</div>
+    <div class="row">
+        <div class="col-12">
+            <h6><?= $selection['label'] ?></h6>
+        </div>
+    </div>
 
-<div class="row">
-	<div class="col-12">
-		<h6>Les plus consultés</h6>
-	</div>
-</div>
-<div class="row">
-	<div class="col">
-		<img src="images/350102.jpg" alt="Casquette" class="img-thumbnail">
-	</div>
-	<div class="col">
-		<img src="images/365086a.jpg" alt="Veste" class="img-thumbnail">
-	</div>
-	<div class="col">
-		<img src="images/377353a.jpg" alt="Veste" class="img-thumbnail">
-	</div>
-	<div class="col">
-		<img src="images/460011a.jpg" alt="Polo" class="img-thumbnail">
-	</div>
-</div>
-<div class="row">
-	<div class="col-12">
-		<h6>Articles les plus humanitaires</h6>
-	</div>
-</div>
-<div class="row">
-	<div class="col">
-		<img src="images/288976a.jpg" alt="Robe" class="img-thumbnail">
-	</div>
-	<div class="col">
-		<img src="images/336733a.jpg" alt="Chaussures" class="img-thumbnail">
-	</div>
-	<div class="col">
-		<img src="images/343201a-emp.jpg" alt="Casquette" class="img-thumbnail">
-	</div>
-	<div class="col">
-		<img src="images/346059a-emp.jpg" alt="Jupe" class="img-thumbnail">
-	</div>
-</div>
-
-<div class="row">
-	<div class="col-12">
-		<h6>Personnalités recommandées</h6>
-	</div>
-</div>
-<div class="row">
-	<div class="col">
-		<img src="images/scarlett.jpg" alt="Robe" class="img-thumbnail">
-	</div>
-	<div class="col">
-		<img src="images/robertdowneyjr.png" alt="Chaussures" class="img-thumbnail">
-	</div>
-	<div class="col">
-		<img src="images/thor.jpg" alt="Casquette" class="img-thumbnail">
-	</div>
-	<div class="col">
-		<img src="images/chris-evans.jpg" alt="Jupe" class="img-thumbnail">
-	</div>
-</div>
-
-<div class="row">
-	<div class="col-12">
-		<h6>Les plus consultés</h6>
-	</div>
-</div>
-<div class="row">
-	<div class="col">
-		<img src="images/350102.jpg" alt="Casquette" class="img-thumbnail">
-	</div>
-	<div class="col">
-		<img src="images/365086a.jpg" alt="Veste" class="img-thumbnail">
-	</div>
-	<div class="col">
-		<img src="images/377353a.jpg" alt="Veste" class="img-thumbnail">
-	</div>
-	<div class="col">
-		<img src="images/460011a.jpg" alt="Polo" class="img-thumbnail">
-	</div>
-</div>
-<div class="row">
-	<div class="col-12">
-		<h6>Articles les plus humanitaires</h6>
-	</div>
-</div>
-<div class="row">
-	<div class="col">
-		<img src="images/288976a.jpg" alt="Robe" class="img-thumbnail">
-	</div>
-	<div class="col">
-		<img src="images/336733a.jpg" alt="Chaussures" class="img-thumbnail">
-	</div>
-	<div class="col">
-		<img src="images/343201a-emp.jpg" alt="Casquette" class="img-thumbnail">
-	</div>
-	<div class="col">
-		<img src="images/346059a-emp.jpg" alt="Jupe" class="img-thumbnail">
-	</div>
-</div>
-
-<div class="row">
-	<div class="col-12">
-		<h6>Personnalités recommandées</h6>
-	</div>
-</div>
-<div class="row">
-	<div class="col">
-		<img src="images/scarlett.jpg" alt="Robe" class="img-thumbnail">
-	</div>
-	<div class="col">
-		<img src="images/robertdowneyjr.png" alt="Chaussures" class="img-thumbnail">
-	</div>
-	<div class="col">
-		<img src="images/thor.jpg" alt="Casquette" class="img-thumbnail">
-	</div>
-	<div class="col">
-		<img src="images/chris-evans.jpg" alt="Jupe" class="img-thumbnail">
-	</div>
-</div>
-
-<div class="row">
-	<div class="col-12">
-		<h6>Les plus consultés</h6>
-	</div>
-</div>
-<div class="row">
-	<div class="col">
-		<img src="images/350102.jpg" alt="Casquette" class="img-thumbnail">
-	</div>
-	<div class="col">
-		<img src="images/365086a.jpg" alt="Veste" class="img-thumbnail">
-	</div>
-	<div class="col">
-		<img src="images/377353a.jpg" alt="Veste" class="img-thumbnail">
-	</div>
-	<div class="col">
-		<img src="images/460011a.jpg" alt="Polo" class="img-thumbnail">
-	</div>
-</div>
+    <div class="row">
+        <?php foreach($selection['items'] as $item) {
+            $itemSrc = URL . "public/assets/images/no-image-available.jpg";
+            $itemAlt = "Non renseigné";
+            if ($selection['target'] == 'user') {
+                if (!empty($item['picture'])) {
+                    $itemSrc = URL . "public/assets/images/user/" . $item['picture'];
+                    $itemAlt = $item['first_name'] .' '. $item['last_name'];
+                }
+            } else if ($selection['target'] == 'product') {
+                if (!empty($item['picture'])) {
+                    $itemSrc = URL . "public/assets/images/product/" . $item['picture'];
+                    $itemAlt = $item['name'];
+                }
+            } ?>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <img class="img-thumbnail" src="<?= $itemSrc ?>" alt="<?= $itemAlt ?>" />
+            </div>
+        <?php } ?>
+    </div>
+<?php } ?>
 
 <?php
 $blockContent = ob_get_clean();

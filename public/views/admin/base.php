@@ -203,6 +203,64 @@ $app;
                                         </ul>
                                     </div>
                                 </li>
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                <li class="kt-menu__item kt-menu__item--submenu<?= selectNavRubrique(['selection'], $app->routeName(), 1)?>" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
+                                    <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
+                                        <i class="kt-menu__link-icon fa fa-user-check"></i>
+                                        <span class="kt-menu__link-text">Sélections</span>
+                                        <i class="kt-menu__ver-arrow la la-angle-right"></i>
+                                    </a>
+                                    <div class="kt-menu__submenu " style=""><span class="kt-menu__arrow"></span>
+                                        <ul class="kt-menu__subnav">
+                                            <li class="kt-menu__item <?= selectNavRubrique(['list'], $app->routeName(), 2, ['selection'])?>" aria-haspopup="true">
+                                                <a href="<?= $app->router()->getRoute('admin_selection_list') ?>" class="kt-menu__link ">
+                                                    <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span class="kt-menu__link-text">Liste</span>
+                                                </a>
+                                            </li>
+                                            <?php /*
+                                            <li class="kt-menu__item <?= selectNavRubrique(['create'], $app->routeName(), 2, ['selection'])?>" aria-haspopup="true">
+                                                <a href="<?= $app->router()->getRoute('admin_selection_create') ?>" class="kt-menu__link ">
+                                                    <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span class="kt-menu__link-text">Ajouter</span>
+                                                </a>
+                                            </li>
+                                             */
+                                            ?>
+                                        </ul>
+                                    </div>
+                                </li>
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
                                 <li class="kt-menu__item kt-menu__item--submenu<?= selectNavRubrique(['color'], $app->routeName(), 1)?>" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
                                     <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
                                         <i class="kt-menu__link-icon fa fa-fill-drip"></i>
@@ -307,7 +365,7 @@ $app;
 									<div class="kt-header__topbar-user">
 										<span class="kt-header__topbar-welcome kt-hidden-mobile">Bonjour,</span>
                                         <span class="kt-header__topbar-username kt-hidden-mobile"><?= utf8_encode($app->user()->getAttribute('first_name')) ?></span>
-                                        <!--<img alt="Pic" src="<?=$url?>public/assets/images/users/<?= $app->user()->getAttribute('picture_name') ?>" />-->
+                                        <!--<img alt="Pic" src="<?=$url?>public/assets/images/user/<?= $app->user()->getAttribute('picture_name') ?>" />-->
 									</div>
 								</div>
 								<div class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-top-unround dropdown-menu-xl">

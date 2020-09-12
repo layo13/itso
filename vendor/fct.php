@@ -121,3 +121,35 @@ function getCountrieFlag($flagId) {
 	else
 		return "public/assets/images/flag/en.png";
 }
+
+function curlRequest($url, $method = 'GET', $data = NULL, $header = array(), &$outHeader = '') {
+	$ch = curl_init();
+	curl_setopt($ch, CURLOPT_URL, $url);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($ch, CURLOPT_HEADER, 1);
+	curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
+	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+
+	if ($method == "PUT" || $method == "POST") {
+		curl_setopt($ch, CURLOPT_POST, 1);
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);
+	} else if ($method == "DELETE") {
+		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);
+	}
+
+	curl_setopt($ch, CURLINFO_HEADER_OUT, 1);
+	if (strpos($url, "https") === 0) {
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+	}
+	$response = curl_exec($ch);
+	$headerSize = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
+
+	//var_dump($url, ($information = curl_getinfo($ch, CURLINFO_HEADER_OUT)) . $data, curl_getinfo($ch, CURLINFO_HTTP_CODE));
+
+	$outHeader = substr($response, 0, $headerSize);
+	$body = substr($response, $headerSize);
+	curl_close($ch);
+	return $body;
+}

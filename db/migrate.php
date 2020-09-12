@@ -90,7 +90,7 @@ CREATE TABLE IF NOT EXISTS `customers_favorites` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `product_id` int(11) NOT NULL,
-  `favorite_categorie_id` int(11) NOT NULL,
+  `favorite_category_id` int(11) NOT NULL,
   `state` int(11) NOT NULL,
   `active` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)

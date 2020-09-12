@@ -16,7 +16,7 @@ ob_start();
                         $userPictureUrl = $user['user_picture'];
                     }
                     ?>
-                    <img src="<?= $url ?>public/assets/images/users/<?= $userPictureUrl ?>" alt="image">
+                    <img src="<?= $url ?>public/assets/images/user/<?= $userPictureUrl ?>" alt="image">
                 </div>
                 <div class="kt-widget__content">
                     <div class="kt-widget__head">
