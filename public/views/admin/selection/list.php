@@ -143,45 +143,30 @@ ob_start();
                                 </div>
                             </div>
                             <div class="kt-widget__bottom">
-                                <?php foreach($selection['items'] as $item) { ?>
-                                
-                                    <?php if ($selection['target'] == 'user') { ?>
-                                    <div class="kt-widget__item">
-                                            <div class="kt-widget__icon">
-                                                <!--<i class="flaticon2-box-1"></i>-->
-                                                <?php if (empty($item['picture'])) { ?>
-                                                <img style="max-height: 50px; max-width: 50px;" src="<?= URL ?>public/assets/images/no-image-available.jpg" alt="<?= $item['first_name'] ?> <?= $item['last_name'] ?>" />                                                
-                                                <?php } else { ?>
-                                                <img style="max-height: 50px; max-width: 50px;" src="<?= URL ?>public/assets/images/user/<?= $item['picture'] ?>" alt="<?= $item['first_name'] ?> <?= $item['last_name'] ?>" />
-                                                <?php } ?>
-                                            </div>
-                                            <div class="kt-widget__details">
-                                                <span class="kt-widget__title">
-                                                    <?= $item['first_name'] ?>
-                                                    <?= $item['last_name'] ?>
-                                                </span>
-                                                <span class="kt-widget__value"></span>
-                                            </div>
-                                        </div>
-                                    <?php } else if ($selection['target'] == 'product') { ?>
-                                    <div class="kt-widget__item">
-                                            <div class="kt-widget__icon">
-                                                <!--<i class="flaticon2-box-1"></i>-->
-                                                <?php if (empty($item['picture'])) { ?>
-                                                <img style="max-height: 50px; max-width: 50px;" src="<?= URL ?>public/assets/images/no-image-available.jpg" alt="<?= $item['name'] ?>" />                                                
-                                                <?php } else { ?>
-                                                <img style="max-height: 50px; max-width: 50px;" src="<?= URL ?>public/assets/images/product/<?= $item['picture'] ?>" alt="<?= $item['name'] ?>" />
-                                                <?php } ?>
-                                            </div>
-                                            <div class="kt-widget__details">
-                                                <span class="kt-widget__title">
-                                                    <?= $item['name'] ?>
-                                                </span>
-                                                <span class="kt-widget__value"></span>
-                                            </div>
-                                        </div>
-                                    <?php } ?>
-                                <?php } ?>
+                                 <div class="kt-widget__details">
+                                     <div class="kt-media-group">
+                                         <?php foreach($selection['items'] as $item) { ?>
+                                             <?php if ($selection['target'] == 'user') { ?>
+                                                 <a href="#" class="kt-media kt-media--lg kt-media--circle" data-toggle="kt-tooltip" data-skin="user" data-placement="top" title="" data-original-title="<?php echo $item['first_name']." ".$item['last_name']  ?>">
+                                                     <?php if (empty($item['picture'])) { ?>
+                                                         <img style="max-height: 50px; max-width: 50px;" src="<?= URL ?>public/assets/images/no-image-available.jpg" alt="<?= $item['first_name'] ?> <?= $item['last_name'] ?>" />
+                                                     <?php } else { ?>
+                                                         <img style="max-height: 50px; max-width: 50px;" src="<?= URL ?>public/assets/images/user/<?= $item['picture'] ?>" alt="<?= $item['first_name'] ?> <?= $item['last_name'] ?>" />
+                                                     <?php } ?>
+                                                 </a>
+                                             <?php } else if ($selection['target'] == 'product') { ?>
+                                                 <a href="#" class="kt-media kt-media--lg kt-media--circle" data-toggle="kt-tooltip" data-skin="product" data-placement="top" title="" data-original-title="<?= $item['name'] ?>">
+                                                    <?php if (empty($item['picture'])) { ?>
+                                                        <img style="max-height: 50px; max-width: 50px;" src="<?= URL ?>public/assets/images/no-image-available.jpg" alt="<?= $item['name'] ?>" />
+                                                    <?php } else { ?>
+                                                        <img style="max-height: 50px; max-width: 50px;" src="<?= URL ?>public/assets/images/product/<?= $item['picture'] ?>" alt="<?= $item['name'] ?>" />
+                                                    <?php } ?>
+                                                 </a>
+                                             <?php } ?>
+                                         <?php } ?>
+                                     </div>
+                                 </div>
+                            </div>
                             </div>
                         </div>
                     </div>
@@ -189,7 +174,7 @@ ob_start();
 
             <?php }
         }?>
-		
+
 		<!--end:: Portlet-->
 	</div>
 
