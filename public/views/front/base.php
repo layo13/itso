@@ -25,6 +25,38 @@ $blockJs = isset($blockJs) ?$blockJs: '';
 			body {
 				color: #fff;
 			}
+            /*PAGE ACCUEIL PHOTO CARRE*/
+            .img-cube-container {
+                margin: 0 auto;
+                margin-bottom: 25px;
+                width: 200px;
+                height: 200px;
+            }
+
+
+
+            /*PAGE SEARCH LISTE RECHERCHE GENERE*/
+            .media-body a h5 {
+                color: #fff;
+                margin-top: 13px;
+                position: relative;
+                display: block;
+            }
+
+            .media-body {
+                padding-top: 17px;
+            }
+
+            ul#search_results {
+                padding-left: 42px;
+                margin-top: 3px;
+            }
+
+             /*PAGE PROFIL PERSONNALITY*/
+            img.rounded-circle.mx-auto.d-block.profile_read_first {
+                max-width: 127px;
+                max-height: 128px;
+            }
 		</style>
 		<title>In The Shoes Of</title>
 	</head>

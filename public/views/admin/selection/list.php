@@ -94,18 +94,6 @@ ob_start();
                     <div class="kt-portlet__body">
                         <div class="kt-widget kt-widget--user-profile-3">
                             <div class="kt-widget__top">
-                                <div class="kt-widget__media kt-hidden-">
-                                    <?php
-                                    $userPictureUrl = "noPhoto.png";
-                                    if (!empty($user['user_picture'])) {
-                                        $userPictureUrl = $user['user_picture'];
-                                    }
-                                    ?>
-                                    <img src="<?= $url ?>public/assets/images/user/<?= $userPictureUrl ?>" alt="image">
-                                </div>
-                                <div class="kt-widget__pic kt-widget__pic--danger kt-font-danger kt-font-boldest kt-font-light kt-hidden">
-
-                                </div>
                                 <div class="kt-widget__content">
                                     <div class="kt-widget__head">
                                         <a href="#" class="kt-widget__username">
@@ -135,10 +123,6 @@ ob_start();
                                             }
                                             ?>
                                         </div>
-                                    </div>
-                                    <div class="kt-widget__subhead">
-                                        <a href="#"><i class="flaticon2-new-email"></i><?= $selection['target'] ?></a>
-                                        <a href="#"><i class="flaticon2-calendar-3"></i><?= $selection['type'] ?></a>
                                     </div>
                                 </div>
                             </div>

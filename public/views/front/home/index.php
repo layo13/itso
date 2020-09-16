@@ -55,7 +55,7 @@ ob_start();
                 }
             } ?>
             <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                <img class="img-thumbnail" src="<?= $itemSrc ?>" alt="<?= $itemAlt ?>" />
+                <div class="img-cube-container" style="background: url('<?= $itemSrc ?>');background-position: center;background-size: cover;background-repeat: no-repeat;" title="<?= $itemAlt ?>"></div>
             </div>
         <?php } ?>
     </div>
