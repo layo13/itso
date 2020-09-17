@@ -22,7 +22,7 @@ ob_start();
         <div class="row">
             <div class="col-12">
                 <?php if (!empty($personalityPicture)) { ?>
-                    <img class="rounded-circle mx-auto d-block" src="<?= $url ?>public/assets/images/user/<?= $personalityPicture['name'] ?>"/>
+                    <img class="rounded-circle mx-auto d-block profile_read_first" src="<?= $url ?>public/assets/images/user/<?= $personalityPicture['name'] ?>"/>
                 <?php } ?>
             </div>
         </div>

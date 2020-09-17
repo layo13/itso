@@ -65,18 +65,17 @@ ob_start();
                                                     ?>
 											</span>
                                         </div>
-                                    </div>
-                                    <div class="kt-portlet__head-toolbar">
-                                        <a href="#" class="btn btn-clean btn-sm btn-icon btn-icon-md" data-toggle="dropdown">
-                                            <i class="flaticon-more-1"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-fit dropdown-menu-right">
-                                            <ul class="kt-nav">
-                                                <li class="kt-nav__item">
-                                                    <!-- modification champs state ou actif à voir -->
-                                                    <a href="#" data-productId="<?= intval($product['id']) ?>" data-active="<?= intval($product['active']) ?>" class="kt-nav__link changePublishProduct">
-                                                        <i class="kt-nav__link-icon flaticon2-send"></i>
-                                                        <span class="kt-nav__link-text">
+                                        <div class="kt-portlet__head-toolbar">
+                                            <a href="#" class="btn btn-clean btn-sm btn-icon btn-icon-md" data-toggle="dropdown">
+                                                <i class="flaticon-more-1"></i>
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-fit dropdown-menu-right">
+                                                <ul class="kt-nav">
+                                                    <li class="kt-nav__item">
+                                                        <!-- modification champs state ou actif à voir -->
+                                                        <a href="#" data-productId="<?= intval($product['id']) ?>" data-active="<?= intval($product['active']) ?>" class="kt-nav__link changePublishProduct">
+                                                            <i class="kt-nav__link-icon flaticon2-send"></i>
+                                                            <span class="kt-nav__link-text">
                                                             <?php
                                                             if($product['active']==0) {
                                                                 echo "Publier";
@@ -85,27 +84,28 @@ ob_start();
                                                             }
                                                             ?>
                                                         </span>
-                                                    </a>
-                                                </li>
-                                                <?php
-                                                if(!empty($users[$product['id']])){
-                                                ?>
-                                                <li class="kt-nav__item">
-                                                    <a href="#" class="kt-nav__link openModalFavorite" data-productId="<?= intval($product['id']) ?>" data-userId="<?= intval($users[$product['id']]['id']) ?>">
-                                                        <i class="kt-nav__link-icon fa fa-gem"></i>
-                                                        <span class="kt-nav__link-text">Ajouter à une catégorie</span>
-                                                    </a>
-                                                </li>
+                                                        </a>
+                                                    </li>
                                                     <?php
-                                                }
-                                                ?>
-                                                <li class="kt-nav__item">
-                                                    <a href="<?= $app->router()->getRoute('admin_product_update',['id'=>intval($product['id'])]) ?>" class="kt-nav__link">
-                                                        <i class="kt-nav__link-icon flaticon2-settings"></i>
-                                                        <span class="kt-nav__link-text">Modifier</span>
-                                                    </a>
-                                                </li>
-                                            </ul>
+                                                    if(!empty($users[$product['id']])){
+                                                        ?>
+                                                        <li class="kt-nav__item">
+                                                            <a href="#" class="kt-nav__link openModalFavorite" data-productId="<?= intval($product['id']) ?>" data-userId="<?= intval($users[$product['id']]['id']) ?>">
+                                                                <i class="kt-nav__link-icon fa fa-gem"></i>
+                                                                <span class="kt-nav__link-text">Ajouter à une catégorie</span>
+                                                            </a>
+                                                        </li>
+                                                        <?php
+                                                    }
+                                                    ?>
+                                                    <li class="kt-nav__item">
+                                                        <a href="<?= $app->router()->getRoute('admin_product_update',['id'=>intval($product['id'])]) ?>" class="kt-nav__link">
+                                                            <i class="kt-nav__link-icon flaticon2-settings"></i>
+                                                            <span class="kt-nav__link-text">Modifier</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
