@@ -67,16 +67,13 @@ class BuildSelections extends Command {
     
     private function getSelectionLabel($type) {
         switch ($type) {
-            case self::PRODUCTS_MOST_LIKED : $label = 'Produits les plus likés';
-            case self::PRODUCTS_MOST_SOLD : $label = 'Produits les plus vendus';
-            case self::PRODUCTS_MOST_PROFITABLE : $label = 'Produits les plus rentables';
-                break;
-            case self::CELEBRITIES_MOST_FOLLOWED : $label = 'Personnalités les plus suivies';
-            case self::CELEBRITIES_WITH_MOST_PRODUCTS : $label = 'Personnalités avec la plus belle penderie';
-            case self::CELEBRITIES_WITH_MOST_FAVORITES : $label = 'Personnalités avec le plus de sélections';
-                break;
-            default:exit(__FILE__ . '::' . __LINE__);
-                break;
+            case self::PRODUCTS_MOST_LIKED : $label = 'Produits les plus likés'; break;
+            case self::PRODUCTS_MOST_SOLD : $label = 'Produits les plus vendus'; break;
+            case self::PRODUCTS_MOST_PROFITABLE : $label = 'Produits les plus rentables'; break;
+            case self::CELEBRITIES_MOST_FOLLOWED : $label = 'Personnalités les plus suivies'; break;
+            case self::CELEBRITIES_WITH_MOST_PRODUCTS : $label = 'Personnalités avec la plus belle penderie'; break;
+            case self::CELEBRITIES_WITH_MOST_FAVORITES : $label = 'Personnalités avec le plus de sélections'; break;
+            default:exit(__FILE__ . '::' . __LINE__); break;
         }
         return $label;
     }

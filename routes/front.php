@@ -52,6 +52,28 @@ return [
 			\Http\Itso\Front\Modules\Personality\PersonalityController::class, 'readFavorite'
 		]
 	],
+	////////////////////////////////--- BRAND ---///////////////////////////////
+	"brand_read" => [
+		"uri" => "/brand/{id}",
+		"method" => "GET",
+		"parameters" => [
+			"id" => "[0-9]+",
+		],
+		"action" => [
+			\Http\Itso\Front\Modules\Brand\BrandController::class, 'read'
+		]
+	],
+	"product_read" => [
+		"uri" => "/product/{id}",
+		"method" => "GET",
+		"parameters" => [
+			"id" => "[0-9]+",
+			"product" => "[0-9]+",
+		],
+		"action" => [
+			\Http\Itso\Front\Modules\Product\ProductController::class, 'read'
+		]
+	],
 	"personality_product_read" => [
 		"uri" => "/personality/{id}/product/{product}",
 		"method" => "GET",

@@ -12,4 +12,13 @@ class BrandController extends BaseController {
 		require ROOT . '/public/views/front/brand/index.php';
 	}
 
+	public function readAction($id) {
+		$url = URL;
+		$app = $this->application;
+
+		$brand = $this->pdo()->query("SELECT * FROM brand WHERE id = " . (int) $id);
+
+		require ROOT . '/public/views/front/brand/read.php';
+	}
+
 }

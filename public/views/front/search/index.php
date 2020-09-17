@@ -40,16 +40,20 @@ ob_start();
 ?>
 <script id="search_result_template" type="text/template">
 	<div class="media">
-        <img src="[[RESULT.PICTURE]]" class="mr-3" alt="[[RESULT.NAME]]" width="64" height="64">
-		<div class="media-body">
-            <a href="<?= $app->router()->getRoute('front_personality_read', ['id' => '[[ID]]']) ?>">
-                <h5 class="mt-0 mb-1">[[RESULT.NAME]]</h5>
-            </a>
-			<!-- Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus. --                       >
-		</div>                           
+	<img src="[[RESULT.PICTURE]]" class="mr-3" alt="[[RESULT.NAME]]" width="64" height="64">
+	<div class="media-body">
+	<a href="[[LINK]]">
+	<h5 class="mt-0 mb-1">[[RESULT.NAME]]</h5>
+	</a>
+	<!-- Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus. --                       >
+	</div>                           
 	</div>
 </script>
 <script>
+	
+	var frontPersonalityReadRoute = '<?= $app->router()->getRoute('front_personality_read', ['id' => '[[ID]]']) ?>';
+	var frontBrandReadRoute       = '<?= $app->router()->getRoute('front_brand_read', ['id' => '[[ID]]']) ?>';
+	
     var search = function () {
         var o = this;
         o.xhr = null;
@@ -86,13 +90,23 @@ ob_start();
                             if (result.picture != undefined && result.picture != null) {
                                 if (result.type == 'user') {
                                     result.picture = URL + 'public/assets/images/user/' + result.picture;
+									var link = frontPersonalityReadRoute.replace('[[ID]]', result.id);
+                                } else if (result.type == 'brand') {
+                                    result.picture = URL + 'public/assets/images/brand/' + result.picture;
+									var link = frontBrandReadRoute.replace('[[ID]]', result.id);
+                                } else {
+                                    result.picture = null;
+									var link = '#';
                                 }
+                            } else {
+                                result.picture = null;
+								var link = '#';
                             }
 
                             var template = $('#search_result_template').html(),
-                                    view = template.replace('[[ID]]', result.id)
-                                                   .replace('[[RESULT.NAME]]', result.name)
-                                                   .replace('[[RESULT.NAME]]', result.name);
+                                    view = template.replace('[[LINK]]', link)
+                                    .replace('[[RESULT.NAME]]', result.name)
+                                    .replace('[[RESULT.NAME]]', result.name);
                             if (result.picture == null) {
                                 view = view.replace('[[RESULT.PICTURE]]', URL + 'public/assets/images/no-image-available.jpg');
                             } else {
@@ -107,8 +121,7 @@ ob_start();
         }
     };
     new search();
-            </script>
-            <?php
-            $blockJs = ob_get_clean();
-            require __DIR__ . '/../base.php';
-            
+</script>
+<?php
+$blockJs = ob_get_clean();
+require __DIR__ . '/../base.php';

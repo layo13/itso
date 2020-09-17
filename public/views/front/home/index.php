@@ -3,6 +3,9 @@
 // BLOCK CONTENT //
 //---------------//
 
+/** @var Epic\BaseApplication $app */
+$app;
+
 ob_start();
 ?>
 
@@ -44,18 +47,22 @@ ob_start();
             $itemSrc = URL . "public/assets/images/no-image-available.jpg";
             $itemAlt = "Non renseigné";
             if ($selection['target'] == 'user') {
+				$link = $app->router()->getRoute('front_personality_read', ['id' => $item['id']]);
                 if (!empty($item['picture'])) {
                     $itemSrc = URL . "public/assets/images/user/" . $item['picture'];
                     $itemAlt = $item['first_name'] .' '. $item['last_name'];
                 }
             } else if ($selection['target'] == 'product') {
+				$link = $app->router()->getRoute('front_product_read', ['id' => $item['id']]);
                 if (!empty($item['picture'])) {
                     $itemSrc = URL . "public/assets/images/product/" . $item['picture'];
                     $itemAlt = $item['name'];
                 }
             } ?>
             <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+				<a href="<?= $link ?>">
                 <img class="img-thumbnail" src="<?= $itemSrc ?>" alt="<?= $itemAlt ?>" />
+				</a>
             </div>
         <?php } ?>
     </div>

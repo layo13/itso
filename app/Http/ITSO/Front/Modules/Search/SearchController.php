@@ -30,9 +30,13 @@ WHERE (`user`.`first_name` LIKE CONCAT('%', ?, '%')
 	OR CONCAT(`user`.`last_name`, ' ', `user`.`first_name`) LIKE CONCAT('%', ?, '%')
 )
 AND `user`.`user_type_id` = 2
+UNION
+SELECT `brand`.`id`, `brand`.`name` as `name`, `picture`.`name` as `picture`, 'brand' as `type`
+FROM `brand` LEFT JOIN `picture` ON (`brand`.`picture_id` = `picture`.`id`)
+WHERE `brand`.`name` LIKE CONCAT('%', ?, '%')
 SQL;
             $stmt = $this->pdo()->prepare($sql);
-            $stmt->execute([$query, $query, $query, $query]);
+            $stmt->execute([$query, $query, $query, $query, $query]);
             $results = $stmt->fetchAll();
 
             foreach ($results as $result) {

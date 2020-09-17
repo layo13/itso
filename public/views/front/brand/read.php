@@ -66,26 +66,6 @@ ob_start();
     </div>
 <?php } ?>
 
-<?php if (!empty($products)) { ?>
-	<div class="row">
-		<?php foreach ($products as $product) { ?>
-			<div class="col-4">
-				<a href="<?= $app->router()->getRoute('front_personality_product_read', [
-					'id' => $personality['id'],
-					'product' => $product['id']
-				]) ?>">
-					<?php if (empty($product['picture'])){ ?>
-						<img class="img-fluid" src="<?= URL ?>public/assets/images/no-image-available.jpg" />
-					<?php } else { ?>
-						<img class="img-fluid" src="<?= URL ?>public/assets/images/product/<?= $product['picture']['name'] ?>" />
-					<?php } ?>
-				</a>
-			</div>
-		<?php } ?>
-	</div>
-<?php } ?>
-
-
 <?php
 $blockContent = ob_get_clean();
 require __DIR__ . '/../base.php';
