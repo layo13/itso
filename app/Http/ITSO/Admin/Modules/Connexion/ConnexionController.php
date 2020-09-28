@@ -26,6 +26,7 @@ class ConnexionController extends \Epic\BaseController {
 					$_SESSION['id'] = $user['id'];
 					$_SESSION['first_name'] = $user['first_name'];
 					$_SESSION['last_name'] = $user['last_name'];
+					$_SESSION['user_type_id'] = $user['user_type_id'];
 
 					redirect($this->router()->getRoute('admin_home'));
 				} else {
@@ -43,8 +44,8 @@ class ConnexionController extends \Epic\BaseController {
 
 	public function logoutAction() {
 		$this->application->user()->setAuthenticated(false);
-		redirect($this->router()->getRoute('admin_home'));
 		session_destroy();
+		redirect($this->router()->getRoute('admin_login'));
 	}
 
 }

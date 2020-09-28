@@ -53,14 +53,19 @@ ob_start();
                     $itemAlt = $item['first_name'] .' '. $item['last_name'];
                 }
             } else if ($selection['target'] == 'product') {
-				$link = $app->router()->getRoute('front_product_read', ['id' => $item['id']]);
+				$link = $app->router()->getRoute('front_personality_product_read', [
+					'id' => $item['user']['id'],
+					'product' => $item['id']
+				]);
                 if (!empty($item['picture'])) {
                     $itemSrc = URL . "public/assets/images/product/" . $item['picture'];
                     $itemAlt = $item['name'];
                 }
             } ?>
             <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                <div class="img-cube-container" style="background: url('<?= $itemSrc ?>');background-position: center;background-size: cover;background-repeat: no-repeat;" title="<?= $itemAlt ?>"></div>
+				<a href="<?= $link ?>">
+                    <div class="img-cube-container" style="background: url('<?= $itemSrc ?>');background-position: center;background-size: cover;background-repeat: no-repeat;" title="<?= $itemAlt ?>"></div>
+				</a>
             </div>
         <?php } ?>
     </div>

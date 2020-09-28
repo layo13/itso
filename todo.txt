@@ -19,3 +19,7 @@ Revoir la page sélections
 = Framework =
 
 Retester un reset complet
+Revoir l'arborescence car les vues devraient etre rangees dans leurs applications
+coder enfin la fonction view() qui prend en compte qu'une vue puisse etre dans une app ou non
+Implementer la verif de si une requete est ajax ou non
+Les routes de l'application "Front" n'étaient pas disponibles depuis l'application "Admin", patch dans [itso]\app\Http\ITSO\Admin\Modules\User\UserController.php

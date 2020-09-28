@@ -85,6 +85,17 @@ return [
 			\Http\Itso\Front\Modules\Personality\PersonalityController::class, 'readProduct'
 		]
 	],
+	"personality_product_read_like_ajax" => [
+		"uri" => "/personality/{id}/product/{product}/like",
+		"method" => "POST",
+		"parameters" => [
+			"id" => "[0-9]+",
+			"product" => "[0-9]+",
+		],
+		"action" => [
+			\Http\Itso\Front\Modules\Personality\PersonalityController::class, 'readProductLike'
+		]
+	],
 	///////////////////////////////--- LOGIN ---////////////////////////////////
 	"login" => [
 		"uri" => "/login",

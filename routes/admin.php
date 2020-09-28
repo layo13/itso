@@ -153,6 +153,16 @@ return [
             Http\Itso\Admin\Modules\User\UserController::class, 'update'
         ]
     ],
+    "user_connect" => [
+        "uri" => "/user/connect/{id}",
+        "method" => "GET",
+        "parameters" => [
+            "id" => "[0-9]+",
+        ],
+        "action" => [
+            Http\Itso\Admin\Modules\User\UserController::class, 'connect'
+        ]
+    ],
     "user_edit" => [
         "uri" => "/user/edit/{id}",
         "method" => "POST",

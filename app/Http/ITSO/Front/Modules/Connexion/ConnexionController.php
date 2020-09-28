@@ -127,8 +127,8 @@ class ConnexionController extends \Epic\BaseController {
 
 	public function logoutAction() {
 		$this->application->user()->setAuthenticated(false);
-		redirect($this->router()->getRoute('front_home'));
 		session_destroy();
+		redirect($this->router()->getRoute('front_home'));
 	}
 
 }

@@ -33,7 +33,7 @@ ob_start();
 $blockContent = ob_get_clean();
 
 //---------------//
-// BLOCK CONTENT //
+// BLOCK JS //
 //---------------//
 
 ob_start();

@@ -38,6 +38,8 @@ SQL
 
                     $picture = $this->pdo->query("SELECT `picture`.* FROM `product_picture` LEFT JOIN `picture` ON (`product_picture`.`picture_id` = `picture`.`id`) WHERE `product_picture`.`product_id` = " . $product['id'])->fetch();
                     $product['picture'] = $picture['name'];
+					
+					$product['user'] = $this->pdo->query("SELECT `user`.* FROM user_product LEFT JOIN `user` ON (user_product.user_id = `user`.`id`) WHERE user_product.product_id = " . $product['id'])->fetch();
 
                     $selection['items'][$j] = $product;
                 }

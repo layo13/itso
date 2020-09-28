@@ -28,7 +28,8 @@ ob_start();
 
                         </div>
                         <div class="kt-widget__action">
-                            <a href="<?= $app->router()->getRoute('admin_user_update',['id' => $user['id']]) ?>" class="btn btn-facebook btn-sm btn-upper">Modifier mes informations</a>
+                            <a href="<?= $app->router()->getRoute('admin_user_connect',['id' => $user['id']]) ?>" class="btn btn-facebook btn-sm btn-upper">Se connecter en tant que</a>
+                            <a href="<?= $app->router()->getRoute('admin_user_update',['id' => $user['id']]) ?>" class="btn btn-facebook btn-sm btn-upper">Modifier les informations</a>
                         </div>
                     </div>
                     <div class="kt-widget__subhead">

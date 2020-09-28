@@ -16,6 +16,7 @@ class HomeController extends BaseController {
         $selectionManager = new \Manager\SelectionManager($pdo);
 
         $selections = $selectionManager->all();
+
         require ROOT . '/public/views/front/home/index.php';
     }
 

@@ -186,13 +186,12 @@ $schema->addTable('user_type', function(Table $table) {
 	$table->tinyInteger('active')->nullable(false)->defaultValue('0');
 });
 
-// don à itso
 $schema->addTable('donation', function(Table $table) {
 	$table->integer('id')->primary(true);
 	$table->integer('user_id')->nullable(false);
 	$table->float('amount')->nullable(false);
 	$table->dateTime('created_at')->nullable(false)->defaultValue('CURRENT_TIMESTAMP');
-});
+}, 'Don à itso');
 
 $schema->addTable('user_product', function(Table $table) {
 	$table->integer('user_id')->nullable(false);
@@ -242,6 +241,20 @@ $schema->addTable('selection_product', function(Table $table) {
 $schema->addTable('selection_user', function(Table $table) {
 	$table->integer('selection_id')->nullable(false);
 	$table->integer('user_id')->nullable(false);
+});
+
+$schema->addTable('wishlist', function(Table $table) {
+	$table->integer('id')->primary(true);
+	$table->varchar('name')->length(255)->nullable(false);
+	$table->dateTime('created_at')->nullable(false)->defaultValue('CURRENT_TIMESTAMP');
+	$table->integer('user_id')->nullable(false);
+
+});
+
+$schema->addTable('product_wishlist', function(Table $table) {
+    $table->integer('product_id')->nullable(false);
+    $table->integer('wishlist_id')->nullable(false);
+	$table->dateTime('created_at')->nullable(false)->defaultValue('CURRENT_TIMESTAMP');
 });
 
 return $schema;

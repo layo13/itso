@@ -12,13 +12,14 @@ abstract class BaseApplication {
 	protected $prefix;
 	protected $routeName;
 	// ---
-	
+
 	/**
 	 *
 	 * @var User 
 	 */
 	protected $user;
 	protected $request;
+
 	/**
 	 *
 	 * @var Router 
@@ -34,18 +35,26 @@ abstract class BaseApplication {
 		$this->reference = $reference;
 		$this->prefix = $prefix;
 		$this->routeName = NULL;
-		
-		
-		$routes = require ROOT . '/routes/' . $this->reference . '.php';
+
 		$applicationRoutes = [];
 
-		foreach ($routes as $name => $route) {
+		$routesDir = ROOT . '/routes';
+		$scandir = scandir($routesDir);
+		foreach ($scandir as $e) {
+			$filename = $routesDir . '/' . $e;
+			if (!is_file($filename) || $this->reference != pathinfo($filename, PATHINFO_FILENAME))continue;
 
-			if (!empty($this->prefix)) {
-				$route['uri'] = $this->prefix . $route['uri'];
+			//$routes = require ROOT . '/routes/' . $this->reference . '.php';
+			$routes = require $filename;
+
+			foreach ($routes as $name => $route) {
+				if (!empty($this->prefix)) {
+					$route['uri'] = $this->prefix . $route['uri'];
+				}
+				$applicationRoutes[pathinfo($filename, PATHINFO_FILENAME) . '_' . $name] = $route;
 			}
-			$applicationRoutes[$this->reference . '_' . $name] = $route;
 		}
+
 		$this->router->init($applicationRoutes);
 	}
 
@@ -57,7 +66,7 @@ abstract class BaseApplication {
 		$route = $this->router->getMatchingRoute($this->request->requestMethod(), $this->request->requestUri(), $matches);
 
 		$this->routeName = $route->getName();
-		
+
 		list($controllerName, $action) = $route->getAction();
 
 		return [$controllerName, $action, $matches];
@@ -98,7 +107,6 @@ abstract class BaseApplication {
 	public function router() {
 		return $this->router;
 	}
-	
 
 	/**
 	 * 
@@ -107,7 +115,7 @@ abstract class BaseApplication {
 	public function routeName() {
 		return $this->routeName;
 	}
-	
+
 	/**
 	 * 
 	 * @return \PDO
@@ -115,4 +123,5 @@ abstract class BaseApplication {
 	public function pdo() {
 		return \PdoProvider::getInstance();
 	}
+
 }

@@ -44,8 +44,8 @@ class ConnexionController extends \Epic\BaseController {
 
 	public function logoutAction() {
 		$this->application->user()->setAuthenticated(false);
-		redirect($this->router()->getRoute('vip_home'));
 		session_destroy();
+		redirect($this->router()->getRoute('vip_home'));
 	}
 
     public function passwordMailSendAction(){

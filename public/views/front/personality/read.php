@@ -8,15 +8,6 @@ $app;
 
 ob_start();
 ?>
-
-<div class="row">
-    <div class="col-12">
-        <?php
-        //var_dump($personality, $charity, $favoriteCategories);exit
-        ?>
-    </div>
-</div>
-
 <div class="row">
     <div class="col-12">
         <div class="row">
