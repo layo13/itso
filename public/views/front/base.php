@@ -209,12 +209,19 @@ $blockJs = isset($blockJs) ? $blockJs : '';
 				$(this).empty();
 			});
 
-            var destroyModal = function (id) {
+            var destroyModal = function(id) {
                 if (id[0] != '#') {
                     id = '#' + id;
                 }
 				$(id).empty();
             };
+			
+			var buildConnectOrRegisterModal = function(id) {
+				buildModal(id);
+				$('#myModalLabel').html("Vous n'êtes pas connecté !");
+				$('#myModal').find('.modal-body').html('Veuillez-vous <a href="' + frontLoginRoute + '">connecter</a> ou vous <a href="' + frontRegisterRoute + '">inscrire</a>.');
+				$('#myModal').modal('show');
+			}
 
             <?php /*$('#myModal').modal({
                 keyboard: false

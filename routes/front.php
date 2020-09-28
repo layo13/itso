@@ -96,6 +96,32 @@ return [
 			\Http\Itso\Front\Modules\Personality\PersonalityController::class, 'readProductLike'
 		]
 	],
+	"personality_product_read_add_to_wishlist_ajax" => [
+		"uri" => "/personality/{id}/product/{product}/add_to_wishlist",
+		"method" => "POST",
+		"parameters" => [
+			"id" => "[0-9]+",
+			"product" => "[0-9]+",
+		],
+		"action" => [
+			\Http\Itso\Front\Modules\Personality\PersonalityController::class, 'readProductAddToWishlist'
+		]
+	],
+	/////////////////////////////--- WISHLIST ---///////////////////////////////
+	"wishlist_add" => [
+		"uri" => "/wishlist/add",
+		"method" => "POST",
+		"action" => [
+			Http\Itso\Front\Modules\Wishlist\WishlistController::class, 'add'
+		]
+	],
+	"wishlist_add_product" => [
+		"uri" => "/wishlist/add/product",
+		"method" => "POST",
+		"action" => [
+			Http\Itso\Front\Modules\Wishlist\WishlistController::class, 'addProduct'
+		]
+	],
 	///////////////////////////////--- LOGIN ---////////////////////////////////
 	"login" => [
 		"uri" => "/login",

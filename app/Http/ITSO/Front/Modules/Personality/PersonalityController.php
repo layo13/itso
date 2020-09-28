@@ -150,7 +150,7 @@ AND product.id = $productId
 SQL
 			)->fetch();
 
-		
+
 		if (!$user->isAuthenticated()) {
 			header("Content-Type: application/json; Charset=UTF-8");
 			return json_encode([
@@ -162,13 +162,13 @@ SQL
 				"state" => "success",
 				'user_authenticated' => $user->isAuthenticated()
 			];
-			
-			$like = (int)$_REQUEST['like'];
-				
+
+			$like = (int) $_REQUEST['like'];
+
 			if ($like) {
-				
+
 				$count = $this->pdo()->query("SELECT COUNT(*) FROM liked WHERE user_id = " . $user->getAttribute('id') . " AND product_id = " . $product['id'])->fetchColumn();
-				if ($count){
+				if ($count) {
 					$response["content"] = "liked";
 				} else {
 					// INSERT
@@ -181,6 +181,55 @@ SQL
 				$stmt->execute([$user->getAttribute('id'), $product['id']]);
 				$response["content"] = "not_liked";
 			}
+			header("Content-Type: application/json; Charset=UTF-8");
+			return json_encode($response, JSON_PRETTY_PRINT);
+		}
+	}
+
+	public function readProductAddToWishlistAction($id, $productId) {
+
+		$url = URL;
+		$app = $this->application;
+		$user = $app->user();
+
+		$personality = $this->pdo()->query("SELECT * FROM user WHERE user_type_id = 2 AND id = " . (int) $id)->fetch();
+		$personalityId = (int) $personality['id'];
+
+		$product = $this->pdo()->query(<<<SQL
+SELECT product.*
+FROM user_product
+LEFT JOIN product ON (user_product.product_id = product.id)
+WHERE user_product.user_id = $personalityId
+AND product.id = $productId
+SQL
+			)->fetch();
+
+		if (!$user->isAuthenticated()) {
+			header("Content-Type: application/json; Charset=UTF-8");
+			return json_encode([
+				'user_authenticated' => $user->isAuthenticated()
+				], JSON_PRETTY_PRINT);
+		} else {
+			$response = [
+				"state" => "success",
+				'user_authenticated' => $user->isAuthenticated()
+			];
+
+			$wishlists = $this->pdo()->query("SELECT * FROM wishlist WHERE user_id = " . $user->getAttribute('id'))->fetchAll();
+
+			$wishlistsJson = [];
+
+			foreach ($wishlists as $wishlist) {
+
+				$wishlistsJson[] = [
+					'id' => $wishlist['id'],
+					'name' => $wishlist['name'],
+					'in' => $this->pdo()->query("SELECT COUNT(*) FROM product_wishlist WHERE product_id = $productId AND wishlist_id = " . $wishlist['id'])->fetchColumn()?true:false
+				];
+			}
+
+			$response['content'] = $wishlistsJson;
+
 			header("Content-Type: application/json; Charset=UTF-8");
 			return json_encode($response, JSON_PRETTY_PRINT);
 		}
