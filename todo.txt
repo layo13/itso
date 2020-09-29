@@ -12,7 +12,9 @@ Revoir la page sélections
 
 == Controleurs ==
 
-Repasser sur les retours Ajax pour qu'ils soient unifiés (rechercher: 'header("Content-Type: application/json; Charset=UTF-8");')
+Repasser sur les retours Ajax pour qu'ils soient unifiés (rechercher: 'header("Content-Type: application/json; Charset=UTF-8");') avec operation (= true / false ) et content
+Verifier les appels à $pdo = \PdoProvider::getInstance(); et les retirer si besoin
+Revoir la fonctionnalité penderie, créer un controller et remplacer les termes dans les routes les noms de fichiers etc
 
 = Base de données =
 
@@ -28,4 +30,8 @@ coder enfin la fonction view() qui prend en compte qu'une vue puisse etre dans u
 Implementer la verif de si une requete est ajax ou non
 Les routes de l'application "Front" n'étaient pas disponibles depuis l'application "Admin", patch dans [itso]\app\Http\ITSO\Admin\Modules\User\UserController.php
 Faire une fonction pour clean les caractères en entrée et eviter les injections (inscription / ajout de wishlist)
-Retirer les scripts qui créent une latence sur l'admin
+Retirer les scripts qui créent une latence sur l'admin (google Maps)
+
+= JS Général =
+
+Améliorer le buildModal pour détruire un éventuel modal existant

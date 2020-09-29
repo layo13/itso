@@ -35,6 +35,14 @@ SQL
 			)->fetchAll();
 		$subscriptions = $this->pdo()->query("SELECT COUNT(*) FROM subscription WHERE celebrity_id = " . (int) $personality['id'])->fetchColumn();
 
+		$btnClass = "";
+		if ($user->isAuthenticated()) {
+			$count = $this->pdo()->query("SELECT COUNT(*) FROM subscription WHERE celebrity_id = " . (int) $personality['id'] . " AND member_id = " . (int) $user->getAttribute('id'))->fetchColumn();
+			if ($count) {
+				$btnClass = 'active';
+			}
+		}
+
 		$charity = null;
 		if (!empty($personality['charity_id'])) {
 			$charity = $this->pdo()->query("SELECT * FROM charity_association WHERE id = " . (int) $personality['charity_id'])->fetch();
@@ -123,6 +131,49 @@ SQL
 		}
 
 		require ROOT . '/public/views/front/personality/product/read.php';
+	}
+
+	public function suscribeAction($id) {
+
+		$url = URL;
+		$app = $this->application;
+		$user = $app->user();
+
+		$personality = $this->pdo()->query("SELECT * FROM user WHERE user_type_id = 2 AND id = " . (int) $id)->fetch();
+		$personalityId = (int) $personality['id'];
+
+
+		if (!$user->isAuthenticated()) {
+			header("Content-Type: application/json; Charset=UTF-8");
+			return json_encode([
+				'user_authenticated' => $user->isAuthenticated()
+				], JSON_PRETTY_PRINT);
+		} else {
+			$response = [
+				"state" => "success",
+				'user_authenticated' => $user->isAuthenticated()
+			];
+
+			$suscribe = (int) $_REQUEST['suscribe'];
+
+			if ($suscribe) {
+				$count = $this->pdo()->query("SELECT COUNT(*) FROM subscription WHERE member_id = " . $user->getAttribute('id') . " AND celebrity_id = " . $personality['id'])->fetchColumn();
+				if ($count) {
+					$response["content"] = "subscribed";
+				} else {
+					// INSERT
+					$stmt = $this->pdo()->prepare("INSERT INTO subscription (member_id, celebrity_id) VALUES (?, ?)");
+					$stmt->execute([$user->getAttribute('id'), $personality['id']]);
+					$response["content"] = "subscribed";
+				}
+			} else { // on desabonne
+				$stmt = $this->pdo()->prepare("DELETE FROM subscription WHERE member_id = ? AND celebrity_id = ?");
+				$stmt->execute([$user->getAttribute('id'), $personality['id']]);
+				$response["content"] = "not_subscribed";
+			}
+			header("Content-Type: application/json; Charset=UTF-8");
+			return json_encode($response, JSON_PRETTY_PRINT);
+		}
 	}
 
 	/**
@@ -224,7 +275,7 @@ SQL
 				$wishlistsJson[] = [
 					'id' => $wishlist['id'],
 					'name' => $wishlist['name'],
-					'in' => $this->pdo()->query("SELECT COUNT(*) FROM product_wishlist WHERE product_id = $productId AND wishlist_id = " . $wishlist['id'])->fetchColumn()?true:false
+					'in' => $this->pdo()->query("SELECT COUNT(*) FROM product_wishlist WHERE product_id = $productId AND wishlist_id = " . $wishlist['id'])->fetchColumn() ? true : false
 				];
 			}
 
@@ -233,6 +284,43 @@ SQL
 			header("Content-Type: application/json; Charset=UTF-8");
 			return json_encode($response, JSON_PRETTY_PRINT);
 		}
+	}
+
+	public function getLinksAction($id, $productId) {
+		$url = URL;
+		$app = $this->application;
+		$user = $app->user();
+
+		$personality = $this->pdo()->query("SELECT * FROM user WHERE user_type_id = 2 AND id = " . (int) $id)->fetch();
+		$personalityId = (int) $personality['id'];
+
+		$product = $this->pdo()->query(<<<SQL
+SELECT product.*
+FROM user_product
+LEFT JOIN product ON (user_product.product_id = product.id)
+WHERE user_product.user_id = $personalityId
+AND product.id = $productId
+SQL
+			)->fetch();
+
+		$productLinks = $this->pdo()->query("SELECT * FROM product_link WHERE product_id = " . $productId)->fetchAll();
+
+		$content = [];
+
+		foreach ($productLinks as $productLink) {
+			$content[] = ['host' => parse_url($productLink['url'], PHP_URL_HOST),
+				'url' => $productLink['url']
+			];
+		}
+
+		$response = [
+			"state" => "success",
+			'user_authenticated' => $user->isAuthenticated(),
+			'content' => $content
+		];
+
+		header("Content-Type: application/json; Charset=UTF-8");
+		return json_encode($response, JSON_PRETTY_PRINT);
 	}
 
 }

@@ -113,7 +113,7 @@ $blockJs = isset($blockJs) ? $blockJs : '';
 				</a>
 			</div>
 			<div class=".navbar-nav">
-				<a class="nav-link" href="#">
+				<a class="nav-link" href="<?= $app->router()->getRoute('front_penderie'); ?>">
 					<i class="fa fa-2x fa-tshirt"></i>
 				</a>
 			</div>

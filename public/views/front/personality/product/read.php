@@ -74,7 +74,6 @@ ob_start();
 
     var productRead = function () {
         var o = this;
-        // o.xhr = null;
         o.init();
     };
 
@@ -205,6 +204,31 @@ ob_start();
 						
 							$('#myModal').modal('show');
 						}
+					}
+				});
+			});
+			$('#btnBuy').click(function(){
+				var btn = $(this);
+
+				$.ajax({
+                    type: "POST",
+                    url: "<?= $app->router()->getRoute('front_personality_product_get_links_ajax', [
+						'id' => $personality['id'],
+						'product' => $product['id']
+					]) ?>",
+                    data: {},
+                    dataType: 'JSON',
+                    success: function (data) {
+						
+						var modalBody = '';
+						for (var productLink of data.content) {
+							modalBody += '<p>Acheter sur <a target="_blank" href="' + productLink.url + '">' + productLink.host + '</a></p>';
+						}
+						
+						buildModal('myModal');
+						$('#myModalLabel').html("Acheter ce produit");
+						$('#myModal').find('.modal-body').html(modalBody);
+						$('#myModal').modal('show');
 					}
 				});
 			});

@@ -85,6 +85,27 @@ return [
 			\Http\Itso\Front\Modules\Personality\PersonalityController::class, 'readProduct'
 		]
 	],
+	"personality_product_get_links_ajax" => [
+		"uri" => "/personality/{id}/product/{product}/get/links",
+		"method" => "POST",
+		"parameters" => [
+			"id" => "[0-9]+",
+			"product" => "[0-9]+",
+		],
+		"action" => [
+			\Http\Itso\Front\Modules\Personality\PersonalityController::class, 'getLinks'
+		]
+	],
+	"personality_suscribe_ajax" => [
+		"uri" => "/personality/{id}/suscribe",
+		"method" => "POST",
+		"parameters" => [
+			"id" => "[0-9]+"
+		],
+		"action" => [
+			\Http\Itso\Front\Modules\Personality\PersonalityController::class, 'suscribe'
+		]
+	],
 	"personality_product_read_like_ajax" => [
 		"uri" => "/personality/{id}/product/{product}/like",
 		"method" => "POST",
@@ -120,6 +141,14 @@ return [
 		"method" => "POST",
 		"action" => [
 			Http\Itso\Front\Modules\Wishlist\WishlistController::class, 'addProduct'
+		]
+	],
+	//////////////////////////////--- PENDERIE ---//////////////////////////////
+	"penderie" => [
+		"uri" => "/penderie",
+		"method" => "GET",
+		"action" => [
+			Http\Itso\Front\Modules\Home\HomeController::class, 'penderie'
 		]
 	],
 	///////////////////////////////--- LOGIN ---////////////////////////////////
