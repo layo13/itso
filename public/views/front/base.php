@@ -16,14 +16,14 @@ $blockJs = isset($blockJs) ? $blockJs : '';
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 		<link rel="stylesheet" href="<?= $url ?>public/assets/fontawesome/css/all.min.css">
 		<style type="text/css">
-			html,
-			body {
-				/*height: 100%;*/
-				background-color: #333;
-			}
-			body {
-				color: #fff;
-			}
+            html,
+            body {
+                /*height: 100%;*/
+                background-color: #121212;
+            }
+            body {
+                color: #b3b3b3;
+            }
             /*PAGE ACCUEIL PHOTO CARRE*/
             .img-cube-container {
                 margin: 0 auto;
@@ -49,15 +49,30 @@ $blockJs = isset($blockJs) ? $blockJs : '';
                 margin-top: 3px;
             }
 
-			/* MODAL */
-			.modal{
-				color: #212529;
-			}
+            /* MODAL */
+            .modal{
+                color: #212529;
+            }
 
-			/*PAGE PROFIL PERSONNALITY*/
+            /*PAGE PROFIL PERSONNALITY*/
             img.rounded-circle.mx-auto.d-block.profile_read_first {
                 max-width: 127px;
                 max-height: 128px;
+            }
+            nav.navbar.fixed-bottom.navbar-dark.bg-dark a {
+                color: #fff;
+            }
+
+            nav.navbar.fixed-bottom.navbar-dark.bg-dark {
+                background: #282828!important;
+                border-top: 1px solid #000;
+            }
+
+            .navbar-nav a {
+                color: #fff!important;
+            }
+            .bg-dark {
+                background-color: #000!important;
             }
 		</style>
 		<title>In The Shoes Of</title>
@@ -75,7 +90,7 @@ $blockJs = isset($blockJs) ? $blockJs : '';
 					<a class="navbar-brand" href="<?= $app->router()->getRoute('front_home'); ?>">ITSO</a>
 				</li>
 			</ul>
-			<div class=".navbar-nav">
+			<div class="navbar-nav">
 
 				<?php if ($user->isAuthenticated()) { ?>
 					<a class="nav-link" href="<?= $app->router()->getRoute('front_profile'); ?>"><i class="fa fa-cog"></i></a>

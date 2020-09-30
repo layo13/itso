@@ -51,11 +51,14 @@ ob_start();
 					'product' => $product['id']
 				])
 				?>">
-					<?php if (empty($product['picture'])) { ?>
-						<img class="img-fluid" src="<?= URL ?>public/assets/images/no-image-available.jpg" />
-					<?php } else { ?>
-						<img class="img-fluid" src="<?= URL ?>public/assets/images/product/<?= $product['picture']['name'] ?>" />
-			<?php } ?>
+					<?php
+                    if (empty($product['picture'])) {
+                        $itemSrc = URL."public/assets/images/no-image-available.jpg";
+					} else {
+                        $itemSrc = URL."public/assets/images/product/". $product['picture']['name'];
+                    }
+                    ?>
+                    <div class="img-cube-container" style="background: url('<?= $itemSrc ?>');background-position: center;background-size: cover;background-repeat: no-repeat;"></div>
 				</a>
 			</div>
 	<?php } ?>
