@@ -1,3 +1,5 @@
+console.php?arg_name=reset
+
 = Admin =
 
 == Présentation ==

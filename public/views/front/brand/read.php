@@ -41,14 +41,14 @@ ob_start();
 <hr />
 <div class="row">
     <div class="col-12">
-        <h4>Articles les plus humanitaires</h4>
+        <h4 class="title_rubrique">Articles les plus humanitaires</h4>
     </div>
 </div>
 
 <?php if (!empty($favoriteCategories)) { ?>
     <div class="row">
         <div class="col-12">
-            <h4>Parcourir tout</h4>
+            <h4 class="title_rubrique">Parcourir tout</h4>
         </div>
     </div>
     <div class="row">

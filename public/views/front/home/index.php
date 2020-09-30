@@ -46,11 +46,13 @@ ob_start();
         <?php foreach($selection['items'] as $item) {
             $itemSrc = URL . "public/assets/images/no-image-available.jpg";
             $itemAlt = "Non renseigné";
+            $itemClass = "";
             if ($selection['target'] == 'user') {
 				$link = $app->router()->getRoute('front_personality_read', ['id' => $item['id']]);
                 if (!empty($item['picture'])) {
                     $itemSrc = URL . "public/assets/images/user/" . $item['picture'];
                     $itemAlt = $item['first_name'] .' '. $item['last_name'];
+                    $itemClass = "rounded-circle ";
                 }
             } else if ($selection['target'] == 'product') {
 				$link = $app->router()->getRoute('front_personality_product_read', [
@@ -62,9 +64,9 @@ ob_start();
                     $itemAlt = $item['name'];
                 }
             } ?>
-            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
 				<a href="<?= $link ?>">
-                    <div class="img-cube-container" style="background: url('<?= $itemSrc ?>');background-position: center;background-size: cover;background-repeat: no-repeat;" title="<?= $itemAlt ?>"></div>
+                    <div class="<?= $itemClass ?>img-cube-container" style="background: url('<?= $itemSrc ?>');background-position: center;background-size: cover;background-repeat: no-repeat;" title="<?= $itemAlt ?>"></div>
 				</a>
             </div>
         <?php } ?>

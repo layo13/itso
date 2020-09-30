@@ -27,11 +27,18 @@ $blockJs = isset($blockJs) ? $blockJs : '';
             /*PAGE ACCUEIL PHOTO CARRE*/
             .img-cube-container {
                 margin: 0 auto;
-                margin-bottom: 25px;
-                width: 200px;
-                height: 200px;
+                margin-left: 0;
+                margin-bottom: 5px;
+                width: 255px;
+                height: 255px;
             }
-
+            .product_desc {
+                position: relative;
+                display: block;
+                color: #fff;
+                margin-bottom: 50px;
+                max-width: 250px;
+            }
             /*PAGE SEARCH LISTE RECHERCHE GENERE*/
             .media-body a h5 {
                 color: #fff;
@@ -73,6 +80,44 @@ $blockJs = isset($blockJs) ? $blockJs : '';
             }
             .bg-dark {
                 background-color: #000!important;
+            }
+            .title_rubrique {
+                color: #fff;
+                border-bottom: 1px solid #b3b3b3;
+                padding-bottom: 10px;
+                margin-bottom: 20px;
+            }
+            button#btnSubscribe {
+                background: transparent;
+                border-radius: 20px;
+                padding: 5px 40px;
+            }
+            button#btnSubscribe:hover {
+                background: transparent;
+                border-radius: 20px;
+                padding: 5px 40px;
+            }
+            button#btnSubscribe.active{
+                background: #24cf5f;
+                border: 0;
+            }
+            h2.title_artist {
+                font-size: 52px;
+                color: #fff;
+                margin-bottom: 40px;
+            }
+            span.nb_abonnee {
+                position: relative;
+                display: block;
+                margin-bottom: 16px;
+                padding-left: 0px;
+            }
+            hr {
+                border-top: 1px solid rgb(18 18 18);
+            }
+            .rounded-circle.img-cube-container {
+                width: 200px;
+                height: 200px;
             }
 		</style>
 		<title>In The Shoes Of</title>

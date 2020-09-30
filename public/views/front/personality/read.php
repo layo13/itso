@@ -10,21 +10,32 @@ ob_start();
 ?>
 <?php require __DIR__ . '/heading.php'; ?>
 <hr />
-<h2><?= $personality['first_name'] ?> <?= $personality['last_name'] ?></h2>
-<button id="btnSubscribe" type="button" class="btn btn-secondary <?= $btnClass ?>">
-	<?= ($btnClass == 'active' ? "Abonné(e)" : "S'abonner") ?>
-</button>
+<h2 class="title_artist"><?= $personality['first_name'] ?> <?= $personality['last_name'] ?></h2>
+    <div class="row">
+        <div class="col-6 text-sm-left">
+            <span class="nb_abonnee"><i class="fa fa-heart"></i> <?= $subscriptions ?> Abonné(s)</span>
+            <button id="btnSubscribe" type="button" class="btn btn-secondary <?= $btnClass ?>">
+                <?= ($btnClass == 'active' ? "ABONNÉ(E)" : "S'ABONNER") ?>
+            </button>
+
+        </div>
+        <div class="col-6 text-sm-right">
+            <?php if (!empty($charity)) { ?>
+                <?= $personality['first_name'] ?> soutient <?= $charity['name'] ?>
+            <?php } ?>
+        </div>
+    </div>
 <hr />
 <div class="row">
     <div class="col-12">
-        <h4>Articles les plus humanitaires</h4>
+        <h4 class="title_rubrique">Articles les plus humanitaires</h4>
     </div>
 </div>
 
 <?php if (!empty($favoriteCategories)) { ?>
 	<div class="row">
 		<div class="col-12">
-			<h4>Parcourir tout</h4>
+			<h4 class="title_rubrique">Parcourir tout</h4>
 		</div>
 	</div>
 	<div class="row">
@@ -45,7 +56,7 @@ ob_start();
 <?php if (!empty($products)) { ?>
 	<div class="row">
 		<?php foreach ($products as $product) { ?>
-			<div class="col-4">
+			<div class="col-3">
 				<a href="<?= $app->router()->getRoute('front_personality_product_read', [
 					'id' => $personality['id'],
 					'product' => $product['id']
@@ -59,6 +70,7 @@ ob_start();
                     }
                     ?>
                     <div class="img-cube-container" style="background: url('<?= $itemSrc ?>');background-position: center;background-size: cover;background-repeat: no-repeat;"></div>
+                    <div class="product_desc"><?= $product['name']?></div>
 				</a>
 			</div>
 	<?php } ?>
