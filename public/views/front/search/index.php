@@ -10,7 +10,8 @@ ob_start();
 ?>
 
 <div class="row">
-    <div class="col-12">
+    <div class="col-2"></div>
+    <div class="col-7">
         <form>
             <div class="input-group">
                 <div class="input-group-prepend">
@@ -22,11 +23,14 @@ ob_start();
             </div>
         </form>
     </div>
+    <div class="col-2"></div>
 </div>
 <div class="row">
-    <div class="col-12">
+    <div class="col-2"></div>
+    <div class="col-7">
         <ul id="search_results" class="list-unstyled"></ul>
     </div>
+    <div class="col-2"></div>
 </div>
 
 <?php

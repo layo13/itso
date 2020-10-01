@@ -165,7 +165,9 @@ $blockJs = isset($blockJs) ? $blockJs : '';
                 height: 150px;
             }
 
-
+            a.nav-link.close {
+                display: inline-block;
+            }
             /**
             MODAL
              */
@@ -223,6 +225,15 @@ $blockJs = isset($blockJs) ? $blockJs : '';
 
 
 
+            .input-group-text {
+                border-radius: 50px;
+                background: #fff;
+                border: 0;
+            }
+            input#search {
+                border: 0;
+                border-radius: 0 50px 50px 0;
+            }
 
 
 
@@ -308,7 +319,10 @@ $blockJs = isset($blockJs) ? $blockJs : '';
 				</a>
 			</div>
 			<div class=".navbar-nav">
-				<a title="Ma penderie" class="nav-link" href="<?= $app->router()->getRoute('front_penderie'); ?>">
+				<a title="Mes likes" class="nav-link close" href="<?= $app->router()->getRoute('front_like'); ?>">
+					<i class="fa fa-2x fa-heart"></i>
+				</a>
+				<a title="Ma penderie" class="nav-link close" href="<?= $app->router()->getRoute('front_penderie'); ?>">
 					<i class="fa fa-2x fa-tshirt"></i>
 				</a>
 			</div>

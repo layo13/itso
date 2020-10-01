@@ -151,6 +151,14 @@ return [
 			Http\Itso\Front\Modules\Home\HomeController::class, 'penderie'
 		]
 	],
+	//////////////////////////////--- PENDERIE ---//////////////////////////////
+	"like" => [
+		"uri" => "/like",
+		"method" => "GET",
+		"action" => [
+			Http\Itso\Front\Modules\Home\HomeController::class, 'like'
+		]
+	],
 	///////////////////////////////--- LOGIN ---////////////////////////////////
 	"login" => [
 		"uri" => "/login",

@@ -44,7 +44,7 @@ ob_start();
 </div>
 <div class="row">
     <div class="col-6">		
-		<img title="<?= $product['pictures'][0]['name'] ?>" class="img-fluid" src="<?= $url ?>public/assets/images/product/<?= $product['pictures'][0]['name'] ?>" alt="<?= $product['name'] ?>" />
+		<img class="img-fluid mb-3" title="<?= $product['pictures'][0]['name'] ?>" class="img-fluid" src="<?= $url ?>public/assets/images/product/<?= $product['pictures'][0]['name'] ?>" alt="<?= $product['name'] ?>" />
         <div class="product_desc"><?= $product['name'] ?></div>
     </div>
     <div class="col-3">

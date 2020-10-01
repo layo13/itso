@@ -47,4 +47,23 @@ class HomeController extends BaseController {
 		require ROOT . '/public/views/front/home/penderie.php';
 	}
 
+	public function likeAction() {
+
+		if (!$this->application->user()->isAuthenticated()) {
+			redirect($this->application->router()->getRoute('front_login'));
+		}
+
+		$url = URL;
+		$app = $this->application;
+		$user = $app->user();
+
+		$productList = $this->pdo()->query("SELECT product.* FROM liked LEFT JOIN product ON (liked.product_id = product.id) WHERE liked.user_id = " . $user->getAttribute('id'))->fetchAll();
+		foreach ($productList as &$product) {
+			$product['pictures'] = $this->pdo()->query("SELECT picture.* FROM product_picture LEFT JOIN picture ON (product_picture.picture_id = picture.id) WHERE product_picture.product_id = " . $product['id'])->fetchAll();
+			$product['user_id'] = $this->pdo()->query("SELECT user_id FROM user_product WHERE product_id = " . $product['id'])->fetchColumn();
+		}
+
+		require ROOT . '/public/views/front/home/like.php';
+	}
+
 }
