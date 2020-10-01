@@ -15,10 +15,10 @@ ob_start();
 			<div class="card-body">
 				<div class="row">
 					<div class="col">
-						<h5 class="text-left">123.456.789&euro;</h5>
+						<h5 class="text-left mb-0">123.456.789&euro;</h5>
 					</div>
 					<div class="col">
-						<p class="text-right">
+						<p class="text-right mb-0">
 							<a href="#">Actualités</a>
 						</p>
 
@@ -30,7 +30,7 @@ ob_start();
 </div>
 <div class="row">
 	<div class="col-12">
-		<p class="text-center"><i class="fa fa-heart"></i> Totalité des dons récoltés en 2020</p>
+		<p class="text-center tt_dons mt-2"><i class="fa fa-heart"></i> Totalité des dons récoltés en 2020</p>
 	</div>
 </div>
 
@@ -38,11 +38,11 @@ ob_start();
 
     <div class="row">
         <div class="col-12">
-            <h6><?= $selection['label'] ?></h6>
+            <h4 class="title_rubrique"><?= $selection['label'] ?></h4>
         </div>
     </div>
 
-    <div class="row">
+    <div class="row mb-2">
         <?php foreach($selection['items'] as $item) {
             $itemSrc = URL . "public/assets/images/no-image-available.jpg";
             $itemAlt = "Non renseigné";
@@ -52,7 +52,9 @@ ob_start();
                 if (!empty($item['picture'])) {
                     $itemSrc = URL . "public/assets/images/user/" . $item['picture'];
                     $itemAlt = $item['first_name'] .' '. $item['last_name'];
-                    $itemClass = "rounded-circle ";
+                    $itemClass = "profil_acc rounded-circle ";
+                    $blockItemClass = "col-2";
+                    $itemClassDesc = "sub_desc";
                 }
             } else if ($selection['target'] == 'product') {
 				$link = $app->router()->getRoute('front_personality_product_read', [
@@ -63,10 +65,13 @@ ob_start();
                     $itemSrc = URL . "public/assets/images/product/" . $item['picture'];
                     $itemAlt = $item['name'];
                 }
+                $blockItemClass = "col-3";
+                $itemClassDesc = "product_desc";
             } ?>
-            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
-				<a href="<?= $link ?>">
+            <div class="<?= $blockItemClass ?>">
+				<a class="text-decoration-none" href="<?= $link ?>">
                     <div class="<?= $itemClass ?>img-cube-container" style="background: url('<?= $itemSrc ?>');background-position: center;background-size: cover;background-repeat: no-repeat;" title="<?= $itemAlt ?>"></div>
+                    <div class="<?= $itemClassDesc ?>"><?= $itemAlt ?></div>
 				</a>
             </div>
         <?php } ?>

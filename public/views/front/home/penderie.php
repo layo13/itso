@@ -12,20 +12,24 @@ ob_start();
 ?>
 
 <?php if (!empty($productList)) { ?>
-	<h2>Produits likés</h2>
+	<h2 class="title_rubrique">Produits likés</h2>
 	<div class="row">
 		<?php foreach ($productList as $product) { ?>
-			<div class="col-4">
-				<a href="<?= $app->router()->getRoute('front_personality_product_read', [
+			<div class="col-3">
+				<a class="text-decoration-none" href="<?= $app->router()->getRoute('front_personality_product_read', [
 					'id' => $product['user_id'],
 					'product' => $product['id']
 				])
 				?>">
-					<?php if (empty($product['pictures'][0])) { ?>
-						<img class="img-fluid" src="<?= URL ?>public/assets/images/no-image-available.jpg" />
-					<?php } else { ?>
-						<img class="img-fluid" src="<?= URL ?>public/assets/images/product/<?= $product['pictures'][0]['name'] ?>" />
-					<?php } ?>
+                    <?php
+                    if (empty($product['pictures'][0]['name'])) {
+                        $itemSrc = URL."public/assets/images/no-image-available.jpg";
+                    } else {
+                        $itemSrc = URL."public/assets/images/product/". $product['pictures'][0]['name'];
+                    }
+                    ?>
+                    <div class="img-cube-container" style="background: url('<?= $itemSrc ?>');background-position: center;background-size: cover;background-repeat: no-repeat;"></div>
+                    <div class="product_desc"><?= $product['name']?></div>
 				</a>
 			</div>
 		<?php } ?>
@@ -36,19 +40,23 @@ ob_start();
 	<h2>Wishlists</h2>
 	<?php foreach ($wishlistList as $wishlistBis) { ?>
 
-		<h3><?= $wishlistBis['name'] ?></h3>
+		<h3 class="title_rubrique"><?= $wishlistBis['name'] ?></h3>
 		<div class="row">
 			<?php foreach ($wishlistBis['productList'] as $productBis) { ?>
 				<div class="col-4">
-					<a href="<?= $app->router()->getRoute('front_personality_product_read', [
+					<a class="text-decoration-none" href="<?= $app->router()->getRoute('front_personality_product_read', [
 						'id' => $productBis['user_id'],
 						'product' => $productBis['id']
 					]) ?>">
-						<?php if (empty($product['pictures'][0])) { ?>
-							<img class="img-fluid" src="<?= URL ?>public/assets/images/no-image-available.jpg" />
-						<?php } else { ?>
-							<img class="img-fluid" src="<?= URL ?>public/assets/images/product/<?= $productBis['pictures'][0]['name'] ?>" />
-						<?php } ?>
+                        <?php
+                        if (empty($product['pictures'][0]['name'])) {
+                            $itemSrc = URL."public/assets/images/no-image-available.jpg";
+                        } else {
+                            $itemSrc = URL."public/assets/images/product/". $product['pictures'][0]['name'];
+                        }
+                        ?>
+                        <div class="img-cube-container" style="background: url('<?= $itemSrc ?>');background-position: center;background-size: cover;background-repeat: no-repeat;"></div>
+                        <div class="product_desc"><?= $product['name']?></div>
 					</a>
 				</div>
 			<?php } ?>

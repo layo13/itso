@@ -9,10 +9,32 @@ $app;
 ob_start();
 ?>
 
-<?php require __DIR__.'/../heading.php'; ?>
+<?php //require __DIR__.'/../heading.php'; ?>
 
-<hr />
 
+    <div class="row">
+        <div class="col-2">
+            <?php if (!empty($personalityPicture)) { ?>
+                <a href="<?= $app->router()->getRoute('front_personality_read', ['id' => $personalityId]) ?>">
+                    <img class="rounded-circle d-block profile_read_first" src="<?= $url ?>public/assets/images/user/<?= $personalityPicture['name'] ?>"/>
+                </a>
+            <?php } ?>
+        </div>
+        <div class="col-5 text-sm-left">
+            <h2 class="title_artist"><?= $personality['first_name'] ?> <?= $personality['last_name'] ?></h2>
+            <span class="nb_abonnee"><i class="fa fa-heart"></i> <?= $subscriptions ?> Abonné(s)</span>
+            <button id="btnSubscribe" type="button" class="btn btn-secondary <?= $btnClass ?>">
+                <?= ($btnClass == 'active' ? "ABONNÉ(E)" : "S'ABONNER") ?>
+            </button>
+
+        </div>
+        <div class="col-5 text-sm-right">
+            <?php if (!empty($charity)) { ?>
+                <?= $personality['first_name'] ?> soutient <?= $charity['name'] ?>
+            <?php } ?>
+        </div>
+    </div>
+    <hr />
 <div class="row">
     <div class="col-12">
         <?php
@@ -22,14 +44,15 @@ ob_start();
 </div>
 <div class="row">
     <div class="col-6">		
-		<img class="img-fluid" src="<?= $url ?>public/assets/images/product/<?= $product['pictures'][0]['name'] ?>" alt="<?= $product['name'] ?>" />
+		<img title="<?= $product['pictures'][0]['name'] ?>" class="img-fluid" src="<?= $url ?>public/assets/images/product/<?= $product['pictures'][0]['name'] ?>" alt="<?= $product['name'] ?>" />
+        <div class="product_desc"><?= $product['name'] ?></div>
     </div>
     <div class="col-3">
         
 		<?php foreach($product['pictures'] as $picture){ ?>
 			<div class="row">
 				<div class="col-12">
-					<img class="img-fluid" src="<?= $url ?>public/assets/images/product/<?= $picture['name'] ?>" alt="<?= $product['name'] ?>" />
+					<img title="<?= $product['name'] ?>" class="img-fluid" src="<?= $url ?>public/assets/images/product/<?= $picture['name'] ?>" alt="<?= $product['name'] ?>" />
 				</div>
 			</div>
 		<?php } ?>
@@ -38,11 +61,11 @@ ob_start();
     <div class="col-3">
         <div class="btn-group-vertical" role="group" aria-label="Basic example">
 			<?php // LIKE ?>
-			<button id="btnLike" type="button" class="btn btn-secondary <?= $likeClass ?>"><i class="fa fa-heart fa-2x"></i></button>
+			<button title="Liker" id="btnLike" type="button" class="btn btn-secondary <?= $likeClass ?>"><i class="fa fa-heart fa-2x"></i></button>
 			<?php // AJOUTER A UNE PLAYLIST ?>
-			<button id="btnAddToWishList" type="button" class="btn btn-secondary"><i class="fa fa-plus fa-2x"></i></button>
+			<button title="Ajouter à ma wishlist" id="btnAddToWishList" type="button" class="btn btn-secondary"><i class="fa fa-plus fa-2x"></i></button>
 			<?php // ACHETER ?>
-			<button id="btnBuy" type="button" class="btn btn-secondary"><i class="fa fa-shopping-cart fa-2x"></i></button>
+			<button title="Accéder à la boutique" id="btnBuy" type="button" class="btn btn-secondary"><i class="fa fa-shopping-cart fa-2x"></i></button>
 			<?php
 			/*
 			<!-- C'est juste pour garder les identifiants des icons font awesome -->
@@ -50,8 +73,13 @@ ob_start();
 			<button type="button" class="btn btn-secondary"><i class="fa fa-map-marked-alt fa-2x"></i></button>
 			*/
 			?>
-			<button id="btnReport" type="button" class="btn btn-secondary"><i class="fa fa-exclamation fa-2x"></i></button>
+			<button title="Signaler un problème" id="btnReport" type="button" class="btn btn-secondary"><i class="fa fa-exclamation fa-2x"></i></button>
 		</div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <a href="" class="btn_article_similaire">Articles similaires</a>
     </div>
 </div>
 
@@ -250,13 +278,13 @@ ob_start();
 	<br />
 	<form id="addWishlist">
 		<div class="row">
-			<div class="col-md-10 col-sm-10 col-xs-10">
+			<div class="col-md-9 col-sm-9 col-xs-9">
 				<div class="form-group">
 					<input id="wishlist_name" name="wishlist_name" type="text" class="form-control" placeholder="Créer une wishlist" required="required" />
 				</div>
 			</div>
-			<div class="col-md-2 col-sm-2 col-xs-2">
-				<button type="submit" class="btn btn-success">
+			<div class="col-md-3 col-sm-3 col-xs-3">
+				<button type="submit" class="btn btn-success-gr">
 					Créer
 				</button>
 			</div>

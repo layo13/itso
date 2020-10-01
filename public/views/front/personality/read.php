@@ -8,18 +8,23 @@ $app;
 
 ob_start();
 ?>
-<?php require __DIR__ . '/heading.php'; ?>
-<hr />
-<h2 class="title_artist"><?= $personality['first_name'] ?> <?= $personality['last_name'] ?></h2>
     <div class="row">
-        <div class="col-6 text-sm-left">
+        <div class="col-2">
+            <?php if (!empty($personalityPicture)) { ?>
+                <a href="<?= $app->router()->getRoute('front_personality_read', ['id' => $personalityId]) ?>">
+                    <img class="rounded-circle d-block profile_read_first" src="<?= $url ?>public/assets/images/user/<?= $personalityPicture['name'] ?>"/>
+                </a>
+            <?php } ?>
+        </div>
+        <div class="col-5 text-sm-left">
+            <h2 class="title_artist"><?= $personality['first_name'] ?> <?= $personality['last_name'] ?></h2>
             <span class="nb_abonnee"><i class="fa fa-heart"></i> <?= $subscriptions ?> Abonné(s)</span>
             <button id="btnSubscribe" type="button" class="btn btn-secondary <?= $btnClass ?>">
                 <?= ($btnClass == 'active' ? "ABONNÉ(E)" : "S'ABONNER") ?>
             </button>
 
         </div>
-        <div class="col-6 text-sm-right">
+        <div class="col-5 text-sm-right">
             <?php if (!empty($charity)) { ?>
                 <?= $personality['first_name'] ?> soutient <?= $charity['name'] ?>
             <?php } ?>
@@ -41,7 +46,7 @@ ob_start();
 	<div class="row">
 		<?php foreach ($favoriteCategories as $favoriteCategory) { ?>
 			<div class="col-4">
-				<a href="<?= $app->router()->getRoute('front_personality_favority_read', ['id' => $personality['id'], 'favorite' => $favoriteCategory['id']]) ?>">
+				<a class="text-decoration-none" href="<?= $app->router()->getRoute('front_personality_favority_read', ['id' => $personality['id'], 'favorite' => $favoriteCategory['id']]) ?>">
 					<div class="card">
 						<div style="color: #333;" class="card-body">
 							<?= $favoriteCategory['name'] ?>
@@ -57,7 +62,7 @@ ob_start();
 	<div class="row">
 		<?php foreach ($products as $product) { ?>
 			<div class="col-3">
-				<a href="<?= $app->router()->getRoute('front_personality_product_read', [
+				<a class="text-decoration-none" title="Voir le produit" href="<?= $app->router()->getRoute('front_personality_product_read', [
 					'id' => $personality['id'],
 					'product' => $product['id']
 				])

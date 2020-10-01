@@ -130,6 +130,13 @@ SQL
 			}
 		}
 
+        $btnClass = "";
+        if ($user->isAuthenticated()) {
+            $count = $this->pdo()->query("SELECT COUNT(*) FROM subscription WHERE celebrity_id = " . (int) $personality['id'] . " AND member_id = " . (int) $user->getAttribute('id'))->fetchColumn();
+            if ($count) {
+                $btnClass = 'active';
+            }
+        }
 		require ROOT . '/public/views/front/personality/product/read.php';
 	}
 

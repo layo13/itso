@@ -15,7 +15,9 @@ $blockJs = isset($blockJs) ? $blockJs : '';
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 		<link rel="stylesheet" href="<?= $url ?>public/assets/fontawesome/css/all.min.css">
-		<style type="text/css">
+        <link href="https://fonts.googleapis.com/css2?family=Anton&family=Sansita+Swashed:wght@500&display=swap" rel="stylesheet">
+
+        <style type="text/css">
             html,
             body {
                 /*height: 100%;*/
@@ -23,6 +25,37 @@ $blockJs = isset($blockJs) ? $blockJs : '';
             }
             body {
                 color: #b3b3b3;
+            }
+            /*PAGE DETAIL */
+            a.btn_article_similaire {
+                background: #fff;
+                padding: 10px 20px;
+                color: #000;
+                text-decoration: none;
+                border-radius: 50px;
+                font-size: 18px;
+                font-weight: 500;
+            }
+
+            /*PAGE ACCUEIL */
+            .card-body h5 {
+                font-size: 32px;
+                font-family: 'Sansita Swashed', cursive;
+            }
+
+            .text-right.mb-0 a {
+                font-size: 25px!important;
+                color: #24cf5f;
+                font-weight: 600;
+            }
+
+            p.text-center.tt_dons {
+                font-size: 28px;
+                font-family: 'Sansita Swashed', cursive;
+            }
+
+            p.text-center.tt_dons i.fa {
+                color: red;
             }
             /*PAGE ACCUEIL PHOTO CARRE*/
             .img-cube-container {
@@ -32,12 +65,17 @@ $blockJs = isset($blockJs) ? $blockJs : '';
                 width: 255px;
                 height: 255px;
             }
-            .product_desc {
+            .product_desc, .sub_desc {
                 position: relative;
                 display: block;
                 color: #fff;
                 margin-bottom: 50px;
                 max-width: 250px;
+            }
+            .sub_desc{
+                text-align: center;
+                font-size: 18px;
+                font-weight: 500;
             }
             /*PAGE SEARCH LISTE RECHERCHE GENERE*/
             .media-body a h5 {
@@ -86,6 +124,7 @@ $blockJs = isset($blockJs) ? $blockJs : '';
                 border-bottom: 1px solid #b3b3b3;
                 padding-bottom: 10px;
                 margin-bottom: 20px;
+                font-family: 'Anton', sans-serif;
             }
             button#btnSubscribe {
                 background: transparent;
@@ -105,6 +144,7 @@ $blockJs = isset($blockJs) ? $blockJs : '';
                 font-size: 52px;
                 color: #fff;
                 margin-bottom: 40px;
+                font-family: 'Anton', sans-serif;
             }
             span.nb_abonnee {
                 position: relative;
@@ -118,6 +158,76 @@ $blockJs = isset($blockJs) ? $blockJs : '';
             .rounded-circle.img-cube-container {
                 width: 200px;
                 height: 200px;
+            }
+            .rounded-circle.img-cube-container.profil_acc {
+                width: 150px;
+                height: 150px;
+            }
+
+
+            /**
+            MODAL
+             */
+            .modal-header,.modal-footer {
+                border-top-left-radius: 0px!important;
+                border-top-right-radius: 0px!important;
+                border: 0px;
+            }
+
+            .modal-content {
+                border-radius: 0px;
+                background: #444;
+                box-shadow: #000 0px 0px 10px 2px
+            }
+
+            div#myModal {
+                color: #b3b3b3;
+            }
+
+            button.close {
+                color: #fff;
+            }
+
+            h5#myModalLabel {
+                color: #fff!important;
+                text-align: center;
+                width: 100%;
+            }
+            .modal-body a {
+                color: #24cf5f;
+            }
+
+            .modal-backdrop.fade.show {
+                background-color: transparent;
+            }
+            form#addToWishlist .form-check {
+                position: relative;
+                display: inline-block;
+                padding: 4px 10px;
+            }
+
+            form#addToWishlist .form-check .form-check-input {
+                position: relative;
+                display: inline-block;
+                margin-left: 0;
+            }
+            button.btn.btn-success-gr {
+                background: #24cf5f;
+                color: #fff;
+                width: 100%;
+            }
+            .form-control{
+                border-radius:0px
+            }
+
+
+
+
+
+
+            label.form-check-label {
+                font-size: 26px;
+                margin-left: 5px;
             }
 		</style>
 		<title>In The Shoes Of</title>
@@ -138,9 +248,9 @@ $blockJs = isset($blockJs) ? $blockJs : '';
 			<div class="navbar-nav">
 
 				<?php if ($user->isAuthenticated()) { ?>
-					<a class="nav-link" href="<?= $app->router()->getRoute('front_profile'); ?>"><i class="fa fa-cog"></i></a>
+					<a title="Mon profil" class="nav-link" href="<?= $app->router()->getRoute('front_profile'); ?>"><i class="fa fa-cog"></i></a>
 				<?php } else { ?>
-					<a class="nav-link" href="<?= $app->router()->getRoute('front_login'); ?>"><i class="fa fa-user"></i></a>
+					<a title="Se connecter" class="nav-link" href="<?= $app->router()->getRoute('front_login'); ?>"><i class="fa fa-user"></i></a>
 				<?php } ?>
 
 			</div>
@@ -163,17 +273,17 @@ $blockJs = isset($blockJs) ? $blockJs : '';
 
 		<nav class="navbar fixed-bottom navbar-dark bg-dark">
 			<div class=".navbar-nav">
-				<a class="nav-link" href="<?= $app->router()->getRoute('front_home'); ?>">
+				<a title="Accueil" class="nav-link" href="<?= $app->router()->getRoute('front_home'); ?>">
 					<i class="fa fa-2x fa-home"></i>
 				</a>
 			</div>
 			<div class=".navbar-nav">
-				<a class="nav-link" href="<?= $app->router()->getRoute('front_search'); ?>">
+				<a title="Rechercher" class="nav-link" href="<?= $app->router()->getRoute('front_search'); ?>">
 					<i class="fa fa-2x fa-search"></i>
 				</a>
 			</div>
 			<div class=".navbar-nav">
-				<a class="nav-link" href="<?= $app->router()->getRoute('front_penderie'); ?>">
+				<a title="Ma penderie" class="nav-link" href="<?= $app->router()->getRoute('front_penderie'); ?>">
 					<i class="fa fa-2x fa-tshirt"></i>
 				</a>
 			</div>
