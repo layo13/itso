@@ -235,6 +235,35 @@ ob_start();
 					}
 				});
 			});
+            $('#btnSubscribe').click(function(){
+                var btn = $(this);
+
+                var suscribe = !$(this).hasClass("active") ? 1 : 0;
+
+                $.ajax({
+                    type: "POST",
+                    url: "<?= $app->router()->getRoute('front_personality_suscribe_ajax', [
+                        'id' => $personality['id']
+                    ]) ?>",
+                    data: {
+                        suscribe: suscribe
+                    },
+                    dataType: 'JSON',
+                    success: function (data) {
+                        if (data.user_authenticated == false){
+                            buildConnectOrRegisterModal('myModal');
+                        } else {
+                            if (data.content == 'subscribed'){
+                                $(btn).addClass('active')
+                                    .html("Abonné(e)");
+                            } else {
+                                $(btn).removeClass('active')
+                                    .html("S'abonner");
+                            }
+                        }
+                    }
+                });
+            });
 			$('#btnBuy').click(function(){
 				var btn = $(this);
 

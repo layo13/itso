@@ -56,6 +56,7 @@ $blockJs = isset($blockJs) ? $blockJs : '';
 
             p.text-center.tt_dons i.fa {
                 color: red;
+                margin-right: 10px;
             }
             /*PAGE ACCUEIL PHOTO CARRE*/
             .img-cube-container {
@@ -228,6 +229,30 @@ $blockJs = isset($blockJs) ? $blockJs : '';
             label.form-check-label {
                 font-size: 26px;
                 margin-left: 5px;
+            }
+
+
+
+
+            button#btnLike, button#btnAddToWishList, button#btnBuy,button#btnReport {
+                margin-bottom: 20px!important;
+                border-radius: 0px!important;
+                border-color: #6c757d;
+                width: 50px!important;
+                height: 50px!important;
+                color: #b3b3b3;
+                padding-top: 8px;
+                padding-left: 12px;
+                background: transparent;
+            }
+            button#btnBuy {
+                padding-left: 9px;
+            }
+
+            .card.bg-light.text-dark.mb-lg-5 {
+                border-radius: 50px;
+                padding-left: 25px;
+                padding-right: 25px;
             }
 		</style>
 		<title>In The Shoes Of</title>

@@ -10,12 +10,17 @@ ob_start();
 ?>
 
 <div class="row">
+    <div class="col-12">
+        <p class="text-center tt_dons mt-2"><i class="fa fa-heart"></i> Totalité des dons récoltés en 2020</p>
+    </div>
+</div>
+<div class="row">
 	<div class="col-12">
-		<div class="card bg-light text-dark mt-3">
+		<div class="card bg-light text-dark mb-lg-5">
 			<div class="card-body">
 				<div class="row">
 					<div class="col">
-						<h5 class="text-left mb-0">123.456.789&euro;</h5>
+						<h5 class="text-left mb-0">123 &nbsp;456 &nbsp;789 &euro;</h5>
 					</div>
 					<div class="col">
 						<p class="text-right mb-0">
@@ -26,11 +31,6 @@ ob_start();
 				</div>
 			</div>
 		</div>
-	</div>
-</div>
-<div class="row">
-	<div class="col-12">
-		<p class="text-center tt_dons mt-2"><i class="fa fa-heart"></i> Totalité des dons récoltés en 2020</p>
 	</div>
 </div>
 

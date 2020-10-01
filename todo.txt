@@ -37,3 +37,19 @@ Retirer les scripts qui créent une latence sur l'admin (google Maps)
 = JS Général =
 
 Améliorer le buildModal pour détruire un éventuel modal existant
+
+
+
+
+
+
+= design site =
+
+maximum 3 typo
+- typo script pour les infos sympa style "totalité des dons" (peu présente dans le site)
+- typo titre des lettres arrondit largeur et hauteur, contraste des typo battons
+- typo texte batton (sans serif) lettre espacé pour plus de lisibilité qui fonctionne en fin et avec 3 déclinaisons : bold, régulard, semi bold
+
+rester cohérent sur les textes pas maj et min partout, sur l'ordre des titres et textes (étagé)
+
+catégoriser la liste des boutons du site , page de détail produit bouton carré, ovale + toujours présent les icones haut et bas
