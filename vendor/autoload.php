@@ -37,7 +37,7 @@ if (extension_loaded('xdebug')) {
 	ini_set('xdebug.var_display_max_data', -1);
 }
 
-set_exception_handler(function(Exception $e) {
+set_exception_handler(function($e) {
 	//ob_end_clean();
 	//header('Content-type: text/html; charset=utf-8');
 
