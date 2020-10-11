@@ -131,11 +131,30 @@ class Image {
 			imagecopyresampled($portrait, $this->resource, 0, 0, ($this->getWidth() - $newwidth) / 2, 0, $newwidth, $newheight, $newwidth, $newheight);
 			return new Image($portrait);
 		} else if ($orientation == self::LANDSCAPE && $ratioOrientation == self::LANDSCAPE) {
-			var_dump("DE PAYSAGE A PAYSAGE");
-
+			/*var_dump("DE PAYSAGE A PAYSAGE");
 			$ratioTarget = $ratioWidth / $ratioHeight;
+			var_dump($ratioTarget, $this->getWidth() / $this->getHeight());*/
 
-			var_dump($ratioTarget, $this->getWidth() / $this->getHeight());
+			if (($ratioWidth / $ratioHeight) < ($this->getWidth() / $this->getHeight())) {
+				var_dump("IL FAUT CONSERVER LA HAUTEUR ET REDUIRE LA LARGEUR");
+				exit;
+				$newwidth = $ratioHeight * $this->getWidth() / $ratioWidth;
+				$newheight = $this->getHeight();
+				$portrait = imagecreatetruecolor($newwidth, $newheight);
+				imagecopyresampled($portrait, $this->resource, 0, 0, ($this->getWidth() - $newwidth) / 2, 0, $newwidth, $newheight, $newwidth, $newheight);
+				return new Image($portrait);
+			} else {
+				var_dump("IL FAUT CONSERVER LA LARGEUR ET REDUIRE LA HAUTEUR");
+				$newwidth = $this->getWidth();
+				$newheight = $ratioHeight * $this->getWidth() / $ratioWidth;
+				var_dump([
+					'$newwidth' => $newwidth,
+					'$newheight' => $newheight
+				]);
+				$portrait = imagecreatetruecolor($newwidth, $newheight);
+				imagecopyresampled($portrait, $this->resource, 0, 0, 0, ($this->getHeight() - $newheight) / 2, $newwidth, $newheight, $newwidth, $newheight);
+				return new Image($portrait);
+			}
 		} else if ($orientation == self::PORTRAIT && $ratioOrientation == self::PORTRAIT) {
 			var_dump("DE PORTRAIT A PORTRAIT");
 
@@ -204,6 +223,22 @@ class Image {
 	}
 
 }
+
+$image = Image::createFromJpeg(__DIR__ . '/IMG_8099.JPG');
+
+$imageRatio = $image->setRatio(1920, 1080);
+
+$filename = __DIR__ . '/IMG_8099_BIS.JPG';
+
+if (is_file($filename)) unlink ($filename);
+
+$imageSize = $imageRatio->resize(1920, 1080);
+
+$imageSize->toJpeg($filename);
+
+//echo '<img src="data:image/jpeg;base64, ' . base64_encode($imageRatio->toJpeg()) . '" class="img-responsive" />';
+
+exit;
 
 header("Content-type: text/html; Charset=UTF-8");
 

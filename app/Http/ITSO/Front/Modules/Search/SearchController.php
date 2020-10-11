@@ -37,7 +37,7 @@ SQL;
             //WHERE `brand`.`name` LIKE CONCAT('%', ?, '%')
 
             $stmt = $this->pdo()->prepare($sql);
-            $stmt->execute([$query, $query, $query, $query, $query]);
+            $stmt->execute([$query, $query, $query, $query]);
             $results = $stmt->fetchAll();
 
             foreach ($results as $result) {

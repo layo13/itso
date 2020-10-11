@@ -26,13 +26,14 @@ Revoir la fonctionnalité penderie, créer un controller et remplacer les termes
 
 = Framework =
 
-Retester un reset complet
 Revoir l'arborescence car les vues devraient etre rangees dans leurs applications
 coder enfin la fonction view() qui prend en compte qu'une vue puisse etre dans une app ou non
 Implementer la verif de si une requete est ajax ou non
 Les routes de l'application "Front" n'étaient pas disponibles depuis l'application "Admin", patch dans [itso]\app\Http\ITSO\Admin\Modules\User\UserController.php
 Faire une fonction pour clean les caractères en entrée et eviter les injections (inscription / ajout de wishlist)
 Retirer les scripts qui créent une latence sur l'admin (google Maps)
+
+sur le serveur, dans autoload.php:40, la ligne set_exception_handler(function(Exception $e) { provoque une erreur car $e est une Error au lieu d'un Exception
 
 = JS Général =
 
